@@ -1,0 +1,288 @@
+---
+import Base from '../../layouts/Base.astro';
+import DefinitionsNav from '../../components/DefinitionsNav.astro';
+import GrammarBox, { type Demo } from '../../islands/GrammarBox.tsx';
+import { ACCENTED, BASE, LIGATURES, classes, codePoint } from '../../lib/grammar';
+import { vetted } from '../../lib/data';
+import { CLASS_NAMES } from '../../islands/labels';
+
+// Every example on this page is a string of the vetted example list, or one
+// of them altered by a rule the box demonstrates.
+const classesOf = new Map(vetted.map((s) => [s, classes(s)]));
+const firstWith = (cls: string, alone = true) =>
+  vetted.find((s) => {
+    const c = classesOf.get(s)!;
+    return alone ? c.length === 1 && c[0] === cls : c.includes(cls);
+  }) ?? vetted.find((s) => classesOf.get(s)!.includes(cls));
+const plain = vetted.find((s) => classesOf.get(s)!.length === 0)!;
+
+const CLASS_ROWS = [
+  ['hyphenated', 'a hyphen joins parts that each hold a letter'],
+  ['accented', 'a letter of the accent inventory, other than the diaeresis'],
+  ['diaeresis', 'ä, ë, ï, ö, or ü'],
+  ['ligature', 'æ or œ'],
+  ['apostrophe-form', 'an apostrophe anywhere'],
+  ['contraction', 'a clipped not, will, have, are, would, had, or am at the end, or a leading apostrophe'],
+  ['s-final', "a token ending in 's"],
+  ['spaced', 'more than 1 token, each passing the rules on its own'],
+] as const;
+const classExamples = CLASS_ROWS.map(([cls, what]) => ({
+  cls,
+  what,
+  // the vetted list holds no string with a ligature so that
+  // class shows its 2 characters and no example
+  example: cls === 'ligature' ? null : firstWith(cls) ?? null,
+}));
+
+const accented = firstWith('accented')!;
+const apostrophe = firstWith('apostrophe-form')!;
+const spaced = firstWith('spaced')!;
+const hyphenated = firstWith('hyphenated')!;
+
+const demos: Demo[] = [
+  { label: 'a typographic apostrophe', input: apostrophe.replaceAll("'", '\u2019') },
+  { label: 'capital letters', input: accented.toUpperCase() },
+  { label: 'the accent typed separately', input: accented.normalize('NFD') },
+  { label: 'a no-break space', input: spaced.replace(' ', '\u00a0') },
+  { label: 'a hyphen at the end', input: `${hyphenated}-` },
+  { label: 'a doubled space', input: spaced.replace(' ', '  ') },
+  { label: 'a German sharp s', input: `${plain}\u00df` },
+  { label: 'a left quotation mark', input: apostrophe.replaceAll("'", '\u2018') },
+];
+for (const d of demos) {
+  if (!d.input) throw new Error(`the demo '${d.label}' has no vetted string to alter`);
+}
+
+const inventory = [
+  { name: 'Base letters', chars: [...BASE], note: 'a to z' },
+  { name: 'Accented letters', chars: [...ACCENTED], note: 'a closed list, extended only by a recorded decision' },
+  { name: 'Ligatures', chars: [...LIGATURES], note: 'ash and ethel' },
+];
+const marks = [
+  { char: '-', name: 'hyphen-minus', rule: 'the only hyphen' },
+  { char: "'", name: 'apostrophe', rule: 'the only apostrophe' },
+  { char: ' ', name: 'space', rule: 'the only space between tokens' },
+];
+---
+
+<Base
+  title="The spelling grammar"
+  section="Definitions"
+  description="The characters and the form every candidate of the CEOL Universe is written in, with a box that runs the grammar on anything you type."
+>
+  <div class="frame grammar-page">
+    <DefinitionsNav current="grammar" />
+
+    <header class="page-head">
+      <h1>The spelling grammar</h1>
+      <p class="lede">
+        Every candidate is written in a fixed set of characters, in a fixed form. The grammar says which, and every
+        row of the universe passes it. Passing fixes how a string is written, never whether it is a word.
+      </p>
+    </header>
+
+    <GrammarBox client:load demos={demos} initial={demos[0].input} />
+
+    <div class="prose">
+      <p>
+        The box runs the same rules as the dataset's code, <code>pipeline/ceol/grammar.py</code>, which is the
+        grammar's specification. The site's tests compare the two on every vetted example, every sample row, and those
+        strings altered by every rule.
+      </p>
+
+      <h2>The characters</h2>
+      <p>
+        {BASE.length + ACCENTED.length + LIGATURES.length} letters and {marks.length} marks. A character outside them fails the
+        grammar instead of being changed into something close.
+      </p>
+    </div>
+
+    <div class="inventory">
+      {
+        inventory.map((g) => (
+          <section class="inv-group" aria-labelledby={`inv-${g.name}`}>
+            <h3 id={`inv-${g.name}`}>
+              {g.name} <span class="inv-n">{g.chars.length}</span>
+            </h3>
+            <p class="inv-chars cand" lang="und">{g.chars.join(' ')}</p>
+            <p class="inv-note">{g.note}</p>
+          </section>
+        ))
+      }
+      <section class="inv-group" aria-labelledby="inv-marks">
+        <h3 id="inv-marks">Marks <span class="inv-n">{marks.length}</span></h3>
+        <ul class="inv-marks">
+          {
+            marks.map((m) => (
+              <li>
+                <code>{codePoint(m.char)}</code> {m.name}, {m.rule}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+
+    <div class="prose">
+      <h2>Two characters are rewritten, and nothing else</h2>
+      <p>
+        The typographic apostrophe, <code>U+2019</code>, becomes the plain one, <code>U+0027</code>. The no-break space,
+        <code>U+00A0</code>, becomes the plain space, <code>U+0020</code>. Each is the same character in a different
+        dress, and treating them apart would list a string twice.
+      </p>
+      <p>
+        Every other look-alike fails instead: the left quotation mark <code>U+2018</code>, the modifier apostrophe
+        <code>U+02BC</code>, the grave and acute accents standing alone, the dashes <code>U+2010</code>,
+        <code>U+2013</code>, and <code>U+2014</code>, and every other kind of space. Folding a character the grammar does
+        not declare would invent data.
+      </p>
+
+      <h2>Composed, lowered, and never folded</h2>
+      <p>
+        A string is composed with Unicode's NFC form, so a letter and an accent typed separately become 1 character. It
+        is never decomposed with NFKC, which would turn a presentation ligature such as <code>U+FB03</code> into 3
+        letters; that ligature fails instead.
+      </p>
+      <p>
+        Letters are lowered, never case-folded. A case fold turns the German sharp s into "ss" and makes a foreign
+        spelling look English; lowering leaves it in place, where it fails as an undeclared character. The string is
+        composed again after lowering, because lowering can split a letter in two.
+      </p>
+
+      <h2>The form</h2>
+      <ul>
+        <li>Every token holds at least 1 letter.</li>
+        <li>A hyphen sits between 2 parts that each hold a letter: never first, never last, never 2 in a row.</li>
+        <li>
+          An apostrophe may begin a token, as in a leading elision, but never ends one and never doubles. So this version
+          holds no plural possessive, which ends in an apostrophe; a form that ends in an apostrophe and s is held. Plural
+          possessives may come in a later version, generated from their stems once the dataset has parts of speech, and
+          that version would record the change to the grammar.
+        </li>
+        <li>Spaces are single and between tokens, never first or last, and each token passes these rules on its own.</li>
+        <li>
+          The underscore is never a character. Sources that write a space as an underscore are read with the space
+          before the grammar sees them.
+        </li>
+      </ul>
+
+      <h2>The spelling classes</h2>
+      <p>
+        A string that passes is given flags for what its characters and tokens hold. The flags combine: a string can be
+        hyphenated and accented at once. A string with none is plain a to z.
+      </p>
+    </div>
+
+    <div class="classes-table-wrap">
+      <table class="classes-table">
+        <thead>
+          <tr><th scope="col">Class</th><th scope="col">A string holds</th><th scope="col">From the vetted examples</th></tr>
+        </thead>
+        <tbody>
+          {
+            classExamples.map((c) => (
+              <tr>
+                <th scope="row">{CLASS_NAMES[c.cls]}</th>
+                <td>{c.what}</td>
+                <td>
+                  {c.example ? (
+                    <span class="cand ex">{c.example}</span>
+                  ) : (
+                    <span class="no-ex">No vetted example holds one; the characters are æ and œ.</span>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .grammar-page {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .grammar-page > :global(*) {
+    min-width: 0;
+  }
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+
+  .inventory {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-5) var(--space-6);
+    border-top: 1px solid var(--rule);
+    padding-top: var(--space-5);
+  }
+  .inv-group {
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+  }
+  .inv-group h3 {
+    font-family: var(--font-sans);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .inv-n {
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-left: 0.35em;
+  }
+  .inv-chars {
+    font-size: var(--step-2);
+    line-height: 1.5;
+    word-spacing: 0.15em;
+  }
+  .inv-note {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .inv-marks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+    font-size: var(--step--1);
+  }
+
+  .classes-table-wrap {
+    overflow-x: auto;
+  }
+  .classes-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 34rem;
+    font-size: var(--step--1);
+  }
+  .classes-table th,
+  .classes-table td {
+    text-align: left;
+    padding: var(--space-3) var(--space-4) var(--space-3) 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: baseline;
+  }
+  .classes-table thead th {
+    color: var(--ink-soft);
+  }
+  .classes-table tbody th {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .ex {
+    font-size: var(--step-1);
+  }
+  .no-ex {
+    color: var(--ink-soft);
+  }
+</style>

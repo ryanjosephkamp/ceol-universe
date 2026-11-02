@@ -1,0 +1,30 @@
+{
+  "repo_id": "ryanjosephkamp/ceol-universe",
+  "version": "v2.0",
+  "decision": "C-078 lines 3 and 7",
+  "account": "ryanjosephkamp",
+  "private": true,
+  "uploaded": "2026-09-26",
+  "revision_before": "704165fd984da54bd4cc045476287190987bc7e1",
+  "commit": "a9131346237070f22d1c47b1eaf7932a6f92b872",
+  "final_revision": "a9131346237070f22d1c47b1eaf7932a6f92b872",
+  "files": [
+    "data/universe.parquet",
+    "data/features.parquet",
+    "data/panel-listed.parquet",
+    "data/eol-valid.parquet",
+    "data/spaced.parquet",
+    "data/exceptions.parquet",
+    "README.md"
+  ],
+  "hub_lfs_sha256": {
+    "data/eol-valid.parquet": "5ac23bf717e3d9936158c3e331948e3e552588b9f5d9f7c2fb8d3a71caa2a7f8",
+    "data/exceptions.parquet": "9a904087f4ab27036c65c8f6565637e72f8100c8427451ec4d9567d101e6b44f",
+    "data/features.parquet": "4541bbea7ef0d7858bec106efdbe6b3a1a526a4434bd0432792a8076bad54ff0",
+    "data/panel-listed.parquet": "13b614bf879d33b4042f9238fd9956e1d7ff1ce5f71f58227c82d0f6cd1e49b1",
+    "data/spaced.parquet": "8010583b031d7a7baab25df80463ed4e4495f4070aad229e34b14fdfaa6f7c9c",
+    "data/universe.parquet": "0336196b54ee2cd93d1bfd01e2bf3a07a35b520a709bafa80eb35f59b50defda"
+  },
+  "card_sha256": "fbcb502dee6007f0477de144f63b8b4b7f2e1f6edae0bb82fc7552ce7f305a9c",
+  "record_sha256": "bfb2de08041b5f0e577a4721dc12837af47ff45f610581828a61efa79edf6ad0"
+}

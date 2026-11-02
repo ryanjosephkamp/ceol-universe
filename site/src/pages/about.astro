@@ -1,0 +1,201 @@
+---
+import Base from '../layouts/Base.astro';
+import Figure from '../components/Figure.astro';
+import { cardText, release } from '../lib/data';
+import { usDate } from '../lib/dates';
+
+const contact = cardText('contact_address');
+---
+
+<Base
+  title="About"
+  section="About"
+  description="Why the Common English OpenList exists, who makes it, its sister projects, its licenses, how language models enter its data, and how to reach it."
+>
+  <div class="frame about">
+    <header class="page-head">
+      <h1>About</h1>
+      <p class="lede">
+        The Common English OpenList is made by Ryan Kamp. It grew out of the English OpenList, a word list with its own
+        rules, which the CEOL Universe now holds as one of its parts.
+      </p>
+    </header>
+
+    <div class="about-grid">
+      <section aria-labelledby="why">
+        <h2 id="why">Why it exists</h2>
+        <p>
+          Ask whether a string is a word, and the answer depends on which dictionary you ask. Dictionaries and word lists
+          disagree, for several reasons:
+        </p>
+        <ul class="reasons">
+          <li><strong>Timing:</strong> They are updated at different times, and some are no longer updated at all.</li>
+          <li><strong>Scope:</strong> Specialized and technical terms are in scope for some and not for others.</li>
+          <li><strong>Standards:</strong> Some leave out slang or profanity on purpose.</li>
+          <li>
+            <strong>Definitions:</strong> Each has its own rules for what a word is, such as whether it may hold a space, a
+            hyphen, or an accent, and its own way of taking in a new entry, from a community of editors or from an
+            institution's staff.
+          </li>
+        </ul>
+        <p>
+          The CEOL Universe does not settle the question. For each candidate, it records which published lists hold it,
+          which could not have held it, and how it came in, in versions fixed at a date, so that whoever settles the
+          question can see the evidence.
+        </p>
+      </section>
+
+      <section aria-labelledby="family">
+        <h2 id="family">The family</h2>
+        <dl class="pairs">
+          <div>
+            <dt><a href="/">The CEOL Universe</a></dt>
+            <dd>The inventory: every candidate, with its provenance, in versions that never change once released.</dd>
+          </div>
+          <div>
+            <dt><a href="/eol/">The English OpenList</a></dt>
+            <dd>A word list with its own rules, kept here as a dated subset of the universe.</dd>
+          </div>
+          <div>
+            <dt><a href="https://ars-magna.pages.dev/" rel="noopener">Ars Magna</a></dt>
+            <dd>An anagram finder that shares the English OpenList's dictionary.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="licenses">
+        <h2 id="licenses">Licenses</h2>
+        <dl class="pairs">
+          <div>
+            <dt>The data</dt>
+            <dd>CC BY-SA 4.0, as the terms of Wiktionary and of wordfreq require. Every version ships its sources'
+              notices.</dd>
+          </div>
+          <div>
+            <dt>The code</dt>
+            <dd>MIT.</dd>
+          </div>
+          <div>
+            <dt>This site's text</dt>
+            <dd>CC BY-SA 4.0, except <a href="/research/report/">the technical report</a>, which is CC BY 4.0.</dd>
+          </div>
+        </dl>
+        <p class="more"><a href="/dataset/sources/">Sources, licenses, and credits</a></p>
+      </section>
+
+      <section aria-labelledby="models">
+        <h2 id="models">Language models in the data</h2>
+        <p>
+          The English OpenList decided some of the entries of its valid list with a language model, Google Gemini 3 Flash
+          Preview: through a verification pipeline that used it, or by its verdict alone. Its synthetic engine, whose code
+          does not survive, made other strings by affixing, by chemical substitution, by scientific prefixing, and by Greek
+          plurals; <a href="/eol/#how">the English OpenList's page</a> gives its author's account of the methods. The
+          universe marks every such row in <code>model_or_engine</code>, so a list can keep or drop them.
+        </p>
+        <p class="more"><a href="/compose/?d.model_or_engine=none">Compose a list without them</a></p>
+      </section>
+
+      <section aria-labelledby="contact">
+        <h2 id="contact">Requests and contact</h2>
+        <p>
+          Requests to withhold, correct, or restore a source or a row go to
+          <a class="email" href={`mailto:${contact}`}>{contact}</a>. A request is acknowledged within 7 days and acted on
+          within 14 days of its verification, and each version's change log records every withholding, as counts.
+        </p>
+        <p class="more"><a href="/dataset/cite/">How to cite it</a></p>
+      </section>
+
+      <section aria-labelledby="version">
+        <h2 id="version">This version</h2>
+        <p>
+          Version {release.name}, built {usDate(release.builtOn)}: <Figure id="rows" /> rows. A released version never changes; a
+          correction comes as a new version with a change log.
+        </p>
+        <p class="more"><a href="/dataset/versions/">Versions and changes</a></p>
+      </section>
+
+      <section aria-labelledby="author">
+        <h2 id="author">The author</h2>
+        <p>Ryan Kamp makes the Common English OpenList and its sister projects.</p>
+        <ul class="links">
+          <li><a href="https://ryanjosephkamp.github.io/" rel="noopener">ryanjosephkamp.github.io</a></li>
+          <li><a href="https://github.com/ryanjosephkamp" rel="noopener">github.com/ryanjosephkamp</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .email {
+    overflow-wrap: anywhere;
+  }
+  .about {
+    display: grid;
+    gap: var(--space-7);
+  }
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+    gap: var(--space-7) var(--space-8);
+  }
+  .about-grid section {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--rule);
+    max-width: 40rem;
+  }
+  .about-grid h2 {
+    font-size: var(--step-2);
+  }
+  .about-grid p {
+    color: var(--ink-soft);
+  }
+  .pairs {
+    margin: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .pairs dt {
+    font-weight: 600;
+  }
+  .pairs dt a {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    text-decoration: none;
+  }
+  .pairs dt a:hover {
+    text-decoration: underline;
+  }
+  .pairs dd {
+    margin: 0.15rem 0 0;
+    color: var(--ink-soft);
+  }
+  .more {
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .reasons {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: var(--space-2);
+    color: var(--ink-soft);
+  }
+  .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+  }
+</style>

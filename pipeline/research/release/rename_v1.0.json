@@ -1,0 +1,102 @@
+{
+ "generated_by": "research/release/rename_check.py",
+ "decision": "D-014 line 2",
+ "what": "v1.0 against v2.1: the same rows, values, schemas, and row groups; only the version name differs",
+ "records": {
+  "v2.1": "release_v2.1.json",
+  "v1.0": "release_v1.0.json"
+ },
+ "record_fields_differing": [
+  "code",
+  "documents",
+  "documents_rewritten_on",
+  "files",
+  "version"
+ ],
+ "files": [
+  {
+   "config": "universe",
+   "rows": 10020150,
+   "row_groups": 24,
+   "columns": 41,
+   "sha256_v2.1": "ba73caf1f64adef94736b82d2c3a61bac16881b788c75d83593b4b46b95c95a6",
+   "sha256_v1.0": "d30db2c351c6941edafb7d7dbeeadedd8d12bd8c4975350d0a5cf8890f42c7ce",
+   "values_equal": true,
+   "metadata_differing": [
+    "ceol.version"
+   ]
+  },
+  {
+   "config": "features",
+   "rows": 9725285,
+   "row_groups": 7,
+   "columns": 11,
+   "sha256_v2.1": "39d840f2a39322a48097537cd63944984986fe852b20d786731c4d57623484ab",
+   "sha256_v1.0": "d3e08959f67bf654f8ec3ac631fb181218fcc26136f9a1f425c790c80a38b4c9",
+   "values_equal": true,
+   "metadata_differing": [
+    "ceol.version"
+   ]
+  },
+  {
+   "config": "panel-listed",
+   "rows": 1384833,
+   "row_groups": 4,
+   "columns": 41,
+   "sha256_v2.1": "50cd00f00c2326da0fa4497fa4e4148b77a0cc72fbeca8629a1e7338a556a02b",
+   "sha256_v1.0": "fdf181a22b03e696d5c7cac4a5b2af34d16f686dc13bd6aad6744bc6751de79f",
+   "values_equal": true,
+   "metadata_differing": [
+    "ceol.version"
+   ]
+  },
+  {
+   "config": "eol-valid",
+   "rows": 344713,
+   "row_groups": 1,
+   "columns": 41,
+   "sha256_v2.1": "527949aadd02e3bd61ffab884fa23ffd53793594739090c368c144627a96541e",
+   "sha256_v1.0": "a371578f30aec90015f8254327fef5daf0a90e7da31e79fc9500cd2414b37408",
+   "values_equal": true,
+   "metadata_differing": [
+    "ceol.version"
+   ]
+  },
+  {
+   "config": "spaced",
+   "rows": 294865,
+   "row_groups": 1,
+   "columns": 41,
+   "sha256_v2.1": "2861ff7bbdc6a6d412d860d95e7532f144ddfa87f9ab4795d9a7de34fe061c26",
+   "sha256_v1.0": "0a25533c65285531d2d0bf332e1d4ce5cd2c5fcc33486df35e7f15d910f591df",
+   "values_equal": true,
+   "metadata_differing": [
+    "ceol.version"
+   ]
+  },
+  {
+   "config": "exceptions",
+   "rows": 209883,
+   "row_groups": 1,
+   "columns": 41,
+   "sha256_v2.1": "3a6fa0ff4769f9845b88125911d405099ade27041f406dca50fdb14df0a43919",
+   "sha256_v1.0": "ad0487b18644914f8f32fb1386e6ece38c9c677a39dc428b84d08e1c15628f28",
+   "values_equal": true,
+   "metadata_differing": [
+    "ceol.version"
+   ]
+  },
+  {
+   "config": "sample",
+   "rows": 38988,
+   "row_groups": 1,
+   "columns": 41,
+   "sha256_v2.1": "bf7130119569bc4a71fd758a02629bd77dbfecc22f5d9768c3702351300fb107",
+   "sha256_v1.0": "302f02419f1accedd6d16d851d325b78ff001f9d3f70b48af652f64130dace28",
+   "values_equal": true,
+   "metadata_differing": [
+    "ceol.version"
+   ]
+  }
+ ]
+}

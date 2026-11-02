@@ -1,0 +1,64 @@
+---
+// The configs of the version, with their rows from the figures file.
+import Figure from './Figure.astro';
+
+const configs = [
+  ['universe', 'every row'],
+  ['features', 'the single-token rows, with the feature columns'],
+  ['panel-listed', 'rows a published word list lists'],
+  ['eol-valid', 'the English OpenList at revision c1139698'],
+  ['spaced', 'multiword rows'],
+  ['exceptions', 'rows with a hyphen, an accent, a diaeresis, an apostrophe, or a ligature'],
+  ['sample', 'the rows whose id begins with 00, for trying the dataset'],
+] as const;
+---
+
+<table>
+  <caption class="visually-hidden">The configs of the version, with their rows</caption>
+  <thead>
+    <tr><th scope="col">Config</th><th scope="col">What it holds</th><th scope="col" class="num">Rows</th></tr>
+  </thead>
+  <tbody>
+    {
+      configs.map(([name, what]) => (
+        <tr class:list={[{ eol: name === 'eol-valid' }]}>
+          <th scope="row"><code>{name}</code></th>
+          <td>{what}</td>
+          <td class="num"><Figure id={`config.${name}.rows`} /></td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: var(--step--1);
+  }
+  th,
+  td {
+    text-align: left;
+    padding: var(--space-2) var(--space-3) var(--space-2) 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: baseline;
+  }
+  thead th {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  tbody th {
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .num {
+    text-align: right;
+    padding-right: 0;
+    white-space: nowrap;
+  }
+  tr.eol th code {
+    color: var(--eol);
+    font-weight: 600;
+  }
+</style>

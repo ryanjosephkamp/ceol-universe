@@ -1,0 +1,26 @@
+---
+import Dataset from '../../layouts/Dataset.astro';
+import Figure from '../../components/Figure.astro';
+import Profile from '../../islands/Profile.tsx';
+---
+
+<Dataset title="Profile" slug="profile" description="Every dimension of the CEOL Universe's rows, charted from the full data; click any bar to filter every chart by it.">
+  <header class="page-head">
+    <h1>Profile</h1>
+    <p class="lede">
+      Every dimension of every row, charted from all <Figure id="rows" /> of them. Click a bar to filter every chart by
+      it; each chart leaves its own filter out, so it shows what you could pick next.
+    </p>
+  </header>
+  <Profile client:load cubeUrl="/data/cube-v1.0.json" composeHref="/compose/" />
+</Dataset>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+</style>

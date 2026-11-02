@@ -1,0 +1,136 @@
+{
+ "version": "v1.0",
+ "generated_by": "research/release/site_rows.py",
+ "source": "research/release/public_card.py",
+ "what": "rows of the card's calculator that the site shows, by name",
+ "rows": {
+  "census_candidates": {
+   "value": 213867,
+   "text": "213,867"
+  },
+  "eol_universe_rows": {
+   "value": 9653999,
+   "text": "9,653,999"
+  },
+  "merge_rows": {
+   "value": 9867866,
+   "text": "9,867,866"
+  },
+  "audit_remainder": {
+   "value": 0,
+   "text": "0"
+  },
+  "c4_additions": {
+   "value": 133875,
+   "text": "133,875"
+  },
+  "v1_rows": {
+   "value": 10001741,
+   "text": "10,001,741"
+  },
+  "pin_spaced": {
+   "value": 294865,
+   "text": "294,865"
+  },
+  "rows_pin": {
+   "value": 10296606,
+   "text": "10,296,606"
+  },
+  "model_basis_entries": {
+   "value": 345103,
+   "text": "345,103"
+  },
+  "rows_restricted": {
+   "value": 1985,
+   "text": "1,985"
+  },
+  "rows_shippable": {
+   "value": 10294621,
+   "text": "10,294,621"
+  },
+  "held_back_rows": {
+   "value": 274471,
+   "text": "274,471"
+  },
+  "held_tier_2": {
+   "value": 27661,
+   "text": "27,661"
+  },
+  "held_withheld_channel": {
+   "value": 244252,
+   "text": "244,252"
+  },
+  "held_withheld_sources": {
+   "value": 2558,
+   "text": "2,558"
+  },
+  "rows_universe": {
+   "value": 10020150,
+   "text": "10,020,150"
+  },
+  "files_asserted": {
+   "value": 7,
+   "text": "7"
+  },
+  "restricted_words_checked": {
+   "value": 1985,
+   "text": "1,985"
+  },
+  "exception_class_count": {
+   "value": 6,
+   "text": "6"
+  },
+  "published_set_count": {
+   "value": 8,
+   "text": "8"
+  },
+  "withheld_list_count": {
+   "value": 5,
+   "text": "5"
+  },
+  "panel_set_count": {
+   "value": 13,
+   "text": "13"
+  },
+  "built_on": {
+   "value": "October 25, 2026",
+   "text": "October 25, 2026"
+  },
+  "code_commit": {
+   "value": "6891bff41ef0",
+   "text": "6891bff41ef0"
+  },
+  "contact_address": {
+   "value": "ryanjosephkamp@gmail.com",
+   "text": "ryanjosephkamp@gmail.com"
+  },
+  "generated_rows": {
+   "value": 330386,
+   "text": "330,386"
+  },
+  "eol_one_letter": {
+   "value": 2,
+   "text": "2"
+  },
+  "eol_over_45": {
+   "value": 3,
+   "text": "3"
+  },
+  "eol_longest": {
+   "value": 47,
+   "text": "47"
+  },
+  "limit_gb_all": {
+   "value": 8761768,
+   "text": "8,761,768"
+  },
+  "wordfreq_scored": {
+   "value": 303511,
+   "text": "303,511"
+  },
+  "rows_features": {
+   "value": 9725285,
+   "text": "9,725,285"
+  }
+ }
+}

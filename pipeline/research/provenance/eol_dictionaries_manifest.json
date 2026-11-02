@@ -1,0 +1,391 @@
+{
+  "generated_by": "research/provenance/build_eol_dictionaries_manifest.py",
+  "decision": "C-064 rulings 1 and 2",
+  "dataset": "ryanjosephkamp/english-openlist",
+  "revision": "c113969807f3045f5ddd8cc919d0189d54ba368b",
+  "note_on_the_invalid_dictionary_hash": "sha256 is the hub's ETag (X-Linked-ETag) and LFS object id, and the value the single stream reproduced; hub_xet_hash is the hub's Xet content hash, the value C-064 ruling 2 quotes as the ETag (PACKAGE.md section 7, reading R1)",
+  "pin": {
+    "universe_v2_parquet_sha256": "adaa1232b6bc4d9ead97f5e19a005b264bb6db8db77b6374fe66cdd1d2aca9dd",
+    "rows_by_layer": {
+      "eol_valid": 345103,
+      "eol_invalid": 9308896,
+      "c1_exceptions": 213867,
+      "c4_additions": 133875,
+      "spaced_c015": 294865
+    }
+  },
+  "dictionaries": {
+    "valid": {
+      "dictionary": "merged_valid_dict.json",
+      "url": "https://huggingface.co/datasets/ryanjosephkamp/english-openlist/resolve/c113969807f3045f5ddd8cc919d0189d54ba368b/data/merged_valid_dict.json",
+      "revision": "c113969807f3045f5ddd8cc919d0189d54ba368b",
+      "bytes": 282080828,
+      "sha256": "20e5baedf4ac7731e3d2c51d5d3e357c14680a5b493c68eeaf4503484b46af2a",
+      "read_as": "the local pinned file (EOL .cache/hf), parsed whole from the bytes that were hashed; equal to the checksum ritual's value",
+      "retrieved_utc": {
+        "start": "2026-09-17T04:45:51Z",
+        "end": "2026-09-17T04:45:57Z"
+      },
+      "entries": 345103,
+      "intake_parquet": "eol_valid_intake.parquet",
+      "intake_parquet_sha256": "5b5a1bc593d4602eec158ca349fb1f04d2c2dd7e859863052bdf594c22953daf",
+      "intake_parquet_rows": 345103,
+      "field_name_counts": {
+        "added_date": 307189,
+        "advanced_validation": 131226,
+        "audit_trail": 255,
+        "candidate_date": 137697,
+        "candidate_source": 137697,
+        "category": 31243,
+        "created_date": 31243,
+        "definition": 221,
+        "detected_in": 19505,
+        "detection_date": 19505,
+        "dictionary_verdict": 200,
+        "error_message": 200,
+        "etymology": 221,
+        "generation_method": 31243,
+        "incorporated_from": 5030,
+        "incorporation_date": 5030,
+        "incorporation_source": 5030,
+        "length": 175935,
+        "manual_validation": 137697,
+        "notes": 31243,
+        "part_of_speech": 221,
+        "pronunciation": 221,
+        "proper_noun_check": 131226,
+        "raw_response": 200,
+        "repeat_validation": 20973,
+        "revalidation": 137697,
+        "source": 207406,
+        "statistical_validation": 131226,
+        "unverified_llm_verdict": 137697,
+        "valid": 31243,
+        "validated": 31243,
+        "validated_date": 132667,
+        "validated_iteration": 132667,
+        "validated_true_positive": 132667,
+        "validation_date": 162469,
+        "validation_notes": 24,
+        "validation_source": 131226,
+        "validation_status": 175963,
+        "word": 307389
+      },
+      "candidate_source_state": {
+        "absent": 207406,
+        "non_empty": 136236,
+        "null": 1461
+      },
+      "candidate_source_label_counts": {
+        "coca_frequency_unlikely": 2007,
+        "coca_frequency_valid": 12056,
+        "collins_unlikely": 2,
+        "enable_unlikely": 2446,
+        "enable_valid": 1345,
+        "google_ngrams_unlikely": 4937,
+        "google_ngrams_valid": 114358,
+        "libreoffice_unlikely": 1354,
+        "libreoffice_valid": 3384,
+        "linux_unlikely": 1938,
+        "linux_valid": 16954,
+        "nltk_unlikely": 1936,
+        "nltk_valid": 16953,
+        "opensource_unlikely": 3073,
+        "opensource_valid": 23145,
+        "wikipedia_unlikely": 4896,
+        "wikipedia_valid": 33758,
+        "wiktionary_unlikely": 4582,
+        "wiktionary_valid": 78821,
+        "wordnet_unlikely": 1316,
+        "wordnet_valid": 2127
+      },
+      "entries_whose_inner_word_differs_from_the_key": 0,
+      "categorical_value_counts": {
+        "category": {
+          "Biochemical": 2,
+          "Chemical": 6819,
+          "Chemical/Science": 4,
+          "General": 10289,
+          "General/Science": 4,
+          "Medical": 5507,
+          "Medical/Chemical": 4,
+          "Medical/Science": 5,
+          "Nonsense": 1,
+          "Science": 8602,
+          "Technical": 1,
+          "Unknown": 5
+        },
+        "generation_method": {
+          "null": 31243
+        },
+        "manual_validation_llm": {},
+        "manual_validation_source": {},
+        "manual_validation_status": {},
+        "source": {
+          "authoritative_extracts": 259,
+          "extended_domain_sources": 175,
+          "free-dictionary": 143,
+          "invalid_list_recovery": 7,
+          "merriam-webster": 76,
+          "merriam-webster-medical": 2,
+          "synthetic_generation": 31243,
+          "twl_scrabble_dictionary": 175501
+        },
+        "status": {},
+        "validation_source": {
+          "verification_pipeline": 131226
+        }
+      },
+      "entries_by_the_layer_of_their_key": {
+        "eol_valid": 345103,
+        "eol_invalid": 0,
+        "c1_exceptions": 0,
+        "c4_additions": 0,
+        "spaced_c015": 0,
+        "outside_the_universe": 0
+      },
+      "entries_with_a_non_empty_channel_list": 136236,
+      "entries_with_a_source_value": 207406,
+      "entries_with_neither": 1461,
+      "own_layer": "eol_valid",
+      "own_layer_entries_with_a_non_empty_channel_list": 136236,
+      "own_layer_entries_with_a_source_value": 207406,
+      "own_layer_entries_with_neither": 1461
+    },
+    "invalid": {
+      "dictionary": "merged_invalid_dict.json",
+      "url": "https://huggingface.co/datasets/ryanjosephkamp/english-openlist/resolve/c113969807f3045f5ddd8cc919d0189d54ba368b/data/merged_invalid_dict.json",
+      "revision": "c113969807f3045f5ddd8cc919d0189d54ba368b",
+      "bytes": 12237976092,
+      "sha256": "8ccfccdf16c39f87ea091a46e27c0b746260bf4cd019a9b5ae9e9faea3aba703",
+      "hub_etag_as_read": "8ccfccdf16c39f87ea091a46e27c0b746260bf4cd019a9b5ae9e9faea3aba703",
+      "hub_xet_hash_as_read": "1c921f6b1436898611731ad1e6a69c442c634363db4bd897c373ab4b25260642",
+      "read_as": "streamed once from the hub, hashed on the bytes parsed, never written to disk",
+      "retrieved_utc": {
+        "start": "2026-09-17T04:46:09Z",
+        "end": "2026-09-17T04:56:57Z"
+      },
+      "resume_events": [],
+      "lines": 9275416,
+      "entries": 9275414,
+      "intake_parquet": "eol_invalid_intake.parquet",
+      "intake_parquet_sha256": "ca608042cf2f5e5c9cdaea59e01f443cdf56bcd1a4fade2129a09dbb0889c09b",
+      "intake_parquet_rows": 9275414,
+      "field_name_counts": {
+        "added_date": 8631674,
+        "advanced_validation": 8631674,
+        "audit_trail": 3551,
+        "candidate_date": 9009865,
+        "candidate_source": 9009865,
+        "category": 265549,
+        "created_date": 265549,
+        "detected_in": 424774,
+        "detection_date": 424774,
+        "generation_method": 265549,
+        "incorporated_from": 34383,
+        "incorporation_date": 34383,
+        "incorporation_source": 34383,
+        "manual_validation": 9009864,
+        "notes": 265549,
+        "proper_noun_check": 8631673,
+        "repeat_validation": 1721990,
+        "revalidation": 9009865,
+        "source": 265549,
+        "statistical_validation": 8631674,
+        "status": 9009865,
+        "valid": 265549,
+        "validated": 265549,
+        "validated_date": 1677993,
+        "validated_iteration": 1677993,
+        "validated_true_negative": 1345446,
+        "validated_true_positive": 332548,
+        "validation_date": 8897223,
+        "validation_notes": 3708,
+        "validation_source": 8631674,
+        "word": 8631674
+      },
+      "candidate_source_state": {
+        "absent": 265549,
+        "non_empty": 8707758,
+        "null": 302107
+      },
+      "candidate_source_label_counts": {
+        "coca_frequency_unlikely": 8571,
+        "coca_frequency_valid": 789046,
+        "collins_unlikely": 18,
+        "collins_valid": 2,
+        "enable_unlikely": 71,
+        "enable_valid": 2676,
+        "google_ngrams_unlikely": 59353,
+        "google_ngrams_valid": 7882351,
+        "libreoffice_unlikely": 1981,
+        "libreoffice_valid": 32217,
+        "linux_unlikely": 1510,
+        "linux_valid": 102989,
+        "nltk_unlikely": 1510,
+        "nltk_valid": 102984,
+        "opensource_unlikely": 2430,
+        "opensource_valid": 142634,
+        "wikipedia_unlikely": 75905,
+        "wikipedia_valid": 1476602,
+        "wiktionary_unlikely": 8709,
+        "wiktionary_valid": 543182,
+        "wordnet_unlikely": 888,
+        "wordnet_valid": 13298
+      },
+      "entries_whose_inner_word_differs_from_the_key": 0,
+      "categorical_value_counts": {
+        "category": {
+          "Biochemical": 2,
+          "Chemical": 1445,
+          "Chemical, Nonsense": 8,
+          "Chemical/Nonsense": 14,
+          "General": 4229,
+          "General/Nonsense": 160,
+          "Malformed": 48,
+          "Malformed inflection": 37,
+          "Medical": 1962,
+          "Medical, Nonsense": 3,
+          "Medical/Nonsense": 68,
+          "Misspelling": 43,
+          "Nonsense": 254779,
+          "Science": 2611,
+          "Science, Nonsense": 31,
+          "Science/Nonsense": 52,
+          "Structurally impossible": 11,
+          "Unknown": 46
+        },
+        "generation_method": {
+          "null": 265549
+        },
+        "manual_validation_llm": {
+          "Google Gemini 3 Flash Preview": 9009864
+        },
+        "manual_validation_source": {
+          "enhanced_12thread_revalidation": 732632,
+          "enhanced_14thread_revalidation": 1502354,
+          "enhanced_6thread_revalidation": 6400002,
+          "multi_thread_revalidation": 373333,
+          "openai_gpt_4o": 1543
+        },
+        "manual_validation_status": {
+          "invalid": 8702845,
+          "valid": 307019
+        },
+        "source": {
+          "synthetic_generation": 265549
+        },
+        "status": {
+          "invalid": 8702845,
+          "valid": 307020
+        },
+        "validation_source": {
+          "verification_pipeline": 8631674
+        }
+      },
+      "entries_by_the_layer_of_their_key": {
+        "eol_valid": 157,
+        "eol_invalid": 9275257,
+        "c1_exceptions": 0,
+        "c4_additions": 0,
+        "spaced_c015": 0,
+        "outside_the_universe": 0
+      },
+      "entries_with_a_non_empty_channel_list": 8707758,
+      "entries_with_a_source_value": 265549,
+      "entries_with_neither": 302107,
+      "own_layer": "eol_invalid",
+      "own_layer_entries_with_a_non_empty_channel_list": 8707606,
+      "own_layer_entries_with_a_source_value": 265549,
+      "own_layer_entries_with_neither": 302102
+    }
+  },
+  "coverage": {
+    "eol_valid": {
+      "rows": 345103,
+      "with_an_entry_in_its_own_dictionary": 345103,
+      "with_an_entry_in_the_other_dictionary_only": 0,
+      "with_an_entry_in_both": 157,
+      "with_no_entry": 0
+    },
+    "eol_invalid": {
+      "rows": 9308896,
+      "with_an_entry_in_its_own_dictionary": 9275257,
+      "with_an_entry_in_the_other_dictionary_only": 0,
+      "with_an_entry_in_both": 0,
+      "with_no_entry": 33639
+    }
+  },
+  "eol_correction_ledgers": {
+    "ledger_demotions.csv": {
+      "path": "english-openlist/corrections/ledger_demotions.csv (the EOL repository, read-only)",
+      "sha256": "943afb5fbcd69233683160db62a02936ee35e67e463d4ac1e9b47d259741fedb",
+      "rows": 16476,
+      "actions": {
+        "demote_to_invalid": 16476
+      },
+      "rows_naming_a_string_with_no_dictionary_entry": 16476,
+      "claimed_form": {
+        "synthetic comparative": 16476
+      },
+      "category": {
+        "Chemical": 422,
+        "Chemical/Science": 2,
+        "General": 9208,
+        "Medical": 2626,
+        "Science": 4218
+      }
+    },
+    "ledger_demotions_stage4.csv": {
+      "path": "english-openlist/corrections/ledger_demotions_stage4.csv (the EOL repository, read-only)",
+      "sha256": "d5cbe2c166c263928b87f8355c10e3403033d2cb0b5065f38072ce8fb290dee8",
+      "rows": 17118,
+      "actions": {
+        "demote_to_invalid": 17118
+      },
+      "rows_naming_a_string_with_no_dictionary_entry": 17118,
+      "claimed_form": {
+        "synthetic plural": 9174,
+        "synthetic verb form": 7944
+      },
+      "category": {
+        "Biochemical": 4,
+        "Chemical": 2022,
+        "Chemical/Science": 1,
+        "General": 11437,
+        "General/Science": 1,
+        "Medical": 862,
+        "Medical/Science": 1,
+        "Science": 2790
+      }
+    },
+    "ledger_single_letters.csv": {
+      "path": "english-openlist/corrections/ledger_single_letters.csv (the EOL repository, read-only)",
+      "sha256": "9845871e36417c21e3acd619d9ee33870a66ed4bf7f6a132e008ba0ff20c5648",
+      "rows": 8,
+      "actions": {
+        "demote_to_invalid": 8
+      },
+      "rows_naming_a_string_with_no_dictionary_entry": 8
+    },
+    "ledger_form_rules.csv": {
+      "path": "english-openlist/corrections/ledger_form_rules.csv (the EOL repository, read-only)",
+      "sha256": "a45df907dca8b369abad78fba3dbbe70cb2c133ca7e5e9abb8ba71910b6d0929",
+      "rows": 227,
+      "actions": {
+        "add_candidate": 37,
+        "delete_malformed": 190
+      },
+      "rows_naming_a_string_with_no_dictionary_entry": 37
+    }
+  },
+  "no_entry_strings_accounted_for": {
+    "inherited_strings_with_no_entry": 33639,
+    "named_by_the_two_demotion_ledgers": 33594,
+    "demotion_ledger_rows_in_all": 33594,
+    "demotion_ledger_words_that_do_have_an_entry": 0,
+    "named_by_the_single_letter_ledger": 8,
+    "named_by_the_form_rule_ledger_as_added_candidates": 37,
+    "named_by_none_of_the_four": 0
+  }
+}

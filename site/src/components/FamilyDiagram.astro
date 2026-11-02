@@ -1,0 +1,134 @@
+---
+// The configs of the version inside the universe, drawn to scale by area: a
+// square's side is proportional to the square root of its rows. The configs
+// overlap, so they are drawn apart, each against the same universe.
+// ConfigTable carries the same figures in text, so no figure is carried by
+// the drawing alone.
+import { fig, formatCount, share } from '../lib/data';
+
+const universe = fig('config.universe.rows');
+const features = fig('config.features.rows');
+const SIDE = 400;
+const PAD = 2;
+const GAP = 4;
+const side = (n: number) => SIDE * Math.sqrt(n / universe.value);
+
+// bottom to top, largest first
+const names = ['panel-listed', 'eol-valid', 'spaced', 'exceptions', 'sample'] as const;
+let bottom = PAD + SIDE;
+const squares = names.map((name) => {
+  const f = fig(`config.${name}.rows`);
+  const s = side(f.value);
+  const y = bottom - s;
+  bottom = y - GAP;
+  return { name, f, s, y };
+});
+if (bottom < PAD + 4) throw new Error('the configs do not fit the universe square');
+const inset = SIDE - side(features.value);
+---
+
+<figure class="family-figure">
+  <svg viewBox={`0 0 ${SIDE + 2 * PAD} ${SIDE + 2 * PAD}`} role="img" aria-labelledby="family-svg-title">
+    <title id="family-svg-title">
+      The universe, {formatCount(universe.value)} rows, as a square, and each config of the version as a square inside it,
+      drawn to the same scale by area: {squares.map((q) => `${q.name}, ${formatCount(q.f.value)} rows`).join('; ')}; and
+      features, {formatCount(features.value)} rows, as the dashed line just inside the universe's edge.
+    </title>
+    <rect class="u" x={PAD} y={PAD} width={SIDE} height={SIDE}></rect>
+    <path class="f" d={`M ${PAD} ${PAD + inset} H ${PAD + SIDE - inset} V ${PAD + SIDE}`}></path>
+    {
+      squares.map((q) => (
+        <rect class:list={['c', { e: q.name === 'eol-valid' }]} x={PAD} y={q.y} width={q.s} height={q.s} />
+      ))
+    }
+    {
+      squares.map((q) =>
+        q.s >= 36 ? (
+          <text x={PAD + q.s + 10} y={q.y + 17}>
+            <tspan class="name">{q.name}</tspan>
+            <tspan class="count" x={PAD + q.s + 10} dy="19">
+              {formatCount(q.f.value)}
+            </tspan>
+          </text>
+        ) : (
+          <text x={PAD + q.s + 10} y={q.y + q.s / 2 + 5}>
+            <tspan class="name">{q.name}</tspan>
+            <tspan class="count" dx="8">
+              {formatCount(q.f.value)}
+            </tspan>
+          </text>
+        ),
+      )
+    }
+    <text class="u-label" x={PAD + SIDE - 16} y={PAD + 40} text-anchor="end">
+      <tspan class="label">The universe</tspan>
+      <tspan class="count" x={PAD + SIDE - 16} dy="22">{formatCount(universe.value)}</tspan>
+      <tspan class="note" x={PAD + SIDE - 16} dy="26">features, dashed:</tspan>
+      <tspan class="count" x={PAD + SIDE - 16} dy="19">{formatCount(features.value)}</tspan>
+    </text>
+  </svg>
+  <figcaption>
+    Each config is drawn to scale against the universe, and the configs overlap: a row can be in several. The dashed
+    line is <code>features</code>, every single-token row, {share(features, universe)} of the universe.
+  </figcaption>
+</figure>
+
+<style>
+  .family-figure {
+    margin: 0;
+    display: grid;
+    gap: var(--space-3);
+    min-width: 0;
+    align-content: start;
+  }
+  svg {
+    width: 100%;
+    max-width: 28rem;
+    height: auto;
+    display: block;
+  }
+  .u {
+    fill: var(--accent-wash);
+    stroke: var(--accent);
+    stroke-width: 2;
+  }
+  .f {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.25;
+    stroke-dasharray: 5 4;
+  }
+  .c {
+    fill: var(--accent);
+  }
+  .c.e {
+    fill: var(--eol);
+  }
+  text {
+    fill: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+  }
+  .name {
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+  .count {
+    fill: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  .label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .note {
+    fill: var(--ink-soft);
+    font-size: 13px;
+  }
+  figcaption {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    max-width: 28rem;
+  }
+</style>

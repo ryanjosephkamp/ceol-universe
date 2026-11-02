@@ -1,0 +1,255 @@
+{
+ "what": "the vetted example list of the repository: the only strings a page may show as examples (the project's example rule). A string of the list is a candidate, listed by the sources its rule names",
+ "built_by": "pipeline/safeguards/examples.py (make examples)",
+ "source": {
+  "version": "v2.1",
+  "config": "universe",
+  "sha256": "ba73caf1f64adef94736b82d2c3a61bac16881b788c75d83593b4b46b95c95a6",
+  "rows": 10020150
+ },
+ "rule": {
+  "row": "a row of the shippable projection",
+  "min_source_families": 2,
+  "source_families": {
+   "wordnet": [
+    "wordnet"
+   ],
+   "wiktionary_english": [
+    "wiktionary_english"
+   ],
+   "scowl": [
+    "hunspell_en_US",
+    "hunspell_en_CA",
+    "hunspell_en_AU",
+    "scowl"
+   ],
+   "hunspell_en_GB": [
+    "hunspell_en_GB"
+   ],
+   "enable1": [
+    "enable1"
+   ]
+  },
+  "not_counted": [
+   "nwl2023",
+   "csw21",
+   "sowpods_legacy",
+   "web2",
+   "web2a"
+  ],
+  "scan": "the scan finds nothing in the string: no item of the study's wall list as a whole word or phrase, and no restricted word as a piece"
+ },
+ "counts": {
+  "rows_of_the_universe_config": 10020150,
+  "restricted_rows": 0,
+  "listed_by_at_least_2_source_families": 442346,
+  "removed_by_the_scan": 222,
+  "eligible": 442124
+ },
+ "whole_list": {
+  "where": "private/examples/vetted_examples.txt, never committed",
+  "strings": 442124,
+  "by_class": {
+   "plain": 370999,
+   "apostrophe-form;s-final": 45205,
+   "spaced": 18863,
+   "hyphenated": 5504,
+   "accented": 529,
+   "hyphenated;spaced": 347,
+   "apostrophe-form;s-final;spaced": 259,
+   "apostrophe-form;contraction": 118,
+   "apostrophe-form": 107,
+   "accented;apostrophe-form;s-final": 76,
+   "apostrophe-form;hyphenated": 40,
+   "diaeresis": 36,
+   "apostrophe-form;spaced": 18,
+   "apostrophe-form;diaeresis;s-final": 8,
+   "accented;hyphenated": 7,
+   "apostrophe-form;hyphenated;spaced": 3,
+   "accented;diaeresis": 2,
+   "apostrophe-form;contraction;spaced": 2,
+   "apostrophe-form;hyphenated;s-final;spaced": 1
+  },
+  "by_token_count": {
+   "1": 422631,
+   "2": 17887,
+   "3 or more": 1606
+  },
+  "by_source_family_count": {
+   "2": 241376,
+   "3": 80580,
+   "4": 73747,
+   "5": 46421
+  },
+  "by_source_families": {
+   "scowl;wiktionary_english": 143355,
+   "enable1;hunspell_en_GB;scowl;wiktionary_english": 62021,
+   "hunspell_en_GB;scowl": 49980,
+   "enable1;scowl;wiktionary_english": 49800,
+   "enable1;hunspell_en_GB;scowl;wiktionary_english;wordnet": 46421,
+   "wiktionary_english;wordnet": 21608,
+   "hunspell_en_GB;scowl;wiktionary_english": 18455,
+   "hunspell_en_GB;wiktionary_english": 14066,
+   "enable1;scowl;wiktionary_english;wordnet": 8182,
+   "scowl;wordnet": 6957,
+   "scowl;wiktionary_english;wordnet": 5808,
+   "enable1;scowl": 4670,
+   "hunspell_en_GB;scowl;wordnet": 3833,
+   "hunspell_en_GB;scowl;wiktionary_english;wordnet": 3447,
+   "hunspell_en_GB;wiktionary_english;wordnet": 1346,
+   "enable1;hunspell_en_GB;scowl": 1201,
+   "hunspell_en_GB;wordnet": 556,
+   "enable1;wiktionary_english": 168,
+   "enable1;hunspell_en_GB;scowl;wordnet": 90,
+   "enable1;scowl;wordnet": 77,
+   "enable1;wiktionary_english;wordnet": 41,
+   "enable1;hunspell_en_GB;wiktionary_english": 19,
+   "enable1;wordnet": 13,
+   "enable1;hunspell_en_GB;wiktionary_english;wordnet": 7,
+   "enable1;hunspell_en_GB": 3
+  }
+ },
+ "sampling": {
+  "rule": "the eligible strings ranked by sha256(key:stratum:string) in ascending order, with a random key kept privately; the first N taken; a string passed over where the file, read as 1 text, would spell a walled phrase across 2 lines",
+  "key": "private (D-012 line 3)",
+  "stratum": "all",
+  "strings": 5000,
+  "strings_passed_over": 0,
+  "order": "lines 1 to N are the draw, in the ranking's order"
+ },
+ "drawn": {
+  "strings": 5000,
+  "by_class": {
+   "plain": 4218,
+   "apostrophe-form;s-final": 516,
+   "spaced": 181,
+   "hyphenated": 67,
+   "accented": 7,
+   "apostrophe-form;s-final;spaced": 4,
+   "hyphenated;spaced": 3,
+   "accented;apostrophe-form;s-final": 1,
+   "accented;hyphenated": 1,
+   "apostrophe-form": 1,
+   "apostrophe-form;contraction": 1
+  },
+  "by_token_count": {
+   "1": 4812,
+   "2": 171,
+   "3 or more": 17
+  },
+  "by_source_family_count": {
+   "2": 2681,
+   "3": 918,
+   "4": 836,
+   "5": 565
+  },
+  "by_source_families": {
+   "scowl;wiktionary_english": 1614,
+   "enable1;hunspell_en_GB;scowl;wiktionary_english": 710,
+   "hunspell_en_GB;scowl": 570,
+   "enable1;hunspell_en_GB;scowl;wiktionary_english;wordnet": 565,
+   "enable1;scowl;wiktionary_english": 538,
+   "hunspell_en_GB;scowl;wiktionary_english": 225,
+   "wiktionary_english;wordnet": 221,
+   "hunspell_en_GB;wiktionary_english": 129,
+   "enable1;scowl;wiktionary_english;wordnet": 92,
+   "scowl;wordnet": 86,
+   "scowl;wiktionary_english;wordnet": 75,
+   "enable1;scowl": 54,
+   "hunspell_en_GB;scowl;wordnet": 48,
+   "hunspell_en_GB;scowl;wiktionary_english;wordnet": 31,
+   "hunspell_en_GB;wiktionary_english;wordnet": 22,
+   "enable1;hunspell_en_GB;scowl": 9,
+   "hunspell_en_GB;wordnet": 5,
+   "enable1;hunspell_en_GB;scowl;wordnet": 3,
+   "enable1;wiktionary_english": 2,
+   "enable1;scowl;wordnet": 1
+  }
+ },
+ "floor": {
+  "rule": "for every class the draw holds fewer than the floor of, the next strings of the same ranking, until the class holds the floor or all of its strings; lines 1 to N stay as drawn, the floor's strings follow in the ranking's order, and a phrase reaching into the floor's lines passes over the floor's string",
+  "per_class": 20,
+  "strings_added": 183,
+  "strings_passed_over": 0,
+  "by_class_added": {
+   "apostrophe-form;hyphenated": 20,
+   "diaeresis": 20,
+   "accented;apostrophe-form;s-final": 19,
+   "apostrophe-form": 19,
+   "apostrophe-form;contraction": 19,
+   "apostrophe-form;spaced": 18,
+   "hyphenated;spaced": 17,
+   "apostrophe-form;s-final;spaced": 16,
+   "accented": 13,
+   "apostrophe-form;diaeresis;s-final": 8,
+   "accented;hyphenated": 6,
+   "apostrophe-form;hyphenated;spaced": 3,
+   "accented;diaeresis": 2,
+   "apostrophe-form;contraction;spaced": 2,
+   "apostrophe-form;hyphenated;s-final;spaced": 1
+  }
+ },
+ "list": {
+  "strings": 5183,
+  "by_class": {
+   "plain": 4218,
+   "apostrophe-form;s-final": 516,
+   "spaced": 181,
+   "hyphenated": 67,
+   "accented": 20,
+   "accented;apostrophe-form;s-final": 20,
+   "apostrophe-form": 20,
+   "apostrophe-form;contraction": 20,
+   "apostrophe-form;hyphenated": 20,
+   "apostrophe-form;s-final;spaced": 20,
+   "diaeresis": 20,
+   "hyphenated;spaced": 20,
+   "apostrophe-form;spaced": 18,
+   "apostrophe-form;diaeresis;s-final": 8,
+   "accented;hyphenated": 7,
+   "apostrophe-form;hyphenated;spaced": 3,
+   "accented;diaeresis": 2,
+   "apostrophe-form;contraction;spaced": 2,
+   "apostrophe-form;hyphenated;s-final;spaced": 1
+  },
+  "by_token_count": {
+   "1": 4938,
+   "2": 225,
+   "3 or more": 20
+  },
+  "by_source_family_count": {
+   "2": 2835,
+   "3": 947,
+   "4": 836,
+   "5": 565
+  },
+  "by_source_families": {
+   "scowl;wiktionary_english": 1640,
+   "enable1;hunspell_en_GB;scowl;wiktionary_english": 710,
+   "hunspell_en_GB;scowl": 600,
+   "enable1;hunspell_en_GB;scowl;wiktionary_english;wordnet": 565,
+   "enable1;scowl;wiktionary_english": 538,
+   "wiktionary_english;wordnet": 288,
+   "hunspell_en_GB;scowl;wiktionary_english": 249,
+   "hunspell_en_GB;wiktionary_english": 156,
+   "enable1;scowl;wiktionary_english;wordnet": 92,
+   "scowl;wordnet": 87,
+   "scowl;wiktionary_english;wordnet": 76,
+   "enable1;scowl": 54,
+   "hunspell_en_GB;scowl;wordnet": 49,
+   "hunspell_en_GB;scowl;wiktionary_english;wordnet": 31,
+   "hunspell_en_GB;wiktionary_english;wordnet": 25,
+   "enable1;hunspell_en_GB;scowl": 9,
+   "hunspell_en_GB;wordnet": 8,
+   "enable1;hunspell_en_GB;scowl;wordnet": 3,
+   "enable1;wiktionary_english": 2,
+   "enable1;scowl;wordnet": 1
+  }
+ },
+ "file": {
+  "name": "vetted_examples.txt",
+  "sha256": "83dd0098907245c0cc2ec5c319660de7e61a9a704057d56de67fa87c058b8db3",
+  "bytes": 55702,
+  "lines": 5183
+ }
+}

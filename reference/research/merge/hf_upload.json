@@ -1,0 +1,46 @@
+{
+  "repo_id": "ryanjosephkamp/common-english-openlist",
+  "private": true,
+  "uploaded": "2026-08-20",
+  "data_commit": "e923c9b770ef4d4486b01c8da698ed601c956d3e",
+  "final_revision": "ee62202093a7d3631968c855b26dc3a95032d4c3",
+  "files": [
+    "data/exceptions.parquet",
+    "data/merged.parquet",
+    "README.md"
+  ],
+  "universe_v2_shippable": {
+    "decision": "C-064 ruling 5",
+    "private": true,
+    "uploaded": "2026-09-17",
+    "revision_before": "ee62202093a7d3631968c855b26dc3a95032d4c3",
+    "data_commit": "ffa480bf89fd318e07b4af9c8598e9ba99e03818",
+    "card_commit": "ded1a53c1f97f34fa63dfa0bceacdcb4b29c0955",
+    "final_revision": "ded1a53c1f97f34fa63dfa0bceacdcb4b29c0955",
+    "files": [
+      "data/universe_v2_shippable.parquet",
+      "README.md"
+    ],
+    "rows": 10294621,
+    "columns": [
+      "word",
+      "eol",
+      "eol_universe",
+      "classes",
+      "sources",
+      "intake_date",
+      "c4_addition",
+      "is_restricted",
+      "token_count",
+      "c015_addition",
+      "wn_instance",
+      "wn_capitalized",
+      "wk_proper_noun",
+      "wk_flags"
+    ],
+    "restricted_rows_excluded": 1985,
+    "parquet_sha256": "91490fb40ff27a9ca8a6a6604e02b7858293e3b2611612ea2308be24db6cf980",
+    "parquet_bytes": 48322071,
+    "source_pin_sha256": "adaa1232b6bc4d9ead97f5e19a005b264bb6db8db77b6374fe66cdd1d2aca9dd"
+  }
+}

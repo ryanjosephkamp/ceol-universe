@@ -1,0 +1,35 @@
+{
+  "generated_by": "research/provenance/model_basis.py",
+  "decision": "the project plan, item 4",
+  "input": {
+    "dictionary": "merged_valid_dict.json",
+    "sha256": "20e5baedf4ac7731e3d2c51d5d3e357c14680a5b493c68eeaf4503484b46af2a",
+    "read_as": "the local pinned file (the EOL's .cache/hf), parsed whole from the bytes that were hashed"
+  },
+  "cross_check": {
+    "intake_parquet_sha256": "5b5a1bc593d4602eec158ca349fb1f04d2c2dd7e859863052bdf594c22953daf",
+    "pipeline_rows": 131226,
+    "rows_with_no_source_and_no_validation_source": 6471
+  },
+  "rule": {
+    "model_pipeline": "validation_source is verification_pipeline, and the manual_validation block names a model",
+    "model_alone": "an unverified_llm_verdict and a manual_validation block naming a model, and no validation_source"
+  },
+  "counts": {
+    "entries": 345103,
+    "by_basis": {
+      "model_pipeline": 131226,
+      "model_alone": 6471
+    },
+    "not_model_decided": 207406,
+    "model_named_by_basis": {
+      "model_alone: Google Gemini 3 Flash Preview": 6471,
+      "model_pipeline: Google Gemini 3 Flash Preview": 131226
+    }
+  },
+  "artifact": {
+    "path": "data/eol_valid_model_basis.parquet",
+    "rows": 137697,
+    "sha256": "4395526a55acb7a2464fd6439984f478889bf65e419f41eeed272d168eb43ce0"
+  }
+}

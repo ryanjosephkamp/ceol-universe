@@ -1,0 +1,288 @@
+---
+import Base from '../layouts/Base.astro';
+import Figure from '../components/Figure.astro';
+import CardCount from '../components/CardCount.astro';
+import Share from '../components/Share.astro';
+import FamilyDiagram from '../components/FamilyDiagram.astro';
+import ConfigTable from '../components/ConfigTable.astro';
+import ProvenanceBar from '../components/ProvenanceBar.astro';
+import StartTeaser from '../islands/StartTeaser.tsx';
+import { SECTIONS } from '../lib/nav';
+
+const routes = ['Explore', 'Compose a list', 'The dataset', 'Definitions', 'English OpenList'].map(
+  (label) => SECTIONS.find((s) => s.label === label)!,
+);
+---
+
+<Base
+  title="Start"
+  section="Start"
+  description="An inventory of candidate English strings, each with a record of where it came from, and the English OpenList as a dated subset of it."
+>
+  <div class="frame start">
+    <section class="opening" aria-labelledby="title">
+      <div class="opening-text">
+        <h1 id="title">
+          <Figure id="config.universe.rows" /> candidate English strings, each with a record of where it came from
+        </h1>
+        <p class="thesis">Cut a word list of your own from them, under a definition you choose.</p>
+        <dl class="what">
+          <div>
+            <dt>What this is</dt>
+            <dd>
+              The CEOL Universe is a free dataset of strings that might be English words: single words and their forms,
+              hyphenated compounds, and multiword terms, gathered from dictionaries, word lists, spell-checkers, and a
+              large corpus of books. For each string it records which of <CardCount name="published_set_count" /> published
+              lists include it, how often it occurs in books where that was measured, and how it entered the dataset. It
+              does not decide what counts as a word. You choose the definition, and it gives you the list that meets it,
+              with the evidence for every entry.
+            </dd>
+          </div>
+          <div>
+            <dt>Why it exists</dt>
+            <dd>
+              Dictionaries and word lists disagree about what counts as a word. They are updated at different times, they
+              cover different fields, some leave out slang or profanity on purpose, and each has its own rules for spaces,
+              hyphens, and other marks. The CEOL Universe takes no side: it records which published lists hold each string,
+              in versions fixed at a date, so you can see where they agree and where they differ.
+              <a href="/about/#why">The About page</a> says more.
+            </dd>
+          </div>
+          <div>
+            <dt>The English OpenList</dt>
+            <dd>
+              A free English word list made for word games and apps. It began as its own project in 2026; its list at a
+              fixed revision is part of this dataset, the <code>eol-valid</code> config, so each of its entries carries the
+              same record. Projects built on it include <a href="https://ars-magna.pages.dev/">Ars Magna</a>,
+              <a href="https://amordle.vercel.app/">Amordle</a>, and
+              <a href="https://ryanjosephkamp.github.io/portfolios/anagram-tiles/">Anagram Tiles</a>.
+            </dd>
+          </div>
+          <div>
+            <dt>What they are for</dt>
+            <dd>
+              A word list for a game, a puzzle, or a spell-checker, cut to your own rules; a vocabulary for software, with
+              its sources stated; research on how dictionaries and word lists agree and differ; and test sets for studies
+              of how language models handle rare and invented words.
+            </dd>
+          </div>
+        </dl>
+        <p class="lede">
+          The CEOL Universe is the inventory. The English OpenList is a dated subset of it, and both live here. Neither
+          one is a verdict: a row says which sources list the string and how it came in.
+        </p>
+        <aside class="first-limit" aria-labelledby="limit-title">
+          <h2 id="limit-title">Most rows rest on a single corpus</h2>
+          <p>
+            <Figure id="rows.inherited_google_books_no_published_set" /> rows
+            (<Share part="rows.inherited_google_books_no_published_set" whole="rows" />) came in through the English
+            OpenList, are listed by none of the published word lists, and are Google Books 1-gram types. For
+            <Figure id="rows.inherited_google_books_only" /> of them, Google Books is the only evidence, and it is a corpus
+            of scanned books, with recognition errors.
+          </p>
+          <p class="limit-more">
+            The dataset's card states every limitation before anything else: <a href="/dataset/limitations/">read them
+            all</a>.
+          </p>
+        </aside>
+      </div>
+      <StartTeaser client:load cubeUrl="/data/cube-v1.0.json" />
+    </section>
+
+    <section class="family" aria-labelledby="family-title">
+      <div class="family-text">
+        <h2 id="family-title">One inventory, one subset inside it</h2>
+        <p>
+          The universe gathers candidates from the English OpenList's own intake, a census of spelling
+          classes across published word lists, an audit, and a pass over multiword terms. The English
+          OpenList is the
+          <Figure id="config.eol-valid.rows" /> rows that its valid list held at revision
+          <code>c1139698</code>, as this version ships them.
+        </p>
+        <p>
+          The English OpenList is <Share part="config.eol-valid.rows" whole="config.universe.rows" /> of the universe.
+          Each of the dataset's configs is a subset of the universe:
+        </p>
+        <ConfigTable />
+      </div>
+      <FamilyDiagram />
+    </section>
+
+    <section class="evidence" aria-labelledby="evidence-title">
+      <h2 id="evidence-title">What each row rests on</h2>
+      <p class="section-lede">
+        Every row is in 1 of 4 provenance classes. A <em>channel</em> is a recorded way the string came in;
+        <em>containment</em> means a published word list or a corpus holds it.
+      </p>
+      <ProvenanceBar />
+    </section>
+
+    <section class="routes" aria-labelledby="routes-title">
+      <h2 id="routes-title">Where to go next</h2>
+      <ul>
+        {
+          routes.map((r) => (
+            <li class:list={[{ later: !r.built }]}>
+              {r.built ? <a href={r.href}>{r.label}</a> : <span class="route-label">{r.label}</span>}
+              <p>{r.blurb}</p>
+              {!r.built && <p class="route-later">In the next build.</p>}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .start {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .opening {
+    display: grid;
+    gap: var(--space-6) var(--space-7);
+    align-items: start;
+  }
+  @media (min-width: 60rem) {
+    .opening {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 29rem);
+    }
+  }
+  .opening-text {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 40rem;
+  }
+  .opening h1 {
+    font-size: var(--step-5);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .thesis {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+  .lede {
+    max-width: var(--measure);
+  }
+  .what {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding-block: var(--space-4);
+    border-block: 1px solid var(--rule);
+    max-width: var(--measure);
+  }
+  .what div {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .what dt {
+    font-family: var(--font-sans);
+    font-size: var(--step--1);
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .what dd {
+    margin: 0;
+  }
+
+  .first-limit {
+    display: grid;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--rule-strong);
+    background: var(--surface);
+    border-radius: var(--radius);
+  }
+  .first-limit h2 {
+    font-family: var(--font-sans);
+    font-size: var(--step-0);
+    font-weight: 650;
+  }
+  .first-limit p {
+    max-width: var(--measure);
+    font-size: var(--step--1);
+  }
+  .limit-more {
+    color: var(--ink-soft);
+  }
+
+  .family {
+    display: grid;
+    gap: var(--space-6);
+    align-items: start;
+  }
+  @media (min-width: 56rem) {
+    .family {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    }
+  }
+  .family-text {
+    display: grid;
+    gap: var(--space-4);
+    max-width: var(--measure);
+  }
+  .family h2,
+  .evidence h2,
+  .routes h2 {
+    font-size: var(--step-3);
+  }
+
+  .evidence {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .section-lede {
+    max-width: var(--measure);
+    color: var(--ink-soft);
+  }
+
+  .routes {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .routes ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    border-top: 1px solid var(--rule);
+  }
+  .routes li {
+    display: grid;
+    align-content: start;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-4) var(--space-5) 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .routes a,
+  .route-label {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .routes a:hover {
+    text-decoration: underline;
+  }
+  .routes li p {
+    color: var(--ink-soft);
+    max-width: 32ch;
+  }
+  .routes li.later .route-label {
+    color: var(--ink-faint);
+  }
+  .route-later {
+    font-size: var(--step--1);
+  }
+</style>

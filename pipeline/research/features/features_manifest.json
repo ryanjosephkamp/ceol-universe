@@ -1,0 +1,121 @@
+{
+  "built": "2026-08-20",
+  "universe_rows": 10001741,
+  "partitions": {
+    "seed": "c4-partitions-2026-08-20",
+    "rule": "sha256(seed:word) unit in [0,1): train<0.7, dev<0.8, else test",
+    "pool_rule": "fires >= ceil(0.6667 * applicable) (== EOL 8-of-12 on plain words)",
+    "sensitivity_rule": "ceil(0.75 * applicable)",
+    "pool": 127043,
+    "pool_strict": 87178,
+    "pool_by_class": {
+      "accented": 614,
+      "apostrophe-form": 21855,
+      "contraction": 59,
+      "diaeresis": 47,
+      "hyphenated": 801,
+      "ligature": 1926,
+      "plain": 101741
+    },
+    "train": 89059,
+    "dev": 12595,
+    "test": 25389,
+    "c5_exclusion": "calibration items must exclude train+dev; re-derive from seed and rule"
+  },
+  "charmodel": {
+    "order": 4,
+    "alphabet": 50,
+    "lambdas": [
+      0.00012404330796934448,
+      0.0031029220988146216,
+      0.02295517414229371,
+      0.122651711413501,
+      0.8511661490374214
+    ],
+    "perplexity_by_class": {
+      "accented": 13.446,
+      "apostrophe-form": 5.684,
+      "hyphenated": 10.628,
+      "ligature": 7.511,
+      "plain": 7.148,
+      "__train_slice__": 6.399
+    },
+    "ppl_bounds": {
+      "plain": 9.0,
+      "hyphenated": 25.0,
+      "accented": 25.0,
+      "contraction": 25.0,
+      "apostrophe-form": 25.0,
+      "ligature": 25.0,
+      "diaeresis": 25.0
+    },
+    "class_na_fallback": []
+  },
+  "references": {
+    "base": "wordnet \u222a web2 (CEOL derivations)",
+    "class_capable": "wikt_english \u222a hunspell_en_GB \u222a scowl \u222a wordnet \u222a web2a, filtered per class",
+    "sizes": {
+      "base": 259043,
+      "accent": 3811,
+      "hyphen": 82123,
+      "apostrophe": 121177,
+      "ligature": 1926
+    },
+    "dependence": "references overlap detector columns (wordnet/web2/wikt/hunspell_GB/scowl); declared for the contest's conditioning"
+  },
+  "ocr_pairs": [
+    [
+      "m",
+      "in"
+    ],
+    [
+      "rn",
+      "m"
+    ],
+    [
+      "l",
+      "i"
+    ],
+    [
+      "e",
+      "c"
+    ],
+    [
+      "c",
+      "e"
+    ],
+    [
+      "li",
+      "h"
+    ]
+  ],
+  "proposed_families": [
+    "ocr_strip_ratio",
+    "ocr_hyphen_junction_ratio",
+    "ocr_hyphen_drop_ratio",
+    "ocr_apostrophe_ratio",
+    "ocr_ligature_ratio"
+  ],
+  "gb": {
+    "aggregate": "google_books_1grams_ceol.parquet",
+    "aggregate_sha256": "53184776db743df5d73bd16e4b3400b7f0e65b32182ecc64c03e732a11bbcc44",
+    "types": 15628267
+  },
+  "zipf": {
+    "alpha": 1.5573258623277744,
+    "beta": 100.0,
+    "logC": 13.03183914237962,
+    "sse": 14.88853241727159,
+    "population": 15628267
+  },
+  "wordfreq": {
+    "rule": "zipf for words in the wordfreq derived set, NA elsewhere and NA on hyphenated (C-010)",
+    "scored": 303511
+  },
+  "sr2_reading_b": {
+    "rows": 845162,
+    "pct": 8.45,
+    "bar_pct": 50,
+    "pass": true
+  }
+}

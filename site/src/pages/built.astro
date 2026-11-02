@@ -1,0 +1,313 @@
+---
+import Base from '../layouts/Base.astro';
+import CardCount from '../components/CardCount.astro';
+import { cardCount, formatCount } from '../lib/data';
+import { cardSection } from '../lib/docs';
+
+// the card's note on language models (§12): how far a model entered the data
+const models = cardSection(12, 2);
+
+// The steps of the card's build section (§9), each with what it added or
+// removed. The running totals are checked against the card's own counts, so
+// a step that does not add up stops the build.
+const eolUniverse = cardCount('eol_universe_rows');
+const census = cardCount('census_candidates');
+const merge = cardCount('merge_rows');
+const audit = cardCount('c4_additions');
+const singlePin = cardCount('v1_rows');
+const spaced = cardCount('pin_spaced');
+const pin = cardCount('rows_pin');
+const restricted = cardCount('rows_restricted');
+const shippable = cardCount('rows_shippable');
+const held = cardCount('held_back_rows');
+const universe = cardCount('rows_universe');
+
+const checks: [string, number, number][] = [
+  ['the merge', eolUniverse + census, merge],
+  ['the single-token pin', merge + audit, singlePin],
+  ['the pin', singlePin + spaced, pin],
+  ['the shippable rows', pin - restricted, shippable],
+  ['version 1.0', shippable - held, universe],
+];
+for (const [what, sum, card] of checks) {
+  if (sum !== card) throw new Error(`the steps to ${what} sum to ${sum}, not the card's ${card}`);
+}
+
+interface Step {
+  name: string;
+  delta: number | null;
+  deltaRow?: string;
+  total: number;
+  totalRow: string;
+  body: string;
+  record: string;
+}
+
+const steps: Step[] = [
+  {
+    name: "The English OpenList's universe",
+    delta: null,
+    total: eolUniverse,
+    totalRow: 'eol_universe_rows',
+    body: "The EOL's valid and invalid lists at revision c1139698: every string the EOL had taken in, whichever way it ruled on it.",
+    record: 'reference/research/merge/merge.json',
+  },
+  {
+    name: 'The census',
+    delta: census,
+    deltaRow: 'census_candidates',
+    total: merge,
+    totalRow: 'merge_rows',
+    body: "The pinned sources read again under the spelling grammar, keeping the candidates in the classes the EOL's letters-only rule could not hold: hyphens, accents, a diaeresis, apostrophes, ligatures. Merged with the EOL's universe, 1 row per string; filtering the merge by the EOL's flag gives back its pinned lists byte for byte.",
+    record: 'reference/research/census/census.json',
+  },
+  {
+    name: 'The audit',
+    delta: audit,
+    deltaRow: 'c4_additions',
+    total: singlePin,
+    totalRow: 'v1_rows',
+    body: "Every source's coverage of the merged universe, reconciled to a remainder of 0: what a source listed and the merge lacked was added. The result is the single-token pin.",
+    record: 'reference/research/universe/universe.json',
+  },
+  {
+    name: 'Multiword terms',
+    delta: spaced,
+    deltaRow: 'pin_spaced',
+    total: pin,
+    totalRow: 'rows_pin',
+    body: "WordNet's and Wiktionary's multiword entries, admitted under the grammar's space rule. The pin's single-token part reproduces the earlier pin byte for byte.",
+    record: 'pipeline/research/universe_v2/universe_v2.json',
+  },
+  {
+    name: 'The layers',
+    delta: 0,
+    total: pin,
+    totalRow: 'rows_pin',
+    body: "No row is added. Each row is measured against the 13 panel lists, given its features and its record of how it came in, and marked where the EOL's verification pipeline or a model alone decided it, or its synthetic engine made it.",
+    record: 'pipeline/research/provenance/provenance.json',
+  },
+  {
+    name: 'Restricted rows',
+    delta: -restricted,
+    deltaRow: 'rows_restricted',
+    total: shippable,
+    totalRow: 'rows_shippable',
+    body: 'The rows that only restricted lists attest are in no version.',
+    record: 'pipeline/research/release/release_v1.0.json',
+  },
+  {
+    name: 'The public projection',
+    delta: -held,
+    deltaRow: 'held_back_rows',
+    total: universe,
+    totalRow: 'rows_universe',
+    body: 'The withheld lists, labels, and feature columns removed, and the rows left with no public evidence held back in the private record. What remains is version 1.0.',
+    record: 'pipeline/research/release/release_v1.0.json',
+  },
+];
+
+const maxDelta = Math.max(...steps.map((s) => Math.abs(s.delta ?? 0)));
+---
+
+<Base
+  title="How it was built"
+  section="How it was built"
+  description="How the CEOL Universe was built, step by step, with the rows each step added or removed and the running total."
+>
+  <div class="frame built">
+    <header class="page-head">
+      <h1>How it was built</h1>
+      <p class="lede">
+        From the English OpenList's <CardCount name="eol_universe_rows" /> strings to the <CardCount name="rows_universe" /> rows
+        of version 1.0, in {steps.length} steps. Each step has a committed record, and the counts are those records'.
+      </p>
+    </header>
+
+    <ol class="steps" aria-label="The steps">
+      {
+        steps.map((s, i) => (
+          <li class="step">
+            <span class="step-n" aria-hidden="true">
+              {i + 1}
+            </span>
+            <div class="step-body">
+              <h2>{s.name}</h2>
+              <p>{s.body}</p>
+              <p class="step-record">
+                Record: <code>{s.record}</code>
+              </p>
+            </div>
+            <div class="step-figures">
+              {s.delta !== null && s.delta !== 0 && s.deltaRow && (
+                <p class={`step-delta ${s.delta > 0 ? 'add' : 'drop'}`}>
+                  <span class="delta-bar" aria-hidden="true">
+                    <span style={`width:${(100 * Math.abs(s.delta)) / maxDelta}%`} />
+                  </span>
+                  <span class="delta-n">
+                    {s.delta > 0 ? '+' : '−'}<CardCount name={s.deltaRow} />
+                  </span>
+                </p>
+              )}
+              {s.delta === 0 && <p class="step-delta none">no row added or removed</p>}
+              <p class="step-total">
+                <CardCount name={s.totalRow} />
+                <span class="step-total-unit">rows</span>
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="built-note">
+      The release build then asserted, on each of its <CardCount name="files_asserted" /> files, that none of the{' '}
+      <CardCount name="restricted_words_checked" /> restricted rows is present, that every id is distinct, that each config
+      is its rule's filter, and that no withheld column, label, or held-back row is present. The bars above share 1 scale,
+      the largest change, so the changes compare with each other; every total is about {formatCount(Math.round(universe / 1e6))}
+      million.
+    </p>
+
+    <section class="doc built-models" aria-labelledby="models">
+      <h2 id="models">{models.title}</h2>
+      <Fragment set:html={models.html} />
+    </section>
+  </div>
+</Base>
+
+<style>
+  .built-models {
+    max-width: var(--measure);
+  }
+  .built-models h2 {
+    font-size: var(--step-3);
+  }
+  .built {
+    display: grid;
+    gap: var(--space-7);
+  }
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    border-top: 1px solid var(--rule);
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: var(--space-2) var(--space-5);
+    padding-block: var(--space-5);
+    border-bottom: 1px solid var(--rule);
+  }
+  @media (min-width: 52rem) {
+    .step {
+      grid-template-columns: 3rem minmax(0, 1fr) 17rem;
+      align-items: start;
+    }
+  }
+  .step-n {
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    line-height: 1;
+    color: var(--accent);
+    font-variant-numeric: lining-nums;
+  }
+  .step-body {
+    display: grid;
+    gap: var(--space-2);
+    max-width: 60ch;
+  }
+  .step-body h2 {
+    font-size: var(--step-2);
+  }
+  .step-body p {
+    color: var(--ink-soft);
+  }
+  .step-record {
+    font-size: var(--step--1);
+  }
+  .step-record code {
+    overflow-wrap: anywhere;
+  }
+  .step-figures {
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+    grid-column: 2;
+  }
+  @media (min-width: 52rem) {
+    .step-figures {
+      grid-column: 3;
+      justify-items: end;
+      text-align: right;
+    }
+  }
+  .step-delta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    font-size: var(--step--1);
+  }
+  .step-delta.none {
+    display: block;
+    color: var(--ink-soft);
+  }
+  .delta-bar {
+    position: relative;
+    height: 0.6rem;
+    display: block;
+  }
+  .delta-bar span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 4px 0 0 4px;
+    min-width: 2px;
+  }
+  .add .delta-bar span {
+    background: var(--accent);
+  }
+  .drop .delta-bar span {
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px var(--ink-faint);
+  }
+  .delta-n {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .drop .delta-n {
+    color: var(--ink-soft);
+  }
+  .step-total {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: var(--step-3);
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .step-total-unit {
+    font-size: var(--step--1);
+    font-weight: 400;
+    color: var(--ink-soft);
+    letter-spacing: 0;
+  }
+  .built-note {
+    max-width: var(--measure);
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+</style>

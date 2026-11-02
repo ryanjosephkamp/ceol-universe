@@ -1,0 +1,4 @@
+path,sha256,walled,restricted,reason
+pipeline/ceol/grammar.py,a5a77e1217f4110497a2625d7318d2398e6ccf1ed018d30518a18d7a41b9557d,1,0,reviewed and cleared: the contraction enclitics the grammar specifies equal an item of the wall list by coincidence; the file holds no study item
+pipeline/GRAMMAR.md,c69d328b6f766fe8c11d348d09ef10d575b26a2c4b973748513f8199db414892,1,0,"reviewed and cleared: the same enclitics, in the grammar's companion document; the file holds no study item"
+reference/research/merge/build_merge.py,d668d1561c95b181a3525ce0c959f77871a29b39327f2abaccba13084d0084c4,1,0,reviewed and cleared: an ordinary word of a comment equals an item of the wall list by coincidence; the file holds no study item

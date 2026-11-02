@@ -1,0 +1,578 @@
+/* Compose a list: criteria on the left, your list on the right, held in view. */
+
+.compose {
+  display: grid;
+  gap: var(--space-7);
+  align-items: start;
+}
+@media (min-width: 68rem) {
+  .compose {
+    grid-template-columns: minmax(0, 1fr) minmax(22rem, 29rem);
+    gap: var(--space-7);
+  }
+  .compose-result {
+    position: sticky;
+    top: var(--space-4);
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule-strong) transparent;
+    padding-right: var(--space-2);
+  }
+}
+
+.compose-error {
+  padding: var(--space-5);
+  border: 1px solid var(--fail);
+  background: var(--fail-wash);
+  border-radius: var(--radius);
+}
+
+/* The criteria */
+.compose-criteria {
+  display: grid;
+  gap: var(--space-6);
+  min-width: 0;
+}
+.mobile-count {
+  display: none;
+}
+@media (max-width: 67.99rem) {
+  .mobile-count {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: var(--z-sticky);
+    margin-inline: calc(-1 * max(1rem, env(safe-area-inset-left, 0px)));
+    padding: var(--space-2) max(1rem, env(safe-area-inset-left, 0px));
+    background: var(--ground);
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .mobile-count p {
+    flex: 1;
+    min-width: 0;
+  }
+  .mobile-count strong {
+    color: var(--ink);
+    font-size: var(--step-1);
+  }
+  .mobile-count a {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .compose-result {
+    scroll-margin-top: var(--space-4);
+  }
+}
+
+.presets {
+  display: grid;
+  gap: var(--space-2);
+}
+.presets-label {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.presets ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.presets button {
+  padding: var(--space-2) var(--space-3);
+  min-height: 2.5rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--step--1);
+  cursor: pointer;
+  transition: border-color 150ms var(--ease-out), background-color 150ms var(--ease-out);
+}
+.presets button:hover {
+  border-color: var(--ink-faint);
+}
+.presets button[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.cgroup {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+  padding: var(--space-4) 0 0;
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.cgroup legend {
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin-bottom: var(--space-1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+}
+.cgroup legend + * {
+  clear: both;
+}
+.cgroup-title {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 600;
+}
+.cgroup-hint {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.crit {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.crit-label {
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+.crit-note {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+/* The least number of lists: the distribution itself is the control */
+.lists-step {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 2px;
+  height: 5.5rem;
+  max-width: 30rem;
+}
+.lists-step button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0 0 0.15rem;
+  border: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: none;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.lists-step button:hover {
+  background: var(--sunken);
+}
+.ls-bar {
+  position: relative;
+  display: block;
+  width: min(100%, 22px);
+  max-height: calc(100% - 1.4rem);
+  background: var(--chart-muted);
+  border-radius: 4px 4px 0 0;
+  transition: height 220ms var(--ease-out), background-color 150ms var(--ease-out);
+}
+.lists-step button.in .ls-bar {
+  background: var(--accent);
+}
+/* the cut in the unlisted column: a slanted gap in the ground's color */
+.ls-break {
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 0.55rem;
+  height: 4px;
+  background: var(--ground);
+  transform: skewY(-14deg);
+}
+.ls-readout {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  min-height: 1.5em;
+}
+.ls-k {
+  font-size: var(--step--2);
+  font-variant-numeric: tabular-nums;
+}
+.lists-step button[aria-checked='true'] .ls-k {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14.5rem), 1fr));
+  gap: 0 var(--space-5);
+}
+.checks-row {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+}
+.ccheck {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.3rem var(--space-2);
+  margin-inline: calc(-1 * var(--space-2));
+  border-radius: var(--radius);
+  font-size: var(--step--1);
+  cursor: pointer;
+  min-height: 2.25rem;
+}
+.ccheck:hover {
+  background: var(--sunken);
+}
+.ccheck input {
+  margin: 0;
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent);
+}
+.ccheck-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  line-height: 1.3;
+}
+.ccheck-n {
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+.ccheck.is-none .ccheck-label,
+.ccheck.is-none .ccheck-n {
+  color: var(--ink-faint);
+}
+
+.flags {
+  display: grid;
+  gap: 2px;
+}
+.flag {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--step--1);
+  padding: 0.2rem 0;
+  border-bottom: 1px solid color-mix(in oklch, var(--rule) 60%, transparent);
+}
+.flag-n {
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+  min-width: 5.5rem;
+  text-align: right;
+}
+.tri {
+  display: inline-flex;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.tri button {
+  padding: 0.25rem 0.6rem;
+  min-height: 2rem;
+  border: 0;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: var(--step--2);
+  cursor: pointer;
+}
+.tri button + button {
+  border-left: 1px solid var(--rule-strong);
+}
+.tri button:hover {
+  color: var(--ink);
+}
+.tri button[aria-checked='true'] {
+  background: var(--accent-wash);
+  color: var(--ink);
+  font-weight: 600;
+}
+.tri button[aria-checked='true']:not(:first-child) {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.range {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.range label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.range select {
+  padding: var(--space-1) var(--space-2);
+  min-height: 2.25rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+/* Your list */
+.compose-result {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+/* a long line of code scrolls in its own box; it never widens the column */
+.compose-result > *,
+.code,
+.code-body {
+  min-width: 0;
+}
+.result-head {
+  display: grid;
+  gap: var(--space-2);
+}
+.result-count {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.hero {
+  font-family: var(--font-sans);
+  font-size: 3.25rem;
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: proportional-nums;
+}
+.hero-unit {
+  font-size: var(--step-1);
+  color: var(--ink-soft);
+}
+.result-share {
+  color: var(--ink-soft);
+  max-width: 40ch;
+}
+.reset {
+  justify-self: start;
+  padding: var(--space-1) var(--space-3);
+  min-height: 2.25rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+.reset:hover {
+  border-color: var(--ink-faint);
+}
+.result-empty {
+  padding: var(--space-4);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: var(--step--1);
+}
+.result-charts {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.code {
+  display: grid;
+  gap: var(--space-3);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-4);
+}
+.code-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-3);
+}
+.code-title {
+  font-size: var(--step-1);
+}
+.code-tabs {
+  display: inline-flex;
+  gap: var(--space-1);
+}
+.code-tabs button {
+  padding: 0.25rem 0.7rem;
+  min-height: 2rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+.code-tabs button:hover {
+  color: var(--ink);
+}
+.code-tabs button[aria-selected='true'] {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  color: var(--ink);
+}
+.code-body {
+  position: relative;
+  background: var(--sunken);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+/* a long line scrolls, and fades at the right edge to say so */
+.code-body pre {
+  margin: 0;
+  padding: var(--space-4);
+  padding-right: 2.5rem;
+  overflow-x: auto;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  tab-size: 4;
+}
+.code-body code {
+  font-size: inherit;
+}
+/* the copy button sits beside the tabs, outside the code: inside the box,
+   the code's own layer covered it and took its taps */
+.copy {
+  padding: 0.3rem 0.8rem;
+  min-height: 2.25rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+.copy:hover {
+  border-color: var(--accent);
+}
+.copy-fallback {
+  flex-basis: 100%;
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+}
+
+/* Take your list with you */
+.take {
+  display: grid;
+  gap: var(--space-3);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-4);
+  scroll-margin-top: calc(var(--space-7) + var(--space-2));
+}
+.take-title {
+  font-size: var(--step-1);
+}
+.take-count {
+  color: var(--ink-soft);
+}
+.take-count strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.take-item {
+  display: grid;
+  gap: var(--space-1);
+}
+.take-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--accent);
+  font-size: var(--step-0);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.take-btn:hover {
+  border-color: var(--accent-hover);
+  color: var(--accent-hover);
+}
+.take-btn.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.take-btn.primary:hover {
+  background: var(--accent-hover);
+  color: var(--on-accent);
+}
+.take-btn.quiet {
+  border-color: var(--rule-strong);
+  color: var(--ink);
+  font-weight: 500;
+}
+.take-btn:disabled {
+  border-color: var(--rule-strong);
+  background: var(--sunken);
+  color: var(--ink-faint);
+  cursor: not-allowed;
+}
+.take-note {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.take-progress {
+  width: 100%;
+  height: 0.5rem;
+  accent-color: var(--accent);
+}
+.code-note {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+/* Loading: the frame holds its place */
+.sk {
+  background: var(--sunken);
+  border-radius: var(--radius);
+}
+.sk-group {
+  height: 9rem;
+}
+.sk-hero {
+  height: 4rem;
+  width: 70%;
+}
+.sk-square {
+  aspect-ratio: 1;
+  max-width: 15rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .compose.is-loading .sk {
+    animation: sk-pulse 1.4s var(--ease-out) infinite alternate;
+  }
+}
+@keyframes sk-pulse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.55;
+  }
+}

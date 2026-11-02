@@ -1,0 +1,197 @@
+{
+  "generated_by": "research/audit/run_audit.py",
+  "universe": "data/merged.parquet (9,867,866 rows incl. exceptions)",
+  "coverage": {
+    "sources": {
+      "wiktionary_english": {
+        "total": 831973,
+        "in_universe": 727125,
+        "coverage_pct": 87.4,
+        "miss_plain": 104848,
+        "miss_exception": 0
+      },
+      "hunspell_en_US": {
+        "total": 121252,
+        "in_universe": 119380,
+        "coverage_pct": 98.46,
+        "miss_plain": 1872,
+        "miss_exception": 0
+      },
+      "hunspell_en_GB": {
+        "total": 262413,
+        "in_universe": 247138,
+        "coverage_pct": 94.18,
+        "miss_plain": 15275,
+        "miss_exception": 0
+      },
+      "hunspell_en_CA": {
+        "total": 120947,
+        "in_universe": 118953,
+        "coverage_pct": 98.35,
+        "miss_plain": 1994,
+        "miss_exception": 0
+      },
+      "hunspell_en_AU": {
+        "total": 121490,
+        "in_universe": 118680,
+        "coverage_pct": 97.69,
+        "miss_plain": 2810,
+        "miss_exception": 0
+      },
+      "scowl": {
+        "total": 518438,
+        "in_universe": 427801,
+        "coverage_pct": 82.52,
+        "miss_plain": 90637,
+        "miss_exception": 0
+      },
+      "web2": {
+        "total": 234456,
+        "in_universe": 200189,
+        "coverage_pct": 85.38,
+        "miss_plain": 34267,
+        "miss_exception": 0
+      },
+      "web2a": {
+        "total": 31213,
+        "in_universe": 31213,
+        "coverage_pct": 100.0,
+        "miss_plain": 0,
+        "miss_exception": 0
+      },
+      "wordfreq": {
+        "total": 310610,
+        "in_universe": 293320,
+        "coverage_pct": 94.43,
+        "miss_plain": 17290,
+        "miss_exception": 0
+      },
+      "eol:wordnet": {
+        "total": 77503,
+        "in_universe": 72939,
+        "coverage_pct": 94.11,
+        "miss_plain": 4564,
+        "miss_exception": 0
+      },
+      "eol:enable1": {
+        "total": 172823,
+        "in_universe": 172410,
+        "coverage_pct": 99.76,
+        "miss_plain": 413,
+        "miss_exception": 0
+      },
+      "eol:sowpods_legacy": {
+        "total": 267751,
+        "in_universe": 183417,
+        "coverage_pct": 68.5,
+        "miss_plain": 84334,
+        "miss_exception": 0
+      },
+      "eol:nwl2023": {
+        "total": 196601,
+        "in_universe": 187755,
+        "coverage_pct": 95.5,
+        "miss_plain": 8846,
+        "miss_exception": 0
+      },
+      "eol:csw21": {
+        "total": 279077,
+        "in_universe": 193013,
+        "coverage_pct": 69.16,
+        "miss_plain": 86064,
+        "miss_exception": 0
+      }
+    },
+    "miss_union": 140974,
+    "miss_by_source": {
+      "eol:csw21": 86064,
+      "eol:enable1": 413,
+      "eol:nwl2023": 8846,
+      "eol:sowpods_legacy": 84334,
+      "eol:wordnet": 4564,
+      "hunspell_en_AU": 2810,
+      "hunspell_en_CA": 1994,
+      "hunspell_en_GB": 15275,
+      "hunspell_en_US": 1872,
+      "scowl": 90637,
+      "web2": 34267,
+      "wiktionary_english": 104848,
+      "wordfreq": 17290
+    },
+    "miss_shippable": 138989,
+    "miss_restricted": 1985,
+    "restricted_note": "attested only by nwl2023/csw21 (redistributable=false); held in gitignored .cache/audit/, never committed or pushed",
+    "miss_file_sha256": "183085f5a8bde83269f57b89914ca00abd684b5ac56f8b09b6165da4d59bab44",
+    "restricted_file_sha256": "5d5335dc638bc980444c7f36ec2ad57ecbcd2d1ecc89271be85d080abdb81d93"
+  },
+  "drift": {
+    "boundary": "2026-08-04T22:33:23Z",
+    "retrieved": "2026-08-20T21:26:29Z",
+    "new_pages_ns0": 87376,
+    "new_grammar_valid_not_in_universe": 45239,
+    "checked": 1000,
+    "mode": "sha256-sample",
+    "english_confirmed": 10,
+    "residual_estimate": 452,
+    "residual_ci95": [
+      246,
+      828
+    ],
+    "snapshot_sha256": "10599663d05ace7a1095aa8c2dc254819c99d934ca2fbd49fe714f7598c9ae9b",
+    "limitation": "counts page CREATIONS since the boundary; pages that existed at dump time and gained an English section since are not counted"
+  },
+  "frontier": {
+    "model": "char n-gram, orders 1-5, Witten-Bell, trained on valid@c1139698 (a-z only, v0)",
+    "top_k": 9999,
+    "pops": 82864,
+    "attested_in_universe": 9237,
+    "unattested": 762,
+    "attested_pct": 92.4,
+    "top_unattested_examples": {
+      "withheld_strings": 15
+    },
+    "frontier_file_sha256": "fec81e436a403464959d6f75a661ed69af347ef10ec24cf59b4c5c1b24562913"
+  },
+  "reconcile": {
+    "eol_frame_size": 9787841,
+    "eol_frame_additions": 133842,
+    "miss_union": 140974,
+    "miss_in_frame_additions": 133842,
+    "miss_beyond_frame": 7132,
+    "beyond_frame_wordfreq_only": 7099,
+    "beyond_frame_other": 33,
+    "frame_additions_not_missed": 0,
+    "note": "beyond_frame_other = SCOWL variant/contraction visibility the EOL's six-category ingest did not read; frame_additions_not_missed would be nonzero only if a frame addition were an exception-class word (impossible under ^[a-z]+$) or a source shrank"
+  },
+  "doc_figures": {
+    "miss_union": 140974,
+    "miss_shippable": 138989,
+    "miss_restricted": 1985,
+    "worst_coverage_pct": "68.5",
+    "drift_new_pages": 87376,
+    "drift_candidates": 45239,
+    "drift_english": 10,
+    "residual_estimate": 452,
+    "frontier_attested_pct": "92.4",
+    "frontier_unattested": 762,
+    "eol_frame_additions": 133842,
+    "miss_in_frame_additions": 133842,
+    "beyond_frame_wordfreq_only": 7099,
+    "beyond_frame_other": 33,
+    "c4_recommended_pin": 10001741,
+    "cov_wiktionary_english": "87.4",
+    "cov_hunspell_en_US": "98.46",
+    "cov_hunspell_en_GB": "94.18",
+    "cov_hunspell_en_CA": "98.35",
+    "cov_hunspell_en_AU": "97.69",
+    "cov_scowl": "82.52",
+    "cov_web2": "85.38",
+    "cov_web2a": "100.0",
+    "cov_wordfreq": "94.43",
+    "cov_eol:wordnet": "94.11",
+    "cov_eol:enable1": "99.76",
+    "cov_eol:sowpods_legacy": "68.5",
+    "cov_eol:nwl2023": "95.5",
+    "cov_eol:csw21": "69.16"
+  }
+}

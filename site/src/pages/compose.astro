@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import Figure from '../components/Figure.astro';
+import Compose from '../islands/Compose.tsx';
+import { universeFile } from '../lib/data';
+import { cardSectionText } from '../lib/docs';
+---
+
+<Base
+  title="Compose a list"
+  section="Compose a list"
+  description="Choose criteria over every row of the CEOL Universe, see the count at once, and get the code that reproduces the list from the dataset."
+>
+  <div class="frame compose-page">
+    <header class="page-head">
+      <h1>Compose a list</h1>
+      <p class="lede">
+        Choose what a row must have. The count, the drawing, and the code follow at once, computed over all
+        <Figure id="rows" /> rows of version 1.0, not a sample.
+      </p>
+      <p class="page-note">
+        Each criterion shows how many rows it would leave with every other criterion kept. Nothing here judges whether a
+        string is a word: you choose the definition, and the code reproduces it.
+      </p>
+      <ol class="steps" role="list" aria-label="How it works">
+        <li>Choose what a row must have.</li>
+        <li>Watch the count and the charts follow.</li>
+        <li>At the end of the page: download the list, open its datasheet, or copy the code.</li>
+      </ol>
+    </header>
+    <Compose
+      client:load
+      cubeUrl="/data/cube-v1.0.json"
+      citation={cardSectionText(15)}
+      file={{ path: universeFile.path, sha256: universeFile.sha256 }}
+    />
+  </div>
+</Base>
+
+<style>
+  .compose-page {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+  .page-note {
+    max-width: var(--measure);
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: var(--space-1) 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+  .steps li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    flex: 1 1 14rem;
+    min-width: 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+    font-size: var(--step--1);
+    counter-increment: step;
+  }
+  .steps li::before {
+    content: counter(step);
+    flex: none;
+    font-family: var(--font-sans);
+    font-weight: 650;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+</style>

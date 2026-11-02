@@ -1,0 +1,34 @@
+# Never committed: the pin, the layers, and the release files; the
+# restricted lists, the wall list, the held files, and the redacted study
+# exports.
+/data
+/private
+# links into data/, made by `make link`, so that the imported code finds its
+# inputs at the paths it was written for
+/pipeline/data
+/pipeline/.cache
+
+# Inputs from outside the repository (see pipeline/ceol/ingest/common.py)
+/.inputs
+
+# Build output
+node_modules/
+dist/
+build/
+.astro/
+.wrangler/
+site/public/shards/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+
+# Machines and editors
+.DS_Store
+.env
+.env.*
+!.env.example

@@ -1,0 +1,690 @@
+{
+  "generated_by": "research/release/build_release.py",
+  "dataset": "ryanjosephkamp/ceol-universe",
+  "version": "v2.1",
+  "decision": "C-078",
+  "pin_entry": "C-016",
+  "visibility": "private until the owner's word (rule 1)",
+  "built_on": "2026-10-25",
+  "code": {
+    "commit": "1d62bf2b84389cbfac8f65a687a720bd1cb28071",
+    "tracked_files_changed": false
+  },
+  "canary": "a8d1c96b-4b6e-413c-94a1-a6fa7066f992",
+  "sources": {
+    "pin": {
+      "path": "data/universe_v2.parquet",
+      "sha256": "adaa1232b6bc4d9ead97f5e19a005b264bb6db8db77b6374fe66cdd1d2aca9dd",
+      "record": "research/universe_v2/universe_v2.json",
+      "record_key": "artifacts.universe_v2_parquet_sha256"
+    },
+    "provenance": {
+      "path": "data/universe_v2_provenance.parquet",
+      "sha256": "7c9dc6284bf6393769eec3b26c27b8c77fa68dcf08cb5ef77148c2b7f07bec1b",
+      "record": "research/provenance/provenance.json",
+      "record_key": "artifact.sha256"
+    },
+    "evidence": {
+      "path": "data/evidence.parquet",
+      "sha256": "e4c86cc4a0caf3f01996e0abb50cedfd525ee7e08183679f154884bf7250d6ee",
+      "record": "research/evidence/evidence.json",
+      "record_key": "artifacts.evidence_parquet_sha256"
+    },
+    "features": {
+      "path": "data/features.parquet",
+      "sha256": "c578289b61d7b957bba1c91b9e65d3dbfcde3c5d74098316f6993643f240b7c7",
+      "record": "research/provenance/provenance.json",
+      "record_key": "inputs.features_parquet_sha256"
+    },
+    "model_basis": {
+      "path": "data/eol_valid_model_basis.parquet",
+      "sha256": "4395526a55acb7a2464fd6439984f478889bf65e419f41eeed272d168eb43ce0",
+      "record": "research/provenance/model_basis.json",
+      "record_key": "artifact.sha256"
+    }
+  },
+  "pin_counts": {
+    "rows": 10296606,
+    "restricted_rows": 1985,
+    "shippable_rows": 10294621,
+    "spaced_rows": 294865,
+    "eol_valid": 345103
+  },
+  "projection": {
+    "rule": "research/release/withholding.py",
+    "decisions": [
+      "C-079 line 2",
+      "C-083 line 5",
+      "D-010",
+      "D-011",
+      "D-012"
+    ],
+    "withheld_columns": [
+      "nwl2023",
+      "csw21",
+      "sowpods_legacy",
+      "web2",
+      "web2a"
+    ],
+    "withheld_feature_columns": [
+      "orthotactic_logp_total",
+      "orthotactic_logp_per_char",
+      "ocr_neighbor_hits",
+      "ocr_neighbor_freq_ratio",
+      "ocr_apostrophe_ratio",
+      "ocr_ligature_ratio",
+      "ocr_hyphen_drop_ratio",
+      "ocr_strip_ratio",
+      "ocr_hyphen_junction_ratio",
+      "morph_productivity_vn",
+      "morph_has_parse",
+      "segment_attested_fraction"
+    ],
+    "withheld_labels": "every label naming a withheld list, under the prefixes '', eol:, audit:, census:, spaced:",
+    "withheld_channel_labels": [
+      "eol:coca_frequency",
+      "eol:collins",
+      "eol:dictionary-api:merriam-webster",
+      "eol:linux",
+      "eol:nltk",
+      "eol:tournament-list"
+    ],
+    "channel_withheld_label": "eol:channel-withheld",
+    "recomputed": [
+      "panel_sets",
+      "panel_count",
+      "provenance_class"
+    ],
+    "held_back": {
+      "rule": "a row with no public evidence that had some over the full fields (D-011), or a census or audit row whose every source label names a withheld list (D-012 line 1)",
+      "rows": 274471,
+      "by_reason": {
+        "tier_2": 27661,
+        "withheld_channel": 244252,
+        "withheld_sources": 2558
+      },
+      "reasons": {
+        "tier_2": "D-011 line 1: every listing a withheld list, and no public evidence left",
+        "withheld_channel": "D-011 line 2: a withheld channel label its only evidence, and no public evidence left",
+        "withheld_sources": "D-012 line 1: a census or audit row whose every source label names a withheld list"
+      },
+      "private_file": "beside the release directory, with its sha256 in a private sidecar beside it; never committed or uploaded"
+    },
+    "reach_guard": {
+      "rule": "no published channel label, and no layer's shipped rows whose sources come out empty, has this share or more of its rows listed by any 1 withheld list",
+      "threshold": 0.99,
+      "counts": "in a private receipt beside the held-back file; never committed or uploaded"
+    },
+    "metadata_keys": [
+      "ceol.canary",
+      "ceol.version",
+      "ceol.license",
+      "ceol.attribution",
+      "ceol.notices"
+    ]
+  },
+  "rows_by_config": {
+    "universe": 10020150,
+    "features": 9725285,
+    "panel-listed": 1384833,
+    "eol-valid": 344713,
+    "spaced": 294865,
+    "exceptions": 209883,
+    "sample": 38988
+  },
+  "files": [
+    {
+      "config": "universe",
+      "path": "universe.parquet",
+      "predicate": "is_restricted == false over the pin",
+      "rows": 10020150,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "scowl_tier",
+        "wikt_title_screen",
+        "model_or_engine"
+      ],
+      "row_group_rows": 420000,
+      "bytes": 158978290,
+      "sha256": "ba73caf1f64adef94736b82d2c3a61bac16881b788c75d83593b4b46b95c95a6",
+      "measured_uncompressed_bytes": 387767510,
+      "largest_row_group_uncompressed_bytes": 16797757
+    },
+    {
+      "config": "features",
+      "path": "features.parquet",
+      "predicate": "token_count == 1 over universe; id, word, and the feature layer's columns",
+      "rows": 9725285,
+      "columns": [
+        "id",
+        "word",
+        "gb_year_span",
+        "gb_span_fill",
+        "gb_tokens_per_volume",
+        "gb_volumes_per_year",
+        "gb_log10_match",
+        "gb_log10_volume",
+        "zipf_log10_rank",
+        "zipf_resid",
+        "wordfreq_zipf"
+      ],
+      "row_group_rows": 1490000,
+      "bytes": 288074901,
+      "sha256": "39d840f2a39322a48097537cd63944984986fe852b20d786731c4d57623484ab",
+      "measured_uncompressed_bytes": 508775679,
+      "largest_row_group_uncompressed_bytes": 78562162
+    },
+    {
+      "config": "panel-listed",
+      "path": "panel-listed.parquet",
+      "predicate": "panel_count >= 1",
+      "rows": 1384833,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "scowl_tier",
+        "wikt_title_screen",
+        "model_or_engine"
+      ],
+      "row_group_rows": 360000,
+      "bytes": 27741529,
+      "sha256": "50cd00f00c2326da0fa4497fa4e4148b77a0cc72fbeca8629a1e7338a556a02b",
+      "measured_uncompressed_bytes": 63178460,
+      "largest_row_group_uncompressed_bytes": 16494224
+    },
+    {
+      "config": "eol-valid",
+      "path": "eol-valid.parquet",
+      "predicate": "eol == true",
+      "rows": 344713,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "scowl_tier",
+        "wikt_title_screen",
+        "model_or_engine"
+      ],
+      "row_group_rows": 344713,
+      "bytes": 6115642,
+      "sha256": "527949aadd02e3bd61ffab884fa23ffd53793594739090c368c144627a96541e",
+      "measured_uncompressed_bytes": 14210552,
+      "largest_row_group_uncompressed_bytes": 14210552
+    },
+    {
+      "config": "spaced",
+      "path": "spaced.parquet",
+      "predicate": "token_count > 1",
+      "rows": 294865,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "scowl_tier",
+        "wikt_title_screen",
+        "model_or_engine"
+      ],
+      "row_group_rows": 294865,
+      "bytes": 4988532,
+      "sha256": "2861ff7bbdc6a6d412d860d95e7532f144ddfa87f9ab4795d9a7de34fe061c26",
+      "measured_uncompressed_bytes": 12502950,
+      "largest_row_group_uncompressed_bytes": 12502950
+    },
+    {
+      "config": "exceptions",
+      "path": "exceptions.parquet",
+      "predicate": "classes carries any of hyphenated, accented, contraction, apostrophe-form, ligature, diaeresis",
+      "rows": 209883,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "scowl_tier",
+        "wikt_title_screen",
+        "model_or_engine"
+      ],
+      "row_group_rows": 209883,
+      "bytes": 4226501,
+      "sha256": "3a6fa0ff4769f9845b88125911d405099ade27041f406dca50fdb14df0a43919",
+      "measured_uncompressed_bytes": 9425887,
+      "largest_row_group_uncompressed_bytes": 9425887
+    },
+    {
+      "config": "sample",
+      "path": "sample.parquet",
+      "predicate": "id starts with '00' (about 1 row in 256)",
+      "rows": 38988,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "scowl_tier",
+        "wikt_title_screen",
+        "model_or_engine"
+      ],
+      "row_group_rows": 38988,
+      "bytes": 839937,
+      "sha256": "bf7130119569bc4a71fd758a02629bd77dbfecc22f5d9768c3702351300fb107",
+      "measured_uncompressed_bytes": 1753019,
+      "largest_row_group_uncompressed_bytes": 1753019
+    }
+  ],
+  "documents": [
+    {
+      "path": "NOTICES.md",
+      "source": "research/release/NOTICES_v2.1.md",
+      "bytes": 26100,
+      "sha256": "f8d9dfc02943d9f0e4c3e2d7f2c1f80bae285238d21ed612b96d129d85c797f3"
+    }
+  ],
+  "release_layer": {
+    "id": "sha256(word as UTF-8)[:16]",
+    "class_explicit": "classes, with 'plain' for the empty string",
+    "panel_sets": "the panel sets listing the row, ';'-joined in the order wordnet, wiktionary_english, hunspell_en_US, hunspell_en_GB, hunspell_en_CA, hunspell_en_AU, enable1, scowl",
+    "panel_count": "the number of names in panel_sets, recomputed over the published panel",
+    "variety_gb_not_us": "hunspell_en_GB == 1 and hunspell_en_US == 0; null where either is -1 or null",
+    "variety_us_not_gb": "hunspell_en_US == 1 and hunspell_en_GB == 0; null where either is -1 or null",
+    "model_or_engine": "engine_generated where intake_kind is generated; else the model-basis layer's value joined by word (model_pipeline, model_alone); else none"
+  },
+  "bounds": {
+    "max_shard_bytes": 500000000,
+    "max_row_group_bytes": 100000000,
+    "row_group_quantum": 10000,
+    "policy": "the enforced bound is each file's compressed bytes on disk, which must be under max_shard_bytes (C-079 line 9); max_shard_bytes and max_row_group_bytes take the values of the datasets library's MAX_SHARD_SIZE and MAX_ROW_GROUP_SIZE, which that library's config describes as uncompressed sizes for its own writer and which are not a hub limit; max_row_group_bytes and row_group_quantum set each file's row-group row count from the table's mean in-memory bytes per row, a target and not an enforced bound; each file's measured_uncompressed_bytes and largest_row_group_uncompressed_bytes are read from its Parquet metadata and recorded, not bounded"
+  },
+  "assertions": {
+    "universe": {
+      "AT-UR1-1": {
+        "rows": 10020150,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-2": {
+        "rows": 10020150,
+        "expected_rows": 10020150,
+        "columns_without_nulls": 21,
+        "rows_in_pin_order": 10020150
+      },
+      "AT-UR1-3": {
+        "rows": 10020150,
+        "distinct_ids": 10020150
+      },
+      "AT-UR1-4": {
+        "spaced_rows": 294865,
+        "columns": 12
+      },
+      "AT-UR1-6": {
+        "columns": 41,
+        "controls_checked": 20,
+        "control_hits": 0,
+        "ledger_words_outside_the_pin_checked": 17113,
+        "ledger_hits": 0
+      },
+      "AT-UR1-10": {
+        "rows": 10020150,
+        "columns": 5
+      },
+      "AT-UR1-12": {
+        "withheld_columns_present": 0,
+        "withheld_labels_found": 0,
+        "held_back_rows_present": 0,
+        "held_back_rows": 274471,
+        "provenance_class_rederived": 10020150,
+        "metadata_keys": 5
+      },
+      "AT-UR1-13": {
+        "rows_by_value": {
+          "engine_generated": 330386,
+          "model_pipeline": 131014,
+          "model_alone": 6471,
+          "none": 9552279
+        },
+        "generated_rows": 330386,
+        "model_rows_outside_the_eol_valid_list": 0
+      }
+    },
+    "panel-listed": {
+      "AT-UR1-1": {
+        "rows": 1384833,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-5": {
+        "rows": 1384833
+      },
+      "AT-UR1-6": {
+        "columns": 41
+      },
+      "AT-UR1-12": {
+        "withheld_columns_present": 0,
+        "withheld_labels_found": 0,
+        "held_back_rows_present": 0,
+        "metadata_keys": 5
+      }
+    },
+    "eol-valid": {
+      "AT-UR1-1": {
+        "rows": 344713,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-5": {
+        "rows": 344713
+      },
+      "AT-UR1-6": {
+        "columns": 41
+      },
+      "AT-UR1-12": {
+        "withheld_columns_present": 0,
+        "withheld_labels_found": 0,
+        "held_back_rows_present": 0,
+        "metadata_keys": 5
+      }
+    },
+    "spaced": {
+      "AT-UR1-1": {
+        "rows": 294865,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-5": {
+        "rows": 294865
+      },
+      "AT-UR1-6": {
+        "columns": 41
+      },
+      "AT-UR1-12": {
+        "withheld_columns_present": 0,
+        "withheld_labels_found": 0,
+        "held_back_rows_present": 0,
+        "metadata_keys": 5
+      }
+    },
+    "exceptions": {
+      "AT-UR1-1": {
+        "rows": 209883,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-5": {
+        "rows": 209883
+      },
+      "AT-UR1-6": {
+        "columns": 41
+      },
+      "AT-UR1-12": {
+        "withheld_columns_present": 0,
+        "withheld_labels_found": 0,
+        "held_back_rows_present": 0,
+        "metadata_keys": 5
+      }
+    },
+    "sample": {
+      "AT-UR1-1": {
+        "rows": 38988,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-5": {
+        "rows": 38988
+      },
+      "AT-UR1-6": {
+        "columns": 41
+      },
+      "AT-UR1-12": {
+        "withheld_columns_present": 0,
+        "withheld_labels_found": 0,
+        "held_back_rows_present": 0,
+        "metadata_keys": 5
+      }
+    },
+    "features": {
+      "AT-UR1-1": {
+        "rows": 9725285,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-2": {
+        "rows": 9725285,
+        "single_token_rows_of_universe": 9725285,
+        "columns_without_nulls": 11
+      },
+      "AT-UR1-3": {
+        "rows": 9725285,
+        "distinct_ids": 9725285
+      },
+      "AT-UR1-4": {
+        "spaced_rows": 0
+      },
+      "AT-UR1-6": {
+        "columns": 11,
+        "controls_checked": 20,
+        "control_hits": 0,
+        "ledger_words_outside_the_pin_checked": 17113,
+        "ledger_hits": 0
+      },
+      "AT-UR1-12": {
+        "withheld_columns_present": 0,
+        "held_back_rows_present": 0,
+        "metadata_keys": 5
+      }
+    }
+  },
+  "software": {
+    "python": "3.11.5",
+    "pyarrow": "22.0.0"
+  }
+}

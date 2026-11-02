@@ -1,0 +1,102 @@
+{
+ "what": "the fixtures of kit/fixtures/, built by tools/build_fixtures.py",
+ "source": {
+  "version": "v1.0",
+  "config": "universe",
+  "sha256": "d30db2c351c6941edafb7d7dbeeadedd8d12bd8c4975350d0a5cf8890f42c7ce",
+  "rows": 10020150
+ },
+ "projection": "pipeline/research/release/withholding.py, applied by the release build (D-010, D-011)",
+ "figures_and_cube": "pipeline/research/release/figures/v1.0/",
+ "published_sets": [
+  "wordnet",
+  "wiktionary_english",
+  "hunspell_en_US",
+  "hunspell_en_GB",
+  "hunspell_en_CA",
+  "hunspell_en_AU",
+  "enable1",
+  "scowl"
+ ],
+ "columns": [
+  "id",
+  "word",
+  "eol",
+  "eol_universe",
+  "classes",
+  "sources",
+  "intake_date",
+  "c4_addition",
+  "is_restricted",
+  "token_count",
+  "c015_addition",
+  "wn_instance",
+  "wn_capitalized",
+  "wk_proper_noun",
+  "wk_flags",
+  "class_explicit",
+  "panel_sets",
+  "variety_gb_not_us",
+  "variety_us_not_gb",
+  "intake_layer",
+  "intake_kind",
+  "intake_channels",
+  "eol_phase1_tier",
+  "eol_record",
+  "eol_synthetic_category",
+  "eol_synthetic_engine_inferred",
+  "panel_count",
+  "gb_type",
+  "wordfreq_scored",
+  "wikt_title_any",
+  "provenance_class",
+  "wordnet",
+  "wiktionary_english",
+  "hunspell_en_US",
+  "hunspell_en_GB",
+  "hunspell_en_CA",
+  "hunspell_en_AU",
+  "enable1",
+  "scowl_tier",
+  "wikt_title_screen",
+  "model_or_engine"
+ ],
+ "sampling": {
+  "rule": "within a stratum, rows ranked by sha256(key:stratum:word) in ascending order, with a random key kept privately; the first N taken; a row in which the scan finds a study item or a restricted word passed over",
+  "key": "private (D-012 line 5)",
+  "stratum": "intake_layer",
+  "strata": [
+   "c1_exceptions",
+   "c4_additions",
+   "eol_invalid",
+   "eol_valid",
+   "spaced_c015"
+  ],
+  "rows_per_stratum": 4000,
+  "rows": 20000,
+  "feature_rows": 16000,
+  "feature_columns": [
+   "id",
+   "word",
+   "gb_year_span",
+   "gb_span_fill",
+   "gb_tokens_per_volume",
+   "gb_volumes_per_year",
+   "gb_log10_match",
+   "gb_log10_volume",
+   "zipf_log10_rank",
+   "zipf_resid",
+   "wordfreq_zipf"
+  ]
+ },
+ "files": {
+  "features_sample.parquet": {
+   "sha256": "9a0bd012490b5b4d5567c9ad3943be3b8aa73be5fe356013055e4793c9af2693",
+   "bytes": 619344
+  },
+  "universe_sample.parquet": {
+   "sha256": "29c13871cb9c179f063e17d1f219f26ca16ed188ff9af0656b937a8bd70bd7c1",
+   "bytes": 486514
+  }
+ }
+}

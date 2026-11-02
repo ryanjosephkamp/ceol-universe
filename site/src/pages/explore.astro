@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import Figure from '../components/Figure.astro';
+import Explore from '../islands/Explore.tsx';
+import { formatCount, isVetted, sampleRows } from '../lib/data';
+
+// the strings the page offers unasked: the sample's rows that the vetted
+// example list holds, and no other
+const suggestions = sampleRows
+  .map((r) => r.word)
+  .filter(isVetted)
+  .sort((a, b) => a.localeCompare(b, 'en'));
+---
+
+<Base
+  title="Explore"
+  section="Explore"
+  description="Look a string up in a sample of the CEOL Universe and read its record: which lists hold it, how it came in, and what it rests on."
+>
+  <div class="frame explore-page">
+    <header class="page-head">
+      <h1>Explore</h1>
+      <p class="lede">
+        Look a string up and read its record: which published lists hold it, how it came in, and what it rests on.
+      </p>
+      <p class="sample-note">
+        This preview searches a sample of {formatCount(sampleRows.length)} rows drawn from the version's
+        <Figure id="config.universe.rows" />. A string missing here may well be in the universe. The full lookup
+        ships with the release.
+      </p>
+    </header>
+    <Explore client:load sampleUrl="/data/sample-v1.0.json" suggestions={suggestions} grammarHref="/definitions/grammar/" />
+  </div>
+</Base>
+
+<style>
+  .explore-page {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+  .sample-note {
+    max-width: var(--measure);
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+</style>
