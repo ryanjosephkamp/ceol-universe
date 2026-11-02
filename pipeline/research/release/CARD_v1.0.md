@@ -46,6 +46,8 @@ configs:
 
 # The CEOL Universe, version 1.0
 
+**Release status (November 2, 2026).** This version is not published yet. A license review comes first, and it will be released once the review is finished; no date is promised. This note is removed when it is released.
+
 **Every row is a candidate string, never a verdict.** A row records that a
 pinned source lists the string, that the string was inherited from the
 English OpenList (EOL) at a pinned revision, or both. No row says that a

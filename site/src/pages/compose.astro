@@ -4,6 +4,7 @@ import Figure from '../components/Figure.astro';
 import Compose from '../islands/Compose.tsx';
 import { universeFile } from '../lib/data';
 import { cardSectionText } from '../lib/docs';
+import { DATASET_PUBLIC } from '../lib/release-state';
 ---
 
 <Base
@@ -22,6 +23,12 @@ import { cardSectionText } from '../lib/docs';
         Each criterion shows how many rows it would leave with every other criterion kept. Nothing here judges whether a
         string is a word: you choose the definition, and the code reproduces it.
       </p>
+      {!DATASET_PUBLIC && (
+        <p class="page-note">
+          <strong>The lists themselves are not available yet.</strong> The counts and charts are computed from the full
+          dataset; the code and the download open with its release.
+        </p>
+      )}
       <ol class="steps" role="list" aria-label="How it works">
         <li>Choose what a row must have.</li>
         <li>Watch the count and the charts follow.</li>

@@ -32,7 +32,7 @@
  },
  "files": {
   "NOTICES.md": "15fe576c9c6a34ac6387e0f1360cc41668787ffa4236e4e6d76d77b9b21b0e95",
-  "README.md": "28f4c1ee62cf7879b62983be3067f091a520d2d3104635f665636348cc03a3c9",
+  "README.md": "b9e54270d6d4123adf5b655b5aa78c9b5ce933c4b2ac50b27f44af2a4764da1e",
   "croissant.json": "6b255fc2752aec038f916405d272eb4ea986d84c8c258c6cc0f6c136d9dcb253",
   "data/eol-valid.parquet": "a371578f30aec90015f8254327fef5daf0a90e7da31e79fc9500cd2414b37408",
   "data/exceptions.parquet": "ad0487b18644914f8f32fb1386e6ece38c9c677a39dc428b84d08e1c15628f28",

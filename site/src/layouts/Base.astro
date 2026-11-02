@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { DATASET_PUBLIC, PENDING_NOTE } from '../lib/release-state';
 import Mark from '../components/Mark.astro';
 import Credit from '../components/Credit.astro';
 import NavList from '../components/NavList.astro';
@@ -43,6 +44,11 @@ const pageTitle = section === 'Start' ? 'Common English OpenList' : `${title} ·
   </head>
   <body>
     <a class="skip" href="#main">Skip to the content</a>
+    {!preview && !DATASET_PUBLIC && (
+      <div class="preview">
+        <p class="frame">{PENDING_NOTE}</p>
+      </div>
+    )}
     {preview && (
       <div class="preview">
         <p class="frame">
