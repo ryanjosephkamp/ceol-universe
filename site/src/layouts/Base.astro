@@ -14,6 +14,8 @@ interface Props {
 }
 
 const { title, description, section } = Astro.props;
+// A build is a review preview, with a banner and `noindex`, unless CEOL_PRODUCTION=1.
+const preview = process.env.CEOL_PRODUCTION !== '1';
 const pageTitle = section === 'Start' ? 'Common English OpenList' : `${title} · Common English OpenList`;
 ---
 
@@ -28,7 +30,7 @@ const pageTitle = section === 'Start' ? 'Common English OpenList' : `${title} ·
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafc" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1115" />
-    <meta name="robots" content="noindex" />
+    {preview && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/mark.svg" type="image/svg+xml" />
     <script is:inline>
       // the stored theme and the sources toggle, set before the first paint
@@ -41,12 +43,14 @@ const pageTitle = section === 'Start' ? 'Common English OpenList' : `${title} ·
   </head>
   <body>
     <a class="skip" href="#main">Skip to the content</a>
-    <div class="preview">
-      <p class="frame">
-        Preview for review{builtCount < SECTIONS.length ? `: ${builtCount} of the site's ${SECTIONS.length} sections are built, and` : ':'}
-        the lookup runs on a sample. Not the release.
-      </p>
-    </div>
+    {preview && (
+      <div class="preview">
+        <p class="frame">
+          Preview for review{builtCount < SECTIONS.length ? `: ${builtCount} of the site's ${SECTIONS.length} sections are built, and` : ':'}
+          the lookup runs on a sample. Not the release.
+        </p>
+      </div>
+    )}
     <header class="masthead">
       <div class="frame masthead-row">
         <a class="wordmark" href="/" aria-label="Common English OpenList, start">
