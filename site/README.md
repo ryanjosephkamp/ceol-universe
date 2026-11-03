@@ -62,6 +62,7 @@ Until the release, the site is deployed only as a preview for review: a Cloudfla
 
 ```sh
 make site-preview    # from the repository's root
+make site-production # at the release: no banner, no noindex, the main address
 ```
 
 It runs the tests, builds the pages, runs the repository's scan over `dist/`, and uploads only when the scan is clean, since the built pages are what a deployment publishes.

@@ -1332,13 +1332,20 @@ def run() -> list[str]:
     return failures
 
 
+#: A deferral that comes from the repository's history, not from a missing
+#: input, so it is declared wherever it arises: a repository published as
+#: 1 new commit cannot hold the commit a release was built from.
+HISTORY_DEFERRAL = "check_public_release: this repository's history begins after the build"
+
+
 def _undeclared_environment_deferrals() -> list[str]:
     declared = CLONE_DEFERRALS if in_clone() else frozenset()
     return [f"undeclared environment deferral: {d} — this environment "
             f"does not declare it, so a check stopped covering "
             f"something without saying so"
             for d in ENVIRONMENT_DEFERRALS
-            if d.split(":")[0] not in declared]
+            if d.split(":")[0] not in declared
+            and not d.startswith(HISTORY_DEFERRAL)]
 
 
 def main() -> int:

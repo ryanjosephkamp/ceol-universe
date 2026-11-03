@@ -15,6 +15,10 @@ import { DATASET, VERSION } from './codegen';
 
 export const DATASET_PUBLIC = false;
 
+/** Shown at the top of every page while the dataset is not public. */
+export const PENDING_NOTE =
+  "The full dataset is not published yet. A license review comes first, and the dataset will be released once it is finished; no date is promised. Until then the site shows the dataset's statistics and a sample, and lists cannot be built or downloaded.";
+
 /** The universe file of the version on the hub, at the version's tag. */
 export const HUB_LIST_SOURCE = `https://huggingface.co/datasets/${DATASET}/resolve/${VERSION}/data/universe.parquet`;
 

@@ -2,7 +2,7 @@
 
 The CEOL Universe is an inventory of candidate English strings, each with its provenance: where the string came from, and which reference sources list it. It is a frame from which a word list can be derived under a stated definition. A row is a candidate; the inventory makes no claim that a string is a word.
 
-**The dataset is not published yet.** Version 1.0 is built, and its Hugging Face home will be [`ryanjosephkamp/ceol-universe`](https://huggingface.co/datasets/ryanjosephkamp/ceol-universe); that link, and the links to it in the documents, will work once it is released. This repository holds the code that builds the dataset, the site, the study kit, and the documents. The data itself is not in the repository.
+**The full dataset is not published yet.** A license review comes first, and the dataset will be released once it is finished; no date is promised. Until then this repository and [the site](https://common-english-openlist.pages.dev/) show the code, the documents, the dataset's statistics, and a sample, and lists cannot be built or downloaded. Version 1.0 is built, and its Hugging Face home will be [`ryanjosephkamp/ceol-universe`](https://huggingface.co/datasets/ryanjosephkamp/ceol-universe); that link, and the links to it in the documents, will work once it is released. This repository holds the code that builds the dataset, the site, the study kit, and the documents. The data itself is not in the repository.
 
 ![Compose a list on the site: criteria chosen, the count and charts following, the code copied, and the list's datasheet opened](docs/media/compose-a-list.gif)
 

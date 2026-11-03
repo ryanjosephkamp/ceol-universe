@@ -24,7 +24,8 @@ def test_a_deferral_is_declared_or_it_fails(monkeypatch):
 
 def test_where_the_data_and_the_lists_exist_nothing_is_deferred():
     verify.run()
-    deferred = {d.split(":")[0] for d in verify.ENVIRONMENT_DEFERRALS}
+    deferred = {d.split(":")[0] for d in verify.ENVIRONMENT_DEFERRALS
+                if not d.startswith(verify.HISTORY_DEFERRAL)}
     if verify.in_clone():
         assert deferred <= verify.CLONE_DEFERRALS
     else:
