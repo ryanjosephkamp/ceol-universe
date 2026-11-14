@@ -1,0 +1,11 @@
+{
+  "eol_frame_size": 9787841,
+  "eol_frame_additions": 133842,
+  "miss_union": 140974,
+  "miss_in_frame_additions": 133842,
+  "miss_beyond_frame": 7132,
+  "beyond_frame_wordfreq_only": 7099,
+  "beyond_frame_other": 33,
+  "frame_additions_not_missed": 0,
+  "note": "beyond_frame_other = SCOWL variant/contraction visibility the EOL's six-category ingest did not read; frame_additions_not_missed would be nonzero only if a frame addition were an exception-class word (impossible under ^[a-z]+$) or a source shrank"
+}

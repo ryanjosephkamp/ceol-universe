@@ -1,0 +1,143 @@
+---
+import Base from '../../layouts/Base.astro';
+import DefinitionsNav from '../../components/DefinitionsNav.astro';
+import Figure from '../../components/Figure.astro';
+import { cardSection } from '../../lib/docs';
+import { PROVENANCE, PROVENANCE_ORDER } from '../../islands/labels';
+import { fig } from '../../lib/data';
+
+const notRecorded = cardSection(10, 3);
+const classes = PROVENANCE_ORDER.map((p) => ({ key: p, ...PROVENANCE[p], n: fig(`rows.by_provenance_class.${p}`) }));
+---
+
+<Base
+  title="A candidate, not a verdict"
+  section="Definitions"
+  description="What a row of the CEOL Universe says, what it does not, and why the universe records evidence instead of ruling on words."
+>
+  <div class="frame defs">
+    <DefinitionsNav current="candidate" />
+
+    <header class="page-head">
+      <h1>A candidate, not a verdict</h1>
+      <p class="lede">
+        Every row of the universe is a candidate: a string, and a record of where it came from. No row says that a string
+        is a word, that it is English, or that it is spelled right.
+      </p>
+    </header>
+
+    <div class="prose">
+      <h2>What a row says</h2>
+      <p>
+        A row records a string that passes the <a href="/definitions/grammar/">spelling grammar</a>, and the evidence for
+        it: which of the <Figure id="projection.published_sets" /> published word lists list it, which way it came in, whether Google Books or wordfreq holds it,
+        and, for a row of the English OpenList, what decided it there. That is all a row claims, and each claim can be
+        checked against a pinned source.
+      </p>
+
+      <h2>Why no verdicts</h2>
+      <p>
+        Word lists disagree because they answer different questions. A spell-checker's dictionary, a tournament's word
+        list, and a corpus's vocabulary each draw the line somewhere else, and none of them is wrong by its own rule. The
+        universe keeps every candidate its sources gave and records each source's answer beside it, so a reader can apply
+        a definition of their own and state exactly what it is.
+      </p>
+      <p>
+        That is what <a href="/compose/">Compose a list</a> is for: a definition becomes a set of criteria, the criteria a
+        count, and the count a list with the code that reproduces it.
+      </p>
+
+      <h2>What a row rests on</h2>
+      <p>
+        Every row falls in 1 of 4 provenance classes, by whether a published channel brought it in and whether a published
+        list or a corpus holds it.
+      </p>
+    </div>
+
+    <dl class="classes">
+      {
+        classes.map((c) => (
+          <div class="cls">
+            <dt>{c.label}</dt>
+            <dd class="cls-n">
+              <Figure id={c.n.id} />
+            </dd>
+            <dd class="cls-what">{c.what}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="prose">
+      <p>
+        Even the strongest class is evidence, not a ruling: a row that every published list lists is still a candidate, and
+        a row that only a corpus holds may still be one a reader wants.
+      </p>
+
+      <h2>"Valid," in the English OpenList's sense</h2>
+      <p>
+        The English OpenList calls the entries of its main list valid. The universe records that as a fact about the
+        English OpenList at revision <code>08ae92b8</code>: its <code>eol</code> column is true on the{' '}
+        <Figure id="rows.eol" /> rows that list held, and it means nothing more. Elsewhere on this site, a string of the
+        universe is never called valid.
+      </p>
+
+      <h2>{notRecorded.title}</h2>
+    </div>
+    <section class="doc">
+      <Fragment set:html={notRecorded.html} />
+    </section>
+  </div>
+</Base>
+
+<style>
+  .defs {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .defs > :global(*) {
+    min-width: 0;
+  }
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+    max-width: 18ch;
+  }
+  .prose h2 {
+    font-size: var(--step-3);
+  }
+  .prose > h2:first-child {
+    margin-top: 0;
+  }
+  .classes {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+    gap: var(--space-5);
+    max-width: 60rem;
+    padding-block: var(--space-4);
+    border-block: 1px solid var(--rule);
+  }
+  .cls {
+    display: grid;
+    gap: var(--space-1);
+    align-content: start;
+  }
+  .cls dt {
+    font-weight: 600;
+  }
+  .cls dd {
+    margin: 0;
+  }
+  .cls-n {
+    font-size: var(--step-2);
+    font-weight: 650;
+  }
+  .cls-what {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+</style>

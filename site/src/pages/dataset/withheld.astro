@@ -1,0 +1,30 @@
+---
+import Dataset from '../../layouts/Dataset.astro';
+import Figure from '../../components/Figure.astro';
+import { cardSection } from '../../lib/docs';
+import { renderFile } from '../../lib/docs';
+---
+
+<Dataset title="What is withheld" slug="withheld" description="The lists, channel labels, rows, and feature columns version 1.0 leaves out, and the reason for each.">
+  <header class="page-head">
+    <h1>What is withheld</h1>
+    <p class="lede">Some sources' terms do not allow publishing which strings they list, so this version leaves out their columns and labels, and the rows that would rest on them alone.</p>
+  </header>
+  <section class="doc">
+    <Fragment set:html={cardSection(6, 2).html} />
+  </section>
+  <section class="doc" aria-labelledby="features">
+    <h2 id="features">The <Figure id="projection.withheld_feature_columns" /> feature columns, in detail</h2>
+    <Fragment set:html={renderFile('docs/licenses/FEATURE_COLUMNS.md', 3)} />
+  </section>
+</Dataset>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+</style>

@@ -1,0 +1,329 @@
+{
+  "char_length_percentiles": {
+    "p10": 9,
+    "p25": 11,
+    "p50": 14,
+    "p75": 17,
+    "p90": 21,
+    "p99": 33
+  },
+  "doc_figures": {
+    "anchor_wk_all": 831973,
+    "anchor_wk_exceptions": 56104,
+    "anchor_wk_nouns": 542035,
+    "anchor_wn_exceptions": 5229,
+    "anchor_wn_plain": 77503,
+    "eol_all_pct": 80.3,
+    "eol_half_tokens": 33955,
+    "eol_valid_all_tokens": 236794,
+    "eol_valid_no_tokens": 8696,
+    "game_csw_rows": 279077,
+    "game_list_spaced": 0,
+    "game_nwl_rows": 196601,
+    "interjection": 1493,
+    "len_p50": 14,
+    "len_p90": 21,
+    "len_p99": 33,
+    "longest_chars": 79,
+    "max_tokens": 18,
+    "nbsp_only_keys": 0,
+    "no_pos_bucket": 1960,
+    "overlap_both": 19511,
+    "pages_scanned": 10780017,
+    "pos_any": 250856,
+    "pos_any_pct": 99.99,
+    "rej_wk_comma": 874,
+    "rej_wk_digit": 593,
+    "rej_wk_other": 105,
+    "rej_wk_period": 137,
+    "rej_wk_trailing_apostrophe": 575,
+    "rej_wk_undeclared_letter": 32,
+    "rej_wn_digit": 279,
+    "rej_wn_period": 358,
+    "rej_wn_trailing_apostrophe": 82,
+    "s6_all_pct": 91.5,
+    "s6_all_tokens": 269662,
+    "s6_no_tokens": 1744,
+    "three_token": 40856,
+    "tokens_ge10": 225,
+    "two_token": 229297,
+    "two_token_pct": 77.8,
+    "union_pct_of_pin": 2.9,
+    "union_total": 294865,
+    "universe_pin": 10001741,
+    "variants_both": 12225,
+    "variants_closed": 69027,
+    "variants_either": 72774,
+    "variants_hyphen": 15972,
+    "variants_neither": 222091,
+    "wk_english_all": 1082866,
+    "wk_idiomatic_label": 8548,
+    "wk_only": 231382,
+    "wk_phrasal_verb": 19481,
+    "wk_phrasebook": 262,
+    "wk_proper_noun_pos": 582,
+    "wk_proverb": 1186,
+    "wk_rejects_total": 2335,
+    "wk_spaced": 250893,
+    "wn_both_properness": 7795,
+    "wn_capitalized": 24635,
+    "wn_instance": 7812,
+    "wn_max_chars": 71,
+    "wn_max_tokens": 9,
+    "wn_only": 43972,
+    "wn_rejects_total": 725,
+    "wn_spaced": 63483
+  },
+  "generated_by": "research/space_census/analyze_space_census.py",
+  "inputs": {
+    "eol_valid_sha256": "aa8df4c5d4358b67119462a27accf29c919309814d8b33377b03c4bf0244f6e0",
+    "posteriors_parquet": "data/posteriors.parquet",
+    "sampling": "sha256('c015-s3:<stratum>:<word>') ranking",
+    "universe_parquet": "data/universe.parquet",
+    "wiktionary_spaced_jsonl_sha256": "04942ae00a35fe2a85e82b9de77c997f09086c22762a0f77d89e02b01af6bc66",
+    "wordnet_spaced_jsonl_sha256": "f43d8ec812ec88955481e7dbeed646001566a9406bf00a7972c5f365234cfb59"
+  },
+  "licence_check": {
+    "csw21": {
+      "rows": 279077,
+      "space_bearing": 0
+    },
+    "nwl2023": {
+      "rows": 196601,
+      "space_bearing": 0
+    },
+    "spaced_candidates_only_attributable_to_game_lists": 0
+  },
+  "longest_by_chars": {
+    "withheld_strings": 10
+  },
+  "longest_by_tokens": {
+    "withheld_strings": 10
+  },
+  "overlap": {
+    "both": 19511,
+    "examples_both": {
+      "withheld_strings": 15
+    },
+    "examples_wiktionary_only": {
+      "withheld_strings": 15
+    },
+    "examples_wordnet_only": {
+      "withheld_strings": 15
+    },
+    "union": 294865,
+    "wiktionary_only": 231382,
+    "wordnet_only": 43972
+  },
+  "part_membership": {
+    "eol_valid": {
+      "bands": {
+        "f0": 8696,
+        "f1": 236794,
+        "f_half": 33955,
+        "f_high": 13842,
+        "f_low": 1578
+      },
+      "examples": {
+        "withheld_strings": 150
+      }
+    },
+    "note": "correlate of the bound-token subclass only; description, not an intake filter",
+    "s6_posterior": {
+      "bands": {
+        "f0": 1744,
+        "f1": 269662,
+        "f_half": 20384,
+        "f_high": 2550,
+        "f_low": 525
+      },
+      "examples": {
+        "withheld_strings": 150
+      },
+      "threshold": 0.5
+    }
+  },
+  "properness": {
+    "instance_examples": {
+      "withheld_strings": 20
+    },
+    "note": "the D-031 lowercase-title convention already excludes capitalized Wiktionary pages; WordNet properness is attributed from instance hypernyms and data-file case, never from the lowercased index",
+    "wiktionary_proper_examples": {
+      "withheld_strings": 20
+    },
+    "wiktionary_proper_noun_pos": 582,
+    "wordnet_both": 7795,
+    "wordnet_capitalized_in_data": 24635,
+    "wordnet_instance": 7812
+  },
+  "sources": {
+    "wiktionary": {
+      "english_all": 1082866,
+      "rejects": 2335,
+      "spaced": 250893
+    },
+    "wordnet": {
+      "rejects": 725,
+      "spaced": 63483
+    }
+  },
+  "token_count_distribution": {
+    "10": 119,
+    "11": 58,
+    "12": 24,
+    "13": 14,
+    "14": 5,
+    "15": 3,
+    "16": 1,
+    "18": 1,
+    "2": 229297,
+    "3": 40856,
+    "4": 14922,
+    "5": 4875,
+    "6": 2637,
+    "7": 1274,
+    "8": 564,
+    "9": 215
+  },
+  "variant_families": {
+    "both_forms_in_universe": 12225,
+    "closed_form_in_universe": 69027,
+    "either_form_in_universe": 72774,
+    "examples_both": {
+      "withheld_strings": 20
+    },
+    "examples_closed_only": {
+      "withheld_strings": 20
+    },
+    "examples_hyphen_only": {
+      "withheld_strings": 20
+    },
+    "hyphen_form_in_universe": 15972,
+    "neither_form_in_universe": 222091
+  },
+  "wiktionary_buckets": {
+    "adjective": {
+      "count": 4251,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "adverb": {
+      "count": 1897,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "idiomatic_label": {
+      "count": 8548,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "noun": {
+      "count": 180153,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "other_no_bucket": {
+      "count": 1960,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "phrasal_verb": {
+      "count": 19481,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "phrase": {
+      "count": 5633,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "phrasebook": {
+      "count": 262,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "proper_noun": {
+      "count": 582,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "proverb": {
+      "count": 1186,
+      "examples": {
+        "withheld_strings": 15
+      }
+    },
+    "taxonomic": {
+      "count": 0,
+      "examples": []
+    },
+    "verb": {
+      "count": 58781,
+      "examples": {
+        "withheld_strings": 15
+      }
+    }
+  },
+  "wiktionary_pos_any_heading": 250856,
+  "wiktionary_pos_heading_counts": {
+    "Adjective": 4251,
+    "Adverb": 1897,
+    "Conjunction": 100,
+    "Contraction": 10,
+    "Determiner": 62,
+    "Idiom": 4,
+    "Interjection": 1493,
+    "Noun": 180153,
+    "Numeral": 138,
+    "Participle": 123,
+    "Particle": 7,
+    "Phrase": 2845,
+    "Preposition": 276,
+    "Prepositional phrase": 2789,
+    "Pronoun": 140,
+    "Proper noun": 582,
+    "Proverb": 1186,
+    "Verb": 58781
+  },
+  "wiktionary_rejects": {
+    "by_reason": {
+      "bracket": 9,
+      "comma": 874,
+      "digit": 593,
+      "other": 105,
+      "period": 137,
+      "token_edge_hyphen": 10,
+      "token_trailing_apostrophe": 575,
+      "undeclared_letter": 32
+    },
+    "definition": "lowercase spaced-shaped titles carrying an English section, rejected by the extended grammar",
+    "examples": {
+      "withheld_strings": 109
+    },
+    "nbsp_fold": {
+      "definition": "spaced English keys whose every attesting title carried U+00A0 — the entries the C-015 fold alone admits",
+      "examples": [],
+      "keys_only_via_nbsp": 0,
+      "keys_via_nbsp_titles": 0
+    },
+    "total": 2335
+  },
+  "wiktionary_top_categories": {
+    "English coordinated pairs": 3,
+    "English deverbals": 1,
+    "English eponyms": 1,
+    "English rare terms": 1,
+    "English rhyming compounds": 1,
+    "English rhyming phrases": 5,
+    "en:Climate change": 1
+  }
+}

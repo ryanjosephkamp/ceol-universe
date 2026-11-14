@@ -1,0 +1,12 @@
+path,class,kind,reason
+corrections/seeds_from_eol_ledger.csv,live,string list,a table with 1 candidate string per row
+research/evidence/wordnet_beyond_frame.txt,live,string list,a list with 1 string per line
+research/audit/universe_miss_candidates.csv,archival,string list,the audit's candidate file; a table with 1 candidate string per row
+research/census/candidates.csv,archival,string list,the census's candidate file; a table with 1 candidate string per row
+research/contest/llm_arm_verdicts.csv,archival,string list,the C4 model arm's verdict file; a table with 1 candidate string and 1 verdict per row
+research/audit/frontier_v0.txt,archival,string list,a list with 1 string and 1 score per line
+research/audit/drift_checked.csv,archival,string list,a table with 1 page title per row
+research/audit/AUDIT.md,archival,record with examples,prints strings of the audit record's example list
+research/census/CENSUS.md,archival,record with examples,prints strings of the census record's example lists
+research/space_census/SPACE_CENSUS.md,archival,record with examples,prints strings of the space census record's example lists
+research/space_census/S4_GATE.md,archival,record with examples,prints strings of the space census record's example lists

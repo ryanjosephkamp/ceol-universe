@@ -1,0 +1,639 @@
+{
+ "version": "v1.0",
+ "dataset": "ryanjosephkamp/ceol-universe",
+ "built_on": "2026-11-13",
+ "generated_by": "pipeline/research/release/figures.py",
+ "record": "pipeline/research/release/release_v1.0.json",
+ "source": {
+  "path": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0",
+  "sha256": "bf11e6bd3a5c81dde4d5408141578820e50737ccfa59ef867e9afc07ced2a8ca",
+  "rows": 10264249
+ },
+ "what": "headline counts, each with its id, meaning, and the file it was counted from",
+ "figures": [
+  {
+   "id": "pin.rows",
+   "value": 10296274,
+   "what": "candidates in the pin (C-016)",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "pin.restricted_rows",
+   "value": 1985,
+   "what": "rows of the pin attested only by restricted lists, in no version",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "pin.shippable_rows",
+   "value": 10294289,
+   "what": "rows of the pin that a version may carry",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "held_back.rows",
+   "value": 30040,
+   "what": "shippable rows held back by the public projection (D-011)",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "held_back.tier_2",
+   "value": 27482,
+   "what": "D-011 line 1: every listing a withheld list, and no public evidence left",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "held_back.withheld_channel",
+   "value": 0,
+   "what": "D-011 line 2: a withheld channel label its only evidence, and no public evidence left",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "held_back.withheld_sources",
+   "value": 2558,
+   "what": "D-012 line 1: a census or audit row whose every source label names a withheld list",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "config.universe.rows",
+   "value": 10264249,
+   "what": "rows of the universe config (is_restricted == false over the pin)",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "config.features.rows",
+   "value": 9969384,
+   "what": "rows of the features config (token_count == 1 over universe; id, word, and the feature layer's columns)",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "config.panel-listed.rows",
+   "value": 1384833,
+   "what": "rows of the panel-listed config (panel_count >= 1)",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "config.eol-valid.rows",
+   "value": 344830,
+   "what": "rows of the eol-valid config (eol == true)",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "config.spaced.rows",
+   "value": 294865,
+   "what": "rows of the spaced config (token_count > 1)",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "config.exceptions.rows",
+   "value": 209883,
+   "what": "rows of the exceptions config (classes carries any of hyphenated, accented, contraction, apostrophe-form, ligature, diaeresis)",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "config.sample.rows",
+   "value": 39938,
+   "what": "rows of the sample config (id starts with '00' (about 1 row in 256))",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "rows",
+   "value": 10264249,
+   "what": "rows of the universe config, 1 per candidate string",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_intake_layer.c1_exceptions",
+   "value": 187266,
+   "what": "rows whose intake_layer is c1_exceptions",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_intake_layer.c4_additions",
+   "value": 128475,
+   "what": "rows whose intake_layer is c4_additions",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_intake_layer.eol_invalid",
+   "value": 9308813,
+   "what": "rows whose intake_layer is eol_invalid",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_intake_layer.eol_valid",
+   "value": 344830,
+   "what": "rows whose intake_layer is eol_valid",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_intake_layer.spaced_c015",
+   "value": 294865,
+   "what": "rows whose intake_layer is spaced_c015",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_intake_kind.derived",
+   "value": 610606,
+   "what": "rows whose intake_kind is derived",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_intake_kind.generated",
+   "value": 330363,
+   "what": "rows whose intake_kind is generated",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_intake_kind.obtained",
+   "value": 9323280,
+   "what": "rows whose intake_kind is obtained",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_provenance_class.channel_and_containment",
+   "value": 9097432,
+   "what": "rows whose provenance_class is channel_and_containment",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_provenance_class.channel_only",
+   "value": 586023,
+   "what": "rows whose provenance_class is channel_only",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_provenance_class.containment_only",
+   "value": 320382,
+   "what": "rows whose provenance_class is containment_only",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_provenance_class.neither",
+   "value": 260412,
+   "what": "rows whose provenance_class is neither",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_model_or_engine.engine_generated",
+   "value": 330363,
+   "what": "rows whose model_or_engine is engine_generated",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_model_or_engine.none",
+   "value": 9933886,
+   "what": "rows whose model_or_engine is none",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_token_count.1",
+   "value": 9969384,
+   "what": "rows whose token_count is 1",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_token_count.2",
+   "value": 229297,
+   "what": "rows whose token_count is 2",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_token_count.3",
+   "value": 40856,
+   "what": "rows whose token_count is 3",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_token_count.4+",
+   "value": 24712,
+   "what": "rows whose token_count is 4+",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented",
+   "value": 3967,
+   "what": "rows whose class_explicit is accented",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;apostrophe-form",
+   "value": 9,
+   "what": "rows whose class_explicit is accented;apostrophe-form",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;apostrophe-form;contraction",
+   "value": 1,
+   "what": "rows whose class_explicit is accented;apostrophe-form;contraction",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;apostrophe-form;diaeresis;s-final",
+   "value": 1,
+   "what": "rows whose class_explicit is accented;apostrophe-form;diaeresis;s-final",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;apostrophe-form;hyphenated",
+   "value": 6,
+   "what": "rows whose class_explicit is accented;apostrophe-form;hyphenated",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;apostrophe-form;hyphenated;s-final",
+   "value": 49,
+   "what": "rows whose class_explicit is accented;apostrophe-form;hyphenated;s-final",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;apostrophe-form;s-final",
+   "value": 527,
+   "what": "rows whose class_explicit is accented;apostrophe-form;s-final",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;apostrophe-form;s-final;spaced",
+   "value": 1,
+   "what": "rows whose class_explicit is accented;apostrophe-form;s-final;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;apostrophe-form;spaced",
+   "value": 28,
+   "what": "rows whose class_explicit is accented;apostrophe-form;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;diaeresis",
+   "value": 11,
+   "what": "rows whose class_explicit is accented;diaeresis",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;hyphenated",
+   "value": 147,
+   "what": "rows whose class_explicit is accented;hyphenated",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;hyphenated;spaced",
+   "value": 10,
+   "what": "rows whose class_explicit is accented;hyphenated;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;ligature",
+   "value": 1,
+   "what": "rows whose class_explicit is accented;ligature",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;ligature;spaced",
+   "value": 2,
+   "what": "rows whose class_explicit is accented;ligature;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.accented;spaced",
+   "value": 485,
+   "what": "rows whose class_explicit is accented;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form",
+   "value": 1383,
+   "what": "rows whose class_explicit is apostrophe-form",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;contraction",
+   "value": 1264,
+   "what": "rows whose class_explicit is apostrophe-form;contraction",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;contraction;hyphenated",
+   "value": 10,
+   "what": "rows whose class_explicit is apostrophe-form;contraction;hyphenated",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;contraction;hyphenated;spaced",
+   "value": 2,
+   "what": "rows whose class_explicit is apostrophe-form;contraction;hyphenated;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;contraction;ligature",
+   "value": 4,
+   "what": "rows whose class_explicit is apostrophe-form;contraction;ligature",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;contraction;s-final",
+   "value": 2,
+   "what": "rows whose class_explicit is apostrophe-form;contraction;s-final",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;contraction;s-final;spaced",
+   "value": 39,
+   "what": "rows whose class_explicit is apostrophe-form;contraction;s-final;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;contraction;spaced",
+   "value": 519,
+   "what": "rows whose class_explicit is apostrophe-form;contraction;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;diaeresis;hyphenated",
+   "value": 2,
+   "what": "rows whose class_explicit is apostrophe-form;diaeresis;hyphenated",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;diaeresis;s-final",
+   "value": 103,
+   "what": "rows whose class_explicit is apostrophe-form;diaeresis;s-final",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;diaeresis;spaced",
+   "value": 1,
+   "what": "rows whose class_explicit is apostrophe-form;diaeresis;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;hyphenated",
+   "value": 276,
+   "what": "rows whose class_explicit is apostrophe-form;hyphenated",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;hyphenated;ligature",
+   "value": 6,
+   "what": "rows whose class_explicit is apostrophe-form;hyphenated;ligature",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;hyphenated;s-final",
+   "value": 1728,
+   "what": "rows whose class_explicit is apostrophe-form;hyphenated;s-final",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;hyphenated;s-final;spaced",
+   "value": 54,
+   "what": "rows whose class_explicit is apostrophe-form;hyphenated;s-final;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;hyphenated;spaced",
+   "value": 82,
+   "what": "rows whose class_explicit is apostrophe-form;hyphenated;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;ligature;s-final",
+   "value": 1,
+   "what": "rows whose class_explicit is apostrophe-form;ligature;s-final",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;ligature;s-final;spaced",
+   "value": 1,
+   "what": "rows whose class_explicit is apostrophe-form;ligature;s-final;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;ligature;spaced",
+   "value": 6,
+   "what": "rows whose class_explicit is apostrophe-form;ligature;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;s-final",
+   "value": 122870,
+   "what": "rows whose class_explicit is apostrophe-form;s-final",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;s-final;spaced",
+   "value": 11642,
+   "what": "rows whose class_explicit is apostrophe-form;s-final;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.apostrophe-form;spaced",
+   "value": 234,
+   "what": "rows whose class_explicit is apostrophe-form;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.diaeresis",
+   "value": 1369,
+   "what": "rows whose class_explicit is diaeresis",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.diaeresis;hyphenated",
+   "value": 15,
+   "what": "rows whose class_explicit is diaeresis;hyphenated",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.diaeresis;ligature",
+   "value": 3,
+   "what": "rows whose class_explicit is diaeresis;ligature",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.diaeresis;spaced",
+   "value": 25,
+   "what": "rows whose class_explicit is diaeresis;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.hyphenated",
+   "value": 51586,
+   "what": "rows whose class_explicit is hyphenated",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.hyphenated;ligature",
+   "value": 15,
+   "what": "rows whose class_explicit is hyphenated;ligature",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.hyphenated;spaced",
+   "value": 9433,
+   "what": "rows whose class_explicit is hyphenated;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.ligature",
+   "value": 1910,
+   "what": "rows whose class_explicit is ligature",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.ligature;spaced",
+   "value": 53,
+   "what": "rows whose class_explicit is ligature;spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.plain",
+   "value": 9782118,
+   "what": "rows whose class_explicit is plain",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.by_class_explicit.spaced",
+   "value": 272248,
+   "what": "rows whose class_explicit is spaced",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.eol",
+   "value": 344830,
+   "what": "rows in the EOL's valid list at its pinned revision 08ae92b8",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by_no_published_set",
+   "value": 8879416,
+   "what": "rows that no published panel set lists",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by_a_published_set",
+   "value": 1384833,
+   "what": "rows that 1 or more published panel sets list",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by.wordnet",
+   "value": 143924,
+   "what": "rows that wordnet lists",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by.wiktionary_english",
+   "value": 1082866,
+   "what": "rows that wiktionary_english lists",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by.hunspell_en_US",
+   "value": 121252,
+   "what": "rows that hunspell_en_US lists",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by.hunspell_en_GB",
+   "value": 262413,
+   "what": "rows that hunspell_en_GB lists",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by.hunspell_en_CA",
+   "value": 120947,
+   "what": "rows that hunspell_en_CA lists",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by.hunspell_en_AU",
+   "value": 121490,
+   "what": "rows that hunspell_en_AU lists",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by.enable1",
+   "value": 172823,
+   "what": "rows that enable1 lists",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.listed_by.scowl",
+   "value": 518438,
+   "what": "rows that scowl lists",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.gb_type",
+   "value": 8761597,
+   "what": "rows whose gb_type is true",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.wordfreq_scored",
+   "value": 303511,
+   "what": "rows whose wordfreq_scored is true",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.wikt_title_any",
+   "value": 1503761,
+   "what": "rows whose wikt_title_any is true",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.channel_withheld",
+   "value": 0,
+   "what": "rows whose every intake channel is withheld (eol:channel-withheld)",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.inherited_google_books_no_published_set",
+   "value": 8024365,
+   "what": "rows inherited from the EOL that no published panel set lists and that are Google Books 1-gram types",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.inherited_google_books_only",
+   "value": 7900077,
+   "what": "of those, the rows whose only published containment is Google Books",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "rows.single_token_no_published_set_no_corpus",
+   "value": 846435,
+   "what": "single-token rows that no published panel set lists and that neither corpus holds",
+   "source": "data/universe.parquet at ryanjosephkamp/ceol-universe@v1.0"
+  },
+  {
+   "id": "projection.published_sets",
+   "value": 8,
+   "what": "panel sets published",
+   "source": "pipeline/research/release/withholding.py"
+  },
+  {
+   "id": "projection.withheld_lists",
+   "value": 5,
+   "what": "lists whose columns and labels are withheld",
+   "source": "pipeline/research/release/withholding.py"
+  },
+  {
+   "id": "projection.withheld_feature_columns",
+   "value": 12,
+   "what": "feature columns withheld",
+   "source": "pipeline/research/release/withholding.py"
+  },
+  {
+   "id": "columns.universe",
+   "value": 41,
+   "what": "columns of the universe config",
+   "source": "pipeline/research/release/release_v1.0.json"
+  },
+  {
+   "id": "columns.features",
+   "value": 11,
+   "what": "columns of the features config",
+   "source": "pipeline/research/release/release_v1.0.json"
+  }
+ ]
+}

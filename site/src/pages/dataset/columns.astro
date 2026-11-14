@@ -1,0 +1,24 @@
+---
+import Dataset from '../../layouts/Dataset.astro';
+import { dictionary } from '../../lib/docs';
+---
+
+<Dataset title="Columns" slug="columns" description="Every column of the CEOL Universe's configs, its type, and where it may be null.">
+  <header class="page-head">
+    <h1>Columns</h1>
+    <p class="lede">Every column of every config: its type, what it means, and where it may be null. The table is generated from the dataset's columns module, so it cannot drift from the files.</p>
+  </header>
+  <section class="doc">
+    <Fragment set:html={dictionary()} />
+  </section>
+</Dataset>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+</style>

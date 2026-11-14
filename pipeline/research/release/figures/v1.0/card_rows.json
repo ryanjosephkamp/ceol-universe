@@ -1,0 +1,136 @@
+{
+ "version": "v1.0",
+ "generated_by": "research/release/site_rows.py",
+ "source": "research/release/public_card.py",
+ "what": "rows of the card's calculator that the site shows, by name",
+ "rows": {
+  "census_candidates": {
+   "value": 213867,
+   "text": "213,867"
+  },
+  "eol_universe_rows": {
+   "value": 9653667,
+   "text": "9,653,667"
+  },
+  "merge_rows": {
+   "value": 9867534,
+   "text": "9,867,534"
+  },
+  "audit_remainder": {
+   "value": 0,
+   "text": "0"
+  },
+  "c4_additions": {
+   "value": 133875,
+   "text": "133,875"
+  },
+  "v1_rows": {
+   "value": 10001409,
+   "text": "10,001,409"
+  },
+  "pin_spaced": {
+   "value": 294865,
+   "text": "294,865"
+  },
+  "rows_pin": {
+   "value": 10296274,
+   "text": "10,296,274"
+  },
+  "model_basis_entries": {
+   "value": 344830,
+   "text": "344,830"
+  },
+  "rows_restricted": {
+   "value": 1985,
+   "text": "1,985"
+  },
+  "rows_shippable": {
+   "value": 10294289,
+   "text": "10,294,289"
+  },
+  "held_back_rows": {
+   "value": 30040,
+   "text": "30,040"
+  },
+  "held_tier_2": {
+   "value": 27482,
+   "text": "27,482"
+  },
+  "held_withheld_channel": {
+   "value": 0,
+   "text": "0"
+  },
+  "held_withheld_sources": {
+   "value": 2558,
+   "text": "2,558"
+  },
+  "rows_universe": {
+   "value": 10264249,
+   "text": "10,264,249"
+  },
+  "files_asserted": {
+   "value": 7,
+   "text": "7"
+  },
+  "restricted_words_checked": {
+   "value": 1985,
+   "text": "1,985"
+  },
+  "exception_class_count": {
+   "value": 6,
+   "text": "6"
+  },
+  "published_set_count": {
+   "value": 8,
+   "text": "8"
+  },
+  "withheld_list_count": {
+   "value": 5,
+   "text": "5"
+  },
+  "panel_set_count": {
+   "value": 13,
+   "text": "13"
+  },
+  "built_on": {
+   "value": "November 13, 2026",
+   "text": "November 13, 2026"
+  },
+  "code_commit": {
+   "value": "77832c9d8c98",
+   "text": "77832c9d8c98"
+  },
+  "contact_address": {
+   "value": "ryanjosephkamp@gmail.com",
+   "text": "ryanjosephkamp@gmail.com"
+  },
+  "generated_rows": {
+   "value": 330363,
+   "text": "330,363"
+  },
+  "eol_one_letter": {
+   "value": 2,
+   "text": "2"
+  },
+  "eol_over_45": {
+   "value": 3,
+   "text": "3"
+  },
+  "eol_longest": {
+   "value": 47,
+   "text": "47"
+  },
+  "limit_gb_all": {
+   "value": 8761597,
+   "text": "8,761,597"
+  },
+  "wordfreq_scored": {
+   "value": 303511,
+   "text": "303,511"
+  },
+  "rows_features": {
+   "value": 9969384,
+   "text": "9,969,384"
+  }
+ }
+}

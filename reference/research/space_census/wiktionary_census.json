@@ -1,0 +1,59 @@
+{
+  "anchor": {
+    "english_all": {
+      "count": 831973,
+      "sha256": "26dbb2708e4a961bb9d40224b3cd24ae818e334a1b99e7ab357b4fb7ccaea211",
+      "status": "reproduced"
+    },
+    "exceptions": {
+      "count": 56104,
+      "sha256": "990d56a5fe4ebdca810061f37c946602396228749bac681b17e3a860080f5685",
+      "status": "reproduced"
+    },
+    "nouns": {
+      "count": 542035,
+      "sha256": "53a1cd7a97f55ab086ffbcf377c5cbefb82a218e91694c591ee80ee7ecce75d6",
+      "status": "reproduced"
+    }
+  },
+  "english_entries_all": 1082866,
+  "generated_by": "research/space_census/run_wiktionary_stream.py",
+  "inputs": {
+    "pages": 10780017,
+    "pages_articles_sha256": "a0db4eeaea5e6b9940e21ea143eaecf93195610888d345333ae560b9a15527d1"
+  },
+  "spaced_entries": 250893,
+  "spaced_idiomatic": 8548,
+  "spaced_jsonl_sha256": "04942ae00a35fe2a85e82b9de77c997f09086c22762a0f77d89e02b01af6bc66",
+  "spaced_nouns": 180153,
+  "spaced_phrasebook": 262,
+  "spaced_rejects_by_reason": {
+    "bracket": 9,
+    "comma": 874,
+    "digit": 593,
+    "other": 105,
+    "period": 137,
+    "token_edge_hyphen": 10,
+    "token_trailing_apostrophe": 575,
+    "undeclared_letter": 32
+  },
+  "spaced_rejects_total": 2335,
+  "token_count_distribution": {
+    "10": 119,
+    "11": 58,
+    "12": 24,
+    "13": 14,
+    "14": 5,
+    "15": 3,
+    "16": 1,
+    "18": 1,
+    "2": 192945,
+    "3": 34811,
+    "4": 13745,
+    "5": 4608,
+    "6": 2561,
+    "7": 1248,
+    "8": 544,
+    "9": 206
+  }
+}

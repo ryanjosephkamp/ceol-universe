@@ -1,0 +1,84 @@
+{
+ "what": "the fixtures of site/fixtures/, built by tools/build_fixtures.py",
+ "source": {
+  "version": "v1.0",
+  "config": "universe",
+  "sha256": "bf11e6bd3a5c81dde4d5408141578820e50737ccfa59ef867e9afc07ced2a8ca",
+  "rows": 10264249
+ },
+ "projection": "pipeline/research/release/withholding.py, applied by the release build (D-010, D-011), and its rule without_eol_intake, applied to the sample rows",
+ "figures_and_cube": "pipeline/research/release/figures/v1.0/",
+ "published_sets": [
+  "wordnet",
+  "wiktionary_english",
+  "hunspell_en_US",
+  "hunspell_en_GB",
+  "hunspell_en_CA",
+  "hunspell_en_AU",
+  "enable1",
+  "scowl"
+ ],
+ "columns": [
+  "id",
+  "word",
+  "eol",
+  "eol_universe",
+  "classes",
+  "sources",
+  "intake_date",
+  "c4_addition",
+  "is_restricted",
+  "token_count",
+  "c015_addition",
+  "wn_instance",
+  "wn_capitalized",
+  "wk_proper_noun",
+  "wk_flags",
+  "class_explicit",
+  "panel_sets",
+  "variety_gb_not_us",
+  "variety_us_not_gb",
+  "intake_layer",
+  "intake_kind",
+  "intake_channels",
+  "eol_phase1_tier",
+  "eol_record",
+  "eol_synthetic_category",
+  "eol_synthetic_engine_inferred",
+  "panel_count",
+  "gb_type",
+  "wordfreq_scored",
+  "wikt_title_any",
+  "provenance_class",
+  "wordnet",
+  "wiktionary_english",
+  "hunspell_en_US",
+  "hunspell_en_GB",
+  "hunspell_en_CA",
+  "hunspell_en_AU",
+  "enable1",
+  "scowl_tier",
+  "wikt_title_screen",
+  "model_or_engine"
+ ],
+ "sampling": {
+  "rule": "within a stratum, rows ranked by sha256(key:stratum:word) in ascending order, with a random key kept privately; the first N taken; a row in which the scan finds a study item or a restricted word passed over",
+  "key": "private (D-012 line 5)",
+  "stratum": "intake_layer",
+  "strata": [
+   "c1_exceptions",
+   "c4_additions",
+   "eol_invalid",
+   "eol_valid",
+   "spaced_c015"
+  ],
+  "rows_per_stratum": 1000,
+  "rows": 5000
+ },
+ "files": {
+  "rows.jsonl": {
+   "sha256": "0f47cc8f0a1c198c154abf2e9512cb436353bfcafb86b1eadbd4d6280ef0c317",
+   "bytes": 5212175
+  }
+ }
+}

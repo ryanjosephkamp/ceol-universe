@@ -1,0 +1,4075 @@
+{
+ "@context": {
+  "@language": "en",
+  "@vocab": "https://schema.org/",
+  "citeAs": "cr:citeAs",
+  "column": "cr:column",
+  "conformsTo": "dct:conformsTo",
+  "cr": "http://mlcommons.org/croissant/",
+  "rai": "http://mlcommons.org/croissant/RAI/",
+  "data": {
+   "@id": "cr:data",
+   "@type": "@json"
+  },
+  "dataType": {
+   "@id": "cr:dataType",
+   "@type": "@vocab"
+  },
+  "dct": "http://purl.org/dc/terms/",
+  "examples": {
+   "@id": "cr:examples",
+   "@type": "@json"
+  },
+  "extract": "cr:extract",
+  "field": "cr:field",
+  "fileProperty": "cr:fileProperty",
+  "fileObject": "cr:fileObject",
+  "fileSet": "cr:fileSet",
+  "format": "cr:format",
+  "includes": "cr:includes",
+  "isLiveDataset": "cr:isLiveDataset",
+  "jsonPath": "cr:jsonPath",
+  "key": "cr:key",
+  "md5": "cr:md5",
+  "parentField": "cr:parentField",
+  "path": "cr:path",
+  "recordSet": "cr:recordSet",
+  "references": "cr:references",
+  "regex": "cr:regex",
+  "repeated": "cr:repeated",
+  "replace": "cr:replace",
+  "sc": "https://schema.org/",
+  "separator": "cr:separator",
+  "source": "cr:source",
+  "subField": "cr:subField",
+  "transform": "cr:transform"
+ },
+ "@type": "sc:Dataset",
+ "conformsTo": "http://mlcommons.org/croissant/1.0",
+ "name": "ceol-universe",
+ "alternateName": "The CEOL Universe",
+ "description": "A public inventory of candidate English strings, each with its provenance. Every row is a candidate, never a verdict. The card (README.md) states its limitations first.",
+ "version": "v2.1",
+ "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+ "url": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe",
+ "sameAs": "https://github.com/ryanjosephkamp/ceol-universe",
+ "creator": {
+  "@type": "Person",
+  "name": "Ryan Kamp"
+ },
+ "citeAs": "Ryan Kamp, The CEOL Universe, version v2.1, Hugging Face dataset ryanjosephkamp/ceol-universe.",
+ "keywords": [
+  "lexicon",
+  "word list",
+  "English",
+  "lexicography",
+  "candidate inventory"
+ ],
+ "inLanguage": "en",
+ "distribution": [
+  {
+   "@type": "cr:FileObject",
+   "@id": "universe.parquet",
+   "name": "universe.parquet",
+   "description": "the universe config",
+   "contentUrl": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe/resolve/v2.1/data/universe.parquet",
+   "contentSize": "163299425 B",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "82716eb9c2fa8834a253c2e82cc496469bda4001246ca0f4e90a4a201953ccd2"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "features.parquet",
+   "name": "features.parquet",
+   "description": "the features config",
+   "contentUrl": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe/resolve/v2.1/data/features.parquet",
+   "contentSize": "292600377 B",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "de0dcdeea63c9d2381adf19545d630573238c17ce6554b60d832440900181c77"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "panel-listed.parquet",
+   "name": "panel-listed.parquet",
+   "description": "the panel-listed config",
+   "contentUrl": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe/resolve/v2.1/data/panel-listed.parquet",
+   "contentSize": "27504796 B",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "a0c9a72eaa718ff2dee4a0b7d01911c97d7643102777f4600fac69288b7aa06d"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "eol-valid.parquet",
+   "name": "eol-valid.parquet",
+   "description": "the eol-valid config",
+   "contentUrl": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe/resolve/v2.1/data/eol-valid.parquet",
+   "contentSize": "5836920 B",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "4315628e82c55c4c9495df2e5cfbc7812552bab1a56c48ab753aa4cd7f0d3baf"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "spaced.parquet",
+   "name": "spaced.parquet",
+   "description": "the spaced config",
+   "contentUrl": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe/resolve/v2.1/data/spaced.parquet",
+   "contentSize": "4994878 B",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "7cc54245661969710536142283dd70471e6f4c36215b84f0e81a5bf9fc3a242e"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "exceptions.parquet",
+   "name": "exceptions.parquet",
+   "description": "the exceptions config",
+   "contentUrl": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe/resolve/v2.1/data/exceptions.parquet",
+   "contentSize": "4231216 B",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "ee8994f55f79effcda269a873595b080ba1c115fd82a3a9fad6742cbc92411f9"
+  },
+  {
+   "@type": "cr:FileObject",
+   "@id": "sample.parquet",
+   "name": "sample.parquet",
+   "description": "the sample config",
+   "contentUrl": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe/resolve/v2.1/data/sample.parquet",
+   "contentSize": "857871 B",
+   "encodingFormat": "application/x-parquet",
+   "sha256": "0606ae2a1b5d84ce069a554a067cee14eed06d4d2be3c3608845f9e127c1d12b"
+  }
+ ],
+ "recordSet": [
+  {
+   "@type": "cr:RecordSet",
+   "@id": "universe",
+   "name": "universe",
+   "description": "the pin's unrestricted rows, less the rows held back (card §6), in the public columns; 10264249 rows",
+   "key": {
+    "@id": "universe/id"
+   },
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "universe/id",
+     "name": "id",
+     "description": "the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/word",
+     "name": "word",
+     "description": "the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "word"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/eol",
+     "name": "eol",
+     "description": "in the EOL's valid list at the pinned revision 08ae92b8: a historical fact at a pin, carried as a covariate, never a CEOL verdict (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "eol"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/eol_universe",
+     "name": "eol_universe",
+     "description": "in the EOL's pinned candidate universe (its valid or its invalid list); false for the CEOL's own 3 layers (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "eol_universe"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/classes",
+     "name": "classes",
+     "description": "the grammar's non-exclusive class flags joined by ';' (hyphenated, accented, diaeresis, ligature, apostrophe-form, contraction, s-final, spaced); the empty string on a plain-letter string (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "classes"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/sources",
+     "name": "sources",
+     "description": "provenance at intake: for the CEOL's own layers the published sources whose derived sets contain the string, joined by ';', a withheld list's label removed (the empty string where each such source is withheld); for the strings inherited from the EOL the dataset-level tag eol_universe@08ae92b8 (their per-source listedness is the evidence columns') (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "sources"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/intake_date",
+     "name": "intake_date",
+     "description": "the date the row entered a CEOL artifact (an ISO date): August 17, 2026 the strings inherited from the EOL universe, August 20, 2026 the census's exception candidates and the audit's additions, August 26, 2026 the spaced admission's multiword candidates (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "intake_date"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/c4_addition",
+     "name": "c4_addition",
+     "description": "a row of the audit's additions to the single-token pin (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "c4_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/is_restricted",
+     "name": "is_restricted",
+     "description": "attested only by NWL2023 or CSW21; false on every row of this dataset, because those rows never ship (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "is_restricted"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/token_count",
+     "name": "token_count",
+     "description": "the number of space-separated tokens (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "token_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/c015_addition",
+     "name": "c015_addition",
+     "description": "a row of the multiword candidates of the spaced admission (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "c015_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/wn_instance",
+     "name": "wn_instance",
+     "description": "WordNet instance-synset membership, a properness signal recorded and never filtered on (null: null unless WordNet attests the row; measured on the spaced layer only; null means not measured, never false)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "wn_instance"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/wn_capitalized",
+     "name": "wn_capitalized",
+     "description": "WordNet data-file capitalization, a properness signal (null: null unless WordNet attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "wn_capitalized"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/wk_proper_noun",
+     "name": "wk_proper_noun",
+     "description": "a Wiktionary Proper-noun heading, a properness signal (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "wk_proper_noun"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/wk_flags",
+     "name": "wk_flags",
+     "description": "Wiktionary's category flags joined by ';' (idiomatic, phrasal-verb, phrasebook, proverb); may be the empty string (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "wk_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/class_explicit",
+     "name": "class_explicit",
+     "description": "the pin's classes with the value 'plain' in place of the empty string; otherwise the flags unchanged (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "class_explicit"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/panel_sets",
+     "name": "panel_sets",
+     "description": "the published panel sets that list the row, joined by ';' in the order wordnet, wiktionary_english, hunspell_en_US, hunspell_en_GB, hunspell_en_CA, hunspell_en_AU, enable1, scowl; on a single-token row a binary set lists the row where its evidence column is 1 and SCOWL where scowl_tier is above 0; on a spaced row the sets are the pin's published sources; the empty string where none lists the row. A withheld list is never named (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "panel_sets"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/variety_gb_not_us",
+     "name": "variety_gb_not_us",
+     "description": "true where hunspell_en_GB is 1 and hunspell_en_US is 0: a proxy for a variety difference between the 2 dictionaries, never a variety label (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "variety_gb_not_us"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/variety_us_not_gb",
+     "name": "variety_us_not_gb",
+     "description": "true where hunspell_en_US is 1 and hunspell_en_GB is 0: the reverse proxy (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "variety_us_not_gb"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/intake_layer",
+     "name": "intake_layer",
+     "description": "the layer the row entered by: eol_valid, eol_invalid, c1_exceptions, c4_additions, spaced_c015 (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "intake_layer"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/intake_kind",
+     "name": "intake_kind",
+     "description": "obtained (an inherited string taken in through a channel), derived (a row of a CEOL layer derived from pinned sources), or generated (made by the EOL's lost synthetic engine) (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "intake_kind"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/intake_channels",
+     "name": "intake_channels",
+     "description": "the first-seen channel labels joined by ';': the EOL's discovery log with its tiers removed, and the CEOL layers' own namespaces census:, audit:, spaced:, ledger:; a record of where a string was first seen, never an attestation. A label naming a withheld list is removed, and so is a channel withheld for license reasons; a row whose every label was withheld carries the single label eol:channel-withheld. On a row of the EOL's valid list, only the labels of the intakes the EOL's own records name stay (eol:authoritative-extracts, eol:dictionary-api:free-dictionary, eol:extended-domain-sources, eol:invalid-list-recovery, eol:synthetic-engine), and a row left with none carries eol:list: the row says nothing else about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "intake_channels"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/eol_phase1_tier",
+     "name": "eol_phase1_tier",
+     "description": "the tier suffix the EOL's labels on the row share: valid, unlikely, or none (mixed where the labels disagree); none on every row of the EOL's valid list, whose rows say nothing about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "eol_phase1_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/eol_record",
+     "name": "eol_record",
+     "description": "which EOL dictionary holds the row's entry: valid-dict, invalid-dict, none (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "eol_record"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/eol_synthetic_category",
+     "name": "eol_synthetic_category",
+     "description": "the category recorded on a generated string (a domain label, or the EOL validation step's judgment) (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_category"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/eol_synthetic_engine_inferred",
+     "name": "eol_synthetic_engine_inferred",
+     "description": "the engine and rule inferred from a generated string's form (affixation, chemical-variation, greek-plural, medical-scientific-prefixing, unresolved); an inference, so named (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_engine_inferred"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/panel_count",
+     "name": "panel_count",
+     "description": "the number of the 8 published panel sets that list the row (the number of names in panel_sets, asserted equal on every row); a withheld list's listing is not counted (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "panel_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/gb_type",
+     "name": "gb_type",
+     "description": "the string is a Google Books English 1-gram type in the CEOL re-stream (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "gb_type"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/wordfreq_scored",
+     "name": "wordfreq_scored",
+     "description": "wordfreq 3.1.1 scores the string (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "wordfreq_scored"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/wikt_title_any",
+     "name": "wikt_title_any",
+     "description": "some language's Wiktionary has a page titled with the string: a screen, not containment (null: null on spaced rows)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_any"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/provenance_class",
+     "name": "provenance_class",
+     "description": "exactly 1 of channel_and_containment, channel_only, containment_only, neither, over the published fields: whether the row has a published intake channel (a label other than eol:phase1-unrecorded and eol:channel-withheld; eol:list counts) and whether a published panel set or a corpus contains it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "provenance_class"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/wordnet",
+     "name": "wordnet",
+     "description": "listed by WordNet 3.0's lemmas, re-derived under the CEOL grammar: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "wordnet"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/wiktionary_english",
+     "name": "wiktionary_english",
+     "description": "listed by Wiktionary pages with an English section (the August 4, 2026 dump): 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "wiktionary_english"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/hunspell_en_US",
+     "name": "hunspell_en_US",
+     "description": "listed by the LibreOffice hunspell en_US dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_US"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/hunspell_en_GB",
+     "name": "hunspell_en_GB",
+     "description": "listed by the LibreOffice hunspell en_GB dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_GB"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/hunspell_en_CA",
+     "name": "hunspell_en_CA",
+     "description": "listed by the LibreOffice hunspell en_CA dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_CA"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/hunspell_en_AU",
+     "name": "hunspell_en_AU",
+     "description": "listed by the LibreOffice hunspell en_AU dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_AU"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/enable1",
+     "name": "enable1",
+     "description": "listed by the ENABLE word list: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "enable1"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/scowl_tier",
+     "name": "scowl_tier",
+     "description": "the SCOWL size tier (10 to 95) of the smallest SCOWL list holding the string; 0 not listed; -1 not applicable to the row's class (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "scowl_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/wikt_title_screen",
+     "name": "wikt_title_screen",
+     "description": "1 where some language's Wiktionary has a page titled with the string, else 0: a screen, never a detector (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_screen"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "universe/model_or_engine",
+     "name": "model_or_engine",
+     "description": "engine_generated on a row the EOL's synthetic engine made (intake_kind generated); none on every other row. Whether a language model took part in the EOL's decision on a word is a fact of how the EOL took it in, and no row carries it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "universe.parquet"
+      },
+      "extract": {
+       "column": "model_or_engine"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "features",
+   "name": "features",
+   "description": "token_count == 1 over universe; id, word, and the feature layer's columns; 9969384 rows",
+   "key": {
+    "@id": "features/id"
+   },
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "features/id",
+     "name": "id",
+     "description": "the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/word",
+     "name": "word",
+     "description": "the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "word"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/gb_year_span",
+     "name": "gb_year_span",
+     "description": "the years from the first to the last in which the string occurs in the Google Books English 1-grams (the 2020 release), inclusive (null: 0 where the string is not a 1-gram type)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "gb_year_span"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/gb_span_fill",
+     "name": "gb_span_fill",
+     "description": "the share of the span's years in which the string occurs (null: NaN where the string is not a 1-gram type)",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "gb_span_fill"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/gb_tokens_per_volume",
+     "name": "gb_tokens_per_volume",
+     "description": "the total match count over the total volume count (null: NaN where no volume carries the string)",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "gb_tokens_per_volume"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/gb_volumes_per_year",
+     "name": "gb_volumes_per_year",
+     "description": "the total volume count over the years in which the string occurs (null: NaN where the string is not a 1-gram type)",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "gb_volumes_per_year"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/gb_log10_match",
+     "name": "gb_log10_match",
+     "description": "log10 of the total match count (null: NaN where the string is not a 1-gram type)",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "gb_log10_match"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/gb_log10_volume",
+     "name": "gb_log10_volume",
+     "description": "log10 of the total volume count (null: NaN where no volume carries the string)",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "gb_log10_volume"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/zipf_log10_rank",
+     "name": "zipf_log10_rank",
+     "description": "log10 of the string's frequency rank among the aggregate's types (null: NaN where the string is not a 1-gram type)",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "zipf_log10_rank"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/zipf_resid",
+     "name": "zipf_resid",
+     "description": "log10 of the match count minus the Zipf-Mandelbrot fit's prediction at that rank (null: NaN where the string is not a 1-gram type)",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "zipf_resid"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "features/wordfreq_zipf",
+     "name": "wordfreq_zipf",
+     "description": "the wordfreq 3.1.1 Zipf frequency (English) where wordfreq's list holds the string (null: NaN elsewhere, and on every hyphenated string (wordfreq is hyphen-blind))",
+     "dataType": "sc:Float",
+     "source": {
+      "fileObject": {
+       "@id": "features.parquet"
+      },
+      "extract": {
+       "column": "wordfreq_zipf"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "panel-listed",
+   "name": "panel-listed",
+   "description": "panel_count >= 1; 1384833 rows",
+   "key": {
+    "@id": "panel-listed/id"
+   },
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/id",
+     "name": "id",
+     "description": "the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/word",
+     "name": "word",
+     "description": "the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "word"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/eol",
+     "name": "eol",
+     "description": "in the EOL's valid list at the pinned revision 08ae92b8: a historical fact at a pin, carried as a covariate, never a CEOL verdict (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "eol"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/eol_universe",
+     "name": "eol_universe",
+     "description": "in the EOL's pinned candidate universe (its valid or its invalid list); false for the CEOL's own 3 layers (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "eol_universe"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/classes",
+     "name": "classes",
+     "description": "the grammar's non-exclusive class flags joined by ';' (hyphenated, accented, diaeresis, ligature, apostrophe-form, contraction, s-final, spaced); the empty string on a plain-letter string (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "classes"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/sources",
+     "name": "sources",
+     "description": "provenance at intake: for the CEOL's own layers the published sources whose derived sets contain the string, joined by ';', a withheld list's label removed (the empty string where each such source is withheld); for the strings inherited from the EOL the dataset-level tag eol_universe@08ae92b8 (their per-source listedness is the evidence columns') (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "sources"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/intake_date",
+     "name": "intake_date",
+     "description": "the date the row entered a CEOL artifact (an ISO date): August 17, 2026 the strings inherited from the EOL universe, August 20, 2026 the census's exception candidates and the audit's additions, August 26, 2026 the spaced admission's multiword candidates (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "intake_date"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/c4_addition",
+     "name": "c4_addition",
+     "description": "a row of the audit's additions to the single-token pin (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "c4_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/is_restricted",
+     "name": "is_restricted",
+     "description": "attested only by NWL2023 or CSW21; false on every row of this dataset, because those rows never ship (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "is_restricted"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/token_count",
+     "name": "token_count",
+     "description": "the number of space-separated tokens (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "token_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/c015_addition",
+     "name": "c015_addition",
+     "description": "a row of the multiword candidates of the spaced admission (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "c015_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/wn_instance",
+     "name": "wn_instance",
+     "description": "WordNet instance-synset membership, a properness signal recorded and never filtered on (null: null unless WordNet attests the row; measured on the spaced layer only; null means not measured, never false)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "wn_instance"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/wn_capitalized",
+     "name": "wn_capitalized",
+     "description": "WordNet data-file capitalization, a properness signal (null: null unless WordNet attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "wn_capitalized"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/wk_proper_noun",
+     "name": "wk_proper_noun",
+     "description": "a Wiktionary Proper-noun heading, a properness signal (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "wk_proper_noun"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/wk_flags",
+     "name": "wk_flags",
+     "description": "Wiktionary's category flags joined by ';' (idiomatic, phrasal-verb, phrasebook, proverb); may be the empty string (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "wk_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/class_explicit",
+     "name": "class_explicit",
+     "description": "the pin's classes with the value 'plain' in place of the empty string; otherwise the flags unchanged (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "class_explicit"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/panel_sets",
+     "name": "panel_sets",
+     "description": "the published panel sets that list the row, joined by ';' in the order wordnet, wiktionary_english, hunspell_en_US, hunspell_en_GB, hunspell_en_CA, hunspell_en_AU, enable1, scowl; on a single-token row a binary set lists the row where its evidence column is 1 and SCOWL where scowl_tier is above 0; on a spaced row the sets are the pin's published sources; the empty string where none lists the row. A withheld list is never named (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "panel_sets"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/variety_gb_not_us",
+     "name": "variety_gb_not_us",
+     "description": "true where hunspell_en_GB is 1 and hunspell_en_US is 0: a proxy for a variety difference between the 2 dictionaries, never a variety label (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "variety_gb_not_us"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/variety_us_not_gb",
+     "name": "variety_us_not_gb",
+     "description": "true where hunspell_en_US is 1 and hunspell_en_GB is 0: the reverse proxy (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "variety_us_not_gb"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/intake_layer",
+     "name": "intake_layer",
+     "description": "the layer the row entered by: eol_valid, eol_invalid, c1_exceptions, c4_additions, spaced_c015 (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "intake_layer"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/intake_kind",
+     "name": "intake_kind",
+     "description": "obtained (an inherited string taken in through a channel), derived (a row of a CEOL layer derived from pinned sources), or generated (made by the EOL's lost synthetic engine) (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "intake_kind"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/intake_channels",
+     "name": "intake_channels",
+     "description": "the first-seen channel labels joined by ';': the EOL's discovery log with its tiers removed, and the CEOL layers' own namespaces census:, audit:, spaced:, ledger:; a record of where a string was first seen, never an attestation. A label naming a withheld list is removed, and so is a channel withheld for license reasons; a row whose every label was withheld carries the single label eol:channel-withheld. On a row of the EOL's valid list, only the labels of the intakes the EOL's own records name stay (eol:authoritative-extracts, eol:dictionary-api:free-dictionary, eol:extended-domain-sources, eol:invalid-list-recovery, eol:synthetic-engine), and a row left with none carries eol:list: the row says nothing else about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "intake_channels"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/eol_phase1_tier",
+     "name": "eol_phase1_tier",
+     "description": "the tier suffix the EOL's labels on the row share: valid, unlikely, or none (mixed where the labels disagree); none on every row of the EOL's valid list, whose rows say nothing about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "eol_phase1_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/eol_record",
+     "name": "eol_record",
+     "description": "which EOL dictionary holds the row's entry: valid-dict, invalid-dict, none (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "eol_record"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/eol_synthetic_category",
+     "name": "eol_synthetic_category",
+     "description": "the category recorded on a generated string (a domain label, or the EOL validation step's judgment) (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_category"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/eol_synthetic_engine_inferred",
+     "name": "eol_synthetic_engine_inferred",
+     "description": "the engine and rule inferred from a generated string's form (affixation, chemical-variation, greek-plural, medical-scientific-prefixing, unresolved); an inference, so named (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_engine_inferred"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/panel_count",
+     "name": "panel_count",
+     "description": "the number of the 8 published panel sets that list the row (the number of names in panel_sets, asserted equal on every row); a withheld list's listing is not counted (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "panel_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/gb_type",
+     "name": "gb_type",
+     "description": "the string is a Google Books English 1-gram type in the CEOL re-stream (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "gb_type"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/wordfreq_scored",
+     "name": "wordfreq_scored",
+     "description": "wordfreq 3.1.1 scores the string (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "wordfreq_scored"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/wikt_title_any",
+     "name": "wikt_title_any",
+     "description": "some language's Wiktionary has a page titled with the string: a screen, not containment (null: null on spaced rows)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_any"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/provenance_class",
+     "name": "provenance_class",
+     "description": "exactly 1 of channel_and_containment, channel_only, containment_only, neither, over the published fields: whether the row has a published intake channel (a label other than eol:phase1-unrecorded and eol:channel-withheld; eol:list counts) and whether a published panel set or a corpus contains it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "provenance_class"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/wordnet",
+     "name": "wordnet",
+     "description": "listed by WordNet 3.0's lemmas, re-derived under the CEOL grammar: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "wordnet"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/wiktionary_english",
+     "name": "wiktionary_english",
+     "description": "listed by Wiktionary pages with an English section (the August 4, 2026 dump): 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "wiktionary_english"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/hunspell_en_US",
+     "name": "hunspell_en_US",
+     "description": "listed by the LibreOffice hunspell en_US dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_US"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/hunspell_en_GB",
+     "name": "hunspell_en_GB",
+     "description": "listed by the LibreOffice hunspell en_GB dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_GB"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/hunspell_en_CA",
+     "name": "hunspell_en_CA",
+     "description": "listed by the LibreOffice hunspell en_CA dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_CA"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/hunspell_en_AU",
+     "name": "hunspell_en_AU",
+     "description": "listed by the LibreOffice hunspell en_AU dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_AU"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/enable1",
+     "name": "enable1",
+     "description": "listed by the ENABLE word list: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "enable1"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/scowl_tier",
+     "name": "scowl_tier",
+     "description": "the SCOWL size tier (10 to 95) of the smallest SCOWL list holding the string; 0 not listed; -1 not applicable to the row's class (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "scowl_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/wikt_title_screen",
+     "name": "wikt_title_screen",
+     "description": "1 where some language's Wiktionary has a page titled with the string, else 0: a screen, never a detector (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_screen"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "panel-listed/model_or_engine",
+     "name": "model_or_engine",
+     "description": "engine_generated on a row the EOL's synthetic engine made (intake_kind generated); none on every other row. Whether a language model took part in the EOL's decision on a word is a fact of how the EOL took it in, and no row carries it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "panel-listed.parquet"
+      },
+      "extract": {
+       "column": "model_or_engine"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "eol-valid",
+   "name": "eol-valid",
+   "description": "eol == true; 344830 rows",
+   "key": {
+    "@id": "eol-valid/id"
+   },
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/id",
+     "name": "id",
+     "description": "the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/word",
+     "name": "word",
+     "description": "the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "word"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/eol",
+     "name": "eol",
+     "description": "in the EOL's valid list at the pinned revision 08ae92b8: a historical fact at a pin, carried as a covariate, never a CEOL verdict (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "eol"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/eol_universe",
+     "name": "eol_universe",
+     "description": "in the EOL's pinned candidate universe (its valid or its invalid list); false for the CEOL's own 3 layers (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "eol_universe"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/classes",
+     "name": "classes",
+     "description": "the grammar's non-exclusive class flags joined by ';' (hyphenated, accented, diaeresis, ligature, apostrophe-form, contraction, s-final, spaced); the empty string on a plain-letter string (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "classes"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/sources",
+     "name": "sources",
+     "description": "provenance at intake: for the CEOL's own layers the published sources whose derived sets contain the string, joined by ';', a withheld list's label removed (the empty string where each such source is withheld); for the strings inherited from the EOL the dataset-level tag eol_universe@08ae92b8 (their per-source listedness is the evidence columns') (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "sources"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/intake_date",
+     "name": "intake_date",
+     "description": "the date the row entered a CEOL artifact (an ISO date): August 17, 2026 the strings inherited from the EOL universe, August 20, 2026 the census's exception candidates and the audit's additions, August 26, 2026 the spaced admission's multiword candidates (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "intake_date"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/c4_addition",
+     "name": "c4_addition",
+     "description": "a row of the audit's additions to the single-token pin (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "c4_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/is_restricted",
+     "name": "is_restricted",
+     "description": "attested only by NWL2023 or CSW21; false on every row of this dataset, because those rows never ship (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "is_restricted"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/token_count",
+     "name": "token_count",
+     "description": "the number of space-separated tokens (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "token_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/c015_addition",
+     "name": "c015_addition",
+     "description": "a row of the multiword candidates of the spaced admission (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "c015_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/wn_instance",
+     "name": "wn_instance",
+     "description": "WordNet instance-synset membership, a properness signal recorded and never filtered on (null: null unless WordNet attests the row; measured on the spaced layer only; null means not measured, never false)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "wn_instance"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/wn_capitalized",
+     "name": "wn_capitalized",
+     "description": "WordNet data-file capitalization, a properness signal (null: null unless WordNet attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "wn_capitalized"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/wk_proper_noun",
+     "name": "wk_proper_noun",
+     "description": "a Wiktionary Proper-noun heading, a properness signal (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "wk_proper_noun"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/wk_flags",
+     "name": "wk_flags",
+     "description": "Wiktionary's category flags joined by ';' (idiomatic, phrasal-verb, phrasebook, proverb); may be the empty string (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "wk_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/class_explicit",
+     "name": "class_explicit",
+     "description": "the pin's classes with the value 'plain' in place of the empty string; otherwise the flags unchanged (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "class_explicit"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/panel_sets",
+     "name": "panel_sets",
+     "description": "the published panel sets that list the row, joined by ';' in the order wordnet, wiktionary_english, hunspell_en_US, hunspell_en_GB, hunspell_en_CA, hunspell_en_AU, enable1, scowl; on a single-token row a binary set lists the row where its evidence column is 1 and SCOWL where scowl_tier is above 0; on a spaced row the sets are the pin's published sources; the empty string where none lists the row. A withheld list is never named (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "panel_sets"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/variety_gb_not_us",
+     "name": "variety_gb_not_us",
+     "description": "true where hunspell_en_GB is 1 and hunspell_en_US is 0: a proxy for a variety difference between the 2 dictionaries, never a variety label (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "variety_gb_not_us"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/variety_us_not_gb",
+     "name": "variety_us_not_gb",
+     "description": "true where hunspell_en_US is 1 and hunspell_en_GB is 0: the reverse proxy (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "variety_us_not_gb"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/intake_layer",
+     "name": "intake_layer",
+     "description": "the layer the row entered by: eol_valid, eol_invalid, c1_exceptions, c4_additions, spaced_c015 (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "intake_layer"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/intake_kind",
+     "name": "intake_kind",
+     "description": "obtained (an inherited string taken in through a channel), derived (a row of a CEOL layer derived from pinned sources), or generated (made by the EOL's lost synthetic engine) (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "intake_kind"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/intake_channels",
+     "name": "intake_channels",
+     "description": "the first-seen channel labels joined by ';': the EOL's discovery log with its tiers removed, and the CEOL layers' own namespaces census:, audit:, spaced:, ledger:; a record of where a string was first seen, never an attestation. A label naming a withheld list is removed, and so is a channel withheld for license reasons; a row whose every label was withheld carries the single label eol:channel-withheld. On a row of the EOL's valid list, only the labels of the intakes the EOL's own records name stay (eol:authoritative-extracts, eol:dictionary-api:free-dictionary, eol:extended-domain-sources, eol:invalid-list-recovery, eol:synthetic-engine), and a row left with none carries eol:list: the row says nothing else about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "intake_channels"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/eol_phase1_tier",
+     "name": "eol_phase1_tier",
+     "description": "the tier suffix the EOL's labels on the row share: valid, unlikely, or none (mixed where the labels disagree); none on every row of the EOL's valid list, whose rows say nothing about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "eol_phase1_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/eol_record",
+     "name": "eol_record",
+     "description": "which EOL dictionary holds the row's entry: valid-dict, invalid-dict, none (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "eol_record"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/eol_synthetic_category",
+     "name": "eol_synthetic_category",
+     "description": "the category recorded on a generated string (a domain label, or the EOL validation step's judgment) (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_category"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/eol_synthetic_engine_inferred",
+     "name": "eol_synthetic_engine_inferred",
+     "description": "the engine and rule inferred from a generated string's form (affixation, chemical-variation, greek-plural, medical-scientific-prefixing, unresolved); an inference, so named (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_engine_inferred"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/panel_count",
+     "name": "panel_count",
+     "description": "the number of the 8 published panel sets that list the row (the number of names in panel_sets, asserted equal on every row); a withheld list's listing is not counted (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "panel_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/gb_type",
+     "name": "gb_type",
+     "description": "the string is a Google Books English 1-gram type in the CEOL re-stream (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "gb_type"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/wordfreq_scored",
+     "name": "wordfreq_scored",
+     "description": "wordfreq 3.1.1 scores the string (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "wordfreq_scored"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/wikt_title_any",
+     "name": "wikt_title_any",
+     "description": "some language's Wiktionary has a page titled with the string: a screen, not containment (null: null on spaced rows)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_any"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/provenance_class",
+     "name": "provenance_class",
+     "description": "exactly 1 of channel_and_containment, channel_only, containment_only, neither, over the published fields: whether the row has a published intake channel (a label other than eol:phase1-unrecorded and eol:channel-withheld; eol:list counts) and whether a published panel set or a corpus contains it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "provenance_class"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/wordnet",
+     "name": "wordnet",
+     "description": "listed by WordNet 3.0's lemmas, re-derived under the CEOL grammar: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "wordnet"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/wiktionary_english",
+     "name": "wiktionary_english",
+     "description": "listed by Wiktionary pages with an English section (the August 4, 2026 dump): 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "wiktionary_english"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/hunspell_en_US",
+     "name": "hunspell_en_US",
+     "description": "listed by the LibreOffice hunspell en_US dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_US"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/hunspell_en_GB",
+     "name": "hunspell_en_GB",
+     "description": "listed by the LibreOffice hunspell en_GB dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_GB"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/hunspell_en_CA",
+     "name": "hunspell_en_CA",
+     "description": "listed by the LibreOffice hunspell en_CA dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_CA"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/hunspell_en_AU",
+     "name": "hunspell_en_AU",
+     "description": "listed by the LibreOffice hunspell en_AU dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_AU"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/enable1",
+     "name": "enable1",
+     "description": "listed by the ENABLE word list: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "enable1"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/scowl_tier",
+     "name": "scowl_tier",
+     "description": "the SCOWL size tier (10 to 95) of the smallest SCOWL list holding the string; 0 not listed; -1 not applicable to the row's class (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "scowl_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/wikt_title_screen",
+     "name": "wikt_title_screen",
+     "description": "1 where some language's Wiktionary has a page titled with the string, else 0: a screen, never a detector (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_screen"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "eol-valid/model_or_engine",
+     "name": "model_or_engine",
+     "description": "engine_generated on a row the EOL's synthetic engine made (intake_kind generated); none on every other row. Whether a language model took part in the EOL's decision on a word is a fact of how the EOL took it in, and no row carries it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "eol-valid.parquet"
+      },
+      "extract": {
+       "column": "model_or_engine"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "spaced",
+   "name": "spaced",
+   "description": "token_count > 1; 294865 rows",
+   "key": {
+    "@id": "spaced/id"
+   },
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/id",
+     "name": "id",
+     "description": "the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/word",
+     "name": "word",
+     "description": "the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "word"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/eol",
+     "name": "eol",
+     "description": "in the EOL's valid list at the pinned revision 08ae92b8: a historical fact at a pin, carried as a covariate, never a CEOL verdict (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "eol"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/eol_universe",
+     "name": "eol_universe",
+     "description": "in the EOL's pinned candidate universe (its valid or its invalid list); false for the CEOL's own 3 layers (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "eol_universe"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/classes",
+     "name": "classes",
+     "description": "the grammar's non-exclusive class flags joined by ';' (hyphenated, accented, diaeresis, ligature, apostrophe-form, contraction, s-final, spaced); the empty string on a plain-letter string (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "classes"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/sources",
+     "name": "sources",
+     "description": "provenance at intake: for the CEOL's own layers the published sources whose derived sets contain the string, joined by ';', a withheld list's label removed (the empty string where each such source is withheld); for the strings inherited from the EOL the dataset-level tag eol_universe@08ae92b8 (their per-source listedness is the evidence columns') (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "sources"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/intake_date",
+     "name": "intake_date",
+     "description": "the date the row entered a CEOL artifact (an ISO date): August 17, 2026 the strings inherited from the EOL universe, August 20, 2026 the census's exception candidates and the audit's additions, August 26, 2026 the spaced admission's multiword candidates (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "intake_date"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/c4_addition",
+     "name": "c4_addition",
+     "description": "a row of the audit's additions to the single-token pin (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "c4_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/is_restricted",
+     "name": "is_restricted",
+     "description": "attested only by NWL2023 or CSW21; false on every row of this dataset, because those rows never ship (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "is_restricted"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/token_count",
+     "name": "token_count",
+     "description": "the number of space-separated tokens (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "token_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/c015_addition",
+     "name": "c015_addition",
+     "description": "a row of the multiword candidates of the spaced admission (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "c015_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/wn_instance",
+     "name": "wn_instance",
+     "description": "WordNet instance-synset membership, a properness signal recorded and never filtered on (null: null unless WordNet attests the row; measured on the spaced layer only; null means not measured, never false)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "wn_instance"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/wn_capitalized",
+     "name": "wn_capitalized",
+     "description": "WordNet data-file capitalization, a properness signal (null: null unless WordNet attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "wn_capitalized"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/wk_proper_noun",
+     "name": "wk_proper_noun",
+     "description": "a Wiktionary Proper-noun heading, a properness signal (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "wk_proper_noun"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/wk_flags",
+     "name": "wk_flags",
+     "description": "Wiktionary's category flags joined by ';' (idiomatic, phrasal-verb, phrasebook, proverb); may be the empty string (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "wk_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/class_explicit",
+     "name": "class_explicit",
+     "description": "the pin's classes with the value 'plain' in place of the empty string; otherwise the flags unchanged (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "class_explicit"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/panel_sets",
+     "name": "panel_sets",
+     "description": "the published panel sets that list the row, joined by ';' in the order wordnet, wiktionary_english, hunspell_en_US, hunspell_en_GB, hunspell_en_CA, hunspell_en_AU, enable1, scowl; on a single-token row a binary set lists the row where its evidence column is 1 and SCOWL where scowl_tier is above 0; on a spaced row the sets are the pin's published sources; the empty string where none lists the row. A withheld list is never named (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "panel_sets"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/variety_gb_not_us",
+     "name": "variety_gb_not_us",
+     "description": "true where hunspell_en_GB is 1 and hunspell_en_US is 0: a proxy for a variety difference between the 2 dictionaries, never a variety label (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "variety_gb_not_us"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/variety_us_not_gb",
+     "name": "variety_us_not_gb",
+     "description": "true where hunspell_en_US is 1 and hunspell_en_GB is 0: the reverse proxy (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "variety_us_not_gb"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/intake_layer",
+     "name": "intake_layer",
+     "description": "the layer the row entered by: eol_valid, eol_invalid, c1_exceptions, c4_additions, spaced_c015 (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "intake_layer"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/intake_kind",
+     "name": "intake_kind",
+     "description": "obtained (an inherited string taken in through a channel), derived (a row of a CEOL layer derived from pinned sources), or generated (made by the EOL's lost synthetic engine) (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "intake_kind"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/intake_channels",
+     "name": "intake_channels",
+     "description": "the first-seen channel labels joined by ';': the EOL's discovery log with its tiers removed, and the CEOL layers' own namespaces census:, audit:, spaced:, ledger:; a record of where a string was first seen, never an attestation. A label naming a withheld list is removed, and so is a channel withheld for license reasons; a row whose every label was withheld carries the single label eol:channel-withheld. On a row of the EOL's valid list, only the labels of the intakes the EOL's own records name stay (eol:authoritative-extracts, eol:dictionary-api:free-dictionary, eol:extended-domain-sources, eol:invalid-list-recovery, eol:synthetic-engine), and a row left with none carries eol:list: the row says nothing else about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "intake_channels"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/eol_phase1_tier",
+     "name": "eol_phase1_tier",
+     "description": "the tier suffix the EOL's labels on the row share: valid, unlikely, or none (mixed where the labels disagree); none on every row of the EOL's valid list, whose rows say nothing about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "eol_phase1_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/eol_record",
+     "name": "eol_record",
+     "description": "which EOL dictionary holds the row's entry: valid-dict, invalid-dict, none (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "eol_record"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/eol_synthetic_category",
+     "name": "eol_synthetic_category",
+     "description": "the category recorded on a generated string (a domain label, or the EOL validation step's judgment) (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_category"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/eol_synthetic_engine_inferred",
+     "name": "eol_synthetic_engine_inferred",
+     "description": "the engine and rule inferred from a generated string's form (affixation, chemical-variation, greek-plural, medical-scientific-prefixing, unresolved); an inference, so named (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_engine_inferred"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/panel_count",
+     "name": "panel_count",
+     "description": "the number of the 8 published panel sets that list the row (the number of names in panel_sets, asserted equal on every row); a withheld list's listing is not counted (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "panel_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/gb_type",
+     "name": "gb_type",
+     "description": "the string is a Google Books English 1-gram type in the CEOL re-stream (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "gb_type"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/wordfreq_scored",
+     "name": "wordfreq_scored",
+     "description": "wordfreq 3.1.1 scores the string (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "wordfreq_scored"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/wikt_title_any",
+     "name": "wikt_title_any",
+     "description": "some language's Wiktionary has a page titled with the string: a screen, not containment (null: null on spaced rows)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_any"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/provenance_class",
+     "name": "provenance_class",
+     "description": "exactly 1 of channel_and_containment, channel_only, containment_only, neither, over the published fields: whether the row has a published intake channel (a label other than eol:phase1-unrecorded and eol:channel-withheld; eol:list counts) and whether a published panel set or a corpus contains it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "provenance_class"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/wordnet",
+     "name": "wordnet",
+     "description": "listed by WordNet 3.0's lemmas, re-derived under the CEOL grammar: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "wordnet"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/wiktionary_english",
+     "name": "wiktionary_english",
+     "description": "listed by Wiktionary pages with an English section (the August 4, 2026 dump): 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "wiktionary_english"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/hunspell_en_US",
+     "name": "hunspell_en_US",
+     "description": "listed by the LibreOffice hunspell en_US dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_US"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/hunspell_en_GB",
+     "name": "hunspell_en_GB",
+     "description": "listed by the LibreOffice hunspell en_GB dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_GB"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/hunspell_en_CA",
+     "name": "hunspell_en_CA",
+     "description": "listed by the LibreOffice hunspell en_CA dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_CA"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/hunspell_en_AU",
+     "name": "hunspell_en_AU",
+     "description": "listed by the LibreOffice hunspell en_AU dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_AU"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/enable1",
+     "name": "enable1",
+     "description": "listed by the ENABLE word list: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "enable1"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/scowl_tier",
+     "name": "scowl_tier",
+     "description": "the SCOWL size tier (10 to 95) of the smallest SCOWL list holding the string; 0 not listed; -1 not applicable to the row's class (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "scowl_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/wikt_title_screen",
+     "name": "wikt_title_screen",
+     "description": "1 where some language's Wiktionary has a page titled with the string, else 0: a screen, never a detector (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_screen"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "spaced/model_or_engine",
+     "name": "model_or_engine",
+     "description": "engine_generated on a row the EOL's synthetic engine made (intake_kind generated); none on every other row. Whether a language model took part in the EOL's decision on a word is a fact of how the EOL took it in, and no row carries it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "spaced.parquet"
+      },
+      "extract": {
+       "column": "model_or_engine"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "exceptions",
+   "name": "exceptions",
+   "description": "classes carries any of hyphenated, accented, contraction, apostrophe-form, ligature, diaeresis; 209883 rows",
+   "key": {
+    "@id": "exceptions/id"
+   },
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/id",
+     "name": "id",
+     "description": "the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/word",
+     "name": "word",
+     "description": "the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "word"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/eol",
+     "name": "eol",
+     "description": "in the EOL's valid list at the pinned revision 08ae92b8: a historical fact at a pin, carried as a covariate, never a CEOL verdict (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "eol"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/eol_universe",
+     "name": "eol_universe",
+     "description": "in the EOL's pinned candidate universe (its valid or its invalid list); false for the CEOL's own 3 layers (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "eol_universe"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/classes",
+     "name": "classes",
+     "description": "the grammar's non-exclusive class flags joined by ';' (hyphenated, accented, diaeresis, ligature, apostrophe-form, contraction, s-final, spaced); the empty string on a plain-letter string (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "classes"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/sources",
+     "name": "sources",
+     "description": "provenance at intake: for the CEOL's own layers the published sources whose derived sets contain the string, joined by ';', a withheld list's label removed (the empty string where each such source is withheld); for the strings inherited from the EOL the dataset-level tag eol_universe@08ae92b8 (their per-source listedness is the evidence columns') (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "sources"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/intake_date",
+     "name": "intake_date",
+     "description": "the date the row entered a CEOL artifact (an ISO date): August 17, 2026 the strings inherited from the EOL universe, August 20, 2026 the census's exception candidates and the audit's additions, August 26, 2026 the spaced admission's multiword candidates (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "intake_date"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/c4_addition",
+     "name": "c4_addition",
+     "description": "a row of the audit's additions to the single-token pin (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "c4_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/is_restricted",
+     "name": "is_restricted",
+     "description": "attested only by NWL2023 or CSW21; false on every row of this dataset, because those rows never ship (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "is_restricted"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/token_count",
+     "name": "token_count",
+     "description": "the number of space-separated tokens (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "token_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/c015_addition",
+     "name": "c015_addition",
+     "description": "a row of the multiword candidates of the spaced admission (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "c015_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/wn_instance",
+     "name": "wn_instance",
+     "description": "WordNet instance-synset membership, a properness signal recorded and never filtered on (null: null unless WordNet attests the row; measured on the spaced layer only; null means not measured, never false)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "wn_instance"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/wn_capitalized",
+     "name": "wn_capitalized",
+     "description": "WordNet data-file capitalization, a properness signal (null: null unless WordNet attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "wn_capitalized"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/wk_proper_noun",
+     "name": "wk_proper_noun",
+     "description": "a Wiktionary Proper-noun heading, a properness signal (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "wk_proper_noun"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/wk_flags",
+     "name": "wk_flags",
+     "description": "Wiktionary's category flags joined by ';' (idiomatic, phrasal-verb, phrasebook, proverb); may be the empty string (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "wk_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/class_explicit",
+     "name": "class_explicit",
+     "description": "the pin's classes with the value 'plain' in place of the empty string; otherwise the flags unchanged (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "class_explicit"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/panel_sets",
+     "name": "panel_sets",
+     "description": "the published panel sets that list the row, joined by ';' in the order wordnet, wiktionary_english, hunspell_en_US, hunspell_en_GB, hunspell_en_CA, hunspell_en_AU, enable1, scowl; on a single-token row a binary set lists the row where its evidence column is 1 and SCOWL where scowl_tier is above 0; on a spaced row the sets are the pin's published sources; the empty string where none lists the row. A withheld list is never named (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "panel_sets"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/variety_gb_not_us",
+     "name": "variety_gb_not_us",
+     "description": "true where hunspell_en_GB is 1 and hunspell_en_US is 0: a proxy for a variety difference between the 2 dictionaries, never a variety label (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "variety_gb_not_us"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/variety_us_not_gb",
+     "name": "variety_us_not_gb",
+     "description": "true where hunspell_en_US is 1 and hunspell_en_GB is 0: the reverse proxy (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "variety_us_not_gb"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/intake_layer",
+     "name": "intake_layer",
+     "description": "the layer the row entered by: eol_valid, eol_invalid, c1_exceptions, c4_additions, spaced_c015 (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "intake_layer"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/intake_kind",
+     "name": "intake_kind",
+     "description": "obtained (an inherited string taken in through a channel), derived (a row of a CEOL layer derived from pinned sources), or generated (made by the EOL's lost synthetic engine) (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "intake_kind"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/intake_channels",
+     "name": "intake_channels",
+     "description": "the first-seen channel labels joined by ';': the EOL's discovery log with its tiers removed, and the CEOL layers' own namespaces census:, audit:, spaced:, ledger:; a record of where a string was first seen, never an attestation. A label naming a withheld list is removed, and so is a channel withheld for license reasons; a row whose every label was withheld carries the single label eol:channel-withheld. On a row of the EOL's valid list, only the labels of the intakes the EOL's own records name stay (eol:authoritative-extracts, eol:dictionary-api:free-dictionary, eol:extended-domain-sources, eol:invalid-list-recovery, eol:synthetic-engine), and a row left with none carries eol:list: the row says nothing else about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "intake_channels"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/eol_phase1_tier",
+     "name": "eol_phase1_tier",
+     "description": "the tier suffix the EOL's labels on the row share: valid, unlikely, or none (mixed where the labels disagree); none on every row of the EOL's valid list, whose rows say nothing about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "eol_phase1_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/eol_record",
+     "name": "eol_record",
+     "description": "which EOL dictionary holds the row's entry: valid-dict, invalid-dict, none (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "eol_record"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/eol_synthetic_category",
+     "name": "eol_synthetic_category",
+     "description": "the category recorded on a generated string (a domain label, or the EOL validation step's judgment) (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_category"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/eol_synthetic_engine_inferred",
+     "name": "eol_synthetic_engine_inferred",
+     "description": "the engine and rule inferred from a generated string's form (affixation, chemical-variation, greek-plural, medical-scientific-prefixing, unresolved); an inference, so named (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_engine_inferred"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/panel_count",
+     "name": "panel_count",
+     "description": "the number of the 8 published panel sets that list the row (the number of names in panel_sets, asserted equal on every row); a withheld list's listing is not counted (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "panel_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/gb_type",
+     "name": "gb_type",
+     "description": "the string is a Google Books English 1-gram type in the CEOL re-stream (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "gb_type"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/wordfreq_scored",
+     "name": "wordfreq_scored",
+     "description": "wordfreq 3.1.1 scores the string (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "wordfreq_scored"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/wikt_title_any",
+     "name": "wikt_title_any",
+     "description": "some language's Wiktionary has a page titled with the string: a screen, not containment (null: null on spaced rows)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_any"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/provenance_class",
+     "name": "provenance_class",
+     "description": "exactly 1 of channel_and_containment, channel_only, containment_only, neither, over the published fields: whether the row has a published intake channel (a label other than eol:phase1-unrecorded and eol:channel-withheld; eol:list counts) and whether a published panel set or a corpus contains it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "provenance_class"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/wordnet",
+     "name": "wordnet",
+     "description": "listed by WordNet 3.0's lemmas, re-derived under the CEOL grammar: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "wordnet"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/wiktionary_english",
+     "name": "wiktionary_english",
+     "description": "listed by Wiktionary pages with an English section (the August 4, 2026 dump): 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "wiktionary_english"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/hunspell_en_US",
+     "name": "hunspell_en_US",
+     "description": "listed by the LibreOffice hunspell en_US dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_US"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/hunspell_en_GB",
+     "name": "hunspell_en_GB",
+     "description": "listed by the LibreOffice hunspell en_GB dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_GB"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/hunspell_en_CA",
+     "name": "hunspell_en_CA",
+     "description": "listed by the LibreOffice hunspell en_CA dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_CA"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/hunspell_en_AU",
+     "name": "hunspell_en_AU",
+     "description": "listed by the LibreOffice hunspell en_AU dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_AU"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/enable1",
+     "name": "enable1",
+     "description": "listed by the ENABLE word list: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "enable1"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/scowl_tier",
+     "name": "scowl_tier",
+     "description": "the SCOWL size tier (10 to 95) of the smallest SCOWL list holding the string; 0 not listed; -1 not applicable to the row's class (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "scowl_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/wikt_title_screen",
+     "name": "wikt_title_screen",
+     "description": "1 where some language's Wiktionary has a page titled with the string, else 0: a screen, never a detector (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_screen"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "exceptions/model_or_engine",
+     "name": "model_or_engine",
+     "description": "engine_generated on a row the EOL's synthetic engine made (intake_kind generated); none on every other row. Whether a language model took part in the EOL's decision on a word is a fact of how the EOL took it in, and no row carries it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "exceptions.parquet"
+      },
+      "extract": {
+       "column": "model_or_engine"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "@type": "cr:RecordSet",
+   "@id": "sample",
+   "name": "sample",
+   "description": "id starts with '00' (about 1 row in 256); 39938 rows",
+   "key": {
+    "@id": "sample/id"
+   },
+   "field": [
+    {
+     "@type": "cr:Field",
+     "@id": "sample/id",
+     "name": "id",
+     "description": "the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "id"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/word",
+     "name": "word",
+     "description": "the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "word"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/eol",
+     "name": "eol",
+     "description": "in the EOL's valid list at the pinned revision 08ae92b8: a historical fact at a pin, carried as a covariate, never a CEOL verdict (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "eol"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/eol_universe",
+     "name": "eol_universe",
+     "description": "in the EOL's pinned candidate universe (its valid or its invalid list); false for the CEOL's own 3 layers (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "eol_universe"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/classes",
+     "name": "classes",
+     "description": "the grammar's non-exclusive class flags joined by ';' (hyphenated, accented, diaeresis, ligature, apostrophe-form, contraction, s-final, spaced); the empty string on a plain-letter string (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "classes"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/sources",
+     "name": "sources",
+     "description": "provenance at intake: for the CEOL's own layers the published sources whose derived sets contain the string, joined by ';', a withheld list's label removed (the empty string where each such source is withheld); for the strings inherited from the EOL the dataset-level tag eol_universe@08ae92b8 (their per-source listedness is the evidence columns') (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "sources"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/intake_date",
+     "name": "intake_date",
+     "description": "the date the row entered a CEOL artifact (an ISO date): August 17, 2026 the strings inherited from the EOL universe, August 20, 2026 the census's exception candidates and the audit's additions, August 26, 2026 the spaced admission's multiword candidates (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "intake_date"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/c4_addition",
+     "name": "c4_addition",
+     "description": "a row of the audit's additions to the single-token pin (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "c4_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/is_restricted",
+     "name": "is_restricted",
+     "description": "attested only by NWL2023 or CSW21; false on every row of this dataset, because those rows never ship (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "is_restricted"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/token_count",
+     "name": "token_count",
+     "description": "the number of space-separated tokens (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "token_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/c015_addition",
+     "name": "c015_addition",
+     "description": "a row of the multiword candidates of the spaced admission (null: never null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "c015_addition"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/wn_instance",
+     "name": "wn_instance",
+     "description": "WordNet instance-synset membership, a properness signal recorded and never filtered on (null: null unless WordNet attests the row; measured on the spaced layer only; null means not measured, never false)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "wn_instance"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/wn_capitalized",
+     "name": "wn_capitalized",
+     "description": "WordNet data-file capitalization, a properness signal (null: null unless WordNet attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "wn_capitalized"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/wk_proper_noun",
+     "name": "wk_proper_noun",
+     "description": "a Wiktionary Proper-noun heading, a properness signal (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "wk_proper_noun"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/wk_flags",
+     "name": "wk_flags",
+     "description": "Wiktionary's category flags joined by ';' (idiomatic, phrasal-verb, phrasebook, proverb); may be the empty string (null: null unless Wiktionary attests the row; measured on the spaced layer only)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "wk_flags"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/class_explicit",
+     "name": "class_explicit",
+     "description": "the pin's classes with the value 'plain' in place of the empty string; otherwise the flags unchanged (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "class_explicit"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/panel_sets",
+     "name": "panel_sets",
+     "description": "the published panel sets that list the row, joined by ';' in the order wordnet, wiktionary_english, hunspell_en_US, hunspell_en_GB, hunspell_en_CA, hunspell_en_AU, enable1, scowl; on a single-token row a binary set lists the row where its evidence column is 1 and SCOWL where scowl_tier is above 0; on a spaced row the sets are the pin's published sources; the empty string where none lists the row. A withheld list is never named (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "panel_sets"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/variety_gb_not_us",
+     "name": "variety_gb_not_us",
+     "description": "true where hunspell_en_GB is 1 and hunspell_en_US is 0: a proxy for a variety difference between the 2 dictionaries, never a variety label (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "variety_gb_not_us"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/variety_us_not_gb",
+     "name": "variety_us_not_gb",
+     "description": "true where hunspell_en_US is 1 and hunspell_en_GB is 0: the reverse proxy (null: null where either hunspell column is -1 or null)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "variety_us_not_gb"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/intake_layer",
+     "name": "intake_layer",
+     "description": "the layer the row entered by: eol_valid, eol_invalid, c1_exceptions, c4_additions, spaced_c015 (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "intake_layer"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/intake_kind",
+     "name": "intake_kind",
+     "description": "obtained (an inherited string taken in through a channel), derived (a row of a CEOL layer derived from pinned sources), or generated (made by the EOL's lost synthetic engine) (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "intake_kind"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/intake_channels",
+     "name": "intake_channels",
+     "description": "the first-seen channel labels joined by ';': the EOL's discovery log with its tiers removed, and the CEOL layers' own namespaces census:, audit:, spaced:, ledger:; a record of where a string was first seen, never an attestation. A label naming a withheld list is removed, and so is a channel withheld for license reasons; a row whose every label was withheld carries the single label eol:channel-withheld. On a row of the EOL's valid list, only the labels of the intakes the EOL's own records name stay (eol:authoritative-extracts, eol:dictionary-api:free-dictionary, eol:extended-domain-sources, eol:invalid-list-recovery, eol:synthetic-engine), and a row left with none carries eol:list: the row says nothing else about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "intake_channels"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/eol_phase1_tier",
+     "name": "eol_phase1_tier",
+     "description": "the tier suffix the EOL's labels on the row share: valid, unlikely, or none (mixed where the labels disagree); none on every row of the EOL's valid list, whose rows say nothing about how the EOL took the word in (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "eol_phase1_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/eol_record",
+     "name": "eol_record",
+     "description": "which EOL dictionary holds the row's entry: valid-dict, invalid-dict, none (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "eol_record"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/eol_synthetic_category",
+     "name": "eol_synthetic_category",
+     "description": "the category recorded on a generated string (a domain label, or the EOL validation step's judgment) (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_category"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/eol_synthetic_engine_inferred",
+     "name": "eol_synthetic_engine_inferred",
+     "description": "the engine and rule inferred from a generated string's form (affixation, chemical-variation, greek-plural, medical-scientific-prefixing, unresolved); an inference, so named (null: null on every row that is not generated)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "eol_synthetic_engine_inferred"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/panel_count",
+     "name": "panel_count",
+     "description": "the number of the 8 published panel sets that list the row (the number of names in panel_sets, asserted equal on every row); a withheld list's listing is not counted (null: never null)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "panel_count"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/gb_type",
+     "name": "gb_type",
+     "description": "the string is a Google Books English 1-gram type in the CEOL re-stream (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "gb_type"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/wordfreq_scored",
+     "name": "wordfreq_scored",
+     "description": "wordfreq 3.1.1 scores the string (null: null on spaced rows, which the corpora do not measure)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "wordfreq_scored"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/wikt_title_any",
+     "name": "wikt_title_any",
+     "description": "some language's Wiktionary has a page titled with the string: a screen, not containment (null: null on spaced rows)",
+     "dataType": "sc:Boolean",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_any"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/provenance_class",
+     "name": "provenance_class",
+     "description": "exactly 1 of channel_and_containment, channel_only, containment_only, neither, over the published fields: whether the row has a published intake channel (a label other than eol:phase1-unrecorded and eol:channel-withheld; eol:list counts) and whether a published panel set or a corpus contains it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "provenance_class"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/wordnet",
+     "name": "wordnet",
+     "description": "listed by WordNet 3.0's lemmas, re-derived under the CEOL grammar: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "wordnet"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/wiktionary_english",
+     "name": "wiktionary_english",
+     "description": "listed by Wiktionary pages with an English section (the August 4, 2026 dump): 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "wiktionary_english"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/hunspell_en_US",
+     "name": "hunspell_en_US",
+     "description": "listed by the LibreOffice hunspell en_US dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_US"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/hunspell_en_GB",
+     "name": "hunspell_en_GB",
+     "description": "listed by the LibreOffice hunspell en_GB dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_GB"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/hunspell_en_CA",
+     "name": "hunspell_en_CA",
+     "description": "listed by the LibreOffice hunspell en_CA dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_CA"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/hunspell_en_AU",
+     "name": "hunspell_en_AU",
+     "description": "listed by the LibreOffice hunspell en_AU dictionary, expanded: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "hunspell_en_AU"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/enable1",
+     "name": "enable1",
+     "description": "listed by the ENABLE word list: 1 listed, 0 not listed, -1 structurally blind to the row's class (null: null on spaced rows, which the single-token sets were not measured over)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "enable1"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/scowl_tier",
+     "name": "scowl_tier",
+     "description": "the SCOWL size tier (10 to 95) of the smallest SCOWL list holding the string; 0 not listed; -1 not applicable to the row's class (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "scowl_tier"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/wikt_title_screen",
+     "name": "wikt_title_screen",
+     "description": "1 where some language's Wiktionary has a page titled with the string, else 0: a screen, never a detector (null: null on spaced rows)",
+     "dataType": "sc:Integer",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "wikt_title_screen"
+      }
+     }
+    },
+    {
+     "@type": "cr:Field",
+     "@id": "sample/model_or_engine",
+     "name": "model_or_engine",
+     "description": "engine_generated on a row the EOL's synthetic engine made (intake_kind generated); none on every other row. Whether a language model took part in the EOL's decision on a word is a fact of how the EOL took it in, and no row carries it (null: never null)",
+     "dataType": "sc:Text",
+     "source": {
+      "fileObject": {
+       "@id": "sample.parquet"
+      },
+      "extract": {
+       "column": "model_or_engine"
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

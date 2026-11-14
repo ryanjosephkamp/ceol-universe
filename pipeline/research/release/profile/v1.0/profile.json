@@ -1,0 +1,1677 @@
+{
+ "configs": {
+  "eol-valid": 344830,
+  "exceptions": 209883,
+  "features": 9969384,
+  "panel-listed": 1384833,
+  "sample": 39938,
+  "spaced": 294865,
+  "universe": 10264249
+ },
+ "features": {
+  "columns": {
+   "gb_log10_match": {
+    "hist": {
+     "counts": [
+      63400,
+      798595,
+      1938250,
+      1604596,
+      1208593,
+      884548,
+      642300,
+      463317,
+      331658,
+      236710,
+      166606,
+      118218,
+      83536,
+      58509,
+      42641,
+      30581,
+      22510,
+      16781,
+      12715,
+      9858,
+      7369,
+      5683,
+      4216,
+      3174,
+      2378,
+      1693,
+      1226,
+      806,
+      523,
+      314,
+      134,
+      69,
+      33,
+      23,
+      11,
+      14,
+      3,
+      2,
+      2,
+      2
+     ],
+     "edges": [
+      1.60205996,
+      1.83803268,
+      2.07400541,
+      2.30997813,
+      2.54595085,
+      2.78192358,
+      3.0178963,
+      3.25386902,
+      3.48984175,
+      3.72581447,
+      3.96178719,
+      4.19775992,
+      4.43373264,
+      4.66970536,
+      4.90567809,
+      5.14165081,
+      5.37762353,
+      5.61359626,
+      5.84956898,
+      6.0855417,
+      6.32151443,
+      6.55748715,
+      6.79345987,
+      7.0294326,
+      7.26540532,
+      7.50137804,
+      7.73735077,
+      7.97332349,
+      8.20929621,
+      8.44526894,
+      8.68124166,
+      8.91721438,
+      9.15318711,
+      9.38915983,
+      9.62513255,
+      9.86110528,
+      10.097078,
+      10.3330507,
+      10.5690234,
+      10.8049962,
+      11.0409689
+     ]
+    },
+    "nulls": 0,
+    "quantiles": {
+     "mean": 2.74782921,
+     "n": 8761597,
+     "nan": 1207787,
+     "q": {
+      "max": 11.0409689,
+      "min": 1.60205996,
+      "p1": 1.89209461,
+      "p25": 2.23299623,
+      "p5": 2.02938366,
+      "p50": 2.54157925,
+      "p75": 3.0413928,
+      "p95": 4.17298222,
+      "p99": 5.39582529
+     }
+    },
+    "type": "float"
+   },
+   "gb_log10_volume": {
+    "nulls": 0,
+    "quantiles": {
+     "mean": 2.52203339,
+     "n": 8761597,
+     "nan": 1207787,
+     "q": {
+      "max": 7.66470718,
+      "min": 1.60205996,
+      "p1": 1.63346851,
+      "p25": 2.06069779,
+      "p5": 1.77085197,
+      "p50": 2.34635305,
+      "p75": 2.80071712,
+      "p95": 3.82704592,
+      "p99": 4.95394325
+     }
+    },
+    "type": "float"
+   },
+   "gb_span_fill": {
+    "nulls": 0,
+    "quantiles": {
+     "mean": 0.581498351,
+     "n": 8761597,
+     "nan": 1207787,
+     "q": {
+      "max": 1.0,
+      "min": 0.00940438826,
+      "p1": 0.116731517,
+      "p25": 0.354066998,
+      "p5": 0.188481674,
+      "p50": 0.538461566,
+      "p75": 0.822006464,
+      "p95": 1.0,
+      "p99": 1.0
+     }
+    },
+    "type": "float"
+   },
+   "gb_tokens_per_volume": {
+    "nulls": 0,
+    "quantiles": {
+     "mean": 1.98383754,
+     "n": 8761597,
+     "nan": 1207787,
+     "q": {
+      "max": 2378.27661,
+      "min": 1.0,
+      "p1": 1.0,
+      "p25": 1.15670907,
+      "p5": 1.02319586,
+      "p50": 1.48780489,
+      "p75": 2.14351845,
+      "p95": 4.15338945,
+      "p99": 8.41873547
+     }
+    },
+    "type": "float"
+   },
+   "gb_volumes_per_year": {
+    "nulls": 0,
+    "quantiles": {
+     "mean": 31.3747229,
+     "n": 8761597,
+     "nan": 1207787,
+     "q": {
+      "max": 84012.5703,
+      "min": 1.0,
+      "p1": 1.36094677,
+      "p25": 2.11363626,
+      "p5": 1.54736841,
+      "p50": 2.9333334,
+      "p75": 5.340909,
+      "p95": 30.0245441,
+      "p99": 245.240928
+     }
+    },
+    "type": "float"
+   },
+   "gb_year_span": {
+    "nulls": 0,
+    "quantiles": {
+     "mean": 170.269872,
+     "n": 9969384,
+     "nan": 0,
+     "q": {
+      "max": 550.0,
+      "min": 0.0,
+      "p1": 0.0,
+      "p25": 86.0,
+      "p5": 0.0,
+      "p50": 167.0,
+      "p75": 226.0,
+      "p95": 394.0,
+      "p99": 500.0
+     }
+    },
+    "type": "int16"
+   },
+   "wordfreq_zipf": {
+    "hist": {
+     "counts": [
+      57225,
+      46095,
+      37004,
+      29731,
+      22700,
+      19738,
+      16206,
+      13375,
+      10741,
+      8786,
+      7568,
+      6550,
+      5439,
+      4481,
+      3690,
+      2899,
+      2574,
+      1985,
+      1657,
+      1293,
+      975,
+      787,
+      609,
+      454,
+      332,
+      209,
+      157,
+      72,
+      46,
+      41,
+      25,
+      23,
+      17,
+      8,
+      6,
+      5,
+      2,
+      2,
+      3,
+      1
+     ],
+     "edges": [
+      1.00999999,
+      1.17799999,
+      1.34599999,
+      1.51399999,
+      1.68199999,
+      1.84999999,
+      2.01799999,
+      2.186,
+      2.354,
+      2.522,
+      2.69,
+      2.858,
+      3.026,
+      3.194,
+      3.362,
+      3.53,
+      3.698,
+      3.866,
+      4.034,
+      4.202,
+      4.37,
+      4.53800001,
+      4.70600001,
+      4.87400001,
+      5.04200001,
+      5.21000001,
+      5.37800001,
+      5.54600001,
+      5.71400001,
+      5.88200001,
+      6.05000001,
+      6.21800001,
+      6.38600001,
+      6.55400001,
+      6.72200001,
+      6.89000002,
+      7.05800002,
+      7.22600002,
+      7.39400002,
+      7.56200002,
+      7.73000002
+     ]
+    },
+    "nulls": 0,
+    "quantiles": {
+     "mean": 1.82852048,
+     "n": 303511,
+     "nan": 9665873,
+     "q": {
+      "max": 7.73000002,
+      "min": 1.00999999,
+      "p1": 1.00999999,
+      "p25": 1.24000001,
+      "p5": 1.04999995,
+      "p50": 1.58000004,
+      "p75": 2.17000008,
+      "p95": 3.49000001,
+      "p99": 4.48999977
+     }
+    },
+    "type": "float"
+   },
+   "zipf_log10_rank": {
+    "hist": {
+     "counts": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      4,
+      7,
+      9,
+      14,
+      21,
+      33,
+      48,
+      74,
+      112,
+      168,
+      256,
+      386,
+      585,
+      884,
+      1338,
+      2023,
+      3061,
+      4632,
+      7004,
+      10583,
+      15980,
+      24093,
+      36166,
+      54239,
+      80871,
+      120418,
+      179525,
+      267487,
+      397205,
+      591103,
+      880210,
+      1311947,
+      1954467,
+      2678755,
+      137882
+     ],
+     "edges": [
+      0.0,
+      0.179808307,
+      0.359616613,
+      0.53942492,
+      0.719233227,
+      0.899041533,
+      1.07884984,
+      1.25865815,
+      1.43846645,
+      1.61827476,
+      1.79808307,
+      1.97789137,
+      2.15769968,
+      2.33750799,
+      2.51731629,
+      2.6971246,
+      2.87693291,
+      3.05674121,
+      3.23654952,
+      3.41635783,
+      3.59616613,
+      3.77597444,
+      3.95578275,
+      4.13559105,
+      4.31539936,
+      4.49520767,
+      4.67501597,
+      4.85482428,
+      5.03463259,
+      5.21444089,
+      5.3942492,
+      5.57405751,
+      5.75386581,
+      5.93367412,
+      6.11348243,
+      6.29329073,
+      6.47309904,
+      6.65290735,
+      6.83271565,
+      7.01252396,
+      7.19233227
+     ]
+    },
+    "nulls": 0,
+    "quantiles": {
+     "mean": 6.56011113,
+     "n": 8761597,
+     "nan": 1207787,
+     "q": {
+      "max": 7.19233227,
+      "min": 0.0,
+      "p1": 4.94489697,
+      "p25": 6.38230658,
+      "p5": 5.65809441,
+      "p50": 6.69554186,
+      "p75": 6.87958908,
+      "p95": 6.99343014,
+      "p99": 7.06504631
+     }
+    },
+    "type": "float"
+   },
+   "zipf_resid": {
+    "nulls": 0,
+    "quantiles": {
+     "mean": -0.0676862143,
+     "n": 8761597,
+     "nan": 1207787,
+     "q": {
+      "max": 1.13051176,
+      "min": -0.368526876,
+      "p1": -0.137159601,
+      "p25": -0.0850718096,
+      "p5": -0.111398727,
+      "p50": -0.0631054118,
+      "p75": -0.0513808392,
+      "p95": -0.0472875908,
+      "p99": 0.0628020367
+     }
+    },
+    "type": "float"
+   }
+  },
+  "rows": 9969384
+ },
+ "files": {
+  "eol-valid": {
+   "bytes": 5836920,
+   "columns": 41,
+   "rows": 344830,
+   "sha256": "a6b16b47f91f795ffef6e31f1c7f027e32a43f4bcfdf3831116a67caf0681bbe"
+  },
+  "exceptions": {
+   "bytes": 4231216,
+   "columns": 41,
+   "rows": 209883,
+   "sha256": "ba2f774c65d0c3a07e486b2a24dee828f7790b89f260aef6c0a9d978f8964c02"
+  },
+  "features": {
+   "bytes": 292600377,
+   "columns": 11,
+   "rows": 9969384,
+   "sha256": "8f8b509f220cab834db3c8f0ca4c2620af4539f57c659fd7791ec7227cd43fd7"
+  },
+  "panel-listed": {
+   "bytes": 27504796,
+   "columns": 41,
+   "rows": 1384833,
+   "sha256": "51cf60f7116476971f170cc68cd5efb5b4da9f07d0530248ea7b55b4daa969b2"
+  },
+  "sample": {
+   "bytes": 857871,
+   "columns": 41,
+   "rows": 39938,
+   "sha256": "50dd0e3f3181e1237be0ee774956520bd3c6fa8ae644b9924700555ddd37992f"
+  },
+  "spaced": {
+   "bytes": 4994878,
+   "columns": 41,
+   "rows": 294865,
+   "sha256": "648a4fada6e099dcb599fa097a88c16aa5389631999205f14bd27aba815f46f6"
+  },
+  "universe": {
+   "bytes": 163299425,
+   "columns": 41,
+   "rows": 10264249,
+   "sha256": "bf11e6bd3a5c81dde4d5408141578820e50737ccfa59ef867e9afc07ced2a8ca"
+  }
+ },
+ "generated_by": "research/release/profile/universe_profile.py",
+ "plots": {
+  "classes.png": {
+   "height": 844,
+   "pixels_sha256": "7ec237d0fd59e690161159ccc91aaa496b48bd258c9d69bf32b6b2585c399d57",
+   "title": "Rows by class_explicit, the 20 largest values",
+   "width": 960
+  },
+  "feature_gb_log10_match.png": {
+   "height": 484,
+   "pixels_sha256": "00d03d2576b67eab9471476c274452fe0118b5d0dbcb88b89f4516801b9f8952",
+   "title": "Google Books log10 match count, the 1-gram types",
+   "width": 960
+  },
+  "feature_wordfreq_zipf.png": {
+   "height": 454,
+   "pixels_sha256": "fc9589692dd4bfe82ad0662a3379f5b05d5b20e31a676ff4b3e473b6bb59596a",
+   "title": "wordfreq Zipf frequency, rows with a score",
+   "width": 960
+  },
+  "first_char.png": {
+   "height": 454,
+   "pixels_sha256": "1523f2b34090debf548286ecb40229169bc4084ab87bcf82a928182f35a703ca",
+   "title": "Rows by first character",
+   "width": 936
+  },
+  "intake_date.png": {
+   "height": 556,
+   "pixels_sha256": "9a291d890d29c612de3c6583776733402b9f910d30aca88e1ea963a17d8bf32f",
+   "title": "Rows by intake date",
+   "width": 480
+  },
+  "length_by_eol.png": {
+   "height": 478,
+   "pixels_sha256": "03c4f281d93aaa9c36e9c2c92d096ddfdbfce0dbffa0fa7bc9d71397d7516eb6",
+   "title": "Rows by length in characters, up to 40",
+   "width": 960
+  },
+  "panel_sets.png": {
+   "height": 454,
+   "pixels_sha256": "dc98017dc5972fd8de134350ea71369eab8772f872c25b1d098adf523d6c9f8e",
+   "title": "Rows by the number of panel sets listing them",
+   "width": 572
+  },
+  "per_detector.png": {
+   "height": 652,
+   "pixels_sha256": "cbad432c59a4ff550f87dab151bde1b4c92718107891111a867c00e71f855ae4",
+   "title": "Single-token rows listed, by panel set",
+   "width": 504
+  },
+  "prov_class.png": {
+   "height": 712,
+   "pixels_sha256": "4e46824b83abf1767d68a9880aa9db4d974208dc412c6ad4c2d5bc919d1fbe30",
+   "title": "Rows by provenance class",
+   "width": 480
+  },
+  "prov_kind.png": {
+   "height": 544,
+   "pixels_sha256": "e6d780dac7b9f24aa7f6d8fa5c375d764a7bbd506881439e10dca8f47b90b867",
+   "title": "Rows by intake kind",
+   "width": 480
+  },
+  "prov_layer.png": {
+   "height": 592,
+   "pixels_sha256": "f387673c48d1baa040ba78c98ee9ef3feb872aa3b2a6ef3b36235ed0bb5514e1",
+   "title": "Rows by intake layer",
+   "width": 480
+  },
+  "sources_per_label.png": {
+   "height": 688,
+   "pixels_sha256": "b18257b61759019a84e410558fd5f314d04e29dc605ff48b4af4a7cc7a777b40",
+   "title": "Rows by label of the pin's sources column",
+   "width": 696
+  },
+  "sources_per_row.png": {
+   "height": 454,
+   "pixels_sha256": "ae851e46e822423313acb133446b8ddba143d39f82fad156c3f2a7ef10f3e474",
+   "title": "Rows by the number of source labels",
+   "width": 552
+  },
+  "token_count.png": {
+   "height": 454,
+   "pixels_sha256": "0ed229d1bd6862805af3d6fbc4edc2b94123d0604244119e96695cf3e9e1fbcf",
+   "title": "Rows by tokens per row",
+   "width": 936
+  }
+ },
+ "universe": {
+  "c015_addition": {
+   "false": 9969384,
+   "true": 294865
+  },
+  "c4_addition": {
+   "false": 10135774,
+   "true": 128475
+  },
+  "character_use": {
+   "accented_letter": 6763,
+   "apostrophe": 140851,
+   "ascii_letters_only": 9782118,
+   "hyphen": 63421,
+   "ligature": 2002,
+   "space": 294865
+  },
+  "class_explicit": {
+   "accented": 3967,
+   "accented;apostrophe-form": 9,
+   "accented;apostrophe-form;contraction": 1,
+   "accented;apostrophe-form;diaeresis;s-final": 1,
+   "accented;apostrophe-form;hyphenated": 6,
+   "accented;apostrophe-form;hyphenated;s-final": 49,
+   "accented;apostrophe-form;s-final": 527,
+   "accented;apostrophe-form;s-final;spaced": 1,
+   "accented;apostrophe-form;spaced": 28,
+   "accented;diaeresis": 11,
+   "accented;hyphenated": 147,
+   "accented;hyphenated;spaced": 10,
+   "accented;ligature": 1,
+   "accented;ligature;spaced": 2,
+   "accented;spaced": 485,
+   "apostrophe-form": 1383,
+   "apostrophe-form;contraction": 1264,
+   "apostrophe-form;contraction;hyphenated": 10,
+   "apostrophe-form;contraction;hyphenated;spaced": 2,
+   "apostrophe-form;contraction;ligature": 4,
+   "apostrophe-form;contraction;s-final": 2,
+   "apostrophe-form;contraction;s-final;spaced": 39,
+   "apostrophe-form;contraction;spaced": 519,
+   "apostrophe-form;diaeresis;hyphenated": 2,
+   "apostrophe-form;diaeresis;s-final": 103,
+   "apostrophe-form;diaeresis;spaced": 1,
+   "apostrophe-form;hyphenated": 276,
+   "apostrophe-form;hyphenated;ligature": 6,
+   "apostrophe-form;hyphenated;s-final": 1728,
+   "apostrophe-form;hyphenated;s-final;spaced": 54,
+   "apostrophe-form;hyphenated;spaced": 82,
+   "apostrophe-form;ligature;s-final": 1,
+   "apostrophe-form;ligature;s-final;spaced": 1,
+   "apostrophe-form;ligature;spaced": 6,
+   "apostrophe-form;s-final": 122870,
+   "apostrophe-form;s-final;spaced": 11642,
+   "apostrophe-form;spaced": 234,
+   "diaeresis": 1369,
+   "diaeresis;hyphenated": 15,
+   "diaeresis;ligature": 3,
+   "diaeresis;spaced": 25,
+   "hyphenated": 51586,
+   "hyphenated;ligature": 15,
+   "hyphenated;spaced": 9433,
+   "ligature": 1910,
+   "ligature;spaced": 53,
+   "plain": 9782118,
+   "spaced": 272248
+  },
+  "classes_per_label": {
+   "accented": 5245,
+   "apostrophe-form": 140851,
+   "contraction": 1841,
+   "diaeresis": 1530,
+   "hyphenated": 63421,
+   "ligature": 2002,
+   "s-final": 137018,
+   "spaced": 294865
+  },
+  "classes_per_row": {
+   "0": 9782118,
+   "1": 332463,
+   "2": 134841,
+   "3": 14680,
+   "4": 147
+  },
+  "columns": 41,
+  "distinct_ids": 10264249,
+  "distinct_words": 10264249,
+  "eol": {
+   "false": 9919419,
+   "true": 344830
+  },
+  "eol_by_class_explicit": {
+   "accented": {
+    "eol": 0,
+    "rows": 3967
+   },
+   "accented;apostrophe-form": {
+    "eol": 0,
+    "rows": 9
+   },
+   "accented;apostrophe-form;contraction": {
+    "eol": 0,
+    "rows": 1
+   },
+   "accented;apostrophe-form;diaeresis;s-final": {
+    "eol": 0,
+    "rows": 1
+   },
+   "accented;apostrophe-form;hyphenated": {
+    "eol": 0,
+    "rows": 6
+   },
+   "accented;apostrophe-form;hyphenated;s-final": {
+    "eol": 0,
+    "rows": 49
+   },
+   "accented;apostrophe-form;s-final": {
+    "eol": 0,
+    "rows": 527
+   },
+   "accented;apostrophe-form;s-final;spaced": {
+    "eol": 0,
+    "rows": 1
+   },
+   "accented;apostrophe-form;spaced": {
+    "eol": 0,
+    "rows": 28
+   },
+   "accented;diaeresis": {
+    "eol": 0,
+    "rows": 11
+   },
+   "accented;hyphenated": {
+    "eol": 0,
+    "rows": 147
+   },
+   "accented;hyphenated;spaced": {
+    "eol": 0,
+    "rows": 10
+   },
+   "accented;ligature": {
+    "eol": 0,
+    "rows": 1
+   },
+   "accented;ligature;spaced": {
+    "eol": 0,
+    "rows": 2
+   },
+   "accented;spaced": {
+    "eol": 0,
+    "rows": 485
+   },
+   "apostrophe-form": {
+    "eol": 0,
+    "rows": 1383
+   },
+   "apostrophe-form;contraction": {
+    "eol": 0,
+    "rows": 1264
+   },
+   "apostrophe-form;contraction;hyphenated": {
+    "eol": 0,
+    "rows": 10
+   },
+   "apostrophe-form;contraction;hyphenated;spaced": {
+    "eol": 0,
+    "rows": 2
+   },
+   "apostrophe-form;contraction;ligature": {
+    "eol": 0,
+    "rows": 4
+   },
+   "apostrophe-form;contraction;s-final": {
+    "eol": 0,
+    "rows": 2
+   },
+   "apostrophe-form;contraction;s-final;spaced": {
+    "eol": 0,
+    "rows": 39
+   },
+   "apostrophe-form;contraction;spaced": {
+    "eol": 0,
+    "rows": 519
+   },
+   "apostrophe-form;diaeresis;hyphenated": {
+    "eol": 0,
+    "rows": 2
+   },
+   "apostrophe-form;diaeresis;s-final": {
+    "eol": 0,
+    "rows": 103
+   },
+   "apostrophe-form;diaeresis;spaced": {
+    "eol": 0,
+    "rows": 1
+   },
+   "apostrophe-form;hyphenated": {
+    "eol": 0,
+    "rows": 276
+   },
+   "apostrophe-form;hyphenated;ligature": {
+    "eol": 0,
+    "rows": 6
+   },
+   "apostrophe-form;hyphenated;s-final": {
+    "eol": 0,
+    "rows": 1728
+   },
+   "apostrophe-form;hyphenated;s-final;spaced": {
+    "eol": 0,
+    "rows": 54
+   },
+   "apostrophe-form;hyphenated;spaced": {
+    "eol": 0,
+    "rows": 82
+   },
+   "apostrophe-form;ligature;s-final": {
+    "eol": 0,
+    "rows": 1
+   },
+   "apostrophe-form;ligature;s-final;spaced": {
+    "eol": 0,
+    "rows": 1
+   },
+   "apostrophe-form;ligature;spaced": {
+    "eol": 0,
+    "rows": 6
+   },
+   "apostrophe-form;s-final": {
+    "eol": 0,
+    "rows": 122870
+   },
+   "apostrophe-form;s-final;spaced": {
+    "eol": 0,
+    "rows": 11642
+   },
+   "apostrophe-form;spaced": {
+    "eol": 0,
+    "rows": 234
+   },
+   "diaeresis": {
+    "eol": 0,
+    "rows": 1369
+   },
+   "diaeresis;hyphenated": {
+    "eol": 0,
+    "rows": 15
+   },
+   "diaeresis;ligature": {
+    "eol": 0,
+    "rows": 3
+   },
+   "diaeresis;spaced": {
+    "eol": 0,
+    "rows": 25
+   },
+   "hyphenated": {
+    "eol": 0,
+    "rows": 51586
+   },
+   "hyphenated;ligature": {
+    "eol": 0,
+    "rows": 15
+   },
+   "hyphenated;spaced": {
+    "eol": 0,
+    "rows": 9433
+   },
+   "ligature": {
+    "eol": 0,
+    "rows": 1910
+   },
+   "ligature;spaced": {
+    "eol": 0,
+    "rows": 53
+   },
+   "plain": {
+    "eol": 344830,
+    "rows": 9782118
+   },
+   "spaced": {
+    "eol": 0,
+    "rows": 272248
+   }
+  },
+  "eol_by_panel_count": {
+   "0": {
+    "eol": 77625,
+    "rows": 8879416
+   },
+   "1": {
+    "eol": 64747,
+    "rows": 935583
+   },
+   "2": {
+    "eol": 29649,
+    "rows": 209129
+   },
+   "3": {
+    "eol": 50903,
+    "rows": 75068
+   },
+   "4": {
+    "eol": 35132,
+    "rows": 49168
+   },
+   "5": {
+    "eol": 11017,
+    "rows": 35712
+   },
+   "6": {
+    "eol": 4788,
+    "rows": 8321
+   },
+   "7": {
+    "eol": 34092,
+    "rows": 34866
+   },
+   "8": {
+    "eol": 36877,
+    "rows": 36986
+   }
+  },
+  "eol_by_token_count": {
+   "1": {
+    "eol": 344830,
+    "rows": 9969384
+   },
+   "10": {
+    "eol": 0,
+    "rows": 119
+   },
+   "11": {
+    "eol": 0,
+    "rows": 58
+   },
+   "12": {
+    "eol": 0,
+    "rows": 24
+   },
+   "13": {
+    "eol": 0,
+    "rows": 14
+   },
+   "14": {
+    "eol": 0,
+    "rows": 5
+   },
+   "15": {
+    "eol": 0,
+    "rows": 3
+   },
+   "16": {
+    "eol": 0,
+    "rows": 1
+   },
+   "18": {
+    "eol": 0,
+    "rows": 1
+   },
+   "2": {
+    "eol": 0,
+    "rows": 229297
+   },
+   "3": {
+    "eol": 0,
+    "rows": 40856
+   },
+   "4": {
+    "eol": 0,
+    "rows": 14922
+   },
+   "5": {
+    "eol": 0,
+    "rows": 4875
+   },
+   "6": {
+    "eol": 0,
+    "rows": 2637
+   },
+   "7": {
+    "eol": 0,
+    "rows": 1274
+   },
+   "8": {
+    "eol": 0,
+    "rows": 564
+   },
+   "9": {
+    "eol": 0,
+    "rows": 215
+   }
+  },
+  "eol_universe": {
+   "false": 610606,
+   "true": 9653643
+  },
+  "evidence": {
+   "listed": {
+    "enable1": 172823,
+    "hunspell_en_AU": 121490,
+    "hunspell_en_CA": 120947,
+    "hunspell_en_GB": 262413,
+    "hunspell_en_US": 121252,
+    "scowl": 518438,
+    "wiktionary_english": 831973,
+    "wordnet": 80441
+   },
+   "rows": 9969384,
+   "single_token_panel_count": {
+    "0": 8879416,
+    "1": 660229,
+    "2": 189618,
+    "3": 75068,
+    "4": 49168,
+    "5": 35712,
+    "6": 8321,
+    "7": 34866,
+    "8": 36986
+   },
+   "values": {
+    "enable1": {
+     "-1": 187266,
+     "0": 9609295,
+     "1": 172823,
+     "null": 294865
+    },
+    "hunspell_en_AU": {
+     "-1": 61747,
+     "0": 9786147,
+     "1": 121490,
+     "null": 294865
+    },
+    "hunspell_en_CA": {
+     "-1": 61747,
+     "0": 9786690,
+     "1": 120947,
+     "null": 294865
+    },
+    "hunspell_en_GB": {
+     "-1": 1940,
+     "0": 9705031,
+     "1": 262413,
+     "null": 294865
+    },
+    "hunspell_en_US": {
+     "-1": 61747,
+     "0": 9786385,
+     "1": 121252,
+     "null": 294865
+    },
+    "scowl_tier": {
+     "-1": 55759,
+     "0": 9395187,
+     "10": 4492,
+     "20": 8397,
+     "35": 39430,
+     "40": 7077,
+     "50": 26203,
+     "55": 6936,
+     "60": 14934,
+     "70": 36260,
+     "80": 149083,
+     "95": 225626,
+     "null": 294865
+    },
+    "wikt_title_screen": {
+     "0": 8465623,
+     "1": 1503761,
+     "null": 294865
+    },
+    "wiktionary_english": {
+     "0": 9137411,
+     "1": 831973,
+     "null": 294865
+    },
+    "wordnet": {
+     "-1": 8147,
+     "0": 9880796,
+     "1": 80441,
+     "null": 294865
+    }
+   }
+  },
+  "first_char": {
+   "'": 519,
+   "a": 714670,
+   "b": 596688,
+   "c": 689789,
+   "d": 513979,
+   "e": 408739,
+   "f": 361294,
+   "g": 379682,
+   "h": 417241,
+   "i": 370839,
+   "j": 116359,
+   "k": 344486,
+   "l": 404172,
+   "m": 680639,
+   "n": 349732,
+   "o": 334025,
+   "p": 750214,
+   "q": 48954,
+   "r": 450112,
+   "s": 990654,
+   "t": 575902,
+   "u": 194993,
+   "v": 207454,
+   "w": 257459,
+   "x": 24557,
+   "y": 73356,
+   "z": 7007,
+   "à": 24,
+   "á": 31,
+   "â": 8,
+   "ä": 6,
+   "æ": 233,
+   "ç": 7,
+   "è": 1,
+   "é": 233,
+   "ê": 3,
+   "ë": 1,
+   "í": 4,
+   "î": 4,
+   "ï": 2,
+   "ñ": 4,
+   "ó": 7,
+   "ô": 1,
+   "ö": 26,
+   "ú": 8,
+   "û": 1,
+   "ü": 34,
+   "œ": 96
+  },
+  "first_char_eol": {
+   "a": 17913,
+   "b": 16815,
+   "c": 29347,
+   "d": 21340,
+   "e": 13845,
+   "f": 11703,
+   "g": 10662,
+   "h": 17069,
+   "i": 11861,
+   "j": 1985,
+   "k": 3336,
+   "l": 9162,
+   "m": 25248,
+   "n": 18632,
+   "o": 11917,
+   "p": 32353,
+   "q": 2893,
+   "r": 15759,
+   "s": 31308,
+   "t": 18086,
+   "u": 10307,
+   "v": 4872,
+   "w": 5268,
+   "x": 757,
+   "y": 839,
+   "z": 1553
+  },
+  "gb_type": {
+   "false": 1207787,
+   "null": 294865,
+   "true": 8761597
+  },
+  "intake_date": {
+   "2026-08-17": 9653643,
+   "2026-08-20": 315741,
+   "2026-08-26": 294865
+  },
+  "is_restricted": {
+   "false": 10264249
+  },
+  "length": {
+   "hist": {
+    "counts": [
+     0,
+     47,
+     759,
+     13365,
+     205743,
+     640575,
+     1209825,
+     1525866,
+     1517173,
+     1326716,
+     1085183,
+     813009,
+     589060,
+     411770,
+     286125,
+     196943,
+     135626,
+     92951,
+     63396,
+     43481,
+     30203,
+     20917,
+     14738,
+     10539,
+     7311,
+     5293,
+     3859,
+     2825,
+     2164,
+     1606,
+     1392,
+     1048,
+     828,
+     727,
+     566,
+     476,
+     371,
+     275,
+     235,
+     209,
+     1008,
+     45,
+     1,
+     0
+    ],
+    "edges": [
+     0.0,
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0,
+     7.0,
+     8.0,
+     9.0,
+     10.0,
+     11.0,
+     12.0,
+     13.0,
+     14.0,
+     15.0,
+     16.0,
+     17.0,
+     18.0,
+     19.0,
+     20.0,
+     21.0,
+     22.0,
+     23.0,
+     24.0,
+     25.0,
+     26.0,
+     27.0,
+     28.0,
+     29.0,
+     30.0,
+     31.0,
+     32.0,
+     33.0,
+     34.0,
+     35.0,
+     36.0,
+     37.0,
+     38.0,
+     39.0,
+     40.0,
+     60.0,
+     100.0,
+     101.0,
+     200.0
+    ]
+   },
+   "hist_eol": {
+    "counts": [
+     0,
+     2,
+     134,
+     1116,
+     4297,
+     9781,
+     18045,
+     29528,
+     40218,
+     44647,
+     41678,
+     36405,
+     30758,
+     24826,
+     19347,
+     14778,
+     9671,
+     6619,
+     4397,
+     3022,
+     1930,
+     1220,
+     759,
+     531,
+     340,
+     239,
+     164,
+     95,
+     70,
+     57,
+     47,
+     29,
+     20,
+     15,
+     12,
+     10,
+     5,
+     4,
+     1,
+     2,
+     11,
+     0,
+     0,
+     0
+    ],
+    "edges": [
+     0.0,
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0,
+     7.0,
+     8.0,
+     9.0,
+     10.0,
+     11.0,
+     12.0,
+     13.0,
+     14.0,
+     15.0,
+     16.0,
+     17.0,
+     18.0,
+     19.0,
+     20.0,
+     21.0,
+     22.0,
+     23.0,
+     24.0,
+     25.0,
+     26.0,
+     27.0,
+     28.0,
+     29.0,
+     30.0,
+     31.0,
+     32.0,
+     33.0,
+     34.0,
+     35.0,
+     36.0,
+     37.0,
+     38.0,
+     39.0,
+     40.0,
+     60.0,
+     100.0,
+     101.0,
+     200.0
+    ]
+   },
+   "max": 100,
+   "quantiles": {
+    "mean": 9.10249293,
+    "n": 10264249,
+    "nan": 0,
+    "q": {
+     "max": 100.0,
+     "min": 1.0,
+     "p1": 4.0,
+     "p25": 7.0,
+     "p5": 5.0,
+     "p50": 9.0,
+     "p75": 11.0,
+     "p95": 15.0,
+     "p99": 20.0
+    }
+   }
+  },
+  "limits": {
+   "gb_type_inherited_no_panel_set": 8024365,
+   "gb_type_inherited_no_panel_set_no_wordfreq": 7900077,
+   "gb_type_inherited_rows": 8651574,
+   "gb_type_no_panel_set": 8027668,
+   "gb_type_rows": 8761597,
+   "inherited_rows": 9653643,
+   "single_token_no_panel_set": 8879416,
+   "single_token_no_panel_set_no_corpus": 846435
+  },
+  "nulls": {
+   "c015_addition": 0,
+   "c4_addition": 0,
+   "class_explicit": 0,
+   "classes": 0,
+   "enable1": 294865,
+   "eol": 0,
+   "eol_phase1_tier": 0,
+   "eol_record": 0,
+   "eol_synthetic_category": 9965129,
+   "eol_synthetic_engine_inferred": 9933886,
+   "eol_universe": 0,
+   "gb_type": 294865,
+   "hunspell_en_AU": 294865,
+   "hunspell_en_CA": 294865,
+   "hunspell_en_GB": 294865,
+   "hunspell_en_US": 294865,
+   "id": 0,
+   "intake_channels": 0,
+   "intake_date": 0,
+   "intake_kind": 0,
+   "intake_layer": 0,
+   "is_restricted": 0,
+   "model_or_engine": 0,
+   "panel_count": 0,
+   "panel_sets": 0,
+   "provenance_class": 0,
+   "scowl_tier": 294865,
+   "sources": 0,
+   "token_count": 0,
+   "variety_gb_not_us": 356612,
+   "variety_us_not_gb": 356612,
+   "wikt_title_any": 294865,
+   "wikt_title_screen": 294865,
+   "wiktionary_english": 294865,
+   "wk_flags": 10013356,
+   "wk_proper_noun": 10013356,
+   "wn_capitalized": 10200766,
+   "wn_instance": 10200766,
+   "word": 0,
+   "wordfreq_scored": 294865,
+   "wordnet": 294865
+  },
+  "panel_count": {
+   "0": 8879416,
+   "1": 935583,
+   "2": 209129,
+   "3": 75068,
+   "4": 49168,
+   "5": 35712,
+   "6": 8321,
+   "7": 34866,
+   "8": 36986
+  },
+  "panel_sets_per_label": {
+   "enable1": 172823,
+   "hunspell_en_AU": 121490,
+   "hunspell_en_CA": 120947,
+   "hunspell_en_GB": 262413,
+   "hunspell_en_US": 121252,
+   "scowl": 518438,
+   "wiktionary_english": 1082866,
+   "wordnet": 143924
+  },
+  "provenance": {
+   "eol_phase1_tier": {
+    "none": 1835350,
+    "unlikely": 76075,
+    "valid": 8352824
+   },
+   "eol_record": {
+    "invalid-dict": 9275197,
+    "none": 644222,
+    "valid-dict": 344830
+   },
+   "eol_synthetic_category": {
+    "Biochemical": 6,
+    "Chemical": 3889,
+    "Chemical, Nonsense": 8,
+    "Chemical/Nonsense": 14,
+    "Chemical/Science": 3,
+    "General": 24856,
+    "General/Nonsense": 160,
+    "General/Science": 1,
+    "Malformed": 48,
+    "Malformed inflection": 37,
+    "Medical": 5447,
+    "Medical, Nonsense": 3,
+    "Medical/Nonsense": 68,
+    "Medical/Science": 1,
+    "Misspelling": 43,
+    "Nonsense": 254779,
+    "Science": 9617,
+    "Science, Nonsense": 31,
+    "Science/Nonsense": 52,
+    "Structurally impossible": 11,
+    "Unknown": 46,
+    "null": 9965129
+   },
+   "eol_synthetic_engine_inferred": {
+    "affixation/comparative-or-agent": 29933,
+    "affixation/general-prefix": 149,
+    "affixation/gerund-plural": 18,
+    "affixation/plural": 149139,
+    "affixation/superlative": 30674,
+    "affixation/verb-form": 117166,
+    "chemical-variation/root-chain": 691,
+    "chemical-variation/substituent-prefix": 904,
+    "greek-plural/-des": 142,
+    "greek-plural/-ses": 978,
+    "medical-scientific-prefixing/domain-prefix": 350,
+    "null": 9933886,
+    "unresolved/none": 219
+   },
+   "intake_channels_per_label": {
+    "audit:enable1": 413,
+    "audit:hunspell_en_AU": 2810,
+    "audit:hunspell_en_CA": 1994,
+    "audit:hunspell_en_GB": 15275,
+    "audit:hunspell_en_US": 1872,
+    "audit:scowl": 90637,
+    "audit:wiktionary_english": 104848,
+    "audit:wordfreq": 10191,
+    "audit:wordnet": 4564,
+    "census:hunspell_en_AU": 33293,
+    "census:hunspell_en_CA": 33111,
+    "census:hunspell_en_GB": 86480,
+    "census:hunspell_en_US": 33276,
+    "census:scowl": 79418,
+    "census:wiktionary_english": 56104,
+    "census:wordfreq": 21587,
+    "eol:authoritative-extracts": 259,
+    "eol:dictionary-api:free-dictionary": 143,
+    "eol:enable": 2740,
+    "eol:extended-domain-sources": 175,
+    "eol:google_ngrams": 7941527,
+    "eol:invalid-list-recovery": 66,
+    "eol:libreoffice": 34166,
+    "eol:list": 312944,
+    "eol:opensource": 145028,
+    "eol:phase1-unrecorded": 580794,
+    "eol:synthetic-engine": 330363,
+    "eol:wikipedia": 1552359,
+    "eol:wiktionary": 551717,
+    "eol:wordnet": 14176,
+    "ledger:d025": 170,
+    "spaced:wiktionary_english": 250893,
+    "spaced:wordnet": 63483
+   },
+   "intake_channels_per_row": {
+    "1": 8610429,
+    "2": 1352004,
+    "3": 214667,
+    "4": 49044,
+    "5": 27983,
+    "6": 8841,
+    "7": 972,
+    "8": 284,
+    "9": 25
+   },
+   "intake_kind": {
+    "derived": 610606,
+    "generated": 330363,
+    "obtained": 9323280
+   },
+   "intake_layer": {
+    "c1_exceptions": 187266,
+    "c4_additions": 128475,
+    "eol_invalid": 9308813,
+    "eol_valid": 344830,
+    "spaced_c015": 294865
+   },
+   "layer_by_kind": {
+    "c1_exceptions": {
+     "derived": 187266
+    },
+    "c4_additions": {
+     "derived": 128475
+    },
+    "eol_invalid": {
+     "generated": 299120,
+     "obtained": 9009693
+    },
+    "eol_valid": {
+     "generated": 31243,
+     "obtained": 313587
+    },
+    "spaced_c015": {
+     "derived": 294865
+    }
+   },
+   "model_or_engine": {
+    "engine_generated": 330363,
+    "none": 9933886
+   },
+   "provenance_class": {
+    "channel_and_containment": 9097432,
+    "channel_only": 586023,
+    "containment_only": 320382,
+    "neither": 260412
+   }
+  },
+  "rows": 10264249,
+  "sources_per_label": {
+   "eol:enable1": 413,
+   "eol:wordnet": 4564,
+   "eol_ledger_d025": 170,
+   "eol_universe@08ae92b8": 9653643,
+   "hunspell_en_AU": 36103,
+   "hunspell_en_CA": 35105,
+   "hunspell_en_GB": 101755,
+   "hunspell_en_US": 35148,
+   "scowl": 170055,
+   "wiktionary_english": 411845,
+   "wordfreq": 31778,
+   "wordnet": 63483
+  },
+  "sources_per_row": {
+   "1": 10112420,
+   "2": 98699,
+   "3": 15889,
+   "4": 8690,
+   "5": 21010,
+   "6": 6354,
+   "7": 878,
+   "8": 284,
+   "9": 25
+  },
+  "token_count": {
+   "1": 9969384,
+   "10": 119,
+   "11": 58,
+   "12": 24,
+   "13": 14,
+   "14": 5,
+   "15": 3,
+   "16": 1,
+   "18": 1,
+   "2": 229297,
+   "3": 40856,
+   "4": 14922,
+   "5": 4875,
+   "6": 2637,
+   "7": 1274,
+   "8": 564,
+   "9": 215
+  },
+  "variety_gb_not_us": {
+   "false": 9761315,
+   "null": 356612,
+   "true": 146322
+  },
+  "variety_us_not_gb": {
+   "false": 9893329,
+   "null": 356612,
+   "true": 14308
+  },
+  "wikt_title_any": {
+   "false": 8465623,
+   "null": 294865,
+   "true": 1503761
+  },
+  "wk_flags_per_label": {
+   "idiomatic": 8548,
+   "phrasal-verb": 19481,
+   "phrasebook": 262,
+   "proverb": 1186
+  },
+  "wk_flags_per_row": {
+   "0": 222509,
+   "1": 27291,
+   "2": 1093
+  },
+  "wk_proper_noun": {
+   "false": 250311,
+   "null": 10013356,
+   "true": 582
+  },
+  "wn_capitalized": {
+   "false": 38848,
+   "null": 10200766,
+   "true": 24635
+  },
+  "wn_instance": {
+   "false": 55671,
+   "null": 10200766,
+   "true": 7812
+  },
+  "wordfreq_scored": {
+   "false": 9665873,
+   "null": 294865,
+   "true": 303511
+  }
+ },
+ "version": "v1.0"
+}

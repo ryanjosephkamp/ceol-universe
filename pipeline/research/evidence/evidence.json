@@ -1,0 +1,354 @@
+{
+  "generated_by": "research/evidence/build_evidence.py",
+  "decision": "C-010",
+  "universe_rows": 10001409,
+  "detectors": [
+    "wordnet",
+    "wiktionary_english",
+    "web2",
+    "web2a",
+    "hunspell_en_US",
+    "hunspell_en_GB",
+    "hunspell_en_CA",
+    "hunspell_en_AU",
+    "enable1",
+    "sowpods_legacy",
+    "nwl2023",
+    "csw21"
+  ],
+  "applicability": {
+    "wordnet": [
+      "hyphenated",
+      "contraction",
+      "apostrophe-form",
+      "s-final",
+      "plain"
+    ],
+    "wiktionary_english": [
+      "hyphenated",
+      "accented",
+      "contraction",
+      "apostrophe-form",
+      "ligature",
+      "diaeresis",
+      "s-final",
+      "plain"
+    ],
+    "web2": [
+      "hyphenated",
+      "plain"
+    ],
+    "web2a": [
+      "hyphenated"
+    ],
+    "hunspell_en_US": [
+      "contraction",
+      "apostrophe-form",
+      "s-final",
+      "plain"
+    ],
+    "hunspell_en_GB": [
+      "hyphenated",
+      "accented",
+      "contraction",
+      "apostrophe-form",
+      "diaeresis",
+      "s-final",
+      "plain"
+    ],
+    "hunspell_en_CA": [
+      "contraction",
+      "apostrophe-form",
+      "s-final",
+      "plain"
+    ],
+    "hunspell_en_AU": [
+      "contraction",
+      "apostrophe-form",
+      "s-final",
+      "plain"
+    ],
+    "enable1": [
+      "plain"
+    ],
+    "sowpods_legacy": [
+      "plain"
+    ],
+    "nwl2023": [
+      "plain"
+    ],
+    "csw21": [
+      "plain"
+    ],
+    "scowl": [
+      "accented",
+      "contraction",
+      "apostrophe-form",
+      "diaeresis",
+      "s-final",
+      "plain"
+    ]
+  },
+  "measured_classes": {
+    "wordnet": {
+      "hyphenated": 5173,
+      "accented": 0,
+      "contraction": 3,
+      "apostrophe-form": 136,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 8,
+      "plain": 77503
+    },
+    "wiktionary_english": {
+      "hyphenated": 49586,
+      "accented": 1770,
+      "contraction": 1161,
+      "apostrophe-form": 2465,
+      "ligature": 1926,
+      "diaeresis": 804,
+      "s-final": 162,
+      "plain": 775869
+    },
+    "web2": {
+      "hyphenated": 2,
+      "accented": 0,
+      "contraction": 0,
+      "apostrophe-form": 0,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 0,
+      "plain": 234454
+    },
+    "web2a": {
+      "hyphenated": 31213,
+      "accented": 0,
+      "contraction": 0,
+      "apostrophe-form": 0,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 0,
+      "plain": 0
+    },
+    "hunspell_en_US": {
+      "hyphenated": 0,
+      "accented": 0,
+      "contraction": 60,
+      "apostrophe-form": 33276,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 33178,
+      "plain": 87976
+    },
+    "hunspell_en_GB": {
+      "hyphenated": 8105,
+      "accented": 961,
+      "contraction": 95,
+      "apostrophe-form": 79553,
+      "ligature": 0,
+      "diaeresis": 188,
+      "s-final": 79323,
+      "plain": 175933
+    },
+    "hunspell_en_CA": {
+      "hyphenated": 0,
+      "accented": 0,
+      "contraction": 60,
+      "apostrophe-form": 33111,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 33013,
+      "plain": 87836
+    },
+    "hunspell_en_AU": {
+      "hyphenated": 0,
+      "accented": 0,
+      "contraction": 60,
+      "apostrophe-form": 33293,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 33194,
+      "plain": 88197
+    },
+    "enable1": {
+      "hyphenated": 0,
+      "accented": 0,
+      "contraction": 0,
+      "apostrophe-form": 0,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 0,
+      "plain": 172823
+    },
+    "sowpods_legacy": {
+      "hyphenated": 0,
+      "accented": 0,
+      "contraction": 0,
+      "apostrophe-form": 0,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 0,
+      "plain": 267751
+    },
+    "nwl2023": {
+      "hyphenated": 0,
+      "accented": 0,
+      "contraction": 0,
+      "apostrophe-form": 0,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 0,
+      "plain": 196601
+    },
+    "csw21": {
+      "hyphenated": 0,
+      "accented": 0,
+      "contraction": 0,
+      "apostrophe-form": 0,
+      "ligature": 0,
+      "diaeresis": 0,
+      "s-final": 0,
+      "plain": 279077
+    },
+    "scowl": {
+      "hyphenated": 0,
+      "accented": 878,
+      "contraction": 107,
+      "apostrophe-form": 78726,
+      "ligature": 0,
+      "diaeresis": 72,
+      "s-final": 78492,
+      "plain": 439020
+    }
+  },
+  "fires": {
+    "wordnet": 81029,
+    "wiktionary_english": 831973,
+    "web2": 234454,
+    "web2a": 31213,
+    "hunspell_en_US": 121252,
+    "hunspell_en_GB": 262413,
+    "hunspell_en_CA": 120947,
+    "hunspell_en_AU": 121490,
+    "enable1": 172823,
+    "sowpods_legacy": 267419,
+    "nwl2023": 196271,
+    "csw21": 278746
+  },
+  "na_counts": {
+    "wordnet": 8147,
+    "wiktionary_english": 0,
+    "web2": 135680,
+    "web2a": 9923222,
+    "hunspell_en_US": 88348,
+    "hunspell_en_GB": 1940,
+    "hunspell_en_CA": 88348,
+    "hunspell_en_AU": 88348,
+    "enable1": 213867,
+    "sowpods_legacy": 213867,
+    "nwl2023": 213867,
+    "csw21": 213867
+  },
+  "eol_reproduction": {
+    "wordnet": {
+      "eol": 77503,
+      "ceol_on_frame": 77503
+    },
+    "wiktionary_english": {
+      "eol": 775869,
+      "ceol_on_frame": 775869
+    },
+    "web2": {
+      "eol": 234454,
+      "ceol_on_frame": 234454
+    },
+    "hunspell_en_US": {
+      "eol": 87976,
+      "ceol_on_frame": 87976
+    },
+    "hunspell_en_GB": {
+      "eol": 175933,
+      "ceol_on_frame": 175933
+    },
+    "hunspell_en_CA": {
+      "eol": 87836,
+      "ceol_on_frame": 87836
+    },
+    "hunspell_en_AU": {
+      "eol": 88197,
+      "ceol_on_frame": 88197
+    },
+    "enable1": {
+      "eol": 172823,
+      "ceol_on_frame": 172823
+    },
+    "sowpods_legacy": {
+      "eol": 267751,
+      "ceol_on_frame": 267751
+    },
+    "nwl2023": {
+      "eol": 196601,
+      "ceol_on_frame": 196601
+    },
+    "csw21": {
+      "eol": 279077,
+      "ceol_on_frame": 279077
+    },
+    "scowl_tier_nonzero": {
+      "eol": 435936,
+      "eol_tiermap_on_frame": 435936,
+      "ceol_on_frame": 438987,
+      "ceol_surplus_from_wider_inclusion": 3051
+    }
+  },
+  "sr2": {
+    "reading_a_rows": 8865440,
+    "reading_a_pct": 88.64,
+    "reading_b_upper_rows": 8734295,
+    "reading_b_upper_pct": 87.33,
+    "note": "reading B finalized in step 2 once Google Books presence exists; the upper bound can only shrink"
+  },
+  "binary_pattern_count": 545,
+  "wordnet_beyond_frame": 1703,
+  "listed_left_by_repin": 332,
+  "screen_hits": 1504100,
+  "artifacts": {
+    "evidence_parquet_sha256": "6639e0fe547d5c27597ee1c52d1293a3a562e9d5ac54d8c0e133c7c7cef78292",
+    "wordnet_beyond_frame_sha256": "2a8ae75194c5a229a70529f92d9b5ed5a82779642f10ae026313c0e7855044c5"
+  },
+  "doc_figures": {
+    "universe_rows": 10001409,
+    "binary_pattern_count": 545,
+    "wordnet_beyond_frame": 1703,
+    "sr2_reading_a_pct": 88.64,
+    "sr2_b_upper_pct": 87.33,
+    "screen_hits": 1504100,
+    "scowl_on_frame": 435936,
+    "scowl_ceol_surplus": 3051,
+    "scowl_total": 518438,
+    "fires_wordnet": 81029,
+    "fires_wiktionary_english": 831973,
+    "fires_web2": 234454,
+    "fires_web2a": 31213,
+    "fires_hunspell_en_US": 121252,
+    "fires_hunspell_en_GB": 262413,
+    "fires_hunspell_en_CA": 120947,
+    "fires_hunspell_en_AU": 121490,
+    "fires_enable1": 172823,
+    "fires_sowpods_legacy": 267419,
+    "fires_nwl2023": 196271,
+    "fires_csw21": 278746,
+    "na_wordnet": 8147,
+    "na_wiktionary_english": 0,
+    "na_web2": 135680,
+    "na_web2a": 9923222,
+    "na_hunspell_en_US": 88348,
+    "na_hunspell_en_GB": 1940,
+    "na_hunspell_en_CA": 88348,
+    "na_hunspell_en_AU": 88348,
+    "na_enable1": 213867,
+    "na_sowpods_legacy": 213867,
+    "na_nwl2023": 213867,
+    "na_csw21": 213867
+  }
+}

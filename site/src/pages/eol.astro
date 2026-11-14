@@ -1,0 +1,221 @@
+---
+import Base from '../layouts/Base.astro';
+import Figure from '../components/Figure.astro';
+import CardCount from '../components/CardCount.astro';
+import EolCharts from '../islands/EolCharts.tsx';
+import { cardCount, fig, formatCount } from '../lib/data';
+
+// the English OpenList's valid list at the pinned revision, and the part of
+// it version 1.0 ships; the rest is restricted or held back
+const atPin = cardCount('model_basis_entries');
+const shipped = fig('rows.eol').value;
+const gap = atPin - shipped;
+if (gap < 0) throw new Error('version 1.0 ships more of the English OpenList than its list held');
+---
+
+<Base
+  title="English OpenList"
+  section="English OpenList"
+  description="The English OpenList, a word list with its own rules, as a dated subset of the CEOL Universe: what it is, how it decided, and its rows charted."
+>
+  <div class="frame eol">
+    <header class="eol-head">
+      <svg class="eol-mark" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">
+        <rect x="2" y="2" width="44" height="44" fill="none" stroke="var(--rule-strong)" stroke-width="2"></rect>
+        <rect x="9" y="23" width="16" height="16" fill="var(--eol)"></rect>
+      </svg>
+      <div>
+        <h1>English OpenList</h1>
+        <p class="lede">
+          A word list with its own rules and its own record of where each entry came from. Inside the universe it is a dated
+          subset, fixed at 1 revision of its list.
+        </p>
+      </div>
+    </header>
+
+    <section class="prose eol-facts" aria-label="The English OpenList in the universe">
+      <p class="eol-sum">
+        Its valid list held <CardCount name="model_basis_entries" /> entries at revision <code>08ae92b8</code>, and
+        version 1.0 ships <strong class="is-eol"><Figure id="rows.eol" /></strong> of them.{gap > 0 && (
+          <> The license rules keep the other {formatCount(gap)} out of the public version.</>
+        )}
+      </p>
+      <p>
+        The universe reads the English OpenList at that 1 revision and never writes to it. A row's <code>eol</code> column says
+        whether the list held it then: a fact about the list at a date, never a verdict of the universe's.
+      </p>
+    </section>
+
+    <section class="prose eol-about" aria-labelledby="about-eol">
+      <h2 id="about-eol">What it is</h2>
+      <p>
+        The English OpenList is a free English word list for word games and apps, for researchers and teachers, for
+        developers who need a list they can drop into their code, and for anyone who wants to download one. It began in 2026
+        because good English word lists are often paywalled, restrictively licensed, or stale copies of unknown origin.
+        Projects built on it include <a href="https://ars-magna.pages.dev/">Ars Magna</a>,
+        <a href="https://amordle.vercel.app/">Amordle</a>, and
+        <a href="https://ryanjosephkamp.github.io/portfolios/anagram-tiles/">Anagram Tiles</a>.
+      </p>
+      <p>
+        Its entries came in by several routes: word lists whose terms don't allow saying which words they supplied, a
+        verification pipeline that used a language model, its synthetic engine, and a daily search for new words. Its later additions were checked against a dictionary service;
+        earlier entries were not all checked. The charts below show how its entries came in.
+      </p>
+      <p>
+        It has no length bound, on purpose. At the pinned revision it holds <CardCount name="eol_one_letter" /> one-letter
+        entries and <CardCount name="eol_over_45" /> entries longer than 45 characters, the longest
+        <CardCount name="eol_longest" /> characters long. Keep lengths 2 to 45 for the bounds the list had before
+        August 16, 2026.
+      </p>
+      <p>
+        It publishes a new list each night. In this
+        dataset it is a dated subset: version 1.0 holds its list at 1 revision, and a later version takes in what it adds
+        after that by moving the pin. The config keeps the English
+        OpenList's own name for its list, <code>eol-valid</code>; this site never calls an entry valid.
+      </p>
+    </section>
+
+    <section class="prose eol-how" aria-labelledby="how">
+      <h2 id="how">How it decided its list</h2>
+      <p>
+        The English OpenList took strings in from many channels and ruled on each: valid or invalid. Its rules included a
+        strong-attestation rule, a string that 8 of its 12 sources list; a verification pipeline that used a language model,
+        Google Gemini 3 Flash Preview; and a synthetic engine.
+      </p>
+      <p>
+        The synthetic engine made <CardCount name="generated_rows" /> of the universe's rows. Its code does not survive, and
+        its own per-row record of the method is empty, but its author describes the methods: affixes applied without a
+        part-of-speech filter to the list as it then stood (plurals, past tenses, gerunds, agent nouns, comparatives and
+        superlatives, and prefixed forms); chemical names varied by substituent, and short chains of root, infix, and suffix,
+        made by substitution over a hand-written list of substituents and roots, with no tool that derives a name from a
+        formula; medical and scientific prefixes; and Greek plurals. It gave each base word a domain label, and it used NLTK,
+        lemminflect, and spaCy. The universe infers each generated row's method from its form, in
+        <code>eol_synthetic_engine_inferred</code>, and keeps the recorded category in <code>eol_synthetic_category</code>.
+      </p>
+      <p>
+        The universe keeps both of its lists, the valid and the invalid, and records what decided each valid row in
+        <code>model_or_engine</code>. The charts below are computed from every one of its rows in version 1.0.
+      </p>
+    </section>
+
+    <EolCharts client:load cubeUrl="/data/cube-v1.0.json" />
+
+    <section class="eol-get" aria-labelledby="get">
+      <h2 id="get">Getting it</h2>
+      <ul>
+        <li>
+          <a href="/compose/?d.eol=true">Compose it as a list</a>
+          <p>Its rows of version 1.0, with the code that reproduces them, and any criterion of your own on top.</p>
+        </li>
+        <li>
+          <a href="/dataset/profile/?d.eol=true">Profile it</a>
+          <p>Every dimension of its rows, charted, with every filter of the profile.</p>
+        </li>
+        <li>
+          <a href="https://huggingface.co/datasets/ryanjosephkamp/english-openlist" rel="noopener">Its own dataset</a>
+          <p>The list as the English OpenList last published it, at <code>ryanjosephkamp/english-openlist</code>.</p>
+        </li>
+        <li>
+          <a href="https://english-openlist.pages.dev/" rel="noopener">Its own site</a>
+          <p>Search and filter the list as the English OpenList published it.</p>
+        </li>
+        <li>
+          <a href="https://github.com/ryanjosephkamp/english-openlist" rel="noopener">Its own repository</a>
+          <p>Its code, its rule, and its nightly run, at <code>ryanjosephkamp/english-openlist</code>.</p>
+        </li>
+      </ul>
+      <p class="eol-note">
+        The English OpenList keeps its own site, repository, and dataset. This page shows its dated subset in version 1.0.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .eol {
+    display: grid;
+    gap: var(--space-7);
+  }
+  .eol-head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .eol-mark {
+    margin-top: 0.4rem;
+  }
+  .eol-head > div {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .eol-head h1 {
+    font-size: var(--step-5);
+  }
+  .eol-sum {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .eol-sum .is-eol {
+    color: var(--eol);
+  }
+  .eol-facts > p:not(.eol-sum) {
+    color: var(--ink-soft);
+  }
+  .eol-how h2,
+  .eol-get h2 {
+    font-size: var(--step-3);
+    margin-top: 0;
+  }
+  :global(.eol-charts) {
+    display: grid;
+    gap: var(--space-7);
+  }
+  :global(.eol-pair) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+    gap: var(--space-7);
+  }
+  .eol-get {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 52rem;
+  }
+  .eol-get ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .eol-get li {
+    display: grid;
+    grid-template-columns: minmax(11rem, 15rem) 1fr;
+    gap: var(--space-2) var(--space-5);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .eol-get li a {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .eol-get li a:hover {
+    text-decoration: underline;
+  }
+  .eol-get li p {
+    color: var(--ink-soft);
+  }
+  @media (max-width: 36rem) {
+    .eol-get li {
+      grid-template-columns: 1fr;
+    }
+  }
+  .eol-note {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+</style>

@@ -1,0 +1,25 @@
+{
+ "version": "v2.1",
+ "generated_by": "research/release/eol_subset.py",
+ "what": "the English OpenList's last published list against the release's eol-valid config, counts only",
+ "last_list": {
+  "dataset": "ryanjosephkamp/english-openlist",
+  "path": "latest/merged_valid_words.txt",
+  "revision": "08ae92b8",
+  "sha256": "32b6562c6385989e187039740b251b8b8ef0e49b399411906a9b1797f4c2e672"
+ },
+ "pin_revision": "08ae92b8",
+ "counts": {
+  "last_list": 344830,
+  "list_at_pin": 344830,
+  "public_dataset": 344830,
+  "list_at_pin_not_public": 0,
+  "of_which_restricted": 0,
+  "of_which_held_back": 0,
+  "added_after_pin": 0,
+  "added_after_pin_in_universe": 0,
+  "removed_after_pin": 0,
+  "public_dataset_not_on_last_list": 0,
+  "last_list_less_held_back": 344830
+ }
+}

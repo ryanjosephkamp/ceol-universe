@@ -1,0 +1,12 @@
+{
+  "model": "char n-gram, orders 1-5, Witten-Bell, trained on valid@c1139698 (a-z only, v0)",
+  "top_k": 9999,
+  "pops": 82864,
+  "attested_in_universe": 9237,
+  "unattested": 762,
+  "attested_pct": 92.4,
+  "top_unattested_examples": {
+    "withheld_strings": 15
+  },
+  "frontier_file_sha256": "fec81e436a403464959d6f75a661ed69af347ef10ec24cf59b4c5c1b24562913"
+}

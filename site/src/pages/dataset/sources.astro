@@ -1,0 +1,29 @@
+---
+import Dataset from '../../layouts/Dataset.astro';
+import { cardSection } from '../../lib/docs';
+---
+
+<Dataset title="Sources and licenses" slug="sources" description="The sources of the CEOL Universe, their licenses and credits, and the record of how each row came in.">
+  <header class="page-head">
+    <h1>Sources and licenses</h1>
+    <p class="lede">Where the strings come from, under which licenses, and how each row's way in is recorded.</p>
+  </header>
+  <section class="doc" aria-labelledby="s7">
+    <h2 id="s7">{cardSection(7).title}</h2>
+    <Fragment set:html={cardSection(7).html} />
+  </section>
+  <section class="doc" aria-labelledby="s8">
+    <h2 id="s8">{cardSection(8).title}</h2>
+    <Fragment set:html={cardSection(8).html} />
+  </section>
+</Dataset>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+</style>

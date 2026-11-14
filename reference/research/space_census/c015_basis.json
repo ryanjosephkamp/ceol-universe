@@ -1,0 +1,67 @@
+{
+  "doc_figures": {
+    "delta_high_m": 0.7,
+    "delta_high_pct": 7,
+    "delta_low_m": 0.25,
+    "delta_low_pct": 2.5,
+    "manifest_sources": 15,
+    "multiword_capable_sources": 2,
+    "wk_ascii_lower_shaped": 365372,
+    "wk_spaced": 632430,
+    "wk_titles": 8998680,
+    "wn_multiword": 64188,
+    "wn_multiword_pct": 43.6,
+    "wn_two_token": 54533,
+    "wn_unique_lemmas": 147306
+  },
+  "inputs": {
+    "all_titles_gz_sha256": "468b58bc03f0d8e69b7df0c90c2ac3841be288acd5afe3b052939d70e44d633c",
+    "universe_pin": 10001741,
+    "wordnet_zip_sha256": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59"
+  },
+  "wiktionary_titles": {
+    "ascii_lower_shaped": 365372,
+    "ascii_lower_two_token": 267403,
+    "probes_present": {
+      "a_bird_in_the_hand_is_worth_two_in_the_bush": true,
+      "ad_hominem": true,
+      "give_up": true,
+      "kick_the_bucket": true,
+      "statistical_significance": true,
+      "statistically_significant": true
+    },
+    "spaced": 632430,
+    "titles": 8998680
+  },
+  "wordnet": {
+    "multiword": 64188,
+    "multiword_pct": 43.6,
+    "probes_present": {
+      "ad_hoc": true,
+      "ad_hominem": true,
+      "carte_blanche": true,
+      "de_facto": true,
+      "faux_pas": true,
+      "give_up": true,
+      "habeas_corpus": true,
+      "ice_cream": true,
+      "in_toto": true,
+      "kick_the_bucket": true,
+      "of_course": true,
+      "per_se": true
+    },
+    "statistical_significance_absent": true,
+    "token_counts": {
+      "2": 54533,
+      "3": 7766,
+      "4": 1454,
+      "5": 298,
+      "6": 80,
+      "7": 28,
+      "8": 20,
+      "9": 9
+    },
+    "unique_lemmas": 147306,
+    "word_pos_pairs": 155287
+  }
+}

@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import Datasheet from '../../islands/Datasheet.tsx';
+import { universeFile } from '../../lib/data';
+import { cardSectionText } from '../../lib/docs';
+---
+
+<Base
+  title="Datasheet"
+  section="Compose a list"
+  description="The datasheet of a composed list: its definition, counts, distributions, code, and provenance, to save as a PDF, Markdown, or CSV."
+>
+  <div class="frame">
+    <Datasheet
+      client:load
+      cubeUrl="/data/cube-v1.0.json"
+      citation={cardSectionText(15)}
+      file={{ path: universeFile.path, sha256: universeFile.sha256 }}
+    />
+  </div>
+</Base>

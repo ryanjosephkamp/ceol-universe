@@ -1,0 +1,692 @@
+{
+  "generated_by": "research/provenance/build_provenance.py",
+  "decision": "C-064",
+  "inputs": {
+    "universe_v2_parquet_sha256": "cdc90e96abbee14c7d056998cb4eab2daafba5ea45632cfd97f13a1d08fc2935",
+    "evidence_parquet_sha256": "6639e0fe547d5c27597ee1c52d1293a3a562e9d5ac54d8c0e133c7c7cef78292",
+    "features_parquet_sha256": "8bae1885d69383f2422fba918695e71340fcee24707c22862c3f21dbd75747fc",
+    "eol_valid_intake_parquet_sha256": "d377e1e672fc9d31286cc5166444c2bccc0d8bfbcd6698c276bdf41b2b9ece5f",
+    "eol_invalid_intake_parquet_sha256": "d09779ed4c06e9383c1dc7649024389622e862e475da1a89c575da0adc9b2285",
+    "eol_dictionaries_manifest_sha256": "86e052d4c8542a6909c6e1410ae64a0ef8638455a988a70b0c5669025566ec51",
+    "merged_valid_dict_sha256": "f2c9c5567d95a2ffa641ec7b6607a1d336207f0928e490da62e825d120123aed",
+    "merged_invalid_dict_sha256": "a173314d6e89eeeb0ee6a9d425f97741b40014457c629a2f43d94814c70a3203"
+  },
+  "artifact": {
+    "path": "data/universe_v2_provenance.parquet (gitignored)",
+    "sha256": "722f3ce43c00e43f3ef1295b87a4377d92e7650f80993d17ad05d0345e0976cc",
+    "columns": [
+      "word",
+      "intake_layer",
+      "intake_kind",
+      "intake_channels",
+      "eol_phase1_tier",
+      "eol_record",
+      "eol_synthetic_category",
+      "eol_synthetic_engine_inferred",
+      "panel_count",
+      "gb_type",
+      "wordfreq_scored",
+      "wikt_title_any",
+      "provenance_class"
+    ],
+    "superseded_sha256": [
+      "7c9dc6284bf6393769eec3b26c27b8c77fa68dcf08cb5ef77148c2b7f07bec1b"
+    ],
+    "superseded_note": "the layer before the withheld word list's channel label was renamed eol:withheld-list; the internal v2.0 was built from it"
+  },
+  "pin": {
+    "v2_rows": 10296274,
+    "restricted_rows": 1985,
+    "inherited_strings": 9653667
+  },
+  "measured": {
+    "rows": 10296274,
+    "rows_by_layer": {
+      "c1_exceptions": 213867,
+      "c4_additions": 133875,
+      "eol_invalid": 9308837,
+      "eol_valid": 344830,
+      "spaced_c015": 294865
+    },
+    "rows_by_kind": {
+      "derived": 642607,
+      "generated": 330363,
+      "obtained": 9323304
+    },
+    "rows_by_class": {
+      "channel_and_containment": 9130706,
+      "channel_only": 584750,
+      "containment_only": 320406,
+      "neither": 260412
+    },
+    "rows_by_layer_and_kind": {
+      "c1_exceptions": {
+        "derived": 213867
+      },
+      "c4_additions": {
+        "derived": 133875
+      },
+      "eol_invalid": {
+        "generated": 299120,
+        "obtained": 9009717
+      },
+      "eol_valid": {
+        "generated": 31243,
+        "obtained": 313587
+      },
+      "spaced_c015": {
+        "derived": 294865
+      }
+    },
+    "rows_by_layer_and_class": {
+      "c1_exceptions": {
+        "channel_and_containment": 213851,
+        "channel_only": 16
+      },
+      "c4_additions": {
+        "channel_and_containment": 133875
+      },
+      "eol_invalid": {
+        "channel_and_containment": 8171738,
+        "channel_only": 556281,
+        "containment_only": 320406,
+        "neither": 260412
+      },
+      "eol_valid": {
+        "channel_and_containment": 316377,
+        "channel_only": 28453
+      },
+      "spaced_c015": {
+        "channel_and_containment": 294865
+      }
+    },
+    "rows_by_kind_and_class": {
+      "derived": {
+        "channel_and_containment": 642591,
+        "channel_only": 16
+      },
+      "generated": {
+        "channel_and_containment": 9842,
+        "channel_only": 320521
+      },
+      "obtained": {
+        "channel_and_containment": 8478273,
+        "channel_only": 264213,
+        "containment_only": 320406,
+        "neither": 260412
+      }
+    },
+    "eol_phase1_tier_by_layer": {
+      "c1_exceptions": {
+        "none": 213867
+      },
+      "c4_additions": {
+        "none": 133875
+      },
+      "eol_invalid": {
+        "none": 879938,
+        "unlikely": 76075,
+        "valid": 8352824
+      },
+      "eol_valid": {
+        "none": 344830
+      },
+      "spaced_c015": {
+        "none": 294865
+      }
+    },
+    "eol_record_by_layer": {
+      "c1_exceptions": {
+        "none": 213867
+      },
+      "c4_additions": {
+        "none": 133875
+      },
+      "eol_invalid": {
+        "invalid-dict": 9275221,
+        "none": 33616
+      },
+      "eol_valid": {
+        "valid-dict": 344830
+      },
+      "spaced_c015": {
+        "none": 294865
+      }
+    },
+    "channel_label_rows_by_layer": {
+      "audit:csw21": {
+        "c4_additions": 86064
+      },
+      "audit:enable1": {
+        "c4_additions": 413
+      },
+      "audit:hunspell_en_AU": {
+        "c4_additions": 2810
+      },
+      "audit:hunspell_en_CA": {
+        "c4_additions": 1994
+      },
+      "audit:hunspell_en_GB": {
+        "c4_additions": 15275
+      },
+      "audit:hunspell_en_US": {
+        "c4_additions": 1872
+      },
+      "audit:nwl2023": {
+        "c4_additions": 8846
+      },
+      "audit:scowl": {
+        "c4_additions": 90637
+      },
+      "audit:sowpods_legacy": {
+        "c4_additions": 84334
+      },
+      "audit:web2": {
+        "c4_additions": 34267
+      },
+      "audit:wiktionary_english": {
+        "c4_additions": 104848
+      },
+      "audit:wordfreq": {
+        "c4_additions": 10191
+      },
+      "audit:wordnet": {
+        "c4_additions": 4564
+      },
+      "census:hunspell_en_AU": {
+        "c1_exceptions": 33293
+      },
+      "census:hunspell_en_CA": {
+        "c1_exceptions": 33111
+      },
+      "census:hunspell_en_GB": {
+        "c1_exceptions": 86480
+      },
+      "census:hunspell_en_US": {
+        "c1_exceptions": 33276
+      },
+      "census:scowl": {
+        "c1_exceptions": 79418
+      },
+      "census:web2": {
+        "c1_exceptions": 2
+      },
+      "census:web2a": {
+        "c1_exceptions": 31213
+      },
+      "census:wiktionary_english": {
+        "c1_exceptions": 56104
+      },
+      "census:wordfreq": {
+        "c1_exceptions": 21587
+      },
+      "eol:authoritative-extracts": {
+        "eol_valid": 259
+      },
+      "eol:dictionary-api:free-dictionary": {
+        "eol_valid": 143
+      },
+      "eol:enable": {
+        "eol_invalid": 2740
+      },
+      "eol:extended-domain-sources": {
+        "eol_valid": 175
+      },
+      "eol:google_ngrams": {
+        "eol_invalid": 7941527
+      },
+      "eol:invalid-list-recovery": {
+        "eol_valid": 66
+      },
+      "eol:libreoffice": {
+        "eol_invalid": 34166
+      },
+      "eol:list": {
+        "eol_valid": 312944
+      },
+      "eol:opensource": {
+        "eol_invalid": 145028
+      },
+      "eol:phase1-unrecorded": {
+        "eol_invalid": 580818
+      },
+      "eol:synthetic-engine": {
+        "eol_invalid": 299120,
+        "eol_valid": 31243
+      },
+      "eol:wikipedia": {
+        "eol_invalid": 1552359
+      },
+      "eol:wiktionary": {
+        "eol_invalid": 551717
+      },
+      "eol:wordnet": {
+        "eol_invalid": 14176
+      },
+      "ledger:d025": {
+        "c1_exceptions": 170
+      },
+      "spaced:wiktionary_english": {
+        "spaced_c015": 250893
+      },
+      "spaced:wordnet": {
+        "spaced_c015": 63483
+      }
+    },
+    "channel_label_rows": {
+      "audit:csw21": 86064,
+      "audit:enable1": 413,
+      "audit:hunspell_en_AU": 2810,
+      "audit:hunspell_en_CA": 1994,
+      "audit:hunspell_en_GB": 15275,
+      "audit:hunspell_en_US": 1872,
+      "audit:nwl2023": 8846,
+      "audit:scowl": 90637,
+      "audit:sowpods_legacy": 84334,
+      "audit:web2": 34267,
+      "audit:wiktionary_english": 104848,
+      "audit:wordfreq": 10191,
+      "audit:wordnet": 4564,
+      "census:hunspell_en_AU": 33293,
+      "census:hunspell_en_CA": 33111,
+      "census:hunspell_en_GB": 86480,
+      "census:hunspell_en_US": 33276,
+      "census:scowl": 79418,
+      "census:web2": 2,
+      "census:web2a": 31213,
+      "census:wiktionary_english": 56104,
+      "census:wordfreq": 21587,
+      "eol:authoritative-extracts": 259,
+      "eol:dictionary-api:free-dictionary": 143,
+      "eol:enable": 2740,
+      "eol:extended-domain-sources": 175,
+      "eol:google_ngrams": 7941527,
+      "eol:invalid-list-recovery": 66,
+      "eol:libreoffice": 34166,
+      "eol:list": 312944,
+      "eol:opensource": 145028,
+      "eol:phase1-unrecorded": 580818,
+      "eol:synthetic-engine": 330363,
+      "eol:wikipedia": 1552359,
+      "eol:wiktionary": 551717,
+      "eol:wordnet": 14176,
+      "ledger:d025": 170,
+      "spaced:wiktionary_english": 250893,
+      "spaced:wordnet": 63483
+    },
+    "rows_by_layer_and_channel_count": {
+      "c1_exceptions": {
+        "1": 151774,
+        "2": 26534,
+        "3": 4133,
+        "4": 5590,
+        "5": 20083,
+        "6": 5633,
+        "7": 120
+      },
+      "c4_additions": {
+        "1": 38840,
+        "10": 500,
+        "11": 242,
+        "12": 84,
+        "13": 10,
+        "2": 8348,
+        "3": 17846,
+        "4": 31413,
+        "5": 24125,
+        "6": 7805,
+        "7": 2835,
+        "8": 1154,
+        "9": 673
+      },
+      "eol_invalid": {
+        "0": 580818,
+        "1": 7226028,
+        "2": 1253305,
+        "3": 198778,
+        "4": 40354,
+        "5": 6973,
+        "6": 2487,
+        "7": 94
+      },
+      "eol_valid": {
+        "1": 344830
+      },
+      "spaced_c015": {
+        "1": 275354,
+        "2": 19511
+      }
+    },
+    "distinct_channel_combinations": 663,
+    "containment_by_layer": {
+      "eol_valid": {
+        "rows": 344830,
+        "listed_by_a_panel_set": 267869,
+        "gb_type": 297933,
+        "wordfreq_scored": 100462,
+        "wikt_title_any": 258439,
+        "with_containment": 316377,
+        "measured_by_the_corpus_layers": 344830
+      },
+      "eol_invalid": {
+        "rows": 9308837,
+        "listed_by_a_panel_set": 527614,
+        "gb_type": 8353641,
+        "wordfreq_scored": 171271,
+        "wikt_title_any": 1079661,
+        "with_containment": 8492144,
+        "measured_by_the_corpus_layers": 9308837
+      },
+      "c1_exceptions": {
+        "rows": 213867,
+        "listed_by_a_panel_set": 206611,
+        "gb_type": 14454,
+        "wordfreq_scored": 21587,
+        "wikt_title_any": 58079,
+        "with_containment": 213851,
+        "measured_by_the_corpus_layers": 213867
+      },
+      "c4_additions": {
+        "rows": 133875,
+        "listed_by_a_panel_set": 133875,
+        "gb_type": 97700,
+        "wordfreq_scored": 10191,
+        "wikt_title_any": 107921,
+        "with_containment": 133875,
+        "measured_by_the_corpus_layers": 133875
+      },
+      "spaced_c015": {
+        "rows": 294865,
+        "listed_by_a_panel_set": 294865,
+        "gb_type": 0,
+        "wordfreq_scored": 0,
+        "wikt_title_any": 0,
+        "with_containment": 294865,
+        "measured_by_the_corpus_layers": 0
+      }
+    },
+    "panel_count_histogram": {
+      "0": 8865440,
+      "1": 908641,
+      "10": 29910,
+      "11": 9183,
+      "12": 33068,
+      "2": 124899,
+      "3": 97924,
+      "4": 55914,
+      "5": 57649,
+      "6": 45249,
+      "7": 38817,
+      "8": 17630,
+      "9": 11950
+    },
+    "generated": {
+      "rows": 330363,
+      "by_layer": {
+        "eol_invalid": 299120,
+        "eol_valid": 31243
+      },
+      "by_class": {
+        "channel_and_containment": 9842,
+        "channel_only": 320521
+      },
+      "by_category": {
+        "Biochemical": 6,
+        "Chemical": 3889,
+        "Chemical, Nonsense": 8,
+        "Chemical/Nonsense": 14,
+        "Chemical/Science": 3,
+        "General": 24856,
+        "General/Nonsense": 160,
+        "General/Science": 1,
+        "Malformed": 48,
+        "Malformed inflection": 37,
+        "Medical": 5447,
+        "Medical, Nonsense": 3,
+        "Medical/Nonsense": 68,
+        "Medical/Science": 1,
+        "Misspelling": 43,
+        "Nonsense": 254779,
+        "Science": 9617,
+        "Science, Nonsense": 31,
+        "Science/Nonsense": 52,
+        "Structurally impossible": 11,
+        "Unknown": 46,
+        "null": 31243
+      },
+      "by_engine": {
+        "affixation": 327079,
+        "chemical-variation": 1595,
+        "greek-plural": 1120,
+        "medical-scientific-prefixing": 350,
+        "unresolved": 219
+      },
+      "by_rule": {
+        "affixation/comparative-or-agent": 29933,
+        "affixation/general-prefix": 149,
+        "affixation/gerund-plural": 18,
+        "affixation/plural": 149139,
+        "affixation/superlative": 30674,
+        "affixation/verb-form": 117166,
+        "chemical-variation/root-chain": 691,
+        "chemical-variation/substituent-prefix": 904,
+        "greek-plural/-des": 142,
+        "greek-plural/-ses": 978,
+        "medical-scientific-prefixing/domain-prefix": 350,
+        "unresolved/none": 219
+      },
+      "by_layer_and_engine": {
+        "eol_invalid": {
+          "affixation": 298399,
+          "chemical-variation": 232,
+          "greek-plural": 273,
+          "medical-scientific-prefixing": 20,
+          "unresolved": 196
+        },
+        "eol_valid": {
+          "affixation": 28680,
+          "chemical-variation": 1363,
+          "greek-plural": 847,
+          "medical-scientific-prefixing": 330,
+          "unresolved": 23
+        }
+      },
+      "by_layer_and_class": {
+        "eol_invalid": {
+          "channel_and_containment": 6403,
+          "channel_only": 292717
+        },
+        "eol_valid": {
+          "channel_and_containment": 3439,
+          "channel_only": 27804
+        }
+      },
+      "by_eol_record": {
+        "invalid-dict": 265549,
+        "none": 33571,
+        "valid-dict": 31243
+      },
+      "by_eol_record_and_class": {
+        "invalid-dict": {
+          "channel_and_containment": 2644,
+          "channel_only": 262905
+        },
+        "none": {
+          "channel_and_containment": 3759,
+          "channel_only": 29812
+        },
+        "valid-dict": {
+          "channel_and_containment": 3439,
+          "channel_only": 27804
+        }
+      },
+      "with_a_discovery_log_label_too": 0
+    },
+    "residual": {
+      "rows": 260412,
+      "by_layer": {
+        "eol_invalid": 260412
+      },
+      "by_eol_record": {
+        "invalid-dict": 260408,
+        "none": 4
+      },
+      "a_wiktionary_title_in_some_language": 5329
+    },
+    "no_recorded_channel": {
+      "rows": 580818,
+      "by_layer": {
+        "eol_invalid": 580818
+      },
+      "by_eol_record": {
+        "invalid-dict": 580773,
+        "none": 45
+      },
+      "listed_by_a_panel_set": 7456,
+      "a_gb_type": 319168,
+      "not_listed_and_a_gb_type": 312839,
+      "not_listed_not_gb_and_wordfreq_scored": 111,
+      "with_no_containment": 260412
+    }
+  },
+  "percentages": {
+    "residual_of_the_universe": "2.53%",
+    "residual_of_the_invalid_layer": "2.80%",
+    "channel_and_containment_of_the_universe": "88.68%",
+    "channel_only_of_the_universe": "5.68%",
+    "containment_only_of_the_universe": "3.11%",
+    "inherited_with_a_recorded_channel": "93.98%",
+    "generated_of_the_universe": "3.21%",
+    "generated_with_no_containment": "97.02%",
+    "generated_inferred_as_affixation": "99.01%"
+  },
+  "coverage": {
+    "valid_dictionary_bytes": 51406050,
+    "valid_dictionary_entries": 344830,
+    "valid_entries_with_a_non_empty_channel_list": 0,
+    "valid_entries_with_a_source_value": 31886,
+    "valid_entries_with_neither": 312944,
+    "valid_entries_outside_the_universe": 0,
+    "invalid_dictionary_bytes": 12216325066,
+    "invalid_dictionary_lines": 9275416,
+    "invalid_dictionary_entries": 9275414,
+    "invalid_entries_keyed_by_a_valid_string": 193,
+    "invalid_entries_outside_the_universe": 0,
+    "invalid_entries_with_a_non_empty_channel_list": 8429083,
+    "invalid_entries_with_a_source_value": 265549,
+    "invalid_entries_with_neither": 580782,
+    "by_layer": {
+      "eol_valid": {
+        "rows": 344830,
+        "with_an_entry_in_its_own_dictionary": 344830,
+        "with_an_entry_in_the_other_dictionary_only": 0,
+        "with_an_entry_in_both": 193,
+        "with_no_entry": 0
+      },
+      "eol_invalid": {
+        "rows": 9308837,
+        "with_an_entry_in_its_own_dictionary": 9275221,
+        "with_an_entry_in_the_other_dictionary_only": 0,
+        "with_an_entry_in_both": 0,
+        "with_no_entry": 33616
+      }
+    },
+    "no_entry_strings_accounted_for": {
+      "inherited_strings_with_no_entry": 33616,
+      "named_by_the_two_demotion_ledgers": 33571,
+      "demotion_ledger_rows_in_all": 33594,
+      "demotion_ledger_words_that_do_have_an_entry": 23,
+      "named_by_the_single_letter_ledger": 8,
+      "named_by_the_form_rule_ledger_as_added_candidates": 37,
+      "named_by_none_of_the_four": 0
+    }
+  },
+  "ledger_cross_check": {
+    "ledger_rows": 33571,
+    "ledger_rows_taken_back_into_the_valid_list": 23,
+    "agreeing_rows": 33567,
+    "claimed_form_by_inferred_rule": {
+      "comparative": {
+        "affixation/comparative-or-agent": 8438,
+        "affixation/superlative": 8033
+      },
+      "plural": {
+        "affixation/gerund-plural": 15,
+        "affixation/plural": 9146,
+        "medical-scientific-prefixing/domain-prefix": 1,
+        "unresolved/none": 1
+      },
+      "verb form": {
+        "affixation/verb-form": 7935,
+        "unresolved/none": 2
+      }
+    }
+  },
+  "discovery_log_vs_containment": {
+    "valid_rows_labeled_wordnet": 0,
+    "valid_rows_labeled_wordnet_at_the_valid_tier": 0,
+    "valid_rows_listed_by_the_wordnet_panel_set": 57974,
+    "valid_rows_both": 0,
+    "inherited_rows_labeled_google_ngrams": 7941527,
+    "of_them_a_gb_type": 7941527,
+    "of_them_not_a_gb_type": 0,
+    "inherited_gb_types_without_the_label": 710047,
+    "inherited_gb_types": 8651574
+  },
+  "reconciliations": {
+    "sr2_reading_b_rows": 845162,
+    "channel_only_plus_neither": 845162,
+    "generated_in_the_valid_dictionary": 31243,
+    "generated_in_the_invalid_dictionary": 265549,
+    "generated_named_by_the_demotion_ledgers_only": 33571,
+    "generated_in_all": 330363,
+    "residual_without_the_ledger_reading": 290224
+  },
+  "quoted": {
+    "eol_phase1_entries": {
+      "value": 9823196,
+      "basis": "quoted, not measured here",
+      "source": "the EOL repository, docs/ENGLISH_OPENLIST_FINAL_COMPREHENSIVE_REPORT.md"
+    },
+    "eol_phase1_provisionally_valid": {
+      "value": 9640238,
+      "basis": "quoted, not measured here",
+      "source": "the EOL repository, docs/ENGLISH_OPENLIST_FINAL_COMPREHENSIVE_REPORT.md"
+    },
+    "eol_phase1_raw_candidates": {
+      "value": 182958,
+      "basis": "quoted, not measured here",
+      "source": "the EOL repository, docs/ENGLISH_OPENLIST_FINAL_COMPREHENSIVE_REPORT.md"
+    },
+    "eol_phase2d_generated": {
+      "value": 330386,
+      "basis": "quoted, not measured here",
+      "source": "the EOL repository, docs/ENGLISH_OPENLIST_FINAL_COMPREHENSIVE_REPORT.md"
+    },
+    "eol_phase2d_validated": {
+      "value": 64837,
+      "basis": "quoted, not measured here",
+      "source": "the EOL repository, docs/ENGLISH_OPENLIST_FINAL_COMPREHENSIVE_REPORT.md"
+    },
+    "eol_demoted_comparatives": {
+      "value": 16476,
+      "basis": "quoted, not measured here",
+      "source": "the EOL repository, commit 721854d"
+    },
+    "eol_forms_with_no_stem_in_the_list": {
+      "value": 2636,
+      "basis": "quoted, not measured here",
+      "source": "the EOL repository, commit 538c36b"
+    },
+    "eol_demoted_non_plural_forms": {
+      "value": 17118,
+      "basis": "quoted, not measured here",
+      "source": "the EOL repository, commit 50d2b1a"
+    },
+    "eol_plurals_kept": {
+      "value": 28605,
+      "basis": "quoted, not measured here",
+      "source": "the EOL repository, commit 50d2b1a"
+    }
+  }
+}

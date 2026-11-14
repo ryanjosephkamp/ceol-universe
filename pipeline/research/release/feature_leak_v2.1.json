@@ -1,0 +1,177 @@
+{
+ "generated_by": "research/release/feature_leak.py",
+ "decision": "D-013",
+ "version": "v2.1",
+ "inputs": {
+  "evidence": {
+   "path": "data/evidence.parquet",
+   "sha256": "6639e0fe547d5c27597ee1c52d1293a3a562e9d5ac54d8c0e133c7c7cef78292"
+  },
+  "features": {
+   "path": "data/features.parquet",
+   "sha256": "8bae1885d69383f2422fba918695e71340fcee24707c22862c3f21dbd75747fc"
+  }
+ },
+ "model": {
+  "recipe": "research/features/charmodel.py, fitted and tuned as research/features/build_features.py does",
+  "order": 4,
+  "alphabet": 50,
+  "pool_rule": "fires >= ceil(2/3 * applicable) over the 13 panel sets (research/features/partitions.py)",
+  "partition_rule": "sha256(seed:word): train < 0.7, dev < 0.8, else test"
+ },
+ "published_sets": [
+  "wordnet",
+  "wiktionary_english",
+  "hunspell_en_US",
+  "hunspell_en_GB",
+  "hunspell_en_CA",
+  "hunspell_en_AU",
+  "enable1",
+  "scowl"
+ ],
+ "withheld_sets": [
+  "nwl2023",
+  "csw21",
+  "sowpods_legacy",
+  "web2",
+  "web2a"
+ ],
+ "pool": 127043,
+ "pool_train": 89059,
+ "pool_published_only": 110045,
+ "refit_max_abs_difference": 8.22e-07,
+ "probes": 50,
+ "applicable_count_of_the_strata": 12,
+ "memorization_auc": {
+  "orthotactic_logp_total": {
+   "auc": 0.5314,
+   "lo": 0.5274,
+   "hi": 0.5353
+  },
+  "orthotactic_logp_per_char": {
+   "auc": 0.5349,
+   "lo": 0.5309,
+   "hi": 0.5388
+  }
+ },
+ "residual_auc": {
+  "orthotactic_logp_total": {
+   "4": {
+    "auc": 0.7006,
+    "lo": 0.695,
+    "hi": 0.7062
+   },
+   "5": {
+    "auc": 0.7886,
+    "lo": 0.7805,
+    "hi": 0.7966
+   },
+   "6": {
+    "auc": 0.7616,
+    "lo": 0.7513,
+    "hi": 0.7718
+   },
+   "7": {
+    "auc": 0.6435,
+    "lo": 0.6131,
+    "hi": 0.6738
+   }
+  },
+  "orthotactic_logp_per_char": {
+   "4": {
+    "auc": 0.7076,
+    "lo": 0.702,
+    "hi": 0.7131
+   },
+   "5": {
+    "auc": 0.7823,
+    "lo": 0.7741,
+    "hi": 0.7905
+   },
+   "6": {
+    "auc": 0.765,
+    "lo": 0.7549,
+    "hi": 0.7752
+   },
+   "7": {
+    "auc": 0.6044,
+    "lo": 0.5722,
+    "hi": 0.6365
+   }
+  }
+ },
+ "residual_auc_held_out": {
+  "orthotactic_logp_total": {
+   "4": {
+    "auc": 0.6242,
+    "lo": 0.6124,
+    "hi": 0.636
+   },
+   "5": {
+    "auc": 0.7215,
+    "lo": 0.7072,
+    "hi": 0.7359
+   },
+   "6": {
+    "auc": 0.771,
+    "lo": 0.7532,
+    "hi": 0.7888
+   },
+   "7": {
+    "auc": 0.652,
+    "lo": 0.6214,
+    "hi": 0.6826
+   }
+  },
+  "orthotactic_logp_per_char": {
+   "4": {
+    "auc": 0.628,
+    "lo": 0.6162,
+    "hi": 0.6398
+   },
+   "5": {
+    "auc": 0.7156,
+    "lo": 0.7012,
+    "hi": 0.7301
+   },
+   "6": {
+    "auc": 0.7752,
+    "lo": 0.7575,
+    "hi": 0.7929
+   },
+   "7": {
+    "auc": 0.617,
+    "lo": 0.5847,
+    "hi": 0.6492
+   }
+  }
+ },
+ "rule": "a column reveals a withheld list when, in any stratum, the 95% interval of the residual's AUC lies above 0.5",
+ "reveals": {
+  "orthotactic_logp_total": true,
+  "orthotactic_logp_per_char": true
+ },
+ "doc_figures": {
+  "withheld_feature_columns": 12,
+  "published_feature_columns": 9,
+  "pool": 127043,
+  "pool_train": 89059,
+  "pool_published_only": 110045,
+  "refit": "8.22e-07",
+  "memorization_per_char": "0.5349",
+  "residual_4": "0.7076",
+  "residual_5": "0.7823",
+  "residual_6": "0.7650",
+  "residual_7": "0.6044",
+  "residual_held_out_4": "0.6280",
+  "residual_held_out_5": "0.7156",
+  "residual_held_out_6": "0.7752",
+  "residual_held_out_7": "0.6170"
+ },
+ "decision_figures": {
+  "residual_low": "0.60",
+  "residual_high": "0.78",
+  "held_out_low": "0.62",
+  "held_out_high": "0.78"
+ }
+}

@@ -1,0 +1,33 @@
+{
+  "generated_by": "research/provenance/model_basis.py",
+  "decision": "the project plan, item 4",
+  "input": {
+    "dictionary": "merged_valid_dict.json",
+    "sha256": "f2c9c5567d95a2ffa641ec7b6607a1d336207f0928e490da62e825d120123aed",
+    "revision": "08ae92b8b81caf12ef119d760793e49feb7e2244",
+    "read_as": "the local pinned file (data/eol), parsed whole from the bytes that were hashed"
+  },
+  "cross_check": {
+    "intake_parquet_sha256": "d377e1e672fc9d31286cc5166444c2bccc0d8bfbcd6698c276bdf41b2b9ece5f",
+    "pipeline_rows": 0,
+    "rows_whose_record_names_a_model": 0
+  },
+  "rule": {
+    "model_pipeline": "validation_source is verification_pipeline, and the manual_validation block names a model",
+    "model_alone": "an unverified_llm_verdict and a manual_validation block naming a model, and no validation_source"
+  },
+  "counts": {
+    "entries": 344830,
+    "by_basis": {
+      "model_pipeline": 0,
+      "model_alone": 0
+    },
+    "not_model_decided": 344830,
+    "model_named_by_basis": {}
+  },
+  "artifact": {
+    "path": "data/eol_valid_model_basis.parquet",
+    "rows": 0,
+    "sha256": "24504f73824b7644bfce9982c0e1d95f817845e0d9d9c031c9365d5ff6fe32ec"
+  }
+}

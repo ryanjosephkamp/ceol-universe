@@ -1,0 +1,509 @@
+{
+  "generated_by": "research/release/build_release.py",
+  "dataset": "ryanjosephkamp/ceol-universe",
+  "version": "v2.0",
+  "decision": "C-078",
+  "pin_entry": "C-016",
+  "visibility": "private (C-078 line 3: never made public at this version)",
+  "built_on": "2026-11-13",
+  "canary": "a8d1c96b-4b6e-413c-94a1-a6fa7066f992",
+  "sources": {
+    "pin": {
+      "path": "data/universe_v2.parquet",
+      "sha256": "cdc90e96abbee14c7d056998cb4eab2daafba5ea45632cfd97f13a1d08fc2935",
+      "record": "research/universe_v2/universe_v2.json",
+      "record_key": "artifacts.universe_v2_parquet_sha256"
+    },
+    "provenance": {
+      "path": "data/universe_v2_provenance.parquet",
+      "sha256": "722f3ce43c00e43f3ef1295b87a4377d92e7650f80993d17ad05d0345e0976cc",
+      "record": "research/provenance/provenance.json",
+      "record_key": "artifact.sha256"
+    },
+    "evidence": {
+      "path": "data/evidence.parquet",
+      "sha256": "6639e0fe547d5c27597ee1c52d1293a3a562e9d5ac54d8c0e133c7c7cef78292",
+      "record": "research/evidence/evidence.json",
+      "record_key": "artifacts.evidence_parquet_sha256"
+    },
+    "features": {
+      "path": "data/features.parquet",
+      "sha256": "8bae1885d69383f2422fba918695e71340fcee24707c22862c3f21dbd75747fc",
+      "record": "research/provenance/provenance.json",
+      "record_key": "inputs.features_parquet_sha256"
+    }
+  },
+  "pin_counts": {
+    "rows": 10296274,
+    "restricted_rows": 1985,
+    "shippable_rows": 10294289,
+    "spaced_rows": 294865,
+    "eol_valid": 344830
+  },
+  "rows_by_config": {
+    "universe": 10294289,
+    "features": 9999424,
+    "panel-listed": 1428849,
+    "eol-valid": 344830,
+    "spaced": 294865,
+    "exceptions": 236484
+  },
+  "files": [
+    {
+      "config": "universe",
+      "path": "universe.parquet",
+      "predicate": "is_restricted == false over the pin",
+      "rows": 10294289,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "web2",
+        "web2a",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "sowpods_legacy",
+        "nwl2023",
+        "csw21",
+        "scowl_tier",
+        "wikt_title_screen"
+      ],
+      "row_group_rows": 420000,
+      "bytes": 167198457,
+      "sha256": "6e180d976fcd32cce3575f853ac3693eeb4b589845bf2a78e5f7c6d1bc67328c",
+      "measured_uncompressed_bytes": 405702408,
+      "largest_row_group_uncompressed_bytes": 17171089
+    },
+    {
+      "config": "features",
+      "path": "features.parquet",
+      "predicate": "token_count == 1 over universe; id, word, and the feature layer's columns",
+      "rows": 9999424,
+      "columns": [
+        "id",
+        "word",
+        "orthotactic_logp_total",
+        "orthotactic_logp_per_char",
+        "ocr_neighbor_hits",
+        "ocr_neighbor_freq_ratio",
+        "ocr_apostrophe_ratio",
+        "ocr_ligature_ratio",
+        "ocr_hyphen_drop_ratio",
+        "ocr_strip_ratio",
+        "ocr_hyphen_junction_ratio",
+        "morph_productivity_vn",
+        "morph_has_parse",
+        "segment_attested_fraction",
+        "gb_year_span",
+        "gb_span_fill",
+        "gb_tokens_per_volume",
+        "gb_volumes_per_year",
+        "gb_log10_match",
+        "gb_log10_volume",
+        "zipf_log10_rank",
+        "zipf_resid",
+        "wordfreq_zipf"
+      ],
+      "row_group_rows": 920000,
+      "bytes": 380533574,
+      "sha256": "22346bb38c22a6f87a2e20d8beddd0df086531bf80ae8ebdfb1914ce0eb09d16",
+      "measured_uncompressed_bytes": 623855166,
+      "largest_row_group_uncompressed_bytes": 57966442
+    },
+    {
+      "config": "panel-listed",
+      "path": "panel-listed.parquet",
+      "predicate": "panel_count >= 1",
+      "rows": 1428849,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "web2",
+        "web2a",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "sowpods_legacy",
+        "nwl2023",
+        "csw21",
+        "scowl_tier",
+        "wikt_title_screen"
+      ],
+      "row_group_rows": 360000,
+      "bytes": 30319406,
+      "sha256": "5edafcc800575ff86b8df8f6b3d6d2c9e91ecd77db8c943bd0f3fc3e1bb8e6e4",
+      "measured_uncompressed_bytes": 67710892,
+      "largest_row_group_uncompressed_bytes": 17146364
+    },
+    {
+      "config": "eol-valid",
+      "path": "eol-valid.parquet",
+      "predicate": "eol == true",
+      "rows": 344830,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "web2",
+        "web2a",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "sowpods_legacy",
+        "nwl2023",
+        "csw21",
+        "scowl_tier",
+        "wikt_title_screen"
+      ],
+      "row_group_rows": 344830,
+      "bytes": 6022254,
+      "sha256": "67cc4be2b5f1f0fd23a231b1908fa241ffd95ede2e15d0642733b055fe8d44e1",
+      "measured_uncompressed_bytes": 14078266,
+      "largest_row_group_uncompressed_bytes": 14078266
+    },
+    {
+      "config": "spaced",
+      "path": "spaced.parquet",
+      "predicate": "token_count > 1",
+      "rows": 294865,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "web2",
+        "web2a",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "sowpods_legacy",
+        "nwl2023",
+        "csw21",
+        "scowl_tier",
+        "wikt_title_screen"
+      ],
+      "row_group_rows": 294865,
+      "bytes": 4989129,
+      "sha256": "9af83319b6d5af8df508eab64a700c689b41b320b6961ca3505405d5358103fb",
+      "measured_uncompressed_bytes": 12504688,
+      "largest_row_group_uncompressed_bytes": 12504688
+    },
+    {
+      "config": "exceptions",
+      "path": "exceptions.parquet",
+      "predicate": "classes carries any of hyphenated, accented, contraction, apostrophe-form, ligature, diaeresis",
+      "rows": 236484,
+      "columns": [
+        "id",
+        "word",
+        "eol",
+        "eol_universe",
+        "classes",
+        "sources",
+        "intake_date",
+        "c4_addition",
+        "is_restricted",
+        "token_count",
+        "c015_addition",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags",
+        "class_explicit",
+        "panel_sets",
+        "variety_gb_not_us",
+        "variety_us_not_gb",
+        "intake_layer",
+        "intake_kind",
+        "intake_channels",
+        "eol_phase1_tier",
+        "eol_record",
+        "eol_synthetic_category",
+        "eol_synthetic_engine_inferred",
+        "panel_count",
+        "gb_type",
+        "wordfreq_scored",
+        "wikt_title_any",
+        "provenance_class",
+        "wordnet",
+        "wiktionary_english",
+        "web2",
+        "web2a",
+        "hunspell_en_US",
+        "hunspell_en_GB",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "enable1",
+        "sowpods_legacy",
+        "nwl2023",
+        "csw21",
+        "scowl_tier",
+        "wikt_title_screen"
+      ],
+      "row_group_rows": 236484,
+      "bytes": 4850022,
+      "sha256": "f07cb994b031f5e00df9a46526e9cfcf82cefce2335c6a93283e736f2b257615",
+      "measured_uncompressed_bytes": 10752694,
+      "largest_row_group_uncompressed_bytes": 10752694
+    }
+  ],
+  "release_layer": {
+    "id": "sha256(word as UTF-8)[:16]",
+    "class_explicit": "classes, with 'plain' for the empty string",
+    "panel_sets": "the panel sets listing the row, ';'-joined in the order wordnet, wiktionary_english, web2, web2a, hunspell_en_US, hunspell_en_GB, hunspell_en_CA, hunspell_en_AU, enable1, sowpods_legacy, nwl2023, csw21, scowl",
+    "panel_count": "the provenance layer's panel_count, equal to the number of names in panel_sets",
+    "variety_gb_not_us": "hunspell_en_GB == 1 and hunspell_en_US == 0; null where either is -1 or null",
+    "variety_us_not_gb": "hunspell_en_US == 1 and hunspell_en_GB == 0; null where either is -1 or null"
+  },
+  "bounds": {
+    "max_shard_bytes": 500000000,
+    "max_row_group_bytes": 100000000,
+    "row_group_quantum": 10000,
+    "policy": "the enforced bound is each file's compressed bytes on disk, which must be under max_shard_bytes (C-079 line 9); max_shard_bytes and max_row_group_bytes take the values of the datasets library's MAX_SHARD_SIZE and MAX_ROW_GROUP_SIZE, which that library's config describes as uncompressed sizes for its own writer and which are not a hub limit; max_row_group_bytes and row_group_quantum set each file's row-group row count from the table's mean in-memory bytes per row, a target and not an enforced bound; each file's measured_uncompressed_bytes and largest_row_group_uncompressed_bytes are read from its Parquet metadata and recorded, not bounded"
+  },
+  "assertions": {
+    "universe": {
+      "AT-UR1-1": {
+        "rows": 10294289,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-2": {
+        "rows": 10294289,
+        "expected_rows": 10294289,
+        "columns_without_nulls": 20,
+        "rows_in_pin_order": 10294289
+      },
+      "AT-UR1-3": {
+        "rows": 10294289,
+        "distinct_ids": 10294289
+      },
+      "AT-UR1-4": {
+        "spaced_rows": 294865,
+        "columns": 17
+      },
+      "AT-UR1-6": {
+        "columns": 45,
+        "controls_checked": 20,
+        "control_hits": 0,
+        "ledger_words_outside_the_pin_checked": 17113,
+        "ledger_hits": 0
+      },
+      "AT-UR1-10": {
+        "rows": 10294289,
+        "columns": 5
+      }
+    },
+    "panel-listed": {
+      "AT-UR1-1": {
+        "rows": 1428849,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-5": {
+        "rows": 1428849
+      },
+      "AT-UR1-6": {
+        "columns": 45
+      }
+    },
+    "eol-valid": {
+      "AT-UR1-1": {
+        "rows": 344830,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-5": {
+        "rows": 344830
+      },
+      "AT-UR1-6": {
+        "columns": 45
+      }
+    },
+    "spaced": {
+      "AT-UR1-1": {
+        "rows": 294865,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-5": {
+        "rows": 294865
+      },
+      "AT-UR1-6": {
+        "columns": 45
+      }
+    },
+    "exceptions": {
+      "AT-UR1-1": {
+        "rows": 236484,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-5": {
+        "rows": 236484
+      },
+      "AT-UR1-6": {
+        "columns": 45
+      }
+    },
+    "features": {
+      "AT-UR1-1": {
+        "rows": 9999424,
+        "restricted_words_checked": 1985,
+        "restricted_hits": 0
+      },
+      "AT-UR1-2": {
+        "rows": 9999424,
+        "single_token_rows_of_universe": 9999424,
+        "columns_without_nulls": 23
+      },
+      "AT-UR1-3": {
+        "rows": 9999424,
+        "distinct_ids": 9999424
+      },
+      "AT-UR1-4": {
+        "spaced_rows": 0
+      },
+      "AT-UR1-6": {
+        "columns": 23,
+        "controls_checked": 20,
+        "control_hits": 0,
+        "ledger_words_outside_the_pin_checked": 17113,
+        "ledger_hits": 0
+      }
+    }
+  },
+  "software": {
+    "python": "3.11.5",
+    "pyarrow": "22.0.0"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "repo_id": "ryanjosephkamp/ceol-universe",
+  "version": "v1.0",
+  "decision": "D-024, the owner's word for this upload",
+  "account": "ryanjosephkamp",
+  "private": true,
+  "uploaded": "2026-11-13",
+  "revision_before": "44a7fb5a717a63a874385bcf93ee18562fec1578",
+  "commit": "621c275165fe3cd72b389b155d674b2e7ab82fa6",
+  "final_revision": "621c275165fe3cd72b389b155d674b2e7ab82fa6",
+  "files": [
+    "data/universe.parquet",
+    "data/features.parquet",
+    "data/panel-listed.parquet",
+    "data/eol-valid.parquet",
+    "data/spaced.parquet",
+    "data/exceptions.parquet",
+    "data/sample.parquet",
+    "NOTICES.md",
+    "croissant.json",
+    "README.md"
+  ],
+  "hub_lfs_sha256": {
+    "data/eol-valid.parquet": "a6b16b47f91f795ffef6e31f1c7f027e32a43f4bcfdf3831116a67caf0681bbe",
+    "data/exceptions.parquet": "ba2f774c65d0c3a07e486b2a24dee828f7790b89f260aef6c0a9d978f8964c02",
+    "data/features.parquet": "8f8b509f220cab834db3c8f0ca4c2620af4539f57c659fd7791ec7227cd43fd7",
+    "data/panel-listed.parquet": "51cf60f7116476971f170cc68cd5efb5b4da9f07d0530248ea7b55b4daa969b2",
+    "data/sample.parquet": "50dd0e3f3181e1237be0ee774956520bd3c6fa8ae644b9924700555ddd37992f",
+    "data/spaced.parquet": "648a4fada6e099dcb599fa097a88c16aa5389631999205f14bd27aba815f46f6",
+    "data/universe.parquet": "bf11e6bd3a5c81dde4d5408141578820e50737ccfa59ef867e9afc07ced2a8ca"
+  },
+  "hub_git_blob_ids": {
+    "NOTICES.md": "232dbcac1e196860bd68a39643d3a21054f7601b",
+    "README.md": "d5a719a50ea96d6a571423aee7a960eadffadbd9",
+    "croissant.json": "4f16030bc3f0de556de3874147f9e1a293fc7205"
+  },
+  "card_sha256": "3c02530cb07ff35bdace22a2620fedc8e1f7a45167d711cb82cc5cd8a663ab16",
+  "record_sha256": "12293b9cb633e590653e6e27536b6c860d91515b0d6e11567c7cdd5181b0605b",
+  "tag": "v1.0",
+  "history_holds": "v2.0's files: its 45 universe columns, the 5 withheld lists' columns among them, and the 12 feature columns a public version withholds; the version's tag keeps that history reachable, so delete the tag, squash the history, and tag again before any visibility change",
+  "complete": true
+}
