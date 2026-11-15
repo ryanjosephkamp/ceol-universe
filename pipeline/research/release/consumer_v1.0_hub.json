@@ -1,7 +1,7 @@
 {
  "generated_by": "pipeline/research/release/consumer_test.py",
  "version": "v1.0",
- "mode": "hub: ryanjosephkamp/ceol-universe at revision e259e50b710af31c1fd7ceb9bcab37bd299e7588",
+ "mode": "hub: ryanjosephkamp/ceol-universe at revision d471b95288b3aee6c175382ac9bba6cf454e2bb1",
  "run_on": "2026-11-14",
  "environment": {
   "uv": "uv 0.12.5 (Homebrew 2026-08-14 aarch64-apple-darwin)",
@@ -37,7 +37,7 @@
   "README.md": "2fd9e6d696a95377d3af1f4425da0b792a33a471",
   "croissant.json": "ae915d5f73950205ee8f24e8cbfbde7211119c62"
  },
- "upload_commit": "e259e50b710af31c1fd7ceb9bcab37bd299e7588",
+ "upload_commit": "d471b95288b3aee6c175382ac9bba6cf454e2bb1",
  "configs": {
   "universe": {
    "rows": 10264273,
