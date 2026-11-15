@@ -1,0 +1,95 @@
+---
+// A page of the "Run a study" section: the section's own navigation over the page.
+import Base from './Base.astro';
+import { KIT_PAGES } from '../lib/kit';
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+}
+const { title, description, slug } = Astro.props;
+---
+
+<Base title={slug === '' ? 'Run a study' : `${title} · Run a study`} section="Run a study" description={description}>
+  <div class="frame study">
+    <nav class="stnav" aria-label="Run a study">
+      <a class="stnav-home" href="/study/">Run a study</a>
+      <ul>
+        {
+          KIT_PAGES.map((p) => (
+            <li>
+              <a href={`/study/${p.slug ? `${p.slug}/` : ''}`} aria-current={p.slug === slug ? 'page' : undefined}>
+                {p.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <slot />
+  </div>
+</Base>
+
+<style>
+  .study {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .study > :global(*) {
+    min-width: 0;
+  }
+  .stnav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-4);
+    font-size: var(--step--1);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: var(--space-3);
+  }
+  .stnav-home {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .stnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .stnav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-block: var(--space-1);
+    border-bottom: 2px solid transparent;
+  }
+  .stnav a:hover {
+    color: var(--ink);
+  }
+  .stnav a[aria-current='page'] {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+  @media (max-width: 40rem) {
+    .stnav ul {
+      flex: 1 1 100%;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 100%;
+      padding-bottom: var(--space-1);
+    }
+    .stnav ul::-webkit-scrollbar {
+      display: none;
+    }
+    .stnav li {
+      flex: none;
+    }
+  }
+</style>

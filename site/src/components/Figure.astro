@@ -1,0 +1,13 @@
+---
+// 1 figure of the version's figures file, by its id. An id the file does not
+// hold stops the build (src/lib/data.ts). "Show figure sources" in the footer
+// reveals each figure's id beside it.
+import { fig, formatCount } from '../lib/data';
+
+interface Props {
+  id: string;
+}
+const f = fig(Astro.props.id);
+---
+
+<span class="fig" data-fig={f.id} title={`${f.what} (figures.json: ${f.id})`}>{formatCount(f.value)}<span class="fig-src">{f.id}</span></span>

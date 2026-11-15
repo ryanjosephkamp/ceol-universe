@@ -1,0 +1,280 @@
+{
+  "applicable": [
+    "wiktionary_english",
+    "wordnet"
+  ],
+  "detectors": {
+    "csw21": {
+      "account": "competition lexicon over the A-Z tile alphabet; spaces unplayable; census raw-row measurement: 0 space-bearing rows in 279,077",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "csw21.txt",
+          "lines": 279077,
+          "pin_verified": true,
+          "sha256": "136332497985c48389f017064e7875ce49398ee10b5dc0fa4c701f7a5085985c",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "enable1": {
+      "account": "competition lexicon over the A-Z tile alphabet; spaces unplayable \u2014 format, not judgement",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "enable1.txt",
+          "lines": 172823,
+          "pin_verified": true,
+          "sha256": "3f16130220645692ed49c7134e24a18504c2ca55b3c012f7290e3e77c63b1a89",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "hunspell_en_AU": {
+      "account": "dic entry grammar is single-token; space-bearing lines are morphological annotation fields, parsed off by the pinned ingest",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "hunspell_en_AU.txt",
+          "lines": 33293,
+          "pin_verified": true,
+          "sha256": "600cfca1f079c06d0a646dcaeba5505aa5c1d351aa3db741d7035670bf2c478c",
+          "spaced_lines": 0
+        },
+        {
+          "file": "hunspell_en_AU_plain.txt",
+          "lines": 88197,
+          "pin_verified": true,
+          "sha256": "cfa5db35fa41a3f58c16ec5a5089dce4ce0855396dd6e2e271421b01c82b40d4",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "hunspell_en_CA": {
+      "account": "dic entry grammar is single-token; space-bearing lines are morphological annotation fields, parsed off by the pinned ingest",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "hunspell_en_CA.txt",
+          "lines": 33111,
+          "pin_verified": true,
+          "sha256": "b9c914620b108feb8a4908945bb964b66654eaec4f2e57dccad802a7d149fa1b",
+          "spaced_lines": 0
+        },
+        {
+          "file": "hunspell_en_CA_plain.txt",
+          "lines": 87836,
+          "pin_verified": true,
+          "sha256": "d2dae5c2fb2a725aaf5742c56944003825950bd382af8068ff8d04ddfcbca18a",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "hunspell_en_GB": {
+      "account": "dic entry grammar is single-token; space-bearing lines are morphological annotation fields, parsed off by the pinned ingest",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "hunspell_en_GB.txt",
+          "lines": 86480,
+          "pin_verified": true,
+          "sha256": "3d19bae4396db45076a3c64f6236832785c30a1f77b3b39a531ac32d8cc77c74",
+          "spaced_lines": 0
+        },
+        {
+          "file": "hunspell_en_GB_plain.txt",
+          "lines": 175933,
+          "pin_verified": true,
+          "sha256": "6d601d879eaace3fe6081082e5ca008663ba9f1d6c85c320ec9abba543aa23e8",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "hunspell_en_US": {
+      "account": "dic entry grammar is single-token; space-bearing lines are morphological annotation fields, parsed off by the pinned ingest",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "hunspell_en_US.txt",
+          "lines": 33276,
+          "pin_verified": true,
+          "sha256": "098afe6bd5bb5df3cbea5a625571e101958716af0f93521a6187d2a85dfd52ca",
+          "spaced_lines": 0
+        },
+        {
+          "file": "hunspell_en_US_plain.txt",
+          "lines": 87976,
+          "pin_verified": true,
+          "sha256": "4b129bed9553027e17e3d8e7ac55a94307541478dd96db72f584dfe711728c34",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "nwl2023": {
+      "account": "competition lexicon over the A-Z tile alphabet; spaces unplayable; census raw-row measurement: 0 space-bearing rows in 196,601",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "nwl2023.txt",
+          "lines": 196601,
+          "pin_verified": true,
+          "sha256": "79de4b07ed6f38ad1bdb1bf874e42383815b78730b23a0edce511f3ef043058e",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "scowl": {
+      "account": "ordinal tier covariate, never a binary detector (C-010); all 360 final lists space-free (panel measurement 2026-08-25)",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "scowl.txt",
+          "lines": 79418,
+          "pin_verified": true,
+          "sha256": "341b487cb952032ecf9d75f6133f40d7eaea006c3ec220e0425e9499f90ea513",
+          "spaced_lines": 0
+        },
+        {
+          "file": "scowl_plain.txt",
+          "lines": 439020,
+          "pin_verified": true,
+          "sha256": "ed94a3fe1aaf5585db6591e817980bde5102400c2ce57c1ff41b4236bcfaf9b3",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "sowpods_legacy": {
+      "account": "competition lexicon over the A-Z tile alphabet; spaces unplayable \u2014 format, not judgement",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "sowpods_legacy.txt",
+          "lines": 267751,
+          "pin_verified": true,
+          "sha256": "5a855b21aa2bef5b98be71c719668337b3ceeaa6cb1cc08efab2a8ff0759a38f",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "web2": {
+      "account": "single-token historical list (the ASCII /usr/share/dict/words of 1934); entry grammar carries no space",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "web2.txt",
+          "lines": 2,
+          "pin_verified": true,
+          "sha256": "efa92c521252eff8ac536a2d362cae12606e8ec69bbb2c36830fe3567fda1dce",
+          "spaced_lines": 0
+        },
+        {
+          "file": "web2_plain.txt",
+          "lines": 234454,
+          "pin_verified": true,
+          "sha256": "e264702907de95291865c8435f0b29ca1119fb340ae20aeb9189bda112832aa6",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "web2a": {
+      "account": "hyphenated-compound list; every entry single-token at the entry grammar (hyphens, never spaces)",
+      "applicable": false,
+      "spaced_count": 0,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "web2a.txt",
+          "lines": 31213,
+          "pin_verified": true,
+          "sha256": "aa3d03f3222fde397db3378db8cf5b6131a3fcab429f5f7c26c24a2185b9d960",
+          "spaced_lines": 0
+        },
+        {
+          "file": "web2a_plain.txt",
+          "lines": 0,
+          "pin_verified": true,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "wiktionary_english": {
+      "account": "multiword-capable; spaced derived set is the census re-ingest under the extended grammar (.cache/space_census/)",
+      "applicable": true,
+      "spaced_count": 250893,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "wiktionary_english.txt",
+          "lines": 56104,
+          "pin_verified": true,
+          "sha256": "990d56a5fe4ebdca810061f37c946602396228749bac681b17e3a860080f5685",
+          "spaced_lines": 0
+        }
+      ]
+    },
+    "wordnet": {
+      "account": "multiword-capable; spaced derived set is the census re-ingest under the extended grammar (.cache/space_census/)",
+      "applicable": true,
+      "spaced_count": 63483,
+      "spaced_in_c4_derived": 0,
+      "splits": [
+        {
+          "file": "wordnet.txt",
+          "lines": 5229,
+          "pin_verified": true,
+          "sha256": "801b28237a7138d2e135cad82d904d63bc7d78997527301acb4ebbb2e6a351eb",
+          "spaced_lines": 0
+        },
+        {
+          "file": "wordnet_plain.txt",
+          "lines": 77503,
+          "pin_verified": true,
+          "sha256": "266b875d86cb132cb924490626140e8c104b7170db5c5e14d2e117fd3a32bed2",
+          "spaced_lines": 0
+        }
+      ]
+    }
+  },
+  "doc_figures": {
+    "spaced_applicable_detectors": 2,
+    "spaced_na_detectors": 11,
+    "wiktionary_spaced": 250893,
+    "wordnet_spaced": 63483
+  },
+  "generated_by": "research/universe_v2/measure_spaced_applicability.py",
+  "not_applicable": [
+    "csw21",
+    "enable1",
+    "hunspell_en_AU",
+    "hunspell_en_CA",
+    "hunspell_en_GB",
+    "hunspell_en_US",
+    "nwl2023",
+    "scowl",
+    "sowpods_legacy",
+    "web2",
+    "web2a"
+  ],
+  "rule": "C-010: detector x spaced is NA iff the derived output carries zero spaced entries and a format/scope account is recorded; any non-zero cell is applicable"
+}

@@ -1,0 +1,56 @@
+{
+  "generated_by": "research/universe_v2/build_universe_v2.py",
+  "pin_decision": "C-016",
+  "supersedes": "C-009",
+  "counts": {
+    "v2_rows": 10296274,
+    "v1_rows": 10001409,
+    "spaced_additions": 294865,
+    "wn_only": 43972,
+    "wk_only": 231382,
+    "both_sources": 19511,
+    "restricted_rows": 1985,
+    "eol_valid": 344830,
+    "eol_invalid": 9308837
+  },
+  "filter_equivalence": {
+    "regenerated_valid_sha256": "32b6562c6385989e187039740b251b8b8ef0e49b399411906a9b1797f4c2e672",
+    "regenerated_invalid_sha256": "7e28a9dae4201b4773e426b252c3f4828d8bb8f619fa2c47aa35fe2ef4306d99",
+    "valid_matches_pin": true,
+    "invalid_matches_pin": true,
+    "no_space_projection_sha256": "d26b1bf12fc0690c39ae62028b99de360d451fef11e5cc799b15868a610e50ab",
+    "projection_matches_v1_canonical": true,
+    "v1_canonical_content_sha256": "d26b1bf12fc0690c39ae62028b99de360d451fef11e5cc799b15868a610e50ab"
+  },
+  "artifacts": {
+    "universe_v2_parquet_sha256": "4729d15a6cd750b1355e26685277e0ddf955d259b3aeef2ea31da727f039c600",
+    "canonical_content_sha256_v2": "205fc9d55a4fafd763386f721f85720ef8c2a97f7fb177cd092ba00b0500480b",
+    "v1_parquet_sha256": "ec7785d31fecf81b48ca42cb6f8607cbfb5c6dfce72de3c24d67eea4a36113a7"
+  },
+  "schema_columns": [
+    "word",
+    "eol",
+    "eol_universe",
+    "classes",
+    "sources",
+    "intake_date",
+    "c4_addition",
+    "is_restricted",
+    "token_count",
+    "c015_addition",
+    "wn_instance",
+    "wn_capitalized",
+    "wk_proper_noun",
+    "wk_flags"
+  ],
+  "intake_date_spaced": "2026-08-26",
+  "doc_figures": {
+    "v2_rows": 10296274,
+    "v1_rows": 10001409,
+    "spaced_additions": 294865,
+    "wn_only": 43972,
+    "wk_only": 231382,
+    "both_sources": 19511,
+    "restricted_rows": 1985
+  }
+}

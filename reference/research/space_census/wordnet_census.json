@@ -1,0 +1,69 @@
+{
+  "anchor": {
+    "exception_count": 5229,
+    "exception_sha256": "801b28237a7138d2e135cad82d904d63bc7d78997527301acb4ebbb2e6a351eb",
+    "plain_count": 77503,
+    "plain_sha256": "266b875d86cb132cb924490626140e8c104b7170db5c5e14d2e117fd3a32bed2",
+    "status": "reproduced"
+  },
+  "char_length": {
+    "distribution_by_decile": {
+      "p10": 10,
+      "p25": 12,
+      "p50": 14,
+      "p75": 18,
+      "p90": 21,
+      "p99": 31
+    },
+    "max": 71,
+    "min": 5
+  },
+  "class_counts": {
+    "apostrophe-form": 1065,
+    "contraction": 3,
+    "hyphenated": 1786,
+    "s-final": 955,
+    "spaced": 63483
+  },
+  "entries_seen": 206978,
+  "generated_by": "research/space_census/run_wordnet_census.py",
+  "inputs": {
+    "wordnet_zip_sha256": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59"
+  },
+  "multiword_rejects": {
+    "by_reason": {
+      "digit": 279,
+      "other": 6,
+      "period": 358,
+      "token_trailing_apostrophe": 82
+    },
+    "examples": {
+      "withheld_strings": 36
+    },
+    "total": 725
+  },
+  "pos_counts": {
+    "a": 59,
+    "n": 59597,
+    "r": 711,
+    "s": 433,
+    "v": 2829
+  },
+  "properness": {
+    "both": 7795,
+    "capitalized_in_data": 24635,
+    "instance_synset_members": 7812
+  },
+  "spaced_candidates": 63483,
+  "spaced_jsonl_sha256": "f43d8ec812ec88955481e7dbeed646001566a9406bf00a7972c5f365234cfb59",
+  "token_count_distribution": {
+    "2": 54256,
+    "3": 7413,
+    "4": 1389,
+    "5": 288,
+    "6": 80,
+    "7": 28,
+    "8": 20,
+    "9": 9
+  }
+}

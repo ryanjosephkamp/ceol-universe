@@ -1,0 +1,200 @@
+---
+import Research from '../../layouts/Research.astro';
+import ResearchFigure from '../../islands/ResearchFigure.tsx';
+import { analysis } from '../../lib/analysis';
+import { readRepo, renderMarkdown } from '../../lib/docs';
+import { VERSION } from '../../lib/data';
+
+// The technical report as committed: the rendering of its template, every
+// figure a row of its calculator (pipeline/research/release/report/paper.py).
+// A figure marker in the text becomes the interactive figure of that entry
+// of the descriptive analysis; the table that follows it in the text is the
+// same figure's table view.
+const PAPER = `pipeline/research/release/report/PAPER_${VERSION}.md`;
+const DRAWN = new Set(['F1', 'F4', 'U1', 'P1', 'S2', 'S3', 'S5', 'S6', 'S13']);
+const md = readRepo(PAPER);
+const title = md.match(/^# (.*)$/m)![1];
+// the line under the title is the byline; the page sets it in its header
+let body = md.replace(/^# .*\n/, '').replace(/^\s+/, '');
+const byline = body.match(/^([^\n*|#][^\n]*)\n/)?.[1] ?? '';
+if (byline) body = body.slice(byline.length).replace(/^\s+/, '');
+const parts = body.split(/<!-- figure:([A-Z0-9]+) -->/);
+const chunks = parts.map((p, i) =>
+  i % 2 === 0 ? { kind: 'text' as const, html: renderMarkdown(p, 2) } : { kind: 'figure' as const, id: p },
+);
+const slug = (t: string) =>
+  t
+    .replace(/<[^>]+>/g, '')
+    .replace(/[*_`]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+const toc = [...body.matchAll(/^## (.*)$/gm)].map((m) => ({ text: m[1], id: slug(m[1]) }));
+const [main, rest] = title.split(': ');
+const sub = rest ? rest.charAt(0).toUpperCase() + rest.slice(1) : '';
+---
+
+<Research
+  title="The technical report"
+  slug="report"
+  description="The technical report on the CEOL Universe, version 1.0: its design, construction, contents, and the published word lists compared, with every figure computed from the release."
+>
+  <header class="page-head">
+    <h1>{main}{sub && <span class="sub">{sub}</span>}</h1>
+    {byline && <p class="byline">{byline}</p>}
+    <p class="pdf-link">
+      <a href="ceol-universe-v1.0-report.pdf">The report as a PDF</a>, printed from this page when the site is built.
+    </p>
+  </header>
+  <div class="report">
+    <nav class="toc" aria-label="Contents">
+      <p class="toc-title">Contents</p>
+      <ol>
+        {
+          toc.map((t) => (
+            <li>
+              <a href={`#${t.id}`}>{t.text}</a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+    <article class="doc report-body">
+      {
+        chunks.map((c) =>
+          c.kind === 'text' ? (
+            <Fragment set:html={c.html} />
+          ) : DRAWN.has(c.id) ? (
+            <div class="report-figure" data-figure={c.id}>
+              <ResearchFigure client:load id={c.id} entry={analysis(c.id)} />
+            </div>
+          ) : null,
+        )
+      }
+    </article>
+  </div>
+</Research>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .pdf-link {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .byline {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+  @media print {
+    :global(.rsnav),
+    .toc,
+    .pdf-link,
+    :global(.chart-actions),
+    :global(.rf-readout) {
+      display: none !important;
+    }
+    .report {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+    .report-figure {
+      break-inside: avoid;
+      border: 0;
+      padding: 0;
+    }
+    /* the coverage figure's small multiples are taller than a page: kept
+       whole, the figure would leave its heading alone on a page */
+    .report-figure[data-figure='S6'] {
+      break-inside: auto;
+    }
+    .report-figure[data-figure='S6'] :global(.cov-grid > *) {
+      break-inside: avoid;
+    }
+    .report-body {
+      max-width: none;
+    }
+  }
+  .page-head h1 {
+    font-size: var(--step-4);
+    max-width: 30ch;
+    text-wrap: balance;
+    line-height: 1.15;
+  }
+  .page-head .sub {
+    display: block;
+    font-size: var(--step-1);
+    font-weight: 400;
+    color: var(--ink-soft);
+    margin-top: var(--space-2);
+    max-width: 46ch;
+  }
+  .report {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
+  @media (min-width: 68rem) {
+    .report {
+      grid-template-columns: 14rem minmax(0, 1fr);
+    }
+    .toc {
+      position: sticky;
+      top: var(--space-4);
+      max-height: calc(100vh - 2rem);
+      overflow-y: auto;
+    }
+  }
+  .toc {
+    font-size: var(--step--1);
+    min-width: 0;
+  }
+  .toc-title {
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+  }
+  .toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+  }
+  .toc a {
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .toc a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+  @media (max-width: 67.99rem) {
+    .toc ol {
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+    }
+  }
+  .report-body {
+    max-width: 50rem;
+    min-width: 0;
+  }
+  @media (max-width: 40rem) {
+    .report-figure {
+      padding: var(--space-3);
+      margin-inline: calc(-1 * var(--space-2));
+    }
+  }
+  .report-body :global(h2) {
+    scroll-margin-top: var(--space-4);
+  }
+  .report-figure {
+    margin-block: var(--space-6);
+    padding: var(--space-5);
+    min-width: 0;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+</style>

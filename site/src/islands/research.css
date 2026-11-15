@@ -1,0 +1,373 @@
+/* The research figures: the heat map, the intersection plot, the coverage
+   small multiples, the union's growth, and the stacked agreement bars. */
+
+.rf-readout {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  min-height: 2.6em;
+  font-variant-numeric: tabular-nums;
+}
+.rf-readout strong {
+  color: var(--ink);
+}
+.rf-shown {
+  display: none;
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+}
+.rf-axis {
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+  text-align: center;
+  margin-left: 2.6rem;
+}
+@media print {
+  .rf-shown {
+    display: block;
+  }
+}
+
+.rf-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.rf-seg button {
+  padding: 0.2rem 0.65rem;
+  min-height: 2rem;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: var(--step--2);
+  cursor: pointer;
+}
+.rf-seg button:last-child {
+  border-right: 0;
+}
+.rf-seg button[aria-checked='true'] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* The heat map: rows are list A, columns list B */
+.hm-wrap {
+  overflow-x: auto;
+}
+.hm {
+  display: grid;
+  grid-template-columns: minmax(4.5rem, 6rem) repeat(var(--n), minmax(2.3rem, 1fr));
+  gap: 2px;
+  min-width: 22rem;
+  max-width: 44rem;
+  font-size: var(--step--2);
+}
+.hm-row {
+  display: contents;
+}
+.hm-corner,
+.hm-col,
+.hm-rowlabel {
+  color: var(--ink-soft);
+  align-self: end;
+}
+.hm-col {
+  text-align: center;
+  padding-bottom: 0.2rem;
+  overflow-wrap: anywhere;
+}
+.hm-rowlabel {
+  align-self: center;
+  padding-right: var(--space-2);
+  color: var(--ink);
+}
+.hm-abbr {
+  display: none;
+}
+.hm-cell {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1.25;
+  border-radius: 3px;
+  background: color-mix(in oklab, var(--accent) var(--v), var(--surface));
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+  outline-offset: 1px;
+}
+.hm-cell.dark {
+  color: var(--on-accent);
+}
+.hm-cell.on {
+  box-shadow: 0 0 0 2px var(--ink);
+}
+.hm-diag {
+  background: repeating-linear-gradient(135deg, var(--rule) 0 2px, transparent 2px 6px);
+}
+
+/* The intersection plot */
+.ix-scroll {
+  overflow-x: auto;
+  padding-bottom: var(--space-1);
+}
+.ix {
+  display: grid;
+  gap: 2px;
+  min-width: calc(7rem + var(--k) * 1.9rem);
+  max-width: calc(8rem + var(--k) * 2.6rem);
+}
+.ix-bars,
+.ix-row {
+  display: grid;
+  grid-template-columns: 7rem repeat(var(--k), minmax(1.6rem, 1fr));
+  gap: 2px;
+  align-items: end;
+}
+.ix-bars {
+  height: 11rem;
+}
+.ix-axis {
+  align-self: stretch;
+  border-right: 1px solid var(--rule);
+}
+.ix-bar {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.ix-fill {
+  display: block;
+  width: min(100%, 22px);
+  background: var(--accent);
+  border-radius: 4px 4px 0 0;
+}
+.ix-bar.on .ix-fill {
+  background: color-mix(in oklch, var(--accent) 70%, var(--ink));
+}
+.ix-n {
+  font-size: 0.6rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+}
+.ix-row {
+  align-items: center;
+  min-height: 1.5rem;
+}
+.ix-fam {
+  font-size: var(--step--2);
+  color: var(--ink);
+  padding-right: var(--space-2);
+  border-right: 1px solid var(--rule);
+}
+.ix-dot {
+  justify-self: center;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--rule);
+}
+.ix-dot.in {
+  background: var(--ink);
+}
+.ix-dot.on {
+  box-shadow: 0 0 0 2px var(--accent-wash), 0 0 0 3px var(--accent);
+}
+
+/* The coverage small multiples */
+.cov-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: var(--space-4) var(--space-5);
+}
+.cov-card {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.cov-name {
+  font-weight: 600;
+  font-size: var(--step--1);
+}
+.cov-card svg,
+.acc svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.cov-grid-line {
+  stroke: var(--rule);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+.cov-axis {
+  fill: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.acc .cov-axis {
+  font-size: 12px;
+}
+.cov-band {
+  fill: color-mix(in oklch, var(--accent) 18%, transparent);
+  stroke: none;
+}
+.cov-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.cov-dot {
+  fill: var(--accent);
+  stroke: var(--surface);
+  stroke-width: 1.5;
+  cursor: default;
+}
+.cov-dot.on {
+  fill: var(--ink);
+}
+.cov-none {
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+}
+
+/* The stacked bars: agreement by band, and intake by tier */
+.ag-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+}
+.ag-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.ag-key,
+.fl-key {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2px;
+  flex: none;
+}
+.ag {
+  display: grid;
+  gap: var(--space-2);
+}
+.ag-row {
+  display: grid;
+  grid-template-columns: minmax(5rem, 7rem) minmax(0, 1fr) 3.5rem;
+  gap: var(--space-3);
+  align-items: center;
+  font-size: var(--step--1);
+}
+.fl-row {
+  grid-template-columns: minmax(8rem, 15rem) minmax(0, 1fr) 3.5rem;
+}
+.ag-band {
+  color: var(--ink);
+  line-height: 1.25;
+}
+.ag-bar {
+  display: flex;
+  gap: 2px;
+  height: 1.1rem;
+  min-width: 0;
+}
+.ag-seg {
+  flex-basis: 0;
+  min-width: 2px;
+  cursor: default;
+}
+.ag-seg:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.ag-seg.on {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+.ag-n {
+  text-align: right;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+/* agreement: 1 hue, darker as more families agree (an order, not identity);
+   the dark theme starts the ramp higher, so its lightest step still reads */
+:root {
+  --rf-k1: 22%;
+  --rf-k2: 42%;
+  --rf-k3: 62%;
+  --rf-k4: 82%;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --rf-k1: 38%;
+    --rf-k2: 54%;
+    --rf-k3: 70%;
+    --rf-k4: 86%;
+  }
+}
+:root[data-theme='dark'] {
+  --rf-k1: 38%;
+  --rf-k2: 54%;
+  --rf-k3: 70%;
+  --rf-k4: 86%;
+}
+.rf-k1 { background: color-mix(in oklab, var(--accent) var(--rf-k1), var(--surface)); }
+.rf-k2 { background: color-mix(in oklab, var(--accent) var(--rf-k2), var(--surface)); }
+.rf-k3 { background: color-mix(in oklab, var(--accent) var(--rf-k3), var(--surface)); }
+.rf-k4 { background: color-mix(in oklab, var(--accent) var(--rf-k4), var(--surface)); }
+.rf-k5 { background: var(--accent); }
+/* the tiers: the same ramp, evidence falling; multiword set apart in ink */
+.rf-t0 { background: var(--accent); }
+.rf-t1 { background: color-mix(in oklch, var(--accent) 60%, var(--ground)); }
+.rf-t2 { background: color-mix(in oklch, var(--accent) 30%, var(--ground)); }
+.rf-t3 { background: color-mix(in oklch, var(--ink-faint) 45%, var(--ground)); }
+.rf-t4 { background: var(--ink-soft); }
+@media (max-width: 34rem) {
+  .hm {
+    min-width: 0;
+    grid-template-columns: 2.4rem repeat(var(--n), minmax(0, 1fr));
+    font-size: 0.6rem;
+  }
+  .hm-full {
+    display: none;
+  }
+  .hm-abbr {
+    display: inline;
+  }
+  .hm-cell {
+    aspect-ratio: 1;
+  }
+  .ix {
+    min-width: 0;
+  }
+  .ix-bars,
+  .ix-row {
+    grid-template-columns: 4.5rem repeat(var(--k), minmax(0, 1fr));
+  }
+  .ix-n {
+    display: none;
+  }
+  .ag-row,
+  .fl-row {
+    grid-template-columns: minmax(0, 1fr) 3.5rem;
+  }
+  .ag-band {
+    grid-column: 1 / -1;
+  }
+}

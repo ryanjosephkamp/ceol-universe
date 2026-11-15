@@ -1,0 +1,66 @@
+{
+  "generated_by": "research/universe/repin.py",
+  "eol": {
+    "dataset": "ryanjosephkamp/english-openlist",
+    "revision": "c550751eedcfff1be1fb907411064f09d42cce56",
+    "published": "2026-11-14",
+    "files": {
+      "valid_words": {
+        "path": "data/merged_valid_words.txt",
+        "bytes": 3981325,
+        "sha256": "32b6562c6385989e187039740b251b8b8ef0e49b399411906a9b1797f4c2e672",
+        "git_blob": "0e29077d6d22e999b7c88cfd6820b08ab6bf0104"
+      },
+      "invalid_words": {
+        "path": "data/merged_invalid_words.txt",
+        "bytes": 91435258,
+        "sha256": "7e28a9dae4201b4773e426b252c3f4828d8bb8f619fa2c47aa35fe2ef4306d99"
+      },
+      "valid_dict": {
+        "path": "data/merged_valid_dict.json",
+        "bytes": 51406050,
+        "sha256": "f2c9c5567d95a2ffa641ec7b6607a1d336207f0928e490da62e825d120123aed"
+      }
+    },
+    "valid_rows": 344830,
+    "invalid_rows": 9308837
+  },
+  "archival": {
+    "record": "reference/research/universe/universe.json",
+    "universe_parquet_sha256": "3703c793e7a4e72bfe4082793f2e3109a27e89e57093c859d84be73f0c3f0444",
+    "rows": 10001741,
+    "tag": "eol_universe@c1139698"
+  },
+  "counts": {
+    "universe_rows": 10001409,
+    "inherited_rows": 9653667,
+    "eol_valid": 344830,
+    "eol_invalid": 9308837,
+    "exceptions": 213867,
+    "c4_additions": 133875,
+    "restricted_rows": 1985,
+    "left_in_neither_list": 332,
+    "left_valid_at_archival_pin": 332,
+    "valid_now_not_at_archival_pin": 59,
+    "valid_at_archival_pin_not_now": 0
+  },
+  "filter_equivalence": {
+    "regenerated_valid_sha256": "32b6562c6385989e187039740b251b8b8ef0e49b399411906a9b1797f4c2e672",
+    "regenerated_invalid_sha256": "7e28a9dae4201b4773e426b252c3f4828d8bb8f619fa2c47aa35fe2ef4306d99",
+    "valid_matches_pin": true,
+    "invalid_matches_pin": true
+  },
+  "artifacts": {
+    "universe_parquet_sha256": "ec7785d31fecf81b48ca42cb6f8607cbfb5c6dfce72de3c24d67eea4a36113a7",
+    "canonical_content_sha256": "d26b1bf12fc0690c39ae62028b99de360d451fef11e5cc799b15868a610e50ab"
+  },
+  "tag": "eol_universe@c550751e",
+  "doc_figures": {
+    "universe_rows": 10001409,
+    "inherited_rows": 9653667,
+    "eol_valid": 344830,
+    "eol_invalid": 9308837,
+    "left_in_neither_list": 332,
+    "valid_now_not_at_archival_pin": 59
+  }
+}

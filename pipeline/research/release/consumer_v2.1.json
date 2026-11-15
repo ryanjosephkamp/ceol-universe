@@ -1,0 +1,158 @@
+{
+ "generated_by": "pipeline/research/release/consumer_test.py",
+ "version": "v2.1",
+ "mode": "local: the hub's layout staged from the release files, loaded offline",
+ "run_on": "2026-11-14",
+ "environment": {
+  "uv": "uv 0.12.5 (Homebrew 2026-08-14 aarch64-apple-darwin)",
+  "python": "3.11",
+  "installed": [
+   "datasets",
+   "mlcroissant"
+  ],
+  "exclude_newer": "2026-10-31",
+  "versions": {
+   "python": "3.11.5",
+   "datasets": "5.1.0",
+   "pyarrow": "26.0.0",
+   "huggingface_hub": "2.4.0",
+   "pandas": "3.1.0",
+   "mlcroissant": "1.1.1"
+  },
+  "offline": [
+   "HF_HUB_OFFLINE",
+   "HF_DATASETS_OFFLINE"
+  ],
+  "isolated": true,
+  "proxies": [
+   "http://127.0.0.1:9"
+  ],
+  "hf_token_passed": false,
+  "home_in_scratch": true
+ },
+ "files": {
+  "NOTICES.md": "dfe7d586a88d3c40cfa198ee9692651adefcb4d42089e7300d3b5b6c11cb5f50",
+  "README.md": "77928b9e7e91f18829409ba33dbf6901690c70a34b86e4a6317b91004b83c17e",
+  "croissant.json": "1cd58bf0201a7f7999adac9c9dfe9f62401181504d72f96ee717854c5d853e6b",
+  "data/eol-valid.parquet": "bdea162c2e52947db9b3fc23d38a39d69648dbd16c36a6044b33c96113bd0f78",
+  "data/exceptions.parquet": "bc5fd1c3981b5571b25e6b726421dfc21dabea5eef0c3074a8504ba86e62ba3d",
+  "data/features.parquet": "8e94784bcef03634de7f7fecaab8c33177e59f5996f88af0f241ed4b2e30ed59",
+  "data/panel-listed.parquet": "d7dae01d04e368a197a9754713fd35d764e3a410ad6d07e83502b3ef14c667c3",
+  "data/sample.parquet": "2d3fcedf5e13b4bcb217418efbd1a2f5d6d2cb87c8fccc279eabc6cf41c0e571",
+  "data/spaced.parquet": "7cc54245661969710536142283dd70471e6f4c36215b84f0e81a5bf9fc3a242e",
+  "data/universe.parquet": "d32c4406b4a9673b5f5c9648e2e0e325b71a8eef3d376e5aa7933a5288298500"
+ },
+ "configs": {
+  "universe": {
+   "rows": 10264273,
+   "columns": 41,
+   "distinct_ids": 10264273,
+   "panel_count_mismatches": 0
+  },
+  "features": {
+   "rows": 9969408,
+   "columns": 11,
+   "distinct_ids": 9969408
+  },
+  "panel-listed": {
+   "rows": 1384833,
+   "columns": 41,
+   "distinct_ids": 1384833,
+   "panel_count_mismatches": 0
+  },
+  "eol-valid": {
+   "rows": 344830,
+   "columns": 41,
+   "distinct_ids": 344830,
+   "panel_count_mismatches": 0
+  },
+  "spaced": {
+   "rows": 294865,
+   "columns": 41,
+   "distinct_ids": 294865,
+   "panel_count_mismatches": 0
+  },
+  "exceptions": {
+   "rows": 209883,
+   "columns": 41,
+   "distinct_ids": 209883,
+   "panel_count_mismatches": 0
+  },
+  "sample": {
+   "rows": 39938,
+   "columns": 41,
+   "distinct_ids": 39938,
+   "panel_count_mismatches": 0
+  }
+ },
+ "types": {
+  "id": "string",
+  "word": "string",
+  "eol": "bool",
+  "eol_universe": "bool",
+  "classes": "string",
+  "sources": "string",
+  "intake_date": "string",
+  "c4_addition": "bool",
+  "is_restricted": "bool",
+  "token_count": "int32",
+  "c015_addition": "bool",
+  "wn_instance": "bool",
+  "wn_capitalized": "bool",
+  "wk_proper_noun": "bool",
+  "wk_flags": "string",
+  "class_explicit": "string",
+  "panel_sets": "string",
+  "variety_gb_not_us": "bool",
+  "variety_us_not_gb": "bool",
+  "intake_layer": "string",
+  "intake_kind": "string",
+  "intake_channels": "string",
+  "eol_phase1_tier": "string",
+  "eol_record": "string",
+  "eol_synthetic_category": "string",
+  "eol_synthetic_engine_inferred": "string",
+  "panel_count": "int16",
+  "gb_type": "bool",
+  "wordfreq_scored": "bool",
+  "wikt_title_any": "bool",
+  "provenance_class": "string",
+  "wordnet": "int8",
+  "wiktionary_english": "int8",
+  "hunspell_en_US": "int8",
+  "hunspell_en_GB": "int8",
+  "hunspell_en_CA": "int8",
+  "hunspell_en_AU": "int8",
+  "enable1": "int8",
+  "scowl_tier": "int16",
+  "wikt_title_screen": "int8",
+  "model_or_engine": "string"
+ },
+ "croissant": {
+  "record_sets": [
+   "universe",
+   "features",
+   "panel-listed",
+   "eol-valid",
+   "spaced",
+   "exceptions",
+   "sample"
+  ],
+  "sha256_mismatches": [],
+  "mlcroissant": "validated"
+ },
+ "checks": {
+  "configs_declared": [],
+  "default_config": [],
+  "rows_by_config": [],
+  "columns_by_config": [],
+  "ids_distinct": [],
+  "panel_count_is_the_names_in_panel_sets": [],
+  "nothing_withheld": [],
+  "metadata": [],
+  "card": [],
+  "notices": [],
+  "croissant": []
+ },
+ "passed": true
+}

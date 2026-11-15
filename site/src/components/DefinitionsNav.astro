@@ -1,0 +1,76 @@
+---
+// The Definitions section's pages.
+interface Props {
+  current: 'candidate' | 'grammar' | 'in-the-wild';
+}
+const { current } = Astro.props;
+const pages = [
+  { key: 'candidate', label: 'A candidate, not a verdict', href: '/definitions/' },
+  { key: 'grammar', label: 'The spelling grammar', href: '/definitions/grammar/' },
+  { key: 'in-the-wild', label: 'The in-the-wild definition', href: '/definitions/in-the-wild/' },
+] as const;
+---
+
+<nav class="subnav" aria-label="Definitions">
+  <span class="subnav-title">Definitions</span>
+  <ul>
+    {
+      pages.map((p) => (
+        <li>
+          <a href={p.href} aria-current={p.key === current ? 'page' : undefined}>
+            {p.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .subnav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-4);
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: var(--space-3);
+  }
+  .subnav-title {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .subnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .subnav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-block: var(--space-1);
+    border-bottom: 2px solid transparent;
+  }
+  .subnav a:hover {
+    color: var(--ink);
+  }
+  .subnav a[aria-current='page'] {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+  .later {
+    color: var(--ink-faint);
+  }
+  .later-tag {
+    font-size: var(--step--2);
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    padding: 0 0.45em;
+  }
+</style>

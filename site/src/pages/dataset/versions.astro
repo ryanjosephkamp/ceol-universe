@@ -1,0 +1,29 @@
+---
+import Dataset from '../../layouts/Dataset.astro';
+import { cardSection } from '../../lib/docs';
+---
+
+<Dataset title="Versions" slug="versions" description="The version, the pin it rests on, and the change log.">
+  <header class="page-head">
+    <h1>Versions</h1>
+    <p class="lede">A released version never changes; a correction comes as a new version with a change log.</p>
+  </header>
+  <section class="doc" aria-labelledby="s3">
+    <h2 id="s3">{cardSection(3).title}</h2>
+    <Fragment set:html={cardSection(3).html} />
+  </section>
+  <section class="doc" aria-labelledby="s16">
+    <h2 id="s16">{cardSection(16).title}</h2>
+    <Fragment set:html={cardSection(16).html} />
+  </section>
+</Dataset>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+</style>

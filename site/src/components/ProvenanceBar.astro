@@ -1,0 +1,111 @@
+---
+// The 4 provenance classes as 1 bar drawn to scale, with every figure also in
+// the list beside it. The order runs from the most evidence to the least.
+import { fig, formatCount, share } from '../lib/data';
+
+const total = fig('rows');
+const classes = [
+  ['channel_and_containment', 'Channel and containment', 'came in by a recorded channel, and a list or a corpus holds it'],
+  ['containment_only', 'Containment only', 'a list or a corpus holds it; no published channel is recorded'],
+  ['channel_only', 'Channel only', 'a recorded channel, and no published list or corpus holds it'],
+  ['neither', 'Neither', 'no published channel and no containment'],
+] as const;
+const parts = classes.map(([key, label, what], i) => {
+  const f = fig(`rows.by_provenance_class.${key}`);
+  return { key, label, what, f, share: share(f, total, 2), tone: i };
+});
+const sum = parts.reduce((n, p) => n + p.f.value, 0);
+if (sum !== total.value) throw new Error(`the provenance classes sum to ${sum}, not ${total.value}`);
+---
+
+<div class="prov">
+  <div class="bar" aria-hidden="true">
+    {parts.map((p) => <span class={`seg t${p.tone}`} style={`flex-grow:${p.f.value}`}></span>)}
+  </div>
+  <dl>
+    {
+      parts.map((p) => (
+        <div class="item">
+          <dt>
+            <span class={`key t${p.tone}`} aria-hidden="true"></span>
+            {p.label}
+          </dt>
+          <dd class="n">
+            <span class="fig" data-fig={p.f.id} title={p.f.what}>
+              {formatCount(p.f.value)}
+              <span class="fig-src">{p.f.id}</span>
+            </span>
+            <span class="pct">{p.share}</span>
+          </dd>
+          <dd class="what">{p.what}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</div>
+
+<style>
+  .prov {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .bar {
+    display: flex;
+    height: 1.25rem;
+    gap: 2px;
+  }
+  .seg {
+    flex-basis: 0;
+    min-width: 3px;
+  }
+  /* 1 hue, lightness falling with the evidence: rank, not identity */
+  .t0 { background: var(--accent); }
+  .t1 { background: color-mix(in oklch, var(--accent) 62%, var(--ground)); }
+  .t2 { background: color-mix(in oklch, var(--accent) 34%, var(--ground)); }
+  .t3 { background: var(--ink-soft); }
+  dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-4) var(--space-5);
+  }
+  .item {
+    display: grid;
+    gap: var(--space-1);
+    align-content: start;
+  }
+  dt {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 600;
+  }
+  .key {
+    width: 0.8rem;
+    height: 0.8rem;
+    flex: none;
+  }
+  dd {
+    margin: 0;
+  }
+  .n {
+    font-size: var(--step-2);
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+  .pct {
+    font-size: var(--step--1);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--ink-soft);
+  }
+  .what {
+    color: var(--ink-soft);
+    font-size: var(--step--1);
+    max-width: 30ch;
+  }
+</style>

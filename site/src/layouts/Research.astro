@@ -1,0 +1,95 @@
+---
+// A page of the Research section: the section's own navigation over the page.
+import Base from './Base.astro';
+import { RESEARCH_PAGES } from '../lib/research-nav';
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+}
+const { title, description, slug } = Astro.props;
+---
+
+<Base title={title === 'Research' ? title : `${title} · Research`} section="Research" description={description}>
+  <div class="frame research">
+    <nav class="rsnav" aria-label="Research">
+      <a class="rsnav-home" href="/research/">Research</a>
+      <ul>
+        {
+          RESEARCH_PAGES.map((p) => (
+            <li>
+              <a href={`/research/${p.slug ? `${p.slug}/` : ''}`} aria-current={p.slug === slug ? 'page' : undefined}>
+                {p.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <slot />
+  </div>
+</Base>
+
+<style>
+  .research {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .research > :global(*) {
+    min-width: 0;
+  }
+  .rsnav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-4);
+    font-size: var(--step--1);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: var(--space-3);
+  }
+  .rsnav-home {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .rsnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .rsnav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-block: var(--space-1);
+    border-bottom: 2px solid transparent;
+  }
+  .rsnav a:hover {
+    color: var(--ink);
+  }
+  .rsnav a[aria-current='page'] {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+  @media (max-width: 40rem) {
+    .rsnav ul {
+      flex: 1 1 100%;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 100%;
+      padding-bottom: var(--space-1);
+    }
+    .rsnav ul::-webkit-scrollbar {
+      display: none;
+    }
+    .rsnav li {
+      flex: none;
+    }
+  }
+</style>

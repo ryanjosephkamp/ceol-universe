@@ -1,0 +1,41 @@
+---
+import Research from '../../layouts/Research.astro';
+import { studyHtml } from '../../lib/study';
+
+const html = studyHtml('proposed-study', 2);
+---
+
+<Research
+  title="The proposed study"
+  slug="study"
+  description="A study design that has not been run: how reliably language models follow a written, evidence-bounded procedure for deciding whether a candidate is attested in use."
+>
+  <header class="page-head">
+    <h1>The proposed study</h1>
+    <p class="lede">
+      How reliably do language models follow a written procedure for deciding whether a candidate is attested in use,
+      when the procedure's answer can differ from what they may have learned? A design, with a pilot, that has not been
+      run.
+    </p>
+  </header>
+  <article class="doc study">
+    <Fragment set:html={html} />
+  </article>
+</Research>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+  .study :global(blockquote) {
+    margin: 0;
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+</style>

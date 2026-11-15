@@ -1,0 +1,81 @@
+---
+import Study from '../../layouts/Study.astro';
+import { KIT_PAGES, kitHtml } from '../../lib/kit';
+
+export function getStaticPaths() {
+  return KIT_PAGES.map((p) => ({ params: { slug: p.slug || undefined }, props: { page: p } }));
+}
+const { page } = Astro.props;
+const { title, html } = kitHtml(page.file);
+---
+
+<Study title={title} slug={page.slug} description={page.blurb}>
+  <header class="page-head">
+    <h1>{page.slug === '' ? 'Run a study' : title}</h1>
+    <p class="lede">{page.blurb}</p>
+  </header>
+  {
+    page.slug === '' && (
+      <section class="kit-pages" aria-labelledby="kit-pages">
+        <h2 id="kit-pages">In this section</h2>
+        <ul>
+          {KIT_PAGES.filter((p) => p.slug).map((p) => (
+            <li>
+              <a href={`/study/${p.slug}/`}>{p.label}</a>
+              <p>{p.blurb}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+  <article class="doc">
+    <Fragment set:html={html} />
+  </article>
+</Study>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+    max-width: 22ch;
+  }
+  .kit-pages h2 {
+    font-size: var(--step-3);
+  }
+  .kit-pages ul {
+    list-style: none;
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    max-width: 52rem;
+  }
+  .kit-pages li {
+    display: grid;
+    grid-template-columns: minmax(11rem, 15rem) 1fr;
+    gap: var(--space-2) var(--space-5);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .kit-pages a {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .kit-pages a:hover {
+    text-decoration: underline;
+  }
+  .kit-pages p {
+    color: var(--ink-soft);
+  }
+  @media (max-width: 36rem) {
+    .kit-pages li {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

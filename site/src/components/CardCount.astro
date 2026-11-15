@@ -1,0 +1,14 @@
+---
+// 1 count of the card's calculator, by its row's name; "Show figure sources"
+// reveals the row beside it.
+import { cardCount, formatCount } from '../lib/data';
+
+interface Props {
+  name: string;
+  sign?: boolean;
+}
+const { name, sign = false } = Astro.props;
+const n = cardCount(name);
+---
+
+<span class="fig" data-fig={`card:${name}`} title={`the card's row ${name}`}>{sign ? '+' : ''}{formatCount(n)}<span class="fig-src">card:{name}</span></span>

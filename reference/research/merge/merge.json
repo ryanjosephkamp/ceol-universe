@@ -1,0 +1,32 @@
+{
+  "generated_by": "research/merge/build_merge.py",
+  "eol_revision": "c113969807f3045f5ddd8cc919d0189d54ba368b",
+  "counts": {
+    "merged_total": 9867866,
+    "eol_universe": 9653999,
+    "eol_valid": 345103,
+    "eol_invalid": 9308896,
+    "exceptions": 213867,
+    "overlap": 0
+  },
+  "filter_equivalence": {
+    "regenerated_valid_sha256": "aa8df4c5d4358b67119462a27accf29c919309814d8b33377b03c4bf0244f6e0",
+    "regenerated_invalid_sha256": "23701bd85e9be2aad94c10628cb257cb08d1db9494b01b8672e46270a6cd5672",
+    "pin_valid": "aa8df4c5d4358b67119462a27accf29c919309814d8b33377b03c4bf0244f6e0",
+    "pin_invalid": "23701bd85e9be2aad94c10628cb257cb08d1db9494b01b8672e46270a6cd5672",
+    "valid_matches_pin": true,
+    "invalid_matches_pin": true
+  },
+  "artifacts": {
+    "merged_parquet_sha256": "6fccd4c469bddfcfbb181c3da0ad1c1ad30d3c5c3ace91091c839e22233f5af5",
+    "exceptions_parquet_sha256": "7aa3d02a592c4ca910569d817510a80213606091f8cf9db4357e3b4d71073442",
+    "canonical_content_sha256": "b16520f33a291c91bfd61b772731896b959212bb2b211439c0aae5ff4690436c"
+  },
+  "doc_figures": {
+    "merged_total": 9867866,
+    "eol_universe": 9653999,
+    "eol_valid": 345103,
+    "eol_invalid": 9308896,
+    "exceptions": 213867
+  }
+}

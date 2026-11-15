@@ -1,0 +1,221 @@
+{
+  "perplexity": {
+    "by_class": {
+      "accented": 13.446,
+      "apostrophe-form": 5.684,
+      "hyphenated": 10.628,
+      "ligature": 7.511,
+      "plain": 7.148,
+      "__train_slice__": 6.399
+    },
+    "bounds": {
+      "plain": 9.0,
+      "hyphenated": 25.0,
+      "accented": 25.0,
+      "contraction": 25.0,
+      "apostrophe-form": 25.0,
+      "ligature": 25.0,
+      "diaeresis": 25.0
+    },
+    "class_na_fallback": [],
+    "pass": [
+      "accented",
+      "apostrophe-form",
+      "hyphenated",
+      "ligature",
+      "plain"
+    ]
+  },
+  "separation": {
+    "ocr": {
+      "orthotactic_logp_per_char": {
+        "auc": 0.899,
+        "lo": 0.8943,
+        "hi": 0.9037,
+        "n_pos": 25389,
+        "n_neg": 2000
+      },
+      "ocr_neighbor_freq_ratio_oriented": {
+        "auc": 0.9904,
+        "lo": 0.9859,
+        "hi": 0.9949,
+        "n_pos": 1058,
+        "n_neg": 118
+      },
+      "fire_rates": {
+        "real": 0.0046,
+        "corruptions": 0.529
+      }
+    },
+    "pseudo": {
+      "orthotactic_logp_per_char": {
+        "auc": 0.5289,
+        "lo": 0.516,
+        "hi": 0.5418,
+        "n_pos": 25389,
+        "n_neg": 2000
+      }
+    },
+    "mw_refuted": {
+      "orthotactic_logp_per_char": {
+        "auc": 0.5669,
+        "lo": 0.5412,
+        "hi": 0.5926,
+        "n_pos": 25389,
+        "n_neg": 441
+      }
+    },
+    "foreign_plain": {
+      "orthotactic_logp_per_char": {
+        "auc": 0.9036,
+        "lo": 0.899,
+        "hi": 0.9082,
+        "n_pos": 25389,
+        "n_neg": 2000
+      }
+    },
+    "foreign_accented": {
+      "orthotactic_logp_per_char": {
+        "auc": 0.9871,
+        "lo": 0.986,
+        "hi": 0.9882,
+        "n_pos": 25389,
+        "n_neg": 2000
+      }
+    }
+  },
+  "family_admission": {
+    "diacritic_strip": {
+      "n_corruptions": 2,
+      "auc_oriented": null,
+      "fire_rate_corruptions": 1.0,
+      "fire_rate_real": 0.0063,
+      "fire_ratio": 160.0,
+      "admitted": false
+    },
+    "hyphen_junction": {
+      "n_corruptions": 2000,
+      "auc_oriented": null,
+      "fire_rate_corruptions": 0.655,
+      "fire_rate_real": 0.0427,
+      "fire_ratio": 15.35,
+      "admitted": false
+    },
+    "hyphen_drop": {
+      "n_corruptions": 60,
+      "auc_oriented": {
+        "auc": 0.7219,
+        "lo": 0.6403,
+        "hi": 0.8034,
+        "n_pos": 57,
+        "n_neg": 177
+      },
+      "fire_rate_corruptions": 0.95,
+      "fire_rate_real": 0.0442,
+      "fire_ratio": 21.47,
+      "admitted": true
+    },
+    "apostrophe_loss": {
+      "n_corruptions": 841,
+      "auc_oriented": {
+        "auc": 0.9903,
+        "lo": 0.9856,
+        "hi": 0.995,
+        "n_pos": 841,
+        "n_neg": 732
+      },
+      "fire_rate_corruptions": 1.0,
+      "fire_rate_real": 0.183,
+      "fire_ratio": 5.46,
+      "admitted": true
+    },
+    "ligature_expansion": {
+      "n_corruptions": 132,
+      "auc_oriented": {
+        "auc": 0.7899,
+        "lo": 0.6913,
+        "hi": 0.8886,
+        "n_pos": 126,
+        "n_neg": 15
+      },
+      "fire_rate_corruptions": 0.9545,
+      "fire_rate_real": 0.0037,
+      "fire_ratio": 254.55,
+      "admitted": true
+    }
+  },
+  "admitted_families": [
+    "ocr_apostrophe_ratio",
+    "ocr_hyphen_drop_ratio",
+    "ocr_ligature_ratio"
+  ],
+  "sr3": {
+    "gb_contained_corruptions": 979,
+    "rare_real": 5269,
+    "per_feature": {
+      "ocr_neighbor_freq_ratio": {
+        "auc": 0.9883,
+        "lo": 0.9793,
+        "hi": 0.9974,
+        "n_pos": 670,
+        "n_neg": 11
+      },
+      "gb_tokens_per_volume": {
+        "auc": 0.6869,
+        "lo": 0.6676,
+        "hi": 0.7063,
+        "n_pos": 5269,
+        "n_neg": 634
+      },
+      "gb_span_fill": {
+        "auc": 0.6821,
+        "lo": 0.6626,
+        "hi": 0.7017,
+        "n_pos": 5269,
+        "n_neg": 634
+      },
+      "gb_log10_volume": {
+        "auc": 0.8119,
+        "lo": 0.7979,
+        "hi": 0.8259,
+        "n_pos": 5269,
+        "n_neg": 634
+      },
+      "zipf_resid": {
+        "auc": 0.7761,
+        "lo": 0.7603,
+        "hi": 0.7918,
+        "n_pos": 5269,
+        "n_neg": 634
+      }
+    },
+    "separated_features": [
+      "ocr_neighbor_freq_ratio",
+      "gb_tokens_per_volume",
+      "gb_span_fill",
+      "gb_log10_volume",
+      "zipf_resid"
+    ],
+    "fires": false
+  },
+  "sr2_reading_b": {
+    "rows": 845162,
+    "pct": 8.45,
+    "bar_pct": 50,
+    "pass": true
+  },
+  "family_sizes": {
+    "ocr": 2000,
+    "pseudo": 2000,
+    "mw_refuted": 441,
+    "foreign_plain": 2000,
+    "foreign_accented": 2000
+  },
+  "strip_family_sizes": {
+    "diacritic_strip": 2,
+    "hyphen_junction": 2000,
+    "hyphen_drop": 60,
+    "apostrophe_loss": 841,
+    "ligature_expansion": 132
+  }
+}

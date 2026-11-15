@@ -1,0 +1,179 @@
+---
+import Research from '../../layouts/Research.astro';
+import ResearchFigure from '../../islands/ResearchFigure.tsx';
+import { analysis, analysisRows } from '../../lib/analysis';
+import { cardCount, formatCount } from '../../lib/data';
+import { RESEARCH_PAGES } from '../../lib/research-nav';
+
+const t = analysisRows.by_tier;
+const single = analysisRows.single_token;
+const listed = t['2+ families'] + t['1 family'];
+const pct = (n: number, d: number) => `${((100 * n) / d).toFixed(1)}%`;
+const alone = analysis<{ by_family: Record<string, number> }>('S4').data.by_family;
+const pages = RESEARCH_PAGES.filter((p) => p.slug);
+---
+
+<Research
+  title="Research"
+  slug=""
+  description="The CEOL Universe measured: how the published word lists compare over the same strings, the technical report, the literature, and a proposed study."
+>
+  <header class="page-head">
+    <h1>Research</h1>
+    <p class="lede">
+      What the universe holds, and how the published word lists compare when every list is measured against the same
+      strings. Every figure here is computed from version 1.0's files by committed code.
+    </p>
+  </header>
+
+  <p class="findings">
+    Of the {formatCount(single)} single-token rows, <strong>{formatCount(listed)}</strong> ({pct(listed, single)}) are listed by
+    at least 1 published list and <strong>{formatCount(t['corpus only'])}</strong> ({pct(t['corpus only'], single)}) rest on
+    a corpus alone. Most listed rows are listed by 1 family: <strong>{pct(alone['Wiktionary'], listed)}</strong> of them by
+    Wiktionary and no other. <strong>{formatCount(t['2+ families'])}</strong> rows, the consensus core, are listed by 2 or
+    more independent families.
+  </p>
+
+  <section class="compared" aria-labelledby="compared">
+    <h2 id="compared">The sources compared</h2>
+    <p class="section-lede">
+      No single list can measure this, because none is measured against the others. Each figure counts the single-token
+      rows, over the rows each list could hold; a list that cannot hold a class is never counted as not listing it.
+    </p>
+    <div class="fig-grid">
+      <ResearchFigure client:load id="S2" entry={analysis('S2')} />
+      <ResearchFigure client:load id="S3" entry={analysis('S3')} />
+    </div>
+    <ResearchFigure client:load id="S6" entry={analysis('S6')} />
+    <div class="fig-grid">
+      <ResearchFigure client:load id="S5" entry={analysis('S5')} />
+      <ResearchFigure client:load id="S13" entry={analysis('S13')} />
+    </div>
+    <p class="more">
+      The technical report states the method and every figure: <a href="/research/report/#7-the-sources-compared">the
+      sources compared</a>.
+    </p>
+  </section>
+
+  <section class="pages" aria-labelledby="pages">
+    <h2 id="pages">In this section</h2>
+    <ul>
+      {
+        pages.map((p) => (
+          <li>
+            <a href={`/research/${p.slug}/`}>{p.label}</a>
+            <p>{p.blurb}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="prose open" aria-labelledby="open">
+    <h2 id="open">Open questions</h2>
+    <ul>
+      <li>
+        <strong>Parts of speech.</strong> The universe records none; WordNet's listing covers only the rows it lists. A later
+        version adds a part-of-speech layer, lemma and inflection relations, and WordNet's categories.
+      </li>
+      <li>
+        <strong>Offensive content.</strong> Its share is not measured. The measure needs an offensive-term lexicon whose
+        license allows the use.
+      </li>
+      <li>
+        <strong>Recognition errors.</strong> How many corpus-only rows are errors of scanning would need a labeled sample,
+        which this project chose not to make.
+      </li>
+      <li>
+        <strong>The standard estimators of uncaptured strings.</strong> How far they miss on a closed frame inside the
+        universe, where the answer is known, is planned as a calibration, never as a count of missing English strings.
+      </li>
+      <li>
+        <strong>All {cardCount('panel_set_count')} lists.</strong> The comparison over the withheld lists as well waits for the license review to
+        confirm that aggregate counts may be published.
+      </li>
+      <li>
+        <strong>Change over time.</strong> What each source adds and drops between versions needs a second snapshot of
+        each.
+      </li>
+    </ul>
+  </section>
+</Research>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+  .findings {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1.4;
+    max-width: 44rem;
+    padding-block: var(--space-4);
+    border-block: 1px solid var(--rule);
+  }
+  .findings strong {
+    font-weight: 600;
+  }
+  .compared {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .compared h2,
+  .pages h2,
+  .open h2 {
+    font-size: var(--step-3);
+  }
+  .section-lede {
+    max-width: var(--measure);
+    color: var(--ink-soft);
+    margin-top: calc(-1 * var(--space-4));
+  }
+  .fig-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+    gap: var(--space-7);
+    align-items: start;
+  }
+  .more {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .pages ul {
+    list-style: none;
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .pages li {
+    display: grid;
+    grid-template-columns: minmax(11rem, 15rem) 1fr;
+    gap: var(--space-2) var(--space-5);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .pages li a {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .pages li p {
+    color: var(--ink-soft);
+  }
+  @media (max-width: 36rem) {
+    .pages li {
+      grid-template-columns: 1fr;
+    }
+  }
+  .open ul {
+    padding-left: 1.25rem;
+    display: grid;
+    gap: var(--space-3);
+  }
+</style>

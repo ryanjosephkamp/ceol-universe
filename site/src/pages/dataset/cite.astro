@@ -1,0 +1,33 @@
+---
+import Dataset from '../../layouts/Dataset.astro';
+import { cardSection } from '../../lib/docs';
+---
+
+<Dataset title="Cite and contact" slug="cite" description="How to cite the CEOL Universe, how to ask for a correction or a withholding, and its canary.">
+  <header class="page-head">
+    <h1>Cite and contact</h1>
+    <p class="lede">Until the DOI is minted at the release, cite the version and the dataset.</p>
+  </header>
+  <section class="doc" aria-labelledby="s15">
+    <h2 id="s15">{cardSection(15).title}</h2>
+    <Fragment set:html={cardSection(15).html} />
+  </section>
+  <section class="doc" aria-labelledby="s13">
+    <h2 id="s13">{cardSection(13).title}</h2>
+    <Fragment set:html={cardSection(13).html} />
+  </section>
+  <section class="doc" aria-labelledby="s14">
+    <h2 id="s14">{cardSection(14).title}</h2>
+    <Fragment set:html={cardSection(14).html} />
+  </section>
+</Dataset>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import Research from '../../layouts/Research.astro';
+import { readRepo, renderMarkdown } from '../../lib/docs';
+
+// The literature, curated from the checked review: every claim on the page
+// was confirmed at its source, and pipeline/research/release/report/
+// CLAIMS.csv holds each claim's source, locator, and date.
+const md = readRepo('site/content/research/literature.md');
+const html = renderMarkdown(md.replace(/^# .*\n/, ''), 2);
+---
+
+<Research
+  title="Literature"
+  slug="literature"
+  description="Comparable word lists and lexical resources, the documentation standards a dataset answers to, contamination and canaries, and what the CEOL Universe adds and lacks, each claim checked at its source."
+>
+  <header class="page-head">
+    <h1>Literature</h1>
+    <p class="lede">
+      The resources a reader might compare with the universe, the standards its documentation answers to, and what is known
+      about contamination. Every claim here was checked at its source; the claims ledger in the code repository gives each
+      one's source, locator, and date.
+    </p>
+  </header>
+  <article class="doc lit">
+    <Fragment set:html={html} />
+  </article>
+</Research>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+  .lit {
+    max-width: 56rem;
+  }
+</style>

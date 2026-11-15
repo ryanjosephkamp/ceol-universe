@@ -1,0 +1,195 @@
+---
+import Dataset from '../../layouts/Dataset.astro';
+import Figure from '../../components/Figure.astro';
+import ConfigTable from '../../components/ConfigTable.astro';
+import { cardSection } from '../../lib/docs';
+import { DATASET_PAGES } from '../../lib/dataset-nav';
+import { release } from '../../lib/data';
+import { usDate } from '../../lib/dates';
+import { DATASET_PUBLIC } from '../../lib/release-state';
+
+const what = cardSection(2);
+const pages = DATASET_PAGES.filter((p) => p.slug);
+const load = `from datasets import load_dataset
+
+rows = load_dataset(
+    "${release.dataset}",
+    "universe",
+    revision="${release.version}",
+    split="candidates",
+)
+print(rows.num_rows)`;
+const duck = `SELECT count(*)
+FROM
+  'hf://datasets/${release.dataset}@${release.version}/data/universe.parquet';`;
+---
+
+<Dataset title="The dataset" slug="" description="The CEOL Universe, version 1.0: what it is, its configs, how to load it, and where its documentation lives.">
+  <header class="page-head">
+    <h1>The CEOL Universe, version {release.name}</h1>
+    <p class="lede">
+      Every row is a candidate string, never a verdict. A row records that a pinned source lists the string, that it was
+      inherited from the English OpenList at a pinned revision, or both.
+    </p>
+  </header>
+
+  <dl class="facts">
+    <div><dt>Rows</dt><dd><Figure id="rows" /></dd></div>
+    <div><dt>Version</dt><dd>{release.name}, built {usDate(release.builtOn)}</dd></div>
+    <div><dt>Data license</dt><dd>CC BY-SA 4.0</dd></div>
+    <div><dt>On Hugging Face</dt><dd><code>{release.dataset}</code>{DATASET_PUBLIC ? '' : ', private until the release'}</dd></div>
+    <div><dt>DOI</dt><dd>minted at the release</dd></div>
+  </dl>
+
+  <section class="doc" aria-labelledby="what">
+    <h2 id="what">{what.title}</h2>
+    <Fragment set:html={what.html} />
+  </section>
+
+  <section class="configs" aria-labelledby="configs-title">
+    <h2 id="configs-title">The configs</h2>
+    <p class="section-lede">The universe config is the public rows; the filter configs are subsets of it, and the features config is a separate table. Each is shipped as its own file.</p>
+    <ConfigTable />
+  </section>
+
+  <section class="load" aria-labelledby="load-title">
+    <h2 id="load-title">Load it</h2>
+    <div class="load-grid">
+      <figure>
+        <figcaption>Python, with the datasets library</figcaption>
+        <pre><code>{load}</code></pre>
+      </figure>
+      <figure>
+        <figcaption>DuckDB, straight from the hub</figcaption>
+        <pre><code>{duck}</code></pre>
+      </figure>
+    </div>
+    <p class="section-lede">
+      The release's consumer test loads every config this way in a clean environment and checks what it gets. To load
+      only the rows you need, <a href="/compose/">compose a list</a> and take its code.
+    </p>
+  </section>
+
+  <section class="more" aria-labelledby="more-title">
+    <h2 id="more-title">In this section</h2>
+    <ul>
+      {
+        pages.map((p) => (
+          <li>
+            <a href={`/dataset/${p.slug}/`}>{p.label}</a>
+            <p>{p.blurb}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Dataset>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+    max-width: 22ch;
+  }
+  .facts {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+    gap: var(--space-4) var(--space-6);
+    padding-block: var(--space-4);
+    border-block: 1px solid var(--rule);
+  }
+  .facts div {
+    display: grid;
+    gap: var(--space-1);
+    min-width: 0;
+  }
+  .facts dt {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .facts dd {
+    margin: 0;
+    font-size: var(--step-1);
+    overflow-wrap: anywhere;
+  }
+  .facts code {
+    font-size: 0.85em;
+  }
+  .configs,
+  .load,
+  .more {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 48rem;
+  }
+  .configs h2,
+  .load h2,
+  .more h2 {
+    font-size: var(--step-3);
+  }
+  .section-lede {
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+  .load-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .load figure {
+    margin: 0;
+    display: grid;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+  .load figcaption {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .load pre {
+    margin: 0;
+    padding: var(--space-4);
+    background: var(--sunken);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+  .more ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .more li {
+    display: grid;
+    grid-template-columns: minmax(10rem, 14rem) 1fr;
+    gap: var(--space-2) var(--space-5);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .more li a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step-1);
+    text-decoration: none;
+  }
+  .more li a:hover {
+    text-decoration: underline;
+  }
+  .more li p {
+    color: var(--ink-soft);
+  }
+  @media (max-width: 36rem) {
+    .more li {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

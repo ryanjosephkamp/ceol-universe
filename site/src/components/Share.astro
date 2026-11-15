@@ -1,0 +1,15 @@
+---
+// The share 1 figure is of another, both from the figures file.
+import { fig, share } from '../lib/data';
+
+interface Props {
+  part: string;
+  whole: string;
+  digits?: number;
+}
+const { part, whole, digits = 1 } = Astro.props;
+const p = fig(part);
+const w = fig(whole);
+---
+
+<span class="fig" data-fig={`${p.id} / ${w.id}`} title={`${p.what}, as a share of ${w.what}`}>{share(p, w, digits)}<span class="fig-src">{p.id} / {w.id}</span></span>

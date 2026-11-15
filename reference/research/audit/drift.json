@@ -1,0 +1,16 @@
+{
+  "boundary": "2026-08-04T22:33:23Z",
+  "retrieved": "2026-08-20T21:26:29Z",
+  "new_pages_ns0": 87376,
+  "new_grammar_valid_not_in_universe": 45239,
+  "checked": 1000,
+  "mode": "sha256-sample",
+  "english_confirmed": 10,
+  "residual_estimate": 452,
+  "residual_ci95": [
+    246,
+    828
+  ],
+  "snapshot_sha256": "10599663d05ace7a1095aa8c2dc254819c99d934ca2fbd49fe714f7598c9ae9b",
+  "limitation": "counts page CREATIONS since the boundary; pages that existed at dump time and gained an English section since are not counted"
+}

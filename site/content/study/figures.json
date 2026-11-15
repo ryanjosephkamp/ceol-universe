@@ -1,0 +1,435 @@
+{
+ "generated_by": "tools/study_figures.py",
+ "what": "the figures of the proposed study's pages, each lifted from a row of the study's calculator",
+ "archive": "common-english-openlist (private, read-only)",
+ "commit": "5faa780b3c9f6f9d7933a8bff60add4163234d90",
+ "calculator": "research/inthewild/study_overview_calcs.py",
+ "figures": [
+  {
+   "id": "frame_rows",
+   "value": 10296606,
+   "text": "10,296,606",
+   "row": "the study frame"
+  },
+  {
+   "id": "frame_restricted",
+   "value": 1985,
+   "text": "1,985",
+   "row": "the study frame"
+  },
+  {
+   "id": "frame_plain",
+   "value": 9785889,
+   "text": "9,785,889",
+   "row": "the study frame"
+  },
+  {
+   "id": "frame_plain_unlisted",
+   "value": 8858184,
+   "text": "8,858,184",
+   "row": "the study frame"
+  },
+  {
+   "id": "detector_sets",
+   "value": 13,
+   "text": "13",
+   "row": "the study frame"
+  },
+  {
+   "id": "development_in_frame",
+   "value": 503,
+   "text": "503",
+   "row": "the study frame"
+  },
+  {
+   "id": "study_frame",
+   "value": 10171117,
+   "text": "10,171,117",
+   "row": "the study frame"
+  },
+  {
+   "id": "partition_strata",
+   "value": 14,
+   "text": "14",
+   "row": "the study frame"
+  },
+  {
+   "id": "s_final",
+   "value": 123504,
+   "text": "123,504",
+   "row": "the study frame"
+  },
+  {
+   "id": "probe_batteries",
+   "value": 4,
+   "text": "4",
+   "row": "the probe batteries"
+  },
+  {
+   "id": "probe_words",
+   "value": 13,
+   "text": "13",
+   "row": "the probe batteries"
+  },
+  {
+   "id": "pool_single",
+   "value": 310,
+   "text": "310",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "pool_spaced",
+   "value": 120,
+   "text": "120",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "pool_total",
+   "value": 430,
+   "text": "430",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "strata",
+   "value": 17,
+   "text": "17",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "pseudo",
+   "value": 60,
+   "text": "60",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "pseudo_single",
+   "value": 40,
+   "text": "40",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "pseudo_spaced",
+   "value": 20,
+   "text": "20",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "known_in_use",
+   "value": 40,
+   "text": "40",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "repeats",
+   "value": 60,
+   "text": "60",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "presentations",
+   "value": 590,
+   "text": "590",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "rater_low",
+   "value": 60,
+   "text": "60",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "rater_high",
+   "value": 100,
+   "text": "100",
+   "row": "development pool proposal"
+  },
+  {
+   "id": "pool_known_a",
+   "value": 13,
+   "text": "13",
+   "row": "panel-absent pool arithmetic"
+  },
+  {
+   "id": "pool_known_b",
+   "value": 44,
+   "text": "44",
+   "row": "panel-absent pool arithmetic"
+  },
+  {
+   "id": "cp_upper_60",
+   "value": 0.06,
+   "text": "6.0%",
+   "row": "CP95 0/60"
+  },
+  {
+   "id": "power_60_5pct",
+   "value": 0.9540000000000001,
+   "text": "95.4%",
+   "row": "P(at least one event in n=60 | true rate 5%)"
+  },
+  {
+   "id": "pilot_words",
+   "value": 30,
+   "text": "30",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_attained",
+   "value": 8,
+   "text": "8",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_attained_pct",
+   "value": 0.2667,
+   "text": "26.67%",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_queries_short",
+   "value": 46,
+   "text": "46",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_queries",
+   "value": 60,
+   "text": "60",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_depth",
+   "value": 10,
+   "text": "10",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_rows",
+   "value": 488,
+   "text": "488",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_attestations",
+   "value": 56,
+   "text": "56",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_median",
+   "value": 1,
+   "text": "1",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_topics",
+   "value": 12,
+   "text": "12",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_pages",
+   "value": 253,
+   "text": "253",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_pairs_considered",
+   "value": 194,
+   "text": "194",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_pairs_qualified",
+   "value": 7,
+   "text": "7",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_pairs_target",
+   "value": 60,
+   "text": "60",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_resolver_attempts",
+   "value": 30,
+   "text": "30",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_resolver_results",
+   "value": 227,
+   "text": "227",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_hours",
+   "value": 9.15,
+   "text": "9.15",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_bound",
+   "value": 40,
+   "text": "40",
+   "row": "the pilot's outcome"
+  },
+  {
+   "id": "pilot_retrieved",
+   "value": 424,
+   "text": "424",
+   "row": "the pilot's pre-attestation exclusion"
+  },
+  {
+   "id": "pilot_charset_excluded",
+   "value": 24,
+   "text": "24",
+   "row": "the pilot's pre-attestation exclusion"
+  },
+  {
+   "id": "pilot_not_retrieved",
+   "value": 78,
+   "text": "78",
+   "row": "the pilot's pre-attestation exclusion"
+  },
+  {
+   "id": "pilot_charset_pct",
+   "value": 0.056600000000000004,
+   "text": "5.66%",
+   "row": "the pilot's pre-attestation exclusion"
+  },
+  {
+   "id": "e_sources",
+   "value": 15,
+   "text": "15",
+   "row": "the exclusion set E"
+  },
+  {
+   "id": "e_sets",
+   "value": 13,
+   "text": "13",
+   "row": "the exclusion set E"
+  },
+  {
+   "id": "e_hosting",
+   "value": 30,
+   "text": "30",
+   "row": "the exclusion set E"
+  },
+  {
+   "id": "e_hosting_sources",
+   "value": 14,
+   "text": "14",
+   "row": "the exclusion set E"
+  },
+  {
+   "id": "mirror_words",
+   "value": 30,
+   "text": "30",
+   "row": "the mirror measurement"
+  },
+  {
+   "id": "mirror_results",
+   "value": 259,
+   "text": "259",
+   "row": "the mirror measurement"
+  },
+  {
+   "id": "mirror_derived",
+   "value": 40,
+   "text": "40",
+   "row": "the mirror measurement"
+  },
+  {
+   "id": "mirror_derived_pct",
+   "value": 0.154,
+   "text": "15.4%",
+   "row": "the mirror measurement"
+  },
+  {
+   "id": "mirror_top",
+   "value": 9,
+   "text": "9",
+   "row": "the mirror measurement"
+  },
+  {
+   "id": "classes_k",
+   "value": 3,
+   "text": "3",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "span_days",
+   "value": 365,
+   "text": "365",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "r_max",
+   "value": 20,
+   "text": "20",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "l_incumbent",
+   "value": 13,
+   "text": "13",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "l_low",
+   "value": 6,
+   "text": "6",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "l_high",
+   "value": 20,
+   "text": "20",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "window_days",
+   "value": 90,
+   "text": "90",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "queries_per_candidate",
+   "value": 2,
+   "text": "2",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "channels",
+   "value": 2,
+   "text": "2",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "model_repeats",
+   "value": 3,
+   "text": "3",
+   "row": "the ruled parameter slate"
+  },
+  {
+   "id": "pilot_attained_low",
+   "value": 0.122795,
+   "text": "12.3%",
+   "row": "pilot_design_calcs.clopper_pearson over pilot_attained of pilot_words"
+  },
+  {
+   "id": "pilot_attained_high",
+   "value": 0.458894,
+   "text": "45.9%",
+   "row": "pilot_design_calcs.clopper_pearson over pilot_attained of pilot_words"
+  },
+  {
+   "id": "pool_known",
+   "value": 57,
+   "text": "57",
+   "row": "pool_known_a + pool_known_b"
+  }
+ ]
+}

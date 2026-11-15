@@ -1,0 +1,31 @@
+{
+  "generated_by": "research/universe/build_universe.py",
+  "pin_decision": "C-009",
+  "counts": {
+    "universe_rows": 10001741,
+    "merged_rows": 9867866,
+    "c4_additions": 133875,
+    "restricted_rows": 1985,
+    "eol_valid": 345103,
+    "eol_invalid": 9308896,
+    "exceptions": 213867
+  },
+  "filter_equivalence": {
+    "regenerated_valid_sha256": "aa8df4c5d4358b67119462a27accf29c919309814d8b33377b03c4bf0244f6e0",
+    "regenerated_invalid_sha256": "23701bd85e9be2aad94c10628cb257cb08d1db9494b01b8672e46270a6cd5672",
+    "valid_matches_pin": true,
+    "invalid_matches_pin": true
+  },
+  "artifacts": {
+    "universe_parquet_sha256": "3703c793e7a4e72bfe4082793f2e3109a27e89e57093c859d84be73f0c3f0444",
+    "canonical_content_sha256": "18733e975353f4f5f62983fc91715f5e3305d7cb981bcd273aafa3a54ca1e885",
+    "merged_parquet_sha256": "6fccd4c469bddfcfbb181c3da0ad1c1ad30d3c5c3ace91091c839e22233f5af5"
+  },
+  "doc_figures": {
+    "universe_rows": 10001741,
+    "merged_rows": 9867866,
+    "c4_additions": 133875,
+    "restricted_rows": 1985,
+    "exceptions": 213867
+  }
+}

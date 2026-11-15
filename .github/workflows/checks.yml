@@ -1,0 +1,41 @@
+# The checks that need no private data: the tests, the figure check, and the
+# link check, in a clone that holds neither data/ nor private/. The tests
+# that need either are skipped and say so; the figure check declares what it
+# defers. The scan is not run here: it needs the private lists, so it runs
+# locally before every push.
+name: checks
+
+# on pull requests and on demand only: a push to a pull request's branch
+# runs once, as the pull request's run, and main is checked by the pull
+# request that changes it
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    # a named image, moved on purpose: `ubuntu-latest` changes under the
+    # checks when GitHub moves the label
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      # the whole history: a public version's record names the commit of the
+      # code that built it, and the figure check refuses a commit it cannot
+      # find (check_public_release)
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Tests
+        run: make test PY=python
+      - name: Figure check
+        run: make figures PY=python
+      - name: Link check
+        run: make links PY=python

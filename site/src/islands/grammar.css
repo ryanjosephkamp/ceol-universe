@@ -1,0 +1,225 @@
+/* The grammar box: the characters, the 4 steps, and the verdict. */
+
+.gbox {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  min-width: 0;
+}
+.gbox-label {
+  font-weight: 600;
+}
+.gbox-input {
+  width: 100%;
+  font-size: var(--step-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--ground);
+  color: var(--ink);
+}
+.gbox-input:focus-visible {
+  outline-offset: 0;
+  border-color: var(--accent);
+}
+
+.demos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.demos-label {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  margin-right: var(--space-1);
+}
+.demos button {
+  padding: var(--space-1) var(--space-3);
+  min-height: 2.5rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.demos button:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+.demos button[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  color: var(--ink);
+}
+
+.gbox-part {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.gbox-part h3 {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.cells {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+.cell {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  min-width: 4.25rem;
+  padding: var(--space-2) var(--space-1) var(--space-1);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--ground);
+}
+.glyph {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  line-height: 1.1;
+  min-height: 1.1em;
+}
+.cp {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+}
+.kind {
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+  text-align: center;
+  max-width: 6rem;
+  line-height: 1.25;
+}
+.cell.k-canonicalized,
+.cell.k-combining {
+  background: var(--accent-wash);
+  border-color: var(--accent);
+}
+.cell.k-undeclared {
+  background: var(--fail-wash);
+  border-color: var(--fail);
+}
+.cell.k-undeclared .kind {
+  color: var(--fail);
+  font-weight: 600;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  border-top: 1px solid var(--rule);
+}
+.step {
+  display: grid;
+  gap: var(--space-1) var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--rule);
+}
+@media (min-width: 44rem) {
+  .step {
+    grid-template-columns: 8.5rem minmax(0, 1fr) minmax(0, 1fr);
+    align-items: baseline;
+  }
+}
+.step-name {
+  font-weight: 600;
+}
+.step-detail {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.step-out {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.step.changed .step-name::after {
+  content: ' changed it';
+  font-weight: 400;
+  font-size: var(--step--1);
+  color: var(--accent);
+}
+.cand.mono {
+  font-size: var(--step-1);
+}
+.muted {
+  color: var(--ink-faint);
+}
+.vis-ws {
+  color: var(--accent);
+  padding-inline: 0.05em;
+}
+.vis-ws.odd {
+  color: var(--fail);
+}
+.vis-empty {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.verdict {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  border: 1px solid var(--rule-strong);
+}
+.verdict.passes {
+  background: var(--pass-wash);
+  border-color: var(--pass);
+}
+.verdict.fails {
+  background: var(--fail-wash);
+  border-color: var(--fail);
+}
+.verdict-line {
+  font-weight: 600;
+}
+.mark-ok,
+.mark-no {
+  display: inline-block;
+  vertical-align: -0.15em;
+}
+.mark-ok {
+  color: var(--pass);
+}
+.mark-no {
+  color: var(--fail);
+}
+.key {
+  font-size: var(--step-3);
+  overflow-wrap: anywhere;
+}
+.verdict-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--step--1);
+}
+.class-chip {
+  border: 1px solid var(--rule-strong);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 0 0.6em;
+}
+.verdict-note {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}

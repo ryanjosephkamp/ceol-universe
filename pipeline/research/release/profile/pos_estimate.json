@@ -1,0 +1,124 @@
+{
+ "generated_by": "research/release/profile/pos_estimate.py",
+ "multi_pos_rows": 11749,
+ "nltk_version": "3.8.1",
+ "pos_any": {
+  "a": 20537,
+  "n": 116140,
+  "r": 4455,
+  "v": 16028
+ },
+ "pos_combination": {
+  "a": 14204,
+  "a+n": 2407,
+  "a+n+r": 118,
+  "a+n+r+v": 63,
+  "a+n+v": 613,
+  "a+r": 302,
+  "a+r+v": 17,
+  "a+v": 2813,
+  "n": 107530,
+  "n+r": 71,
+  "n+r+v": 25,
+  "n+v": 5313,
+  "r": 3852,
+  "r+v": 7,
+  "v": 7177
+ },
+ "pos_combination_by_token_count": {
+  "1": {
+   "a": 13797,
+   "a+n": 2375,
+   "a+n+r": 116,
+   "a+n+r+v": 63,
+   "a+n+v": 613,
+   "a+r": 259,
+   "a+r+v": 17,
+   "a+v": 2808,
+   "n": 48042,
+   "n+r": 59,
+   "n+r+v": 25,
+   "n+v": 5249,
+   "r": 3199,
+   "r+v": 6,
+   "v": 4401
+  },
+  "2": {
+   "a": 287,
+   "a+n": 30,
+   "a+r": 30,
+   "a+v": 5,
+   "n": 51150,
+   "n+r": 11,
+   "n+v": 63,
+   "r": 312,
+   "r+v": 1,
+   "v": 2367
+  },
+  "3": {
+   "a": 93,
+   "a+n": 2,
+   "a+n+r": 2,
+   "a+r": 12,
+   "n": 6751,
+   "n+r": 1,
+   "r": 248,
+   "v": 304
+  },
+  "4": {
+   "a": 23,
+   "a+r": 1,
+   "n": 1199,
+   "n+v": 1,
+   "r": 79,
+   "v": 86
+  },
+  "5": {
+   "a": 2,
+   "n": 261,
+   "r": 12,
+   "v": 13
+  },
+  "6": {
+   "n": 73,
+   "r": 2,
+   "v": 5
+  },
+  "7": {
+   "a": 2,
+   "n": 25,
+   "v": 1
+  },
+  "8": {
+   "n": 20
+  },
+  "9": {
+   "n": 9
+  }
+ },
+ "pos_combination_eol": {
+  "a": 10040,
+  "a+n": 1817,
+  "a+n+r": 113,
+  "a+n+r+v": 63,
+  "a+n+v": 610,
+  "a+r": 219,
+  "a+r+v": 17,
+  "a+v": 2751,
+  "n": 30439,
+  "n+r": 48,
+  "n+r+v": 24,
+  "n+v": 5176,
+  "r": 2944,
+  "r+v": 6,
+  "v": 3707
+ },
+ "rows_with_no_synset_under_the_key": 0,
+ "universe_rows": 10294289,
+ "version": "v2.0",
+ "wordnet_corpus_sha256": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59",
+ "wordnet_listed_rows": 144512,
+ "wordnet_listed_single_token": 81029,
+ "wordnet_listed_spaced": 63483,
+ "wordnet_version": "3.0"
+}

@@ -1,0 +1,105 @@
+{
+  "purpose": "the append record of the lexicon-development line's ledgers (draft 3 §4; C-069 line 17): every append with its file, channel, rows, cumulative rows, the sha256 of the file's first cumulative-row count of lines after the append, the entry, the date, and the backup taken after it; the ledgers are gitignored under data/lexdev/ and carry no header line",
+  "columns": [
+    "word",
+    "kind",
+    "channel",
+    "base",
+    "rule",
+    "evidence",
+    "date",
+    "entry"
+  ],
+  "files": {
+    "data/lexdev/intake_ledger.csv": {
+      "appends": [
+        {
+          "k": 1,
+          "package": "LD-P4",
+          "entry": "C-076",
+          "channel": "dictionary-com:headwords-2026-09-25",
+          "rows": 17008,
+          "cumulative_rows": 17008,
+          "sha256": "ece6fe75a63534b3b8bcc2897c2a3ae64ba18739572c2b008f0b204c3f98ef30",
+          "date": "2026-09-25",
+          "backup": {
+            "tarball": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-1.tar.gz",
+            "tarball_sha256": "b1998685fac7e7f72d6c566e6e5e7e11f034e22053d577cc28ac0e0ff87dce98",
+            "listing": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-1.sha256",
+            "listing_sha256": "b3efa11633fea9cf1dc28e0b4b338587794297455f06c1ff7823e8fdc46af919"
+          }
+        },
+        {
+          "k": 2,
+          "package": "LD-P4",
+          "entry": "C-076",
+          "channel": "dictionary-com:headwords-2026-09-25;oed:new-words-2026-06",
+          "rows": 7,
+          "cumulative_rows": 17015,
+          "sha256": "5ee64237efbc32796ae4a22100516fdd9635776066506e2b22072ce8263a2896",
+          "date": "2026-09-25",
+          "backup": {
+            "tarball": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-2.tar.gz",
+            "tarball_sha256": "d59a0b1f00de00dc7dbb7c0feaff48de5b2875b291ecb0253c9631c9ed6e7fbd",
+            "listing": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-2.sha256",
+            "listing_sha256": "99c0928925e89385f51a8f8d85eb14d8e73b76a4e19128d0f970d7915f3d8c7a"
+          }
+        },
+        {
+          "k": 3,
+          "package": "LD-P4",
+          "entry": "C-076",
+          "channel": "dictionary-com:headwords-2026-09-25;oed:new-words-2026-09",
+          "rows": 2,
+          "cumulative_rows": 17017,
+          "sha256": "6267fcaa7f31a3c78491d877829fc7f234b288fe9dafda0696b0148c8efd9d2a",
+          "date": "2026-09-25",
+          "backup": {
+            "tarball": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-3.tar.gz",
+            "tarball_sha256": "a7c57efc0478185ce53c75d552de68345fac604db2b63246b4c484abc060ca07",
+            "listing": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-3.sha256",
+            "listing_sha256": "46fc433b71778fe5ac78aeb79aa0e8d4e8077814629989984f63f13465000427"
+          }
+        },
+        {
+          "k": 4,
+          "package": "LD-P4",
+          "entry": "C-076",
+          "channel": "oed:new-words-2026-06",
+          "rows": 104,
+          "cumulative_rows": 17121,
+          "sha256": "c4d90e230f19ae8d09f5ce5fc74dae386ce0d6d42f08dfd00131249b85bfb387",
+          "date": "2026-09-25",
+          "backup": {
+            "tarball": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-4.tar.gz",
+            "tarball_sha256": "084e52e6839c272815b3a1499df7ec5bce9b01d352d473ad40b356729ebb23ba",
+            "listing": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-4.sha256",
+            "listing_sha256": "2d617618c67b4578eafa90637ff35812782f94ec058eb3cb8fcb05e091531293"
+          }
+        },
+        {
+          "k": 5,
+          "package": "LD-P4",
+          "entry": "C-076",
+          "channel": "oed:new-words-2026-09",
+          "rows": 69,
+          "cumulative_rows": 17190,
+          "sha256": "bbad96bfffb972d10f70d889ca37a835d9457d4c082d5c6d166859dcb24de5e9",
+          "date": "2026-09-25",
+          "backup": {
+            "tarball": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-5.tar.gz",
+            "tarball_sha256": "2705f5bc15abfdb550b95726a70fc5b8f5b2999265c714d05e6d1896bf31f48b",
+            "listing": "ceol-lexdev-ledgers-2026-09-25-ld-p4-append-5.sha256",
+            "listing_sha256": "9774ae86bb2dfff2d4a1699701d20c65709331b8fe0dc2ddd4539788da356113"
+          }
+        }
+      ]
+    },
+    "data/lexdev/intake_ledger_local.csv": {
+      "appends": []
+    },
+    "data/lexdev/proposed_forms_ledger.csv": {
+      "appends": []
+    }
+  }
+}

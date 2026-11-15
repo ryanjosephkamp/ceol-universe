@@ -1,0 +1,415 @@
+/* The Explore lookup. The strings carry the weight; the chrome is hairlines. */
+
+.explore {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.search {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 48rem;
+}
+.search-label {
+  font-weight: 600;
+}
+.search-row input {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  min-height: 3.25rem;
+}
+.search-row input::placeholder {
+  color: var(--ink-faint);
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+}
+.search-row input:focus-visible {
+  outline-offset: 0;
+  border-color: var(--accent);
+}
+
+.modes {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.modes label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  min-height: 2.5rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  cursor: pointer;
+  background: var(--surface);
+  transition: background-color 150ms var(--ease-out), border-color 150ms var(--ease-out), color 150ms var(--ease-out);
+}
+.modes label:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+.modes label.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.modes input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.modes label:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.norm-note {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.explore-body {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+}
+@media (min-width: 60rem) {
+  .explore-body {
+    grid-template-columns: 16.5rem minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+}
+
+/* The filters: always shown on wide screens, behind a button on narrow ones */
+.facets-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  min-height: 2.75rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: var(--step--1);
+}
+.facets {
+  display: none;
+  margin-top: var(--space-4);
+}
+.facets.is-open {
+  display: grid;
+  gap: var(--space-5);
+}
+@media (min-width: 60rem) {
+  .facets-toggle {
+    display: none;
+  }
+  .facets {
+    display: grid;
+    gap: var(--space-5);
+    margin-top: 0;
+    position: sticky;
+    top: var(--space-5);
+  }
+}
+
+.group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.group legend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+  font-size: var(--step--1);
+}
+.group .hint {
+  display: block;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.opt {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.3rem var(--space-2);
+  margin-inline: calc(-1 * var(--space-2));
+  border-radius: var(--radius);
+  font-size: var(--step--1);
+  cursor: pointer;
+  min-height: 2.25rem;
+}
+.opt:hover {
+  background: var(--sunken);
+}
+.opt input {
+  margin: 0;
+  accent-color: var(--accent);
+  width: 1rem;
+  height: 1rem;
+}
+.opt-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.opt-n {
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+.opt.none .opt-label,
+.opt.none .opt-n {
+  color: var(--ink-faint);
+}
+
+.range {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.range label {
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.range input {
+  width: 5.5rem;
+  padding: var(--space-2);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  min-height: 2.5rem;
+}
+
+.clear {
+  justify-self: start;
+  padding: var(--space-2) var(--space-3);
+  min-height: 2.5rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: var(--step--1);
+}
+
+.eol-key {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  background: var(--eol);
+  flex: none;
+}
+
+/* The results */
+.results {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.count {
+  font-size: var(--step-0);
+  color: var(--ink-soft);
+  min-height: 1.6em;
+}
+.count strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 600;
+}
+
+.start-from {
+  display: grid;
+  gap: var(--space-4);
+  padding-top: var(--space-2);
+}
+.start-from p {
+  max-width: var(--measure);
+}
+.start-from ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.start-from button {
+  font-size: var(--step-1);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  color: var(--ink);
+  min-height: 2.75rem;
+  transition: border-color 150ms var(--ease-out), background-color 150ms var(--ease-out);
+}
+.start-from button:hover {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+}
+
+.empty {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--rule);
+}
+.empty p:first-child {
+  font-size: var(--step-1);
+}
+.empty p + p {
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+.row {
+  border-bottom: 1px solid var(--rule);
+}
+.row-head {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  padding: var(--space-3) var(--space-2);
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--ink);
+  transition: background-color 150ms var(--ease-out);
+}
+.row-head:hover {
+  background: var(--sunken);
+}
+.row.is-open .row-head {
+  background: var(--accent-wash);
+}
+.row-word {
+  font-size: var(--step-1);
+  min-width: 0;
+}
+.row-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  flex-wrap: wrap;
+}
+.row-prov {
+  min-width: 10.5rem;
+  text-align: right;
+}
+@media (max-width: 34rem) {
+  .row-prov {
+    min-width: 0;
+    text-align: left;
+  }
+}
+.eol-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--eol);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.dots {
+  display: inline-flex;
+  gap: 3px;
+}
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 1px solid var(--rule-strong);
+}
+.dot.on {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.record {
+  margin: 0;
+  padding: var(--space-3) var(--space-2) var(--space-5);
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--step--1);
+}
+.field {
+  display: grid;
+  gap: var(--space-1) var(--space-4);
+}
+@media (min-width: 40rem) {
+  .field {
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+  }
+}
+.field dt {
+  color: var(--ink-soft);
+}
+.field dd {
+  margin: 0;
+  min-width: 0;
+}
+.chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+.chips code,
+.record code {
+  background: var(--sunken);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0 0.35em;
+  overflow-wrap: anywhere;
+}
+.record code.wrap {
+  word-break: break-all;
+}
+
+.more {
+  justify-self: start;
+  padding: var(--space-2) var(--space-4);
+  min-height: 2.75rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+}
+.more:hover {
+  border-color: var(--accent);
+}

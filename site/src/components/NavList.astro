@@ -1,0 +1,30 @@
+---
+// The site's sections: a link for each built one, a name for each to come.
+import { SECTIONS } from '../lib/nav';
+
+interface Props {
+  section: string;
+  /** the menu says "later" in words; the wide header shows the name faintly */
+  tags?: boolean;
+}
+const { section, tags = false } = Astro.props;
+---
+
+<ul class="nav-list">
+  {
+    SECTIONS.map((s) =>
+      s.built ? (
+        <li>
+          <a href={s.href} aria-current={s.label === section ? 'page' : undefined}>
+            {s.label}
+          </a>
+        </li>
+      ) : (
+        <li class="later" title="In the next build">
+          <span>{s.label}</span>
+          {tags ? <span class="later-tag">later</span> : <span class="visually-hidden">, in the next build</span>}
+        </li>
+      ),
+    )
+  }
+</ul>

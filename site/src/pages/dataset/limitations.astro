@@ -1,0 +1,26 @@
+---
+import Dataset from '../../layouts/Dataset.astro';
+import { cardSection } from '../../lib/docs';
+---
+
+<Dataset title="Limitations" slug="limitations" description="Read these before using the dataset: what its rows rest on, what a model or an engine decided, and what the withholding changes.">
+  <header class="page-head">
+    <h1>Limitations</h1>
+    <p class="lede">
+      The <a href="https://github.com/ryanjosephkamp/ceol-universe/blob/main/pipeline/research/release/CARD_v1.0.md">dataset card</a> states its limitations before anything else. They are its own words, as the dataset ships them, and the section numbers (§) below are the card's.
+    </p>
+  </header>
+  <section class="doc">
+    <Fragment set:html={cardSection(1, 2).html} />
+  </section>
+</Dataset>
+
+<style>
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+</style>

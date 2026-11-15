@@ -1,0 +1,22 @@
+{
+  "generated_by": "research/features/gate_report.py",
+  "doc_figures": {
+    "universe_rows": 10001409,
+    "pool": 127043,
+    "pool_strict": 87178,
+    "train": 89059,
+    "dev": 12595,
+    "test": 25389,
+    "ppl_plain": 7.148,
+    "gb_types": 15628267,
+    "zipf_alpha": 1.5573,
+    "wordfreq_scored": 303511,
+    "sr2_b_rows": 845162,
+    "sr2_b_pct": 8.45,
+    "admitted_count": 3,
+    "ppl_accented": 13.446,
+    "ppl_apostrophe-form": 5.684,
+    "ppl_hyphenated": 10.628,
+    "ppl_ligature": 7.511
+  }
+}

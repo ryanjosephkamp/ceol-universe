@@ -1,0 +1,52 @@
+---
+import Base from '../../layouts/Base.astro';
+import DefinitionsNav from '../../components/DefinitionsNav.astro';
+import { studyHtml } from '../../lib/study';
+
+const html = studyHtml('in-the-wild', 2);
+---
+
+<Base
+  title="The in-the-wild definition"
+  section="Definitions"
+  description="The proposed study's definition of an in-the-wild English word: the recorded search, its conditions in order, the exclusion set, use versus mention, and how an answer is assigned."
+>
+  <div class="frame defs">
+    <DefinitionsNav current="in-the-wild" />
+    <header class="page-head">
+      <h1>The in&#8209;the&#8209;wild definition</h1>
+      <p class="lede">
+        What a recorded search must find before a candidate counts as used outside the project's own sources. It is the
+        procedure the proposed study asks models to follow, and the universe never applies it to a row.
+      </p>
+    </header>
+    <article class="doc itw">
+      <Fragment set:html={html} />
+    </article>
+  </div>
+</Base>
+
+<style>
+  .defs {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .defs > :global(*) {
+    min-width: 0;
+  }
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+    max-width: 20ch;
+  }
+  .itw :global(blockquote) {
+    margin: 0;
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+</style>
