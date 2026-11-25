@@ -167,10 +167,9 @@ on the license review, because each is among its questions:
 - the English OpenList's lists, and every field that records how a string
   came into the universe.
 
-It also leaves out the full release's fields that combine its lists
-(`panel_sets`, `panel_count`, `provenance_class`, `class_explicit`, and the
-variety proxies) and the all-titles screen (`wikt_title_screen`,
-`wikt_title_any`), which counts pages in any language.
+It also leaves out the full release's other derived columns: `panel_sets`,
+`panel_count`, `provenance_class`, `class_explicit`, the variety proxies,
+`wikt_title_screen`, and `wikt_title_any`.
 
 ## 6. The sources, their licenses, and the credits
 
@@ -223,8 +222,8 @@ file it wrote and asserted:
   block, and that every file and document it wrote reads back as written.
 
 Before release, the rows and values were derived again from the pinned
-files of the 6 lists themselves, apart from the full release's columns,
-over the universe's strings, and matched row for row. A check on the
+source files and the grammar, apart from the full release's columns, over
+the universe's strings, and matched row for row. A check on the
 project's private records found none of the strings the full release
 restricts or holds back in any file of this subset.
 

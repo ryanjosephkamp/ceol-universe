@@ -54,6 +54,8 @@ TINY = pa.Table.from_pylist([
     _row("iota kappa", tc=2, panel="wordnet"),
     _row("lambda mu", tc=2, panel="wordnet;wiktionary_english"),
     _row("nu xi", tc=2, panel="wiktionary_english"),
+    _row("afu", wk=1),                                # id starts 00: in the sample
+    _row("ark"),                                      # id starts 00, no list: not in it
 ], schema=SCHEMA)
 
 
@@ -70,7 +72,7 @@ def test_open_lists_keeps_the_rows_an_open_list_lists():
     t = O.project(TINY, _cfg("open-lists"))
     assert t.column_names == list(O.OPEN_COLUMNS)
     assert t["word"].to_pylist() == ["alpha", "beta", "delta", "epsilon",
-                                     "eta-theta", "iota kappa", "lambda mu", "nu xi"]
+                                     "eta-theta", "iota kappa", "lambda mu", "nu xi", "afu"]
     by = dict(zip(t["word"].to_pylist(), t["listed_by"].to_pylist()))
     assert by["alpha"] == ";".join(O.OPEN_LISTS)
     assert by["beta"] == "wiktionary_english"
@@ -86,9 +88,14 @@ def test_wordnet_wiktionary_counts_those_2_lists_alone():
     t = O.project(TINY, _cfg("wordnet-wiktionary"))
     assert t.column_names == list(O.WN_WK_COLUMNS)
     assert t["word"].to_pylist() == ["alpha", "beta", "eta-theta", "iota kappa",
-                                     "lambda mu", "nu xi"]
+                                     "lambda mu", "nu xi", "afu"]
     assert dict(zip(t["word"].to_pylist(), t["listed_by"].to_pylist()))["alpha"] == \
         "wordnet;wiktionary_english"
+
+
+def test_the_sample_is_open_lists_rows_whose_id_starts_00():
+    assert O.project(TINY, _cfg("sample"))["word"].to_pylist() == ["afu"]
+    assert list(O.expected_positions(TINY, _cfg("sample"))) == [10]
 
 
 def test_the_independent_rule_agrees_with_the_projection():
@@ -159,11 +166,19 @@ def test_the_record_re_derives():
 
 @pytest.mark.skipif(not (O.default_out() / "data" / "open-lists.parquet").exists(),
                     reason="needs the built subset beside the data folder")
-def test_the_upload_preflight_passes_and_refuses_without_the_owners_word():
+def test_the_upload_preflight_passes_and_refuses_without_the_owners_word(monkeypatch):
     from research.release import upload_open_subset as U
+    from safeguards import restricted
     assert U.main(["--dry-run"]) == 0
-    with pytest.raises(U.UploadRefused):
-        U.upload("", O.default_out())
+    good = f"{U.REPO_ID}@{U.record_sha256()}"
+    with pytest.raises(U.UploadRefused, match="owner's word"):
+        U.upload("", good, O.default_out())
+    with pytest.raises(U.UploadRefused, match="--confirm"):
+        U.upload("yes", f"{U.REPO_ID}@{'0' * 64}", O.default_out())
+    # a restricted word inside a hyphenated compound of the card is caught
+    monkeypatch.setattr(restricted, "restricted_words", lambda: {"phrasal"})
+    with pytest.raises(U.UploadRefused, match="restricted"):
+        U.preflight(U.payloads(O.default_out()))
 
 
 def _written(tmp_path, name="open-lists", mutate=None, extra_md=None):
@@ -192,7 +207,7 @@ def _set_col(t, name, values):
 
 def test_the_file_check_passes_a_true_file(tmp_path):
     path, cfg = _written(tmp_path)
-    assert _check(path, cfg)["rows"] == 8
+    assert _check(path, cfg)["rows"] == 9
 
 
 def test_the_file_check_refuses_a_wrong_multiword_listing(tmp_path):

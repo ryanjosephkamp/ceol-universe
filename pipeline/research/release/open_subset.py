@@ -414,14 +414,14 @@ def expected_listed_by(version, positions, lists) -> list[str]:
 
 
 def metadata_problems(path: Path) -> list[str]:
-    """The file's key-value metadata is exactly the subset's 5 keys, beside
-    the Arrow schema the writer adds, and no field carries metadata."""
+    """The file's key-value metadata is exactly the subset's 5 keys and the
+    Arrow schema the writer adds, and no field carries metadata."""
     import pyarrow.parquet as pq
     pf = pq.ParquetFile(path)
     kv = dict(pf.metadata.metadata or {})
     want = file_metadata()
     out = []
-    if set(kv) - {b"ARROW:schema"} != set(want) or any(kv.get(k) != v for k, v in want.items()):
+    if set(kv) != set(want) | {b"ARROW:schema"} or any(kv.get(k) != v for k, v in want.items()):
         out.append("the file's metadata is not exactly the subset's")
     if any(f.metadata for f in pf.schema_arrow):
         out.append("a field carries metadata")
@@ -573,7 +573,8 @@ def notices(version_text: str) -> tuple[str, list[dict]]:
 
 def check_notices(version_text: str, subset_text: str) -> None:
     """Each carried section's verbatim blocks are the version's section's,
-    the same blocks in the same order, byte for byte."""
+    the same blocks in the same order, character for character (line ends
+    and trailing spaces included)."""
     have, got = sections(version_text), sections(subset_text)
     for s in NOTICE_SECTIONS:
         old = verbatim_blocks(have[s["heading"]])
@@ -588,7 +589,7 @@ def verbatim_blocks(text: str) -> list[str]:
     """The indented and fenced blocks of a NOTICES text: the texts that
     must travel verbatim."""
     blocks, cur, fence = [], [], None
-    for line in text.splitlines():
+    for line in text.split("\n"):
         if fence is not None:
             fence.append(line)
             if line.startswith("```"):
@@ -597,18 +598,27 @@ def verbatim_blocks(text: str) -> list[str]:
             continue
         if line.startswith("```"):
             if any(l.strip() for l in cur):
-                blocks.append("\n".join(cur).rstrip())
+                blocks.append(_trim("\n".join(cur)))
             cur, fence = [], [line]
             continue
         if line.startswith("    ") or (cur and line == ""):
             cur.append(line)
         else:
             if any(l.strip() for l in cur):
-                blocks.append("\n".join(cur).rstrip())
+                blocks.append(_trim("\n".join(cur)))
             cur = []
     if any(l.strip() for l in cur):
-        blocks.append("\n".join(cur).rstrip())
+        blocks.append(_trim("\n".join(cur)))
     return blocks
+
+
+def _trim(block: str) -> str:
+    """A block without the empty lines that end it; every other character,
+    trailing spaces and carriage returns included, is kept."""
+    lines = block.split("\n")
+    while lines and lines[-1] == "":
+        lines.pop()
+    return "\n".join(lines)
 
 
 # -- the card ----------------------------------------------------------------
@@ -711,8 +721,8 @@ def build(out_dir: Path, write_files: bool = True) -> dict:
     npath = out_dir / "NOTICES.md"
     if write_files:
         for target in (npath, NOTICES_OUT):
-            target.write_text(ntext, encoding="utf-8")
-            if target.read_text(encoding="utf-8") != ntext:
+            target.write_bytes(ntext.encode("utf-8"))
+            if target.read_bytes() != ntext.encode("utf-8"):
                 raise OpenSubsetError(f"{target}: the written NOTICES reads back changed")
     nbytes = ntext.encode("utf-8")
     rec["documents"] = {"NOTICES.md": {"bytes": len(nbytes),
@@ -762,8 +772,8 @@ def build(out_dir: Path, write_files: bool = True) -> dict:
                                      "sha256": hashlib.sha256(cbytes).hexdigest()}
     if write_files:
         for target in (out_dir / "README.md", CARD_OUT):
-            target.write_text(card, encoding="utf-8")
-            if target.read_text(encoding="utf-8") != card:
+            target.write_bytes(card.encode("utf-8"))
+            if target.read_bytes() != card.encode("utf-8"):
                 raise OpenSubsetError(f"{target}: the written card reads back changed")
     return rec
 
@@ -792,10 +802,11 @@ def outside_counts(version, allow_recorded: bool = False) -> dict:
     spaced = DERIVED_DIR.parent / "space_census"
     multi = {"wordnet": "wordnet_spaced.jsonl", "wiktionary_english": "wiktionary_spaced.jsonl"}
     if not all((DERIVED_DIR / f).exists() for fs in files.values() for f in fs) \
-            or not all((spaced / f).exists() for f in multi.values()):
+            or not all((spaced / f).exists() for f in multi.values()) \
+            or not (DERIVED_DIR / "scowl_tiers_ceol.tsv").exists():
         if not allow_recorded:
             raise OpenSubsetError("the derived source files are absent; the gap count can't be computed")
-        return json.loads(RECORD.read_text(encoding="utf-8"))["outside"]
+        return {**json.loads(RECORD.read_text(encoding="utf-8"))["outside"], "source": "recorded"}
     words = set(version["word"].to_pylist())
     out = {}
     for name, fs in files.items():
@@ -831,6 +842,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.check:
         rec = build(out, write_files=False)
         have = json.loads(RECORD.read_text(encoding="utf-8"))
+        if rec["version"] != have["version"]:
+            print("differs: the record's version block")
+            return 1
+        if rec["outside"].get("source") == "recorded":
+            print("note: the gap counts are the record's (the source files are absent here)")
+        elif rec["outside"] != have["outside"]:
+            print("differs: the record's gap counts")
+            return 1
         import pyarrow.parquet as pq
         src = inputs()
         version = pq.read_table(src["universe"], columns=list(READ_COLUMNS))
@@ -866,7 +885,10 @@ def main(argv: list[str] | None = None) -> int:
         print("open subset: the record re-derives")
         return 0
     rec = build(out)
-    RECORD.write_text(json.dumps(rec, indent=2) + "\n", encoding="utf-8")
+    text = (json.dumps(rec, indent=2) + "\n").encode("utf-8")
+    RECORD.write_bytes(text)
+    if RECORD.read_bytes() != text:
+        raise OpenSubsetError("the record reads back changed")
     for c in rec["configs"]:
         print(f"{c['config']}: {c['rows']:,} rows, {c['bytes']:,} bytes")
     print(f"record: {RECORD.relative_to(REPO)}")
