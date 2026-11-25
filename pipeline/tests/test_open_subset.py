@@ -92,7 +92,7 @@ def test_wordnet_wiktionary_counts_those_2_lists_alone():
 
 
 def test_the_independent_rule_agrees_with_the_projection():
-    for name in ("open-lists", "wordnet-wiktionary"):
+    for name in ("open-lists", "wordnet-wiktionary", "sample"):
         pos = O.expected_positions(TINY, _cfg(name))
         assert TINY["id"].take(pa.array(pos)).to_pylist() == \
             O.project(TINY, _cfg(name))["id"].to_pylist()
@@ -129,8 +129,9 @@ def test_the_records_counts_account_for_each_other():
     assert w["multiword"] == o["multiword"] == RELEASE_ROWS["spaced"]
     assert w["single"] <= o["single"] and s["rows"] < o["rows"]
     assert w["single_by_list"] == {k: o["single_by_list"][k] for k in O.WN_WK_LISTS}
-    # the version's listed rows: the subset's, and those only en_GB, ENABLE,
-    # or SCOWL above 70 list
+    # the version's panel-listed rows are the subset's and the rows the card
+    # counts as left out (the record's figure; which lists hold those is
+    # checked outside this test)
     assert o["rows"] + RECORD["version"]["listed_not_open"] == RELEASE_ROWS["panel-listed"]
     assert sum(o["single_by_scowl_size"].values()) == o["single_by_list"]["scowl"]
     assert RECORD["version"]["universe_rows"] == RELEASE_ROWS["universe"]
@@ -154,3 +155,82 @@ def test_no_file_carries_a_column_outside_the_open_set():
                     reason="needs the release's files under data/ and the built subset beside it")
 def test_the_record_re_derives():
     assert O.main(["--check"]) == 0
+
+
+@pytest.mark.skipif(not (O.default_out() / "data" / "open-lists.parquet").exists(),
+                    reason="needs the built subset beside the data folder")
+def test_the_upload_preflight_passes_and_refuses_without_the_owners_word():
+    from research.release import upload_open_subset as U
+    assert U.main(["--dry-run"]) == 0
+    with pytest.raises(U.UploadRefused):
+        U.upload("", O.default_out())
+
+
+def _written(tmp_path, name="open-lists", mutate=None, extra_md=None):
+    import pyarrow.parquet as pq
+    cfg = _cfg(name)
+    t = O.project(TINY, cfg)
+    if mutate:
+        t = mutate(t)
+    path = tmp_path / "f.parquet"
+    md = O.file_metadata()
+    if extra_md:
+        md = {**md, **extra_md}
+    pq.write_table(t.replace_schema_metadata(md), path)
+    return path, cfg
+
+
+def _check(path, cfg):
+    return O.check_file(path, cfg, TINY, O.expected_positions(TINY, cfg),
+                        list(TINY.column_names) + ["eol", "sources"])
+
+
+def _set_col(t, name, values):
+    i = t.column_names.index(name)
+    return t.set_column(i, name, pa.array(values, t.schema.field(name).type))
+
+
+def test_the_file_check_passes_a_true_file(tmp_path):
+    path, cfg = _written(tmp_path)
+    assert _check(path, cfg)["rows"] == 8
+
+
+def test_the_file_check_refuses_a_wrong_multiword_listing(tmp_path):
+    def swap(t):
+        names = t["listed_by"].to_pylist()
+        names[t["word"].to_pylist().index("iota kappa")] = "wiktionary_english"
+        return _set_col(t, "listed_by", names)
+    path, cfg = _written(tmp_path, mutate=swap)
+    with pytest.raises(O.OpenSubsetError):
+        _check(path, cfg)
+
+
+def test_the_file_check_refuses_a_list_named_twice(tmp_path):
+    def dup(t):
+        names = t["listed_by"].to_pylist()
+        names[t["word"].to_pylist().index("beta")] = "wiktionary_english;wiktionary_english"
+        return _set_col(t, "listed_by", names)
+    path, cfg = _written(tmp_path, mutate=dup)
+    with pytest.raises(O.OpenSubsetError):
+        _check(path, cfg)
+
+
+def test_the_file_check_refuses_extra_metadata(tmp_path):
+    path, cfg = _written(tmp_path, extra_md={b"ceol.extra": b"x"})
+    with pytest.raises(O.OpenSubsetError):
+        _check(path, cfg)
+
+
+def test_the_notices_check_refuses_a_missing_license_block():
+    version = (O.RELEASE_DIR / "NOTICES_v1.0.md").read_text(encoding="utf-8")
+    text, _ = O.notices(version)
+    O.check_notices(version, text)
+    block = O.verbatim_blocks(O.sections(text)["## WordNet 3.0 (Princeton University)"])[0]
+    with pytest.raises(O.OpenSubsetError):
+        O.check_notices(version, text.replace(block, ""))
+
+
+@pytest.mark.skipif(not (O.DATA_RELEASE / f"ceol-universe-{O.VERSION}" / "universe.parquet").exists(),
+                    reason="needs the release's files under data/")
+def test_the_check_fails_on_an_empty_folder(tmp_path):
+    assert O.main(["--check", "--out", str(tmp_path)]) == 1

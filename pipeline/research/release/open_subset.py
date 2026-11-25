@@ -13,10 +13,13 @@ writes its own record, `research/release/open_subset_<version>.json`.
 
 The open lists are WordNet 3.0, the English Wiktionary, the en_US, en_CA,
 and en_AU hunspell dictionaries, and SCOWL's lists of sizes 10 to 70. A
-row is in the subset when one of them lists it. Every column, and every
-config's predicate, is a function of those lists and of Google Books'
-types; no field of the full release outside them is read for a row's
-membership or values. The configs:
+row of the version is in the subset when one of them lists it. The version
+supplies the candidate rows; within them, every column and every config's
+predicate is a function of those lists and of Google Books' types, and no
+other field of the version is read for a row's membership or values. (On a
+multiword row, which list holds it is read from the column only that list
+fills: `wn_instance` for WordNet, `wk_flags` for the English Wiktionary.)
+The configs:
 
 - `open-lists` (the default): every row of the version that an open list
   lists;
@@ -26,9 +29,11 @@ membership or values. The configs:
 
 The build asserts, on the files it wrote and re-read, that each config is
 its predicate's filter of the version's rows and nothing else; that every
-value equals the version's value for that row, but for the SCOWL size,
-which never names a size above 70; that no other column of the version is
-present; and that every id is distinct and is the string's own hash.
+value but `scowl_size`, `list_count`, and `listed_by` equals the version's
+value for that row; that `scowl_size` never names a size above 70; that
+`listed_by` names exactly the lists the version's own columns name; that no
+other column of the version is present; and that every id is distinct and
+is the string's own hash.
 """
 
 from __future__ import annotations
@@ -82,7 +87,7 @@ SCOWL_SIZES = (10, 20, 35, 40, 50, 55, 60, 70)
 #: The version's columns the subset reads, and nothing else.
 READ_COLUMNS = ("id", "word", "token_count", "classes", "wordnet",
                 "wiktionary_english", "hunspell_en_US", "hunspell_en_CA",
-                "hunspell_en_AU", "scowl_tier", "gb_type", "panel_sets",
+                "hunspell_en_AU", "scowl_tier", "gb_type",
                 "wn_instance", "wn_capitalized", "wk_proper_noun", "wk_flags")
 
 #: The columns of each config, in order.
@@ -114,9 +119,9 @@ CONFIGS = (
 
 #: Every column of the version a file of the subset may never carry. The
 #: build asserts it from the version's own schema as well (every column of
-#: the version not in READ_COLUMNS, and `scowl_tier` and `panel_sets`,
-#: which are read and never written).
-NEVER_WRITTEN = ("scowl_tier", "panel_sets")
+#: the version not in READ_COLUMNS, and `scowl_tier`, which is read and
+#: never written).
+NEVER_WRITTEN = ("scowl_tier",)
 
 ROW_GROUP_QUANTUM = 10_000
 MAX_ROW_GROUP_BYTES = 100 * 10**6
@@ -181,38 +186,33 @@ def scowl_size(tier):
                       pa.scalar(0, pa.int16()), tier).cast(pa.int16())
 
 
+#: On a multiword row, the column only that list fills: non-null exactly
+#: when the list lists the row. `expected_listed_by` and
+#: `expected_positions` read the other column each list fills, for an
+#: independent check.
+MULTIWORD_MARK = {"wordnet": "wn_instance", "wiktionary_english": "wk_flags"}
+MULTIWORD_MARK_CHECK = {"wordnet": "wn_capitalized", "wiktionary_english": "wk_proper_noun"}
+
+
 def listed(table, lists) -> dict[str, "object"]:
     """For each list, a boolean array: the list lists the row. On a single
     row, a binary column at 1 or `scowl_size` above 0; on a multiword row,
-    the list's name in the version's `panel_sets` (the multiword rows'
-    sources, which are WordNet and the English Wiktionary)."""
+    the column only that list fills is non-null (WordNet and the English
+    Wiktionary are the multiword rows' only lists)."""
+    import pyarrow as pa
     import pyarrow.compute as pc
     multi = pc.greater(table["token_count"], 1)
-    names = pc.split_pattern(table["panel_sets"], ";")
     out = {}
     for name in lists:
         if name == "scowl":
             single = pc.fill_null(pc.greater(table["scowl_size"], 0), False)
         else:
             single = pc.fill_null(pc.equal(table[name], 1), False)
-        in_names = pc.fill_null(_list_contains(names, name), False)
-        out[name] = pc.if_else(multi, in_names, single)
+        mark = MULTIWORD_MARK.get(name)
+        in_multi = (pc.is_valid(table[mark]) if mark
+                    else pa.array([False] * table.num_rows))
+        out[name] = pc.if_else(multi, in_multi, single)
     return out
-
-
-def _list_contains(lists, value):
-    import pyarrow as pa
-    import pyarrow.compute as pc
-    flat = pc.list_flatten(lists)
-    parents = pc.list_parent_indices(lists)
-    hits = pc.equal(flat, value)
-    n = len(lists)
-    import numpy as np
-    out = np.zeros(n, dtype=bool)
-    idx = parents.to_numpy(zero_copy_only=False)[
-        hits.to_numpy(zero_copy_only=False)]
-    out[idx] = True
-    return pa.array(out)
 
 
 def flags(table, lists):
@@ -247,8 +247,8 @@ def project(table, config: dict):
 
 def expected_positions(version, config: dict):
     """The positions of the version's rows a config holds, computed apart
-    from `project`: numpy over the version's own columns for the single
-    rows, and `panel_sets` parsed in Python for the multiword rows."""
+    from `project`: numpy over the version's own columns, with a multiword
+    row's lists read from the other column each list fills."""
     import numpy as np
     tc = version["token_count"].to_numpy(zero_copy_only=False)
     single = tc == 1
@@ -260,11 +260,9 @@ def expected_positions(version, config: dict):
         else:
             v = version[name].fill_null(-2).to_numpy(zero_copy_only=False)
             hit |= single & (v == 1)
-    multi_idx = np.nonzero(~single)[0]
-    ps = version["panel_sets"].take(multi_idx).to_pylist()
-    for i, s in zip(multi_idx, ps):
-        if set(s.split(";")) & set(config["lists"]):
-            hit[i] = True
+    for name, col in MULTIWORD_MARK_CHECK.items():
+        if name in config["lists"]:
+            hit |= ~single & version[col].is_valid().to_numpy(zero_copy_only=False)
     if config["config"] == "sample":
         ids = version["id"].to_pylist()
         hit &= np.array([i.startswith("00") for i in ids])
@@ -311,13 +309,9 @@ def check_file(path: Path, config: dict, version, positions,
     if tuple(t.column_names) != config["columns"]:
         fail.append(f"columns {t.column_names}")
     forbidden = (set(full_names) - set(READ_COLUMNS)) | set(NEVER_WRITTEN)
-    if not forbidden:
-        fail.append("no forbidden columns to check against")
     if forbidden & set(t.column_names):
         fail.append(f"forbidden columns {sorted(forbidden & set(t.column_names))}")
-    md = pq.ParquetFile(path).schema_arrow.metadata or {}
-    if any(md.get(k) != v for k, v in file_metadata().items()):
-        fail.append("metadata")
+    fail += metadata_problems(path)
     ids = t["id"].to_pylist()
     words = t["word"].to_pylist()
     if len(set(ids)) != len(ids):
@@ -335,8 +329,21 @@ def check_file(path: Path, config: dict, version, positions,
         if not sizes <= {None, -1, 0, *SCOWL_SIZES}:
             fail.append(f"scowl_size values {sorted(s for s in sizes if s is not None)}")
     multi = pc.greater(t["token_count"], 1).to_numpy(zero_copy_only=False)
-    count = np.zeros(t.num_rows, dtype=np.int16)
     names_out = t["listed_by"].to_pylist()
+    want = expected_listed_by(version, positions, config["lists"])
+    if names_out != want:
+        fail.append("listed_by is not the lists the version's own columns name")
+    for n in names_out:
+        parts = n.split(";") if n else []
+        if len(parts) != len(set(parts)):
+            fail.append("listed_by names a list twice")
+            break
+    count = np.array([len(n.split(";")) if n else 0 for n in names_out], dtype=np.int16)
+    if np.any(count != t["list_count"].to_numpy(zero_copy_only=False)):
+        fail.append("list_count is not the number of names in listed_by")
+    if np.any(count < 1):
+        fail.append("a row no list of the config lists")
+    # on a single row, each binary column agrees with listed_by
     for name in config["lists"]:
         if name == "scowl":
             single = pc.fill_null(pc.greater(t["scowl_size"], 0), False)
@@ -346,13 +353,6 @@ def check_file(path: Path, config: dict, version, positions,
         named = np.array([name in (s.split(";") if s else []) for s in names_out])
         if np.any(~multi & (single != named)):
             fail.append(f"{name}: listed_by disagrees with its column")
-        count += named.astype(np.int16)
-    if np.any(count != t["list_count"].to_numpy(zero_copy_only=False)):
-        fail.append("list_count is not the number of names in listed_by")
-    if np.any(count < 1):
-        fail.append("a row no list of the config lists")
-    if any(n and not set(n.split(";")) <= set(config["lists"]) for n in names_out):
-        fail.append("listed_by names a list outside the config")
     # values equal the version's
     pos = positions
     for col in t.column_names:
@@ -372,13 +372,60 @@ def check_file(path: Path, config: dict, version, positions,
             nulls = pc.is_null(t[col]).to_numpy(zero_copy_only=False)
             if np.any(nulls != multi):
                 fail.append(f"{col}: null is not exactly the multiword rows")
-    for col in ("wn_instance", "wn_capitalized", "wk_proper_noun", "wk_flags"):
+    for col, name in (("wn_instance", "wordnet"), ("wn_capitalized", "wordnet"),
+                      ("wk_proper_noun", "wiktionary_english"),
+                      ("wk_flags", "wiktionary_english")):
         valid = pc.is_valid(t[col]).to_numpy(zero_copy_only=False)
         if np.any(valid & ~multi):
             fail.append(f"{col}: a value on a single row")
+        named = np.array([name in (n.split(";") if n else []) for n in names_out])
+        if name in config["lists"] and np.any(multi & (valid != named)):
+            fail.append(f"{col}: not null exactly where {name} lists the multiword row")
     if fail:
         raise OpenSubsetError(f"{path.name}: " + "; ".join(fail))
     return counts(t, config)
+
+
+def expected_listed_by(version, positions, lists) -> list[str]:
+    """`listed_by` for the version's rows at `positions`, from the version's
+    own columns, row by row: on a single row, a binary column at 1 or a SCOWL
+    tier of 10 to 70; on a multiword row, the list's other column non-null."""
+    import pyarrow as pa
+    cols = {c: version[c].take(pa.array(positions)).to_pylist()
+            for c in ("token_count", "scowl_tier", *BINARY_LISTS,
+                      *MULTIWORD_MARK_CHECK.values())}
+    out = []
+    for i in range(len(positions)):
+        if cols["token_count"][i] > 1:
+            out.append(";".join(n for n in lists if n in MULTIWORD_MARK_CHECK
+                                and cols[MULTIWORD_MARK_CHECK[n]][i] is not None))
+            continue
+        names = []
+        for n in lists:
+            if n == "scowl":
+                tier = cols["scowl_tier"][i]
+                hit = tier is not None and 10 <= tier <= SCOWL_MAX
+            else:
+                hit = cols[n][i] == 1
+            if hit:
+                names.append(n)
+        out.append(";".join(names))
+    return out
+
+
+def metadata_problems(path: Path) -> list[str]:
+    """The file's key-value metadata is exactly the subset's 5 keys, beside
+    the Arrow schema the writer adds, and no field carries metadata."""
+    import pyarrow.parquet as pq
+    pf = pq.ParquetFile(path)
+    kv = dict(pf.metadata.metadata or {})
+    want = file_metadata()
+    out = []
+    if set(kv) - {b"ARROW:schema"} != set(want) or any(kv.get(k) != v for k, v in want.items()):
+        out.append("the file's metadata is not exactly the subset's")
+    if any(f.metadata for f in pf.schema_arrow):
+        out.append("a field carries metadata")
+    return out
 
 
 def counts(t, config: dict) -> dict:
@@ -443,8 +490,9 @@ NOTICE_SECTIONS = (
      "new": ("The fields `wiktionary_english`, `wk_proper_noun`, and "
              "`wk_flags`, the name `wiktionary_english` in `listed_by`, and "
              "the listing of the multiword rows, are derived from the "
-             "English Wiktionary's pages-articles dump of the run of "
-             "August 1, 2026 (https://dumps.wikimedia.org/enwiktionary/)."),
+             "English Wiktionary's pages-articles dump of August 2026 (the "
+             "file with sha256 `a0db4eeaea5e6b9940e21ea143eaecf93195610888d345333ae560b9a15527d1`; "
+             "https://dumps.wikimedia.org/enwiktionary/)."),
      "drop": "The channel label `eol:dictionary-api:free-dictionary`"},
     {"heading": "## WordNet 3.0 (Princeton University)",
      "lead": ("The fields `wordnet`, `wn_instance`, and `wn_capitalized`, "
@@ -483,7 +531,7 @@ NOTICE_SECTIONS = (
 
 NOTICES_PREAMBLE = """# NOTICES: the CEOL Universe, open subset, version 1.0
 
-The open subset of the CEOL Universe is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/by-sa/4.0/). Its fields are derived from the sources below. This file carries every notice, license, and credit those sources ask a copy of their data to carry, in the sources' own words where their terms require the text itself. Each section below is the section of the CEOL Universe version 1.0's NOTICES.md for that source, with its first sentence naming this subset's fields; the rest is carried unchanged. It was generated by `research/release/open_subset.py`.
+The open subset of the CEOL Universe is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/by-sa/4.0/). Its fields are derived from the sources below. This file carries every notice, license, and credit those sources ask a copy of their data to carry, in the sources' own words where their terms require the text itself. Each section below is the section of the CEOL Universe version 1.0's NOTICES.md for that source, with its first sentence naming this subset's fields; the Wiktionary section also leaves out version 1.0's paragraph on a field this subset doesn't carry. The rest of each section, and every license text in it, is carried unchanged. Each list's membership also decides which rows are in this subset and their `list_count`. It was generated by `research/release/open_subset.py`.
 """
 
 
@@ -523,11 +571,35 @@ def notices(version_text: str) -> tuple[str, list[dict]]:
     return "\n".join(out), carried
 
 
+def check_notices(version_text: str, subset_text: str) -> None:
+    """Each carried section's verbatim blocks are the version's section's,
+    the same blocks in the same order, byte for byte."""
+    have, got = sections(version_text), sections(subset_text)
+    for s in NOTICE_SECTIONS:
+        old = verbatim_blocks(have[s["heading"]])
+        new = verbatim_blocks(got.get(s["heading"], ""))
+        if old != new:
+            raise OpenSubsetError(f"NOTICES: {s['heading']!r}'s verbatim text is not the version's")
+    if set(got) != {s["heading"] for s in NOTICE_SECTIONS}:
+        raise OpenSubsetError("NOTICES: a section outside the carried ones")
+
+
 def verbatim_blocks(text: str) -> list[str]:
     """The indented and fenced blocks of a NOTICES text: the texts that
     must travel verbatim."""
-    blocks, cur = [], []
+    blocks, cur, fence = [], [], None
     for line in text.splitlines():
+        if fence is not None:
+            fence.append(line)
+            if line.startswith("```"):
+                blocks.append("\n".join(fence))
+                fence = None
+            continue
+        if line.startswith("```"):
+            if any(l.strip() for l in cur):
+                blocks.append("\n".join(cur).rstrip())
+            cur, fence = [], [line]
+            continue
         if line.startswith("    ") or (cur and line == ""):
             cur.append(line)
         else:
@@ -608,15 +680,17 @@ def build(out_dir: Path, write_files: bool = True) -> dict:
     src = inputs()
     version = pq.read_table(src["universe"], columns=list(READ_COLUMNS))
     full_schema = pq.ParquetFile(src["universe"]).schema_arrow
-    # the multiword rows are listed by WordNet and the English Wiktionary
-    # alone, which `panel_sets` names
+    # each list fills its 2 multiword columns on the same rows, and every
+    # multiword row has a list
     import pyarrow.compute as pc
     multi = version.filter(pc.greater(version["token_count"], 1))
-    names = set()
-    for n in pc.unique(multi["panel_sets"]).to_pylist():
-        names |= set(n.split(";")) if n else {""}
-    if not names <= set(WN_WK_LISTS):
-        raise OpenSubsetError(f"a multiword row's panel_sets names {sorted(names)}")
+    for name in WN_WK_LISTS:
+        if not multi[MULTIWORD_MARK[name]].is_valid().equals(
+                multi[MULTIWORD_MARK_CHECK[name]].is_valid()):
+            raise OpenSubsetError(f"{name}: its 2 multiword columns disagree")
+    if not pc.all(pc.or_(multi["wn_instance"].is_valid(),
+                         multi["wk_flags"].is_valid())).as_py():
+        raise OpenSubsetError("a multiword row no list holds")
 
     rec = {"generated_by": "research/release/open_subset.py",
            "dataset": DATASET, "subset_of": f"ryanjosephkamp/ceol-universe {VERSION}",
@@ -631,15 +705,15 @@ def build(out_dir: Path, write_files: bool = True) -> dict:
            "configs": []}
     out_dir.mkdir(parents=True, exist_ok=True)
     # NOTICES first: the card names its hash
-    ntext, carried = notices(src["notices"].read_text(encoding="utf-8"))
-    vblocks = verbatim_blocks(src["notices"].read_text(encoding="utf-8"))
-    for b in verbatim_blocks(ntext):
-        if b not in vblocks:
-            raise OpenSubsetError("NOTICES: a verbatim block is not the version's")
+    vtext = src["notices"].read_text(encoding="utf-8")
+    ntext, carried = notices(vtext)
+    check_notices(vtext, ntext)
     npath = out_dir / "NOTICES.md"
     if write_files:
-        npath.write_text(ntext, encoding="utf-8")
-        NOTICES_OUT.write_text(ntext, encoding="utf-8")
+        for target in (npath, NOTICES_OUT):
+            target.write_text(ntext, encoding="utf-8")
+            if target.read_text(encoding="utf-8") != ntext:
+                raise OpenSubsetError(f"{target}: the written NOTICES reads back changed")
     nbytes = ntext.encode("utf-8")
     rec["documents"] = {"NOTICES.md": {"bytes": len(nbytes),
                                        "sha256": hashlib.sha256(nbytes).hexdigest(),
@@ -681,14 +755,16 @@ def build(out_dir: Path, write_files: bool = True) -> dict:
     rec["version"]["columns_never_read"].remove("panel_count")
     rec["version"]["listed_not_open"] = listed_rows - oc["rows"]
     rec["version"]["open_single_scowl_over_70"] = _over70(version)
-    rec["outside"] = outside_counts(version)
+    rec["outside"] = outside_counts(version, allow_recorded=not write_files)
     card = render_card(rec)
     cbytes = card.encode("utf-8")
     rec["documents"]["README.md"] = {"bytes": len(cbytes),
                                      "sha256": hashlib.sha256(cbytes).hexdigest()}
     if write_files:
-        (out_dir / "README.md").write_text(card, encoding="utf-8")
-        CARD_OUT.write_text(card, encoding="utf-8")
+        for target in (out_dir / "README.md", CARD_OUT):
+            target.write_text(card, encoding="utf-8")
+            if target.read_text(encoding="utf-8") != card:
+                raise OpenSubsetError(f"{target}: the written card reads back changed")
     return rec
 
 
@@ -703,7 +779,7 @@ def _over70(version) -> int:
     return int(((count >= 1) & single & over).sum())
 
 
-def outside_counts(version) -> dict:
+def outside_counts(version, allow_recorded: bool = False) -> dict:
     """The strings an open list holds under the grammar that are not rows
     of the version, counted from the derived source sets where this
     checkout has them; the committed count stands in a clone."""
@@ -713,7 +789,12 @@ def outside_counts(version) -> dict:
              "hunspell_en_US": ("hunspell_en_US.txt", "hunspell_en_US_plain.txt"),
              "hunspell_en_CA": ("hunspell_en_CA.txt", "hunspell_en_CA_plain.txt"),
              "hunspell_en_AU": ("hunspell_en_AU.txt", "hunspell_en_AU_plain.txt")}
-    if not all((DERIVED_DIR / f).exists() for fs in files.values() for f in fs):
+    spaced = DERIVED_DIR.parent / "space_census"
+    multi = {"wordnet": "wordnet_spaced.jsonl", "wiktionary_english": "wiktionary_spaced.jsonl"}
+    if not all((DERIVED_DIR / f).exists() for fs in files.values() for f in fs) \
+            or not all((spaced / f).exists() for f in multi.values()):
+        if not allow_recorded:
+            raise OpenSubsetError("the derived source files are absent; the gap count can't be computed")
         return json.loads(RECORD.read_text(encoding="utf-8"))["outside"]
     words = set(version["word"].to_pylist())
     out = {}
@@ -722,11 +803,17 @@ def outside_counts(version) -> dict:
         for f in fs:
             with open(DERIVED_DIR / f, encoding="utf-8") as fh:
                 s |= {l.rstrip("\n") for l in fh if l.strip()}
+        if name in multi:
+            with open(spaced / multi[name], encoding="utf-8") as fh:
+                s |= {json.loads(l)["key"] for l in fh if l.strip()}
         out[name] = len(s - words)
     tiers = DERIVED_DIR / "scowl_tiers_ceol.tsv"
     with open(tiers, encoding="utf-8") as fh:
         sc = {l.split("\t")[0] for l in fh if 10 <= int(l.rstrip("\n").split("\t")[1]) <= SCOWL_MAX}
     out["scowl"] = len(sc - words)
+    if any(v for k, v in out.items() if k != "wordnet"):
+        raise OpenSubsetError("an open list other than WordNet holds strings "
+                              "outside the version; the card says none does")
     return {"by_list": out, "wordnet_not_rows": out["wordnet"],
             "note": "strings each open list holds under the CEOL grammar "
                     "that are not rows of the version"}
@@ -744,22 +831,38 @@ def main(argv: list[str] | None = None) -> int:
     if args.check:
         rec = build(out, write_files=False)
         have = json.loads(RECORD.read_text(encoding="utf-8"))
-        for c_new, c_old in zip(rec["configs"], have["configs"]):
+        import pyarrow.parquet as pq
+        src = inputs()
+        version = pq.read_table(src["universe"], columns=list(READ_COLUMNS))
+        full_names = pq.ParquetFile(src["universe"]).schema_arrow.names
+        for config, c_new, c_old in zip(CONFIGS, rec["configs"], have["configs"]):
             if c_new["counts"] != c_old["counts"]:
                 print(f"differs: {c_new['config']} counts")
                 return 1
             path = out / c_old["path"]
-            if path.exists() and sha256_file(path) != c_old["sha256"]:
+            if not path.exists():
+                print(f"absent: {path}")
+                return 1
+            if sha256_file(path) != c_old["sha256"]:
                 print(f"differs: {c_old['path']} sha256")
+                return 1
+            if check_file(path, config, version, expected_positions(version, config),
+                          full_names) != c_old["counts"]:
+                print(f"differs: {c_old['path']} re-read")
                 return 1
         for name, committed in (("NOTICES.md", NOTICES_OUT), ("README.md", CARD_OUT)):
             if rec["documents"][name]["sha256"] != have["documents"][name]["sha256"]:
                 print(f"differs: {name} as rendered")
                 return 1
             for path in (out / name, committed):
-                if path.exists() and sha256_file(path) != have["documents"][name]["sha256"]:
+                if not path.exists():
+                    print(f"absent: {path}")
+                    return 1
+                if sha256_file(path) != have["documents"][name]["sha256"]:
                     print(f"differs: {path}")
                     return 1
+        check_notices(src["notices"].read_text(encoding="utf-8"),
+                      (out / "NOTICES.md").read_text(encoding="utf-8"))
         print("open subset: the record re-derives")
         return 0
     rec = build(out)

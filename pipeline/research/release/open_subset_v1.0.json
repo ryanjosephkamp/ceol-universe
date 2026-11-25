@@ -21,7 +21,6 @@
       "hunspell_en_AU",
       "scowl_tier",
       "gb_type",
-      "panel_sets",
       "wn_instance",
       "wn_capitalized",
       "wk_proper_noun",
@@ -36,6 +35,7 @@
       "is_restricted",
       "c015_addition",
       "class_explicit",
+      "panel_sets",
       "variety_gb_not_us",
       "variety_us_not_gb",
       "intake_layer",
@@ -328,8 +328,8 @@
   ],
   "documents": {
     "NOTICES.md": {
-      "bytes": 17198,
-      "sha256": "a5b3646d209c7ffd621375636e3b7bdf5ee408d8dc5def2cd8bb1fd15e195dd4",
+      "bytes": 17511,
+      "sha256": "6272d18f290b6ee955caec00715aeafd14a11cb7aa863572c352db8ad7627a9d",
       "sections": [
         {
           "section": "The English Wiktionary",
@@ -354,8 +354,8 @@
       ]
     },
     "README.md": {
-      "bytes": 13877,
-      "sha256": "3c324972031d6addfd7a342521fdab2acbade795f1ed023111bb4fce7c5e4ff6"
+      "bytes": 14659,
+      "sha256": "84287b239e6d5cc9520f579d6a0255747538164beef00d5191382a433c757724"
     }
   },
   "outside": {

@@ -85,8 +85,8 @@ This subset keeps the rows of version 1.0 that at least 1 of 6 open lists
 lists: WordNet 3.0, the English Wiktionary, the LibreOffice hunspell
 dictionaries en_US, en_CA, and en_AU, and SCOWL at sizes 10 to 70. It
 keeps only the columns derived from those lists and from Google Books'
-1-gram types. Every column, and each config's rule, is a function of those
-sources alone.
+1-gram types. The universe supplies the candidate rows; within them, every
+column and each config's rule is a function of those sources alone.
 
 `id` is the first 16 hexadecimal digits of the sha256 of the word, as in
 the full release, so a row here joins the full release's row for the same
@@ -96,8 +96,8 @@ string by `id` or by `word`.
 
 | Config | File | Rows | Single-word | Multiword | Rule |
 |---|---|---:|---:|---:|---|
-| `open-lists` (default) | `data/open-lists.parquet` | $open_rows | $open_single | $open_multi | listed by at least 1 of the 6 open lists |
-| `wordnet-wiktionary` | `data/wordnet-wiktionary.parquet` | $wnwk_rows | $wnwk_single | $wnwk_multi | listed by WordNet or the English Wiktionary; only the columns derived from those 2 |
+| `open-lists` (default) | `data/open-lists.parquet` | $open_rows | $open_single | $open_multi | a row of the universe that at least 1 of the 6 open lists lists |
+| `wordnet-wiktionary` | `data/wordnet-wiktionary.parquet` | $wnwk_rows | $wnwk_single | $wnwk_multi | a row of the universe that WordNet or the English Wiktionary lists; only the columns derived from those 2 |
 | `sample` | `data/sample.parquet` | $sample_rows | | | the rows of `open-lists` whose `id` begins with `00` (about 1 in 256) |
 
 Each config holds its rows in the full release's order. `wordnet-wiktionary`
@@ -162,10 +162,15 @@ on the license review, because each is among its questions:
 
 - the en_GB hunspell dictionary, ENABLE, and SCOWL's lists at sizes 80 and
   95, and the $left_out_listed rows of the universe that only they list;
-- the universe's rows that no list lists, which a corpus or the English
-  OpenList holds, and the wordfreq values and the feature layer;
+- the universe's rows that none of its 8 published lists lists, the
+  wordfreq values, and the feature layer;
 - the English OpenList's lists, and every field that records how a string
   came into the universe.
+
+It also leaves out the full release's fields that combine its lists
+(`panel_sets`, `panel_count`, `provenance_class`, `class_explicit`, and the
+variety proxies) and the all-titles screen (`wikt_title_screen`,
+`wikt_title_any`), which counts pages in any language.
 
 ## 6. The sources, their licenses, and the credits
 
@@ -177,7 +182,7 @@ itself, and each Parquet file names it in its metadata.
 
 | Source | What its own files state | What this dataset carries from it |
 |---|---|---|
-| The English Wiktionary (Wikimedia dumps, the run of August 1, 2026) | CC BY-SA 4.0 and the GFDL, under the Wikimedia Terms of Use | `wiktionary_english`, `wk_proper_noun`, `wk_flags`, the multiword rows' listing |
+| The English Wiktionary (the Wikimedia pages-articles dump of August 2026) | CC BY-SA 4.0 and the GFDL, under the Wikimedia Terms of Use | `wiktionary_english`, `wk_proper_noun`, `wk_flags`, the multiword rows' listing |
 | WordNet 3.0 (Princeton University), as nltk distributes it | the WordNet 3.0 license, which `NOTICES.md` carries verbatim | `wordnet`, `wn_instance`, `wn_capitalized`, the multiword rows' listing |
 | SCOWL (Kevin Atkinson; the December 7, 2020 archive) | SCOWL's `Copyright` file, with its components' notices, which `NOTICES.md` carries verbatim | `scowl_size` |
 | The LibreOffice hunspell dictionaries en_US, en_CA, en_AU | their READMEs: they "come directly from SCOWL and is thus under the same copyright of SCOWL" | `hunspell_en_US`, `hunspell_en_CA`, `hunspell_en_AU` |
@@ -195,8 +200,11 @@ Digitized Books", Science 331 (2011).
 `pipeline/research/release/open_subset.py` in the code repository built
 this subset on $built_on from the full release's `universe.parquet`
 (version 1.0, sha256 `$universe_sha256`), which it holds to the release's
-record before reading. It reads that file's open columns and nothing else
-for a row's membership or values. Its record, with every file's rows,
+record before reading. For a row's membership and values it reads only that
+file's open columns and SCOWL's size, which it caps at 70; on a multiword
+row, which list holds it is read from the columns only that list fills. It
+reads 1 more column, `panel_count`, for 1 count on this card. Its record,
+with every file's rows,
 columns, bytes, and sha256 and the counts on this card, is
 `pipeline/research/release/open_subset_v1.0.json`. The build re-read every
 file it wrote and asserted:
@@ -204,18 +212,21 @@ file it wrote and asserted:
 - that each config is its rule's filter of the full release's rows, in
   their order, recomputed from the file's own columns and, apart from the
   build's own code, from the full release's columns;
-- that every value equals the full release's value for the same row, but
-  `scowl_size`, which never names a size above 70;
+- that every value but `scowl_size`, `list_count`, and `listed_by` equals
+  the full release's value for the same row, that `scowl_size` never names
+  a size above 70, and that `listed_by` names exactly the lists the full
+  release's own columns name for the row;
 - that no other column of the full release is present;
 - that every `id` is distinct and is its string's hash;
 - that `list_count` is the number of names in `listed_by`, and at least 1;
-- that `NOTICES.md` carries the full release's notice texts unchanged.
+- that each license text in `NOTICES.md` is the full release's, block for
+  block, and that every file and document it wrote reads back as written.
 
-Before release, the rows were derived again from the pinned files of the
-6 lists themselves, apart from the full release's columns, and matched
-row for row. A check on the project's private records found none of the
-strings the full release keeps out of every version in any file of this
-subset.
+Before release, the rows and values were derived again from the pinned
+files of the 6 lists themselves, apart from the full release's columns,
+over the universe's strings, and matched row for row. A check on the
+project's private records found none of the strings the full release
+restricts or holds back in any file of this subset.
 
 ## 8. Requests and takedowns
 
@@ -229,8 +240,8 @@ withholding, as counts.
 
 This card carries the canary string `CEOL UNIVERSE OPEN SUBSET CANARY $canary`.
 It exists so that a later test can check whether a model has memorized
-this dataset's documentation. It is recorded in the build's record and in
-each Parquet file's metadata.
+this dataset's documentation. Its UUID is recorded in the build's record and
+in each Parquet file's metadata.
 
 ## 10. How to cite
 
