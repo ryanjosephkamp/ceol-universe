@@ -164,15 +164,33 @@ def test_the_record_re_derives():
     assert O.main(["--check"]) == 0
 
 
-def test_the_upload_refuses_without_the_owners_word_or_a_matching_confirm():
+class _NoHub:
+    """A stand-in hub that fails the test if anything reaches it."""
+    def __getattr__(self, name):
+        raise AssertionError(f"the upload reached the hub ({name}) past a guard")
+
+
+def test_the_upload_refuses_without_the_owners_word_or_a_matching_confirm(monkeypatch, tmp_path):
     from research.release import upload_open_subset as U
+    from safeguards import restricted
+    monkeypatch.setattr(restricted, "restricted_words", lambda: set())
     good = f"{U.REPO_ID}@{U.record_sha256()}"
-    with pytest.raises(U.UploadRefused, match="owner's word"):
-        U.upload("", good, O.default_out())
+    for word, confirm, match in (("", good, "owner's word"),
+                                 ("yes", f"{U.REPO_ID}@{'0' * 64}", "--confirm"),
+                                 ("yes", f"someone/else@{U.record_sha256()}", "--confirm")):
+        with pytest.raises(U.UploadRefused, match=match):
+            U.upload(word, confirm, tmp_path, api=_NoHub())
+
+
+def test_a_record_that_does_not_parse_is_refused(monkeypatch, tmp_path):
+    from research.release import upload_open_subset as U
+    bad = tmp_path / "record.json"
+    bad.write_bytes(b"{not json")
+    monkeypatch.setattr(O, "RECORD", bad)
     with pytest.raises(U.UploadRefused, match="--confirm"):
-        U.upload("yes", f"{U.REPO_ID}@{'0' * 64}", O.default_out())
-    with pytest.raises(U.UploadRefused, match="--confirm"):
-        U.upload("yes", f"someone/else@{U.record_sha256()}", O.default_out())
+        U.upload("yes", f"{U.REPO_ID}@{'0' * 64}", tmp_path, api=_NoHub())
+    with pytest.raises(U.UploadRefused, match="parse"):
+        U.upload("yes", f"{U.REPO_ID}@{U.record_sha256()}", tmp_path, api=_NoHub())
 
 
 def test_the_document_check_uses_the_repositorys_matcher():
@@ -231,11 +249,21 @@ def test_the_upload_preflight_passes_and_sends_what_it_checked(monkeypatch, tmp_
             record.write_text("{}")  # the record changes while the upload runs
             return SimpleNamespace(oid="c0ffee")
 
+    first = U.record_snapshot
+
+    def snapshot_then_replace():
+        snap = first()
+        record.write_text("{}")  # the record changes right after its one read
+        return snap
+    monkeypatch.setattr(U, "record_snapshot", snapshot_then_replace)
     out = U.upload("yes", f"{U.REPO_ID}@{confirmed}", O.default_out(), api=Api())
     assert out["verification"] == "verified"
     assert out["record_sha256"] == confirmed
     assert _json.loads((tmp_path / "receipt.json").read_text())["record_sha256"] == confirmed
-    want = {c["path"]: c["sha256"] for c in _json.loads(O.CARD_OUT.parent.joinpath("open_subset_v1.0.json").read_text())["configs"]}
+    real = _json.loads(O.CARD_OUT.parent.joinpath("open_subset_v1.0.json").read_text())
+    want = {c["path"]: c["sha256"] for c in real["configs"]}
+    want |= {name: real["documents"][name]["sha256"] for name in ("README.md", "NOTICES.md")}
+    assert set(sent) == set(want)
     for path, sha in want.items():
         assert __import__("hashlib").sha256(sent[path]).hexdigest() == sha
 

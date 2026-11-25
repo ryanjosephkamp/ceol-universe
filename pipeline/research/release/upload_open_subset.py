@@ -53,10 +53,22 @@ class UploadRefused(RuntimeError):
 
 
 def record_snapshot() -> dict:
-    """The record, read once: its bytes, digest, and parsed manifest."""
+    """The record, read once: its digest, and its manifest parsed from the
+    same bytes (a record that doesn't parse is refused)."""
     data = O.RECORD.read_bytes()
-    return {"sha256": hashlib.sha256(data).hexdigest(),
-            "manifest": json.loads(data.decode("utf-8"))}
+    snap = {"sha256": hashlib.sha256(data).hexdigest(), "data": data}
+    try:
+        snap["manifest"] = json.loads(data.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as e:
+        snap["manifest"] = None
+        snap["error"] = f"the record doesn't parse: {type(e).__name__}"
+    return snap
+
+
+def manifest(snap: dict) -> dict:
+    if snap["manifest"] is None:
+        raise UploadRefused(snap["error"])
+    return snap["manifest"]
 
 
 def record_sha256() -> str:
@@ -66,7 +78,7 @@ def record_sha256() -> str:
 def payloads(out_dir: Path, snap: dict) -> list[dict]:
     """Each file to send, read once: its path in the repo, its bytes, and
     the sha256 the record snapshot names."""
-    rec = snap["manifest"]
+    rec = manifest(snap)
     want = [(c["path"], c["sha256"]) for c in rec["configs"]]
     want += [(name, rec["documents"][name]["sha256"]) for name in ("README.md", "NOTICES.md")]
     out = []
