@@ -333,7 +333,7 @@ export default function Profile({ cubeUrl, composeHref }: { cubeUrl: string; com
           title="Model or engine"
           table={MOE_ORDER.map((m) => ({ label: m === 'none' ? 'Not made by the engine' : sentence(MODEL_OR_ENGINE[m]), value: v.moe.get(m) ?? 0 }))}
           total={sumOf(v.moe)}
-          note="A record of how the English OpenList decided a row, never a verdict of this dataset's."
+          note="Whether the English OpenList's synthetic engine made a row: a record of its method, never a verdict of this dataset's."
         >
           <BarList
             tone={tone}

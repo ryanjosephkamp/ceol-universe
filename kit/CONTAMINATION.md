@@ -8,7 +8,7 @@ A study is contaminated when something it relies on has already seen what it tes
 |---|---|---|
 | A model under test has seen the dataset's files or documents | a model is probed on candidates and on the provenance the dataset records | use the canary (§2), and date the release (§5) |
 | A model that labels or filters has seen them | a model is an annotator, or filters the frame | treat it as a source and an annotator; record its name, version, date, and prompt ([`CODEBOOK.md`](CODEBOOK.md) §6 and §9) |
-| The English OpenList decided a row with a language model | a labeler's agreement with the EOL is measured on rows the EOL decided with a model | use `model_or_engine` (§3) |
+| The English OpenList decided a row with a language model | a labeler's agreement with the EOL is measured on rows the EOL decided with a model | the dataset can't identify those rows: `model_or_engine` marks only the synthetic engine's (§3) |
 | Candidates in a probe set appear on public pages | probe strings come from this project's pages | remember the difference between a mention and a use (§4) |
 
 The dataset's strings come from earlier sources: the English OpenList's universe at a pinned revision, and the pinned public lists and corpora (the card's §7), such as Wiktionary, WordNet, SCOWL, ENABLE, and the Google Books 1-grams. A model with an early training cutoff may know many of the strings. What the dataset adds is its selection, its layers, its provenance columns, and its documents. Those are what the canary and the release date mark.

@@ -109,11 +109,11 @@ The filter configs (every config but `universe` and `features`) carry every colu
 | `id` | string | the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version | never null |
 | `word` | string | the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer | never null |
 | `gb_year_span` | int16 | the years from the first to the last in which the string occurs in the Google Books English 1-grams (the 2020 release), inclusive | 0 where the string is not a 1-gram type |
-| `gb_span_fill` | float | the share of the span's years in which the string occurs | NaN where the string is not a 1-gram type |
-| `gb_tokens_per_volume` | float | the total match count over the total volume count | NaN where no volume carries the string |
-| `gb_volumes_per_year` | float | the total volume count over the years in which the string occurs | NaN where the string is not a 1-gram type |
+| `gb_span_fill` | float | the year count over the span: Google Books' years summed over the raw forms that normalize to the string, capped at the span, so a year 2 forms share counts twice before the cap and the value can exceed the share of distinct years | NaN where the string is not a 1-gram type |
+| `gb_tokens_per_volume` | float | the total match count over the total volume count, both summed over the raw forms that normalize to the string | NaN where no volume carries the string |
+| `gb_volumes_per_year` | float | the total volume count over the year count, both summed over the raw forms that normalize to the string (the year count capped at the span) | NaN where the string is not a 1-gram type |
 | `gb_log10_match` | float | log10 of the total match count | NaN where the string is not a 1-gram type |
-| `gb_log10_volume` | float | log10 of the total volume count | NaN where no volume carries the string |
+| `gb_log10_volume` | float | log10 of the total volume count, summed over the raw forms that normalize to the string, so a volume holding 2 forms counts twice | NaN where no volume carries the string |
 | `zipf_log10_rank` | float | log10 of the string's frequency rank among the aggregate's types | NaN where the string is not a 1-gram type |
 | `zipf_resid` | float | log10 of the match count minus the Zipf-Mandelbrot fit's prediction at that rank | NaN where the string is not a 1-gram type |
 | `wordfreq_zipf` | float | the wordfreq 3.1.1 Zipf frequency (English) where wordfreq's list holds the string | NaN elsewhere, and on every hyphenated string (wordfreq is hyphen-blind) |

@@ -103,9 +103,10 @@ Read these before using the dataset.
   alone, so a row with `panel_count` 0 may still be listed by a withheld
   list.
 - **30,016 rows of the shippable projection are not in this
-  version.** Once the withheld lists and channels are taken away, nothing
-  published supports them, so they are held back in the private record
-  (§6).
+  version.** They are held back in the private record (§6): rows that
+  nothing published supports once the withheld lists and channels are
+  taken away, and rows of the census and the audit whose every source
+  label names a withheld list, though a corpus may hold them.
 - **A channel may be withheld for license reasons.** 0
   rows carry `eol:channel-withheld` in `intake_channels`: every channel
   recorded for them is withheld, because it names a withheld list or a
@@ -316,11 +317,11 @@ string.
 | `id` | string | the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version | never null |
 | `word` | string | the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer | never null |
 | `gb_year_span` | int16 | the years from the first to the last in which the string occurs in the Google Books English 1-grams (the 2020 release), inclusive | 0 where the string is not a 1-gram type |
-| `gb_span_fill` | float | the share of the span's years in which the string occurs | NaN where the string is not a 1-gram type |
-| `gb_tokens_per_volume` | float | the total match count over the total volume count | NaN where no volume carries the string |
-| `gb_volumes_per_year` | float | the total volume count over the years in which the string occurs | NaN where the string is not a 1-gram type |
+| `gb_span_fill` | float | the year count over the span: Google Books' years summed over the raw forms that normalize to the string, capped at the span, so a year 2 forms share counts twice before the cap and the value can exceed the share of distinct years | NaN where the string is not a 1-gram type |
+| `gb_tokens_per_volume` | float | the total match count over the total volume count, both summed over the raw forms that normalize to the string | NaN where no volume carries the string |
+| `gb_volumes_per_year` | float | the total volume count over the year count, both summed over the raw forms that normalize to the string (the year count capped at the span) | NaN where the string is not a 1-gram type |
 | `gb_log10_match` | float | log10 of the total match count | NaN where the string is not a 1-gram type |
-| `gb_log10_volume` | float | log10 of the total volume count | NaN where no volume carries the string |
+| `gb_log10_volume` | float | log10 of the total volume count, summed over the raw forms that normalize to the string, so a volume holding 2 forms counts twice | NaN where no volume carries the string |
 | `zipf_log10_rank` | float | log10 of the string's frequency rank among the aggregate's types | NaN where the string is not a 1-gram type |
 | `zipf_resid` | float | log10 of the match count minus the Zipf-Mandelbrot fit's prediction at that rank | NaN where the string is not a 1-gram type |
 | `wordfreq_zipf` | float | the wordfreq 3.1.1 Zipf frequency (English) where wordfreq's list holds the string | NaN elsewhere, and on every hyphenated string (wordfreq is hyphen-blind) |
@@ -372,7 +373,7 @@ terms, and `NOTICES.md` carries the notices.
   2,558 rows of the census and the audit's additions
   have every `sources` label naming a withheld list. Shipped, their empty
   `sources` would say that a withheld list holds them, so they are held back
-  the same way, though they keep corpus containment.
+  the same way, though some keep corpus containment.
 
 The rows held back, 30,016 in all, by reason. They are counted
 and never listed.
@@ -467,7 +468,7 @@ its form and named as inferred.
 
 ## 9. How the universe was built and checked
 
-Each step has a committed record; the counts are those records'.
+Each step has a committed record; the counts are taken at the current pin.
 
 1. **The census** (`reference/research/census/census.json`): the pinned
    sources re-read under the grammar; 213,867 candidates in
@@ -477,9 +478,11 @@ Each step has a committed record; the counts are those records'.
    regenerates the EOL's pinned lists byte for byte. At the EOL's revision
    `c550751e` the merge holds 9,653,667 inherited strings
    and 9,867,534 rows.
-3. **The audit** (`reference/research/audit/reconcile.json`): every
-   source's coverage by the merged universe, reconciled to a remainder of
-   0; 133,875 additions.
+3. **The audit** (`reference/research/audit/reconcile.json`): the audited
+   sources' coverage of the merged universe, reconciled at the EOL's
+   earlier revision `c1139698`: 133,875
+   additions, and 7,099 strings that only wordfreq
+   listed, outside the EOL's frame, left out.
 4. **The single-token pin** (`reference/research/universe/universe.json`),
    re-pinned to the EOL's revision `c550751e`
    (`pipeline/research/universe/repin.json`): an inherited string in

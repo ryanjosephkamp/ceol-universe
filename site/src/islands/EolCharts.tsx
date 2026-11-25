@@ -59,8 +59,8 @@ export default function EolCharts({ cubeUrl }: { cubeUrl: string }) {
         </ChartFrame>
 
         <ChartFrame
-          title="What decided its rows"
-          note={`Of its ${full(v.rows)} rows in version 1.0. A record of how the English OpenList decided, never a verdict of this dataset's.`}
+          title="The rows its synthetic engine made"
+          note={`Of its ${full(v.rows)} rows in version 1.0. A record of the English OpenList's method, never a verdict of this dataset's.`}
           table={MOE_ORDER.map((m) => ({ label: m === 'none' ? 'Not made by the engine' : sentence(MODEL_OR_ENGINE[m]), value: v.moe.get(m) ?? 0 }))}
           total={v.rows}
         >

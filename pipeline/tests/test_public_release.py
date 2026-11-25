@@ -81,7 +81,7 @@ def test_the_public_release_check_fails_on_each_input(record, case, change, mess
 
 
 def test_the_public_meanings_name_published_columns_only():
-    published = set(B.PUBLIC.columns)
+    published = set(B.PUBLIC.columns) | set(B.PUBLIC.features)
     assert set(D.PUBLIC_MEANINGS) <= published
     for _key, (_title, cols) in D.public_tables().items():
         names = {c[0] for c in cols}

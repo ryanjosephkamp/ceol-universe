@@ -168,6 +168,9 @@ def rows() -> dict[str, str]:
         "eol_universe_rows": _n(v1["inherited_rows"]),
         "eol_revision": repin["eol"]["revision"][:8],
         "c4_additions": _n(v1["c4_additions"]),
+        "audit_wordfreq_left_out": _n(audit["beyond_frame_wordfreq_only"]),
+        "archival_eol_revision": repin["archival"]["tag"].split("@")[1][:8],
+        "repin_left": _n(v1["left_in_neither_list"]),
         # the audit's unexplained remainder, as v2.0's card states it
         "audit_remainder": _n(audit["miss_union"]
                               - audit["miss_in_frame_additions"]
