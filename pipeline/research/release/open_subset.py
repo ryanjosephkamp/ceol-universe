@@ -715,7 +715,7 @@ def build(out_dir: Path, write_files: bool = True) -> dict:
            "configs": []}
     out_dir.mkdir(parents=True, exist_ok=True)
     # NOTICES first: the card names its hash
-    vtext = src["notices"].read_text(encoding="utf-8")
+    vtext = src["notices"].read_bytes().decode("utf-8")
     ntext, carried = notices(vtext)
     check_notices(vtext, ntext)
     npath = out_dir / "NOTICES.md"
@@ -880,8 +880,8 @@ def main(argv: list[str] | None = None) -> int:
                 if sha256_file(path) != have["documents"][name]["sha256"]:
                     print(f"differs: {path}")
                     return 1
-        check_notices(src["notices"].read_text(encoding="utf-8"),
-                      (out / "NOTICES.md").read_text(encoding="utf-8"))
+        check_notices(src["notices"].read_bytes().decode("utf-8"),
+                      (out / "NOTICES.md").read_bytes().decode("utf-8"))
         print("open subset: the record re-derives")
         return 0
     rec = build(out)

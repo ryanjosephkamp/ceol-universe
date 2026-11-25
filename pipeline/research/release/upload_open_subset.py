@@ -4,8 +4,9 @@
     python3 -m research.release.upload_open_subset \\
         --owner-word "<his words>" --confirm ryanjosephkamp/ceol-universe-open@<record sha256>
 
-Each file is read once, into memory; every check runs on those bytes, and
-those bytes are what is sent. Before anything is sent it asserts, and a
+The record and each file are read once, into memory; every check runs on
+those bytes, those bytes are what is sent, and the record's digest from that
+one read is what `--confirm` must name and what the receipt records. Before anything is sent it asserts, and a
 failure sends nothing:
 
   - every file's sha256 equals the record's (`open_subset_v1.0.json`), and
@@ -51,14 +52,21 @@ class UploadRefused(RuntimeError):
     pass
 
 
+def record_snapshot() -> dict:
+    """The record, read once: its bytes, digest, and parsed manifest."""
+    data = O.RECORD.read_bytes()
+    return {"sha256": hashlib.sha256(data).hexdigest(),
+            "manifest": json.loads(data.decode("utf-8"))}
+
+
 def record_sha256() -> str:
-    return hashlib.sha256(O.RECORD.read_bytes()).hexdigest()
+    return record_snapshot()["sha256"]
 
 
-def payloads(out_dir: Path) -> list[dict]:
+def payloads(out_dir: Path, snap: dict) -> list[dict]:
     """Each file to send, read once: its path in the repo, its bytes, and
-    the sha256 the record names."""
-    rec = json.loads(O.RECORD.read_text(encoding="utf-8"))
+    the sha256 the record snapshot names."""
+    rec = snap["manifest"]
     want = [(c["path"], c["sha256"]) for c in rec["configs"]]
     want += [(name, rec["documents"][name]["sha256"]) for name in ("README.md", "NOTICES.md")]
     out = []
@@ -72,6 +80,12 @@ def payloads(out_dir: Path) -> list[dict]:
 
 def git_blob_id(data: bytes) -> str:
     return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def document_hits(data: bytes, words: set[str]) -> set[str]:
+    """The restricted words in a document, by the repository's own matcher."""
+    from safeguards import restricted
+    return restricted.find_hits(data.decode("utf-8"), words)
 
 
 def preflight(items: list[dict]) -> None:
@@ -91,7 +105,7 @@ def preflight(items: list[dict]) -> None:
             col = set(pq.read_table(io.BytesIO(it["data"]), columns=["word"])["word"].to_pylist())
             if col & words:
                 raise UploadRefused(f"{it['target']}: {len(col & words)} restricted word(s)")
-        elif restricted.find_hits(it["data"].decode("utf-8"), words):
+        elif document_hits(it["data"], words):
             raise UploadRefused(f"{it['target']}: a restricted word")
 
 
@@ -105,9 +119,10 @@ def write_receipt(rec: dict) -> None:
 def upload(owner_word: str, confirm: str, out_dir: Path, api=None) -> dict:
     if not owner_word.strip():
         raise UploadRefused("no owner's word: the upload runs only on it")
-    if confirm != f"{REPO_ID}@{record_sha256()}":
+    snap = record_snapshot()
+    if confirm != f"{REPO_ID}@{snap['sha256']}":
         raise UploadRefused("--confirm must name the dataset and this record's sha256")
-    items = payloads(out_dir)
+    items = payloads(out_dir, snap)
     preflight(items)
     if api is None:
         from huggingface_hub import HfApi
@@ -123,7 +138,7 @@ def upload(owner_word: str, confirm: str, out_dir: Path, api=None) -> dict:
                                commit_message=f"The CEOL Universe, open subset, {O.VERSION}")
     receipt = {"generated_by": "research/release/upload_open_subset.py",
                "repo_id": REPO_ID, "account": OWNER, "commit": commit.oid,
-               "record_sha256": record_sha256(),
+               "record_sha256": snap["sha256"],
                "private_before": bool(before.private),
                "uploaded_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                "owner_word": owner_word,
@@ -164,10 +179,11 @@ def main(argv: list[str] | None = None) -> int:
     out_dir = (args.out or O.default_out()).resolve()
     try:
         if args.dry_run:
-            items = payloads(out_dir)
+            snap = record_snapshot()
+            items = payloads(out_dir, snap)
             preflight(items)
             print(f"[dry run] {len(items)} files pass the local checks; nothing sent. "
-                  f"To send: --confirm {REPO_ID}@{record_sha256()}")
+                  f"To send: --confirm {REPO_ID}@{snap['sha256']}")
             return 0
         rec = upload(args.owner_word, args.confirm, out_dir)
     except UploadRefused as e:

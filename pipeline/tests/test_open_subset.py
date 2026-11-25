@@ -164,21 +164,80 @@ def test_the_record_re_derives():
     assert O.main(["--check"]) == 0
 
 
-@pytest.mark.skipif(not (O.default_out() / "data" / "open-lists.parquet").exists(),
-                    reason="needs the built subset beside the data folder")
-def test_the_upload_preflight_passes_and_refuses_without_the_owners_word(monkeypatch):
+def test_the_upload_refuses_without_the_owners_word_or_a_matching_confirm():
     from research.release import upload_open_subset as U
-    from safeguards import restricted
-    assert U.main(["--dry-run"]) == 0
     good = f"{U.REPO_ID}@{U.record_sha256()}"
     with pytest.raises(U.UploadRefused, match="owner's word"):
         U.upload("", good, O.default_out())
     with pytest.raises(U.UploadRefused, match="--confirm"):
         U.upload("yes", f"{U.REPO_ID}@{'0' * 64}", O.default_out())
-    # a restricted word inside a hyphenated compound of the card is caught
-    monkeypatch.setattr(restricted, "restricted_words", lambda: {"phrasal"})
-    with pytest.raises(U.UploadRefused, match="restricted"):
-        U.preflight(U.payloads(O.default_out()))
+    with pytest.raises(U.UploadRefused, match="--confirm"):
+        U.upload("yes", f"someone/else@{U.record_sha256()}", O.default_out())
+
+
+def test_the_document_check_uses_the_repositorys_matcher():
+    from research.release import upload_open_subset as U
+    card = O.CARD_OUT.read_bytes()
+    # a word that occurs in the card only inside a hyphenated compound
+    assert U.document_hits(card, {"phrasal"}) == {"phrasal"}
+
+
+def test_a_crlf_inside_a_license_text_is_kept_or_refused():
+    version = (O.RELEASE_DIR / "NOTICES_v1.0.md").read_bytes().decode("utf-8")
+    block = O.verbatim_blocks(O.sections(version)["## WordNet 3.0 (Princeton University)"])[0]
+    lines = block.split("\n")
+    bent = version.replace(block, "\n".join(lines[:3]) + "\r\n" + "\n".join(lines[3:]), 1)
+    try:
+        text, _ = O.notices(bent)
+        O.check_notices(bent, text)
+    except O.OpenSubsetError:
+        return
+    assert "\r\n" in text
+
+
+@pytest.mark.skipif(not (O.default_out() / "data" / "open-lists.parquet").exists(),
+                    reason="needs the built subset beside the data folder")
+def test_the_upload_preflight_passes_and_sends_what_it_checked(monkeypatch, tmp_path):
+    import json as _json
+    from types import SimpleNamespace
+    from research.release import upload_open_subset as U
+    from safeguards import restricted
+    monkeypatch.setattr(restricted, "restricted_words", lambda: set())
+    assert U.main(["--dry-run"]) == 0
+    record = tmp_path / "record.json"
+    record.write_bytes(O.RECORD.read_bytes())
+    monkeypatch.setattr(O, "RECORD", record)
+    monkeypatch.setattr(U, "OUT", tmp_path / "receipt.json")
+    confirmed = U.record_sha256()
+    sent = {}
+
+    class Api:
+        def whoami(self):
+            return {"name": U.OWNER}
+
+        def dataset_info(self, repo, revision=None, files_metadata=False):
+            if revision is None:
+                return SimpleNamespace(private=False)
+            sib = []
+            for path, data in sent.items():
+                lfs = SimpleNamespace(sha256=__import__("hashlib").sha256(data).hexdigest())
+                sib.append(SimpleNamespace(rfilename=path, lfs=lfs if path.endswith(".parquet") else None,
+                                           blob_id=U.git_blob_id(data)))
+            return SimpleNamespace(private=False, siblings=sib)
+
+        def create_commit(self, repo, ops, repo_type, commit_message):
+            for op in ops:
+                sent[op.path_in_repo] = op.path_or_fileobj
+            record.write_text("{}")  # the record changes while the upload runs
+            return SimpleNamespace(oid="c0ffee")
+
+    out = U.upload("yes", f"{U.REPO_ID}@{confirmed}", O.default_out(), api=Api())
+    assert out["verification"] == "verified"
+    assert out["record_sha256"] == confirmed
+    assert _json.loads((tmp_path / "receipt.json").read_text())["record_sha256"] == confirmed
+    want = {c["path"]: c["sha256"] for c in _json.loads(O.CARD_OUT.parent.joinpath("open_subset_v1.0.json").read_text())["configs"]}
+    for path, sha in want.items():
+        assert __import__("hashlib").sha256(sent[path]).hexdigest() == sha
 
 
 def _written(tmp_path, name="open-lists", mutate=None, extra_md=None):
