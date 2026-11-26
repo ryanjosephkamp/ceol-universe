@@ -34,12 +34,12 @@ study that needs to know whether a string "exists" usually builds its own check 
 chosen for the occasion and not recorded with the result. The checks are hard to compare and hard to
 repeat.
 
-The CEOL Universe takes the other approach. It keeps every candidate string its sources gave, under 1
-executable spelling grammar, and records each source's answer beside the string, dated by the source's
+The CEOL Universe takes the other approach. It keeps the candidate strings its sources gave that its
+admission rules accept, under 1 executable spelling grammar, and records each source's answer beside the string, dated by the source's
 pinned version. A reader who wants a word list states a definition (for example, "listed by 2 or more
-independent families, single tokens only, no string a language model decided") and obtains a list, a
-count, and the code that reproduces both. The project's site turns that into an interface: a reader picks
-criteria, sees the count over all rows at once, and copies the code.
+independent families, single tokens only, no string the EOL's synthetic engine made") and obtains a
+list, a count, and the code that reproduces both. The project's site turns that into an interface: a
+reader picks criteria, sees the count over all rows at once, and copies the code.
 
 This report describes version 1.0, the first public version. Its contributions are:
 
@@ -142,7 +142,7 @@ None of the standards above asks a dataset to state its exposure to contaminatio
 
 ### What the universe adds, and what it lacks
 
-**What it records.** For each candidate, the universe records its status in each of 8 published lists: WordNet 3.0, the English sections of a dated Wiktionary dump, the 4 LibreOffice hunspell dictionaries, ENABLE, and SCOWL [100]. For the 7 lists recorded as yes or no, each value is 1 (listed), 0 (not listed), -1 (the list cannot hold strings of that class, as a list without hyphens cannot hold a hyphenated string), or null (not measured); for SCOWL, the value is the size of the smallest SCOWL list that holds the string, 0 where none does, -1 where the class does not apply, and null where not measured [100]. It also records whether a string is a type of the 2020 Google Books English 1-grams and whether wordfreq 3.1.1 scores it [100]; the intake channel by which the string entered the pool, kept apart from containment [100]; and whether the English OpenList decided a row of its valid list with a language model [100]. Its candidates are the output of an executable grammar that admits hyphenated compounds, accented loanwords, contractions, apostrophe forms, ligature and diaeresis spellings, and multiword terms [100]. Each row's identifier is derived from the string alone, so the same string carries the same identifier in every version [100].
+**What it records.** For each candidate, the universe records its status in each of 8 published lists: WordNet 3.0, the English sections of a dated Wiktionary dump, the 4 LibreOffice hunspell dictionaries, ENABLE, and SCOWL [100]. For the 7 lists recorded as yes or no, each value is 1 (listed), 0 (not listed), -1 (the list cannot hold strings of that class, as a list without hyphens cannot hold a hyphenated string), or null (not measured); for SCOWL, the value is the size of the smallest SCOWL list that holds the string, 0 where none does, -1 where the class does not apply, and null where not measured [100]. It also records whether a string is a type of the 2020 Google Books English 1-grams and whether wordfreq 3.1.1 scores it [100]; the intake channel by which the string entered the pool, kept apart from containment [100]; and whether the English OpenList's synthetic engine made the row [100]. Its candidates are the output of an executable grammar that admits hyphenated compounds, accented loanwords, contractions, apostrophe forms, ligature and diaeresis spellings, and multiword terms [100]. Each row's identifier is derived from the string alone, so the same string carries the same identifier in every version [100].
 
 **Against the resources above.**
 
@@ -178,9 +178,10 @@ Wiktionary, and holds null in every other list's column. Null means "not measure
 "false". Every share in this report is computed over the rows the list in question could hold, and says
 so.
 
-The corpora contribute containment and features and never admit a string: Google Books' English 1-grams
-and wordfreq's English list each record whether they hold a single-token row, and the feature layer
-records how often.
+The corpora contribute containment and features: Google Books' English 1-grams and wordfreq's English
+list each record whether they hold a single-token row, and the feature layer records how often. Google
+Books never admits a string. The census read wordfreq's list as a source and admitted candidates on it
+alone; the audit also consulted it.
 
 ### Families and tiers
 
@@ -229,15 +230,16 @@ primary source, and the author ruled on the readings. 5 lists are withheld from 
 version, because their membership may not be published: NASPA Word List 2023 and Collins Scrabble Words
 2021, which are proprietary; the legacy SOWPODS list, for which no license was found; and Webster's Second
 International and its supplement of hyphenated terms, whose 1961 copyright renewal holds. Their columns
-and labels are absent. Their rows still ship wherever published evidence supports them.
+and labels are absent.
 
 The withholding has measured effects, which the card states and this report repeats:
 
 - **Restricted rows.** 1,985 of the pin's 10,296,274 candidates are attested only by the 2
   proprietary lists and are in no version.
 - **Held-back rows.** Of the 10,294,289 shippable rows, 30,016 are held back in the
-  private record, because once the withheld lists and channels are taken away nothing published supports
-  them.
+  private record: rows that nothing published supports once the withheld lists and channels are taken
+  away, and rows of the census and the audit whose every source label names a withheld list, though
+  published evidence may support them.
 
 | Why the row is held back | Rows |
 |---|---:|
@@ -264,20 +266,23 @@ The universe is licensed CC BY-SA 4.0, the share-alike floor of its Wiktionary-d
 
 ## 5. Construction
 
-Each step has a committed record, and the counts are those records'. The site's "How it was built" page
-shows the same steps with their counts.
+Each step has a committed record, and the counts are taken at the current pin. The site's "How it was
+built" page shows the same steps with their counts.
 
 1. **The English OpenList's universe.** The English OpenList (EOL) is a word list with its own grammar and
-   governance. Its valid and invalid lists at revision `c1139698` hold 9,653,667 strings,
-   every string it had taken in, whichever way it ruled.
+   governance. Its valid and invalid lists at revision `c550751e` hold 9,653,667
+   strings, whichever way it ruled.
 2. **The census.** The pinned sources re-read under the grammar give 213,867 candidates in
    the exception classes the EOL's letters-only rule could not hold: hyphens, accents, a diaeresis,
    apostrophes, and ligatures.
-3. **The merge.** The 2 sets merged give 9,867,534 rows, 1 per string. Filtering the merge by its EOL
-   flag reproduces the EOL's pinned lists byte for byte.
-4. **The audit.** Every source's coverage by the merged universe was reconciled to a remainder of
-   0: 133,875 strings a source listed and the merge lacked were added. The
-   result is the single-token pin, 10,001,409 candidates.
+3. **The merge.** The 2 sets merged give 9,867,534 rows at that revision, 1 per string. Filtering the
+   merge by its EOL flag reproduces the EOL's pinned lists byte for byte.
+4. **The audit.** At the EOL's earlier revision `c1139698`, the audited sources' coverage
+   of the merged universe was reconciled: 133,875 strings a source listed and the merge lacked
+   were added, and 7,099 that only wordfreq listed, outside the EOL's frame, were
+   left out. Re-pinned to `c550751e`, the 332 inherited strings in neither of the EOL's
+   lists at that revision left the pin; the counts of steps 1 and 3, taken at that revision, already
+   leave them out. The result is the single-token pin, 10,001,409 candidates.
 5. **The spaced admission.** 294,865 multiword candidates from WordNet and Wiktionary were admitted
    under the grammar's space rule. The pin, 10,296,274 rows, reproduces the single-token pin byte for
    byte as its single-token projection.
@@ -694,9 +699,10 @@ the union grows from a mean of 278,722 rows for 1 list to 1,089,968 for all
   alone, so a row with `panel_count` 0 may still be listed by a withheld
   list.
 - **30,016 rows of the shippable projection are not in this
-  version.** Once the withheld lists and channels are taken away, nothing
-  published supports them, so they are held back in the private record
-  (§4).
+  version.** They are held back in the private record (§4): rows that
+  nothing published supports once the withheld lists and channels are
+  taken away, and rows of the census and the audit whose every source
+  label names a withheld list, though published evidence may support them.
 - **A channel may be withheld for license reasons.** 0
   rows carry `eol:channel-withheld` in `intake_channels`: every channel
   recorded for them is withheld, because it names a withheld list or a
@@ -764,8 +770,10 @@ measures every source again and builds a new pin and version.
   items, and every label and verdict stay private, and the build asserts that none of the synthetic
   controls is in any file.
 - **Language models.** No language model decided any row the CEOL added. The EOL decided some rows of its
-  valid list with a language model, Google Gemini 3 Flash Preview by its per-entry record, and
-  `model_or_engine` marks those rows, so a list can keep them or leave them out.
+  valid list with a language model, Google Gemini 3 Flash Preview by its author's account. No row records
+  which, and the EOL's dictionary at the pinned revision names a model on none of its entries.
+  `model_or_engine` marks the rows the EOL's synthetic engine made, so a list can keep them or leave them
+  out.
 - **Offensive and personal content.** The universe holds strings its sources hold, and some are offensive.
   This version does not measure their share: the analysis plan's measure needs an offensive-term lexicon
   whose license allows the use, which the project has not chosen. No string is printed in this report.
@@ -870,11 +878,11 @@ The `universe` config carries 41 columns and the `features` config 11.
 | `id` | string | the first 16 hexadecimal digits of the sha256 of the word's UTF-8 bytes; a function of the string alone, so the same string carries the same id in every version | never null |
 | `word` | string | the candidate string, the output of the grammar: lower case, the 50-character charset, spaces single and interior; the join key of every layer | never null |
 | `gb_year_span` | int16 | the years from the first to the last in which the string occurs in the Google Books English 1-grams (the 2020 release), inclusive | 0 where the string is not a 1-gram type |
-| `gb_span_fill` | float | the share of the span's years in which the string occurs | NaN where the string is not a 1-gram type |
-| `gb_tokens_per_volume` | float | the total match count over the total volume count | NaN where no volume carries the string |
-| `gb_volumes_per_year` | float | the total volume count over the years in which the string occurs | NaN where the string is not a 1-gram type |
+| `gb_span_fill` | float | the year count over the span: Google Books' years summed over the raw forms that normalize to the string, capped at the span, so a year 2 forms share counts twice before the cap and the value can exceed the share of distinct years | NaN where the string is not a 1-gram type |
+| `gb_tokens_per_volume` | float | the total match count over the total volume count, both summed over the raw forms that normalize to the string | NaN where no volume carries the string |
+| `gb_volumes_per_year` | float | the total volume count over the year count, both summed over the raw forms that normalize to the string (the year count capped at the span) | NaN where the string is not a 1-gram type |
 | `gb_log10_match` | float | log10 of the total match count | NaN where the string is not a 1-gram type |
-| `gb_log10_volume` | float | log10 of the total volume count | NaN where no volume carries the string |
+| `gb_log10_volume` | float | log10 of the total volume count, summed over the raw forms that normalize to the string, so a volume holding 2 forms counts twice | NaN where no volume carries the string |
 | `zipf_log10_rank` | float | log10 of the string's frequency rank among the aggregate's types | NaN where the string is not a 1-gram type |
 | `zipf_resid` | float | log10 of the match count minus the Zipf-Mandelbrot fit's prediction at that rank | NaN where the string is not a 1-gram type |
 | `wordfreq_zipf` | float | the wordfreq 3.1.1 Zipf frequency (English) where wordfreq's list holds the string | NaN elsewhere, and on every hyphenated string (wordfreq is hyphen-blind) |
@@ -890,7 +898,8 @@ The `universe` config carries 41 columns and the `features` config 11.
 - **Intake channel:** the route by which a string entered the pool; never an attestation.
 - **Withheld list:** a list whose columns and labels the public version drops.
 - **Restricted row:** a row only the withheld proprietary lists attest; it is in no version.
-- **Held-back row:** a shippable row with no published evidence once the withholding is applied.
+- **Held-back row:** a shippable row the public version leaves out: one with no published evidence once the
+  withholding is applied, or a census or audit row whose every source label names a withheld list (§4).
 
 ## References
 

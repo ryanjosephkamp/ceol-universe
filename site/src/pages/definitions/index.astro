@@ -31,7 +31,7 @@ const classes = PROVENANCE_ORDER.map((p) => ({ key: p, ...PROVENANCE[p], n: fig(
       <p>
         A row records a string that passes the <a href="/definitions/grammar/">spelling grammar</a>, and the evidence for
         it: which of the <Figure id="projection.published_sets" /> published word lists list it, which way it came in, whether Google Books or wordfreq holds it,
-        and, for a row of the English OpenList, what decided it there. That is all a row claims, and each claim can be
+        and, for a row of the English OpenList, whether its synthetic engine made it. That is all a row claims, and each claim can be
         checked against a pinned source.
       </p>
 
@@ -39,7 +39,7 @@ const classes = PROVENANCE_ORDER.map((p) => ({ key: p, ...PROVENANCE[p], n: fig(
       <p>
         Word lists disagree because they answer different questions. A spell-checker's dictionary, a tournament's word
         list, and a corpus's vocabulary each draw the line somewhere else, and none of them is wrong by its own rule. The
-        universe keeps every candidate its sources gave and records each source's answer beside it, so a reader can apply
+        universe keeps the candidates its sources gave that its admission rules accept, and records each source's answer beside it, so a reader can apply
         a definition of their own and state exactly what it is.
       </p>
       <p>

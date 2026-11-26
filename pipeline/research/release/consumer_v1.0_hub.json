@@ -1,8 +1,8 @@
 {
  "generated_by": "pipeline/research/release/consumer_test.py",
  "version": "v1.0",
- "mode": "hub: ryanjosephkamp/ceol-universe at revision d471b95288b3aee6c175382ac9bba6cf454e2bb1",
- "run_on": "2026-11-14",
+ "mode": "hub: ryanjosephkamp/ceol-universe at revision b08c7bd92bcd228328983ed2581a34c65b06c07e",
+ "run_on": "2026-11-26",
  "environment": {
   "uv": "uv 0.12.5 (Homebrew 2026-08-14 aarch64-apple-darwin)",
   "python": "3.11",
@@ -10,13 +10,13 @@
    "datasets",
    "mlcroissant"
   ],
-  "exclude_newer": "2026-10-31",
+  "exclude_newer": "2026-11-12",
   "versions": {
    "python": "3.11.5",
-   "datasets": "5.1.0",
-   "pyarrow": "26.0.0",
+   "datasets": "5.2.0",
+   "pyarrow": "26.0.1",
    "huggingface_hub": "2.4.0",
-   "pandas": "3.1.0",
+   "pandas": "3.1.1",
    "mlcroissant": "1.1.1"
   },
   "offline": [],
@@ -34,10 +34,10 @@
   "data/spaced.parquet": "648a4fada6e099dcb599fa097a88c16aa5389631999205f14bd27aba815f46f6",
   "data/universe.parquet": "f4355af70b01bd40ea340849bac07bd79a680695d31aced94a53cde39ef3de60",
   "NOTICES.md": "f07c067ccc33d1950e360303cf787a5845b49680",
-  "README.md": "2fd9e6d696a95377d3af1f4425da0b792a33a471",
-  "croissant.json": "ae915d5f73950205ee8f24e8cbfbde7211119c62"
+  "README.md": "19807110270f73a8a2842a7fbddb2b90ebf9e15c",
+  "croissant.json": "2688eee392072f1a3084e64f0b03d67133288816"
  },
- "upload_commit": "d471b95288b3aee6c175382ac9bba6cf454e2bb1",
+ "upload_commit": "b08c7bd92bcd228328983ed2581a34c65b06c07e",
  "configs": {
   "universe": {
    "rows": 10264273,

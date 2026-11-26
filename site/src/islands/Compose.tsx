@@ -397,7 +397,7 @@ export default function Compose({ cubeUrl, citation, file }: { cubeUrl: string; 
           ))}
         </Group>
 
-        <Group title="How a row came in" hint="its layer, its kind, and any model or engine">
+        <Group title="How a row came in" hint="its layer, its kind, and whether the synthetic engine made it">
           <div className="crit">
             <p className="crit-label">Layer</p>
             <div className="checks">

@@ -13,7 +13,7 @@
 - **A source:** anything a row's evidence comes from. Each source has 1 kind:
   - a **panel source**, a whole, versioned word list measured against every row and published as a column;
   - a **comparison resource**, measured against every row, of which only counts are published, because its terms allow no more;
-  - a **corpus**, whose values are features and which never admits a string;
+  - a **corpus**, whose values are containment and features (in version 1.0 the census also admitted candidates from wordfreq's list, and the audit consulted it);
   - a **screen**, a signal that is not containment (such as a title in any language's Wiktionary).
 - **A listing:** the fact that a source, at a version, lists a string.
 - **Withheld:** a source whose columns and labels a public version drops, while its rows can still ship.

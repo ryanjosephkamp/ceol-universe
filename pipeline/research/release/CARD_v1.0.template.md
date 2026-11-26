@@ -103,9 +103,10 @@ Read these before using the dataset.
   alone, so a row with `panel_count` 0 may still be listed by a withheld
   list.
 - **{{held_back_rows}} rows of the shippable projection are not in this
-  version.** Once the withheld lists and channels are taken away, nothing
-  published supports them, so they are held back in the private record
-  (§6).
+  version.** They are held back in the private record (§6): rows that
+  nothing published supports once the withheld lists and channels are
+  taken away, and rows of the census and the audit whose every source
+  label names a withheld list, though published evidence may support them.
 - **A channel may be withheld for license reasons.** {{channel_withheld_rows}}
   rows carry `{{channel_withheld_label}}` in `intake_channels`: every channel
   recorded for them is withheld, because it names a withheld list or a
@@ -255,8 +256,7 @@ terms, and `NOTICES.md` carries the notices.
   and Webster's Second International and its supplement of hyphenated
   terms (`web2`, `web2a`), whose 1961 copyright renewal holds. Their
   columns ({{withheld_columns}}) are absent, and every label naming them is
-  removed from `sources`, `intake_channels`, and `panel_sets`. Their rows
-  still ship wherever published evidence supports them. The Webster's
+  removed from `sources`, `intake_channels`, and `panel_sets`. The Webster's
   Second columns can return in a version built on or after
   January 1, 2030.
 - **Channel labels withheld for license reasons.** Some intake channels
@@ -290,7 +290,8 @@ terms, and `NOTICES.md` carries the notices.
   {{held_withheld_sources}} rows of the census and the audit's additions
   have every `sources` label naming a withheld list. Shipped, their empty
   `sources` would say that a withheld list holds them, so they are held back
-  the same way, though they keep corpus containment.
+  the same way, though some keep corpus containment and some are listed
+  by WordNet, which is not one of the census's admission sources.
 
 The rows held back, {{held_back_rows}} in all, by reason. They are counted
 and never listed.
@@ -381,7 +382,7 @@ its form and named as inferred.
 
 ## 9. How the universe was built and checked
 
-Each step has a committed record; the counts are those records'.
+Each step has a committed record; the counts are taken at the current pin.
 
 1. **The census** (`reference/research/census/census.json`): the pinned
    sources re-read under the grammar; {{census_candidates}} candidates in
@@ -389,15 +390,18 @@ Each step has a committed record; the counts are those records'.
 2. **The merge** (`reference/research/merge/merge.json`): the EOL universe
    and the census's candidates; filtering the merge by the `eol` flag
    regenerates the EOL's pinned lists byte for byte. At the EOL's revision
-   `{{eol_revision}}` the merge holds {{eol_universe_rows}} inherited strings
-   and {{merge_rows}} rows.
-3. **The audit** (`reference/research/audit/reconcile.json`): every
-   source's coverage by the merged universe, reconciled to a remainder of
-   {{audit_remainder}}; {{c4_additions}} additions.
+   `{{eol_revision}}` (`pipeline/research/universe/repin.json`) the merge
+   holds {{eol_universe_rows}} inherited strings and {{merge_rows}} rows.
+3. **The audit** (`reference/research/audit/reconcile.json`): the audited
+   sources' coverage of the merged universe, reconciled at the EOL's
+   earlier revision `{{archival_eol_revision}}`: {{c4_additions}}
+   additions, and {{audit_wordfreq_left_out}} strings that only wordfreq
+   listed, outside the EOL's frame, left out.
 4. **The single-token pin** (`reference/research/universe/universe.json`),
    re-pinned to the EOL's revision `{{eol_revision}}`
    (`pipeline/research/universe/repin.json`): an inherited string in
-   neither of the EOL's lists at that revision leaves the pin, `eol` is
+   neither of the EOL's lists at that revision leaves the pin (the counts
+   of step 2, taken at that revision, already leave them out), `eol` is
    read again, and every other row is unchanged; {{v1_rows}} candidates.
 5. **The spaced admission** (`pipeline/research/universe_v2/universe_v2.json`):
    {{pin_spaced}} multiword candidates from WordNet and Wiktionary. The pin,

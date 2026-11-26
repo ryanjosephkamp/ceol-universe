@@ -2,7 +2,7 @@
  "generated_by": "pipeline/research/release/consumer_test.py",
  "version": "v1.0",
  "mode": "local: the hub's layout staged from the release files, loaded offline",
- "run_on": "2026-11-14",
+ "run_on": "2026-11-26",
  "environment": {
   "uv": "uv 0.12.5 (Homebrew 2026-08-14 aarch64-apple-darwin)",
   "python": "3.11",
@@ -10,13 +10,13 @@
    "datasets",
    "mlcroissant"
   ],
-  "exclude_newer": "2026-10-31",
+  "exclude_newer": "2026-11-12",
   "versions": {
    "python": "3.11.5",
-   "datasets": "5.1.0",
-   "pyarrow": "26.0.0",
+   "datasets": "5.2.0",
+   "pyarrow": "26.0.1",
    "huggingface_hub": "2.4.0",
-   "pandas": "3.1.0",
+   "pandas": "3.1.1",
    "mlcroissant": "1.1.1"
   },
   "offline": [
@@ -32,8 +32,8 @@
  },
  "files": {
   "NOTICES.md": "8b15dc2b5f8380bc15ee6f0e31a812ba4f9ea4194c40aaa8e5956e69cdefbb39",
-  "README.md": "77928b9e7e91f18829409ba33dbf6901690c70a34b86e4a6317b91004b83c17e",
-  "croissant.json": "e54870e474327c2d3dbe86647dd72bd476a7c61f3b56da169fdb6ceb704d6adc",
+  "README.md": "3f6e6d926a01786c6f46f4cbec5d25647506896d8a1a700b82cc4d6aa71ba149",
+  "croissant.json": "6ff34b813c82a08ae58441c624e064b999ae6abcf06ef7aa1d4f3a8e8e007bf1",
   "data/eol-valid.parquet": "344f55b03b0f7c8e1880c9dc54ec8d788ecdff12086a1da47b78958c41c867ff",
   "data/exceptions.parquet": "e718141c846a06ab02897a5ae1bb7224c11b70a6bf11eecc8b729a378020bf15",
   "data/features.parquet": "8e64a5365fb25d1a813b7dca227f302c3e100b575509dc1305d928b84051be62",
