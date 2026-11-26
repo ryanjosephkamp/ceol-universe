@@ -48,7 +48,7 @@
  "conformsTo": "http://mlcommons.org/croissant/1.0",
  "name": "ceol-universe",
  "alternateName": "The CEOL Universe",
- "description": "A public inventory of candidate English strings, each with its provenance. Every row is a candidate, never a verdict. The card (README.md) states its limitations first.",
+ "description": "An inventory of candidate English strings, each with its provenance. Every row is a candidate, never a verdict. The card (README.md) states its limitations first.",
  "version": "v1.0",
  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
  "url": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe",

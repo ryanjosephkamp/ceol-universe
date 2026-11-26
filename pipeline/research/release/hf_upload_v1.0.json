@@ -1,13 +1,13 @@
 {
   "repo_id": "ryanjosephkamp/ceol-universe",
   "version": "v1.0",
-  "decision": "D-029, the owner's word for this upload",
+  "decision": "D-030, the owner's word for this upload",
   "account": "ryanjosephkamp",
   "private": true,
   "uploaded": "2026-11-26",
-  "revision_before": "d471b95288b3aee6c175382ac9bba6cf454e2bb1",
-  "commit": "b08c7bd92bcd228328983ed2581a34c65b06c07e",
-  "final_revision": "b08c7bd92bcd228328983ed2581a34c65b06c07e",
+  "revision_before": "b08c7bd92bcd228328983ed2581a34c65b06c07e",
+  "commit": "bfd2b403af546469229f313ebdf19426e0c818bf",
+  "final_revision": "bfd2b403af546469229f313ebdf19426e0c818bf",
   "files": [
     "data/universe.parquet",
     "data/features.parquet",
@@ -31,10 +31,10 @@
   },
   "hub_git_blob_ids": {
     "NOTICES.md": "f07c067ccc33d1950e360303cf787a5845b49680",
-    "README.md": "19807110270f73a8a2842a7fbddb2b90ebf9e15c",
-    "croissant.json": "2688eee392072f1a3084e64f0b03d67133288816"
+    "README.md": "21a1e6ec94c253ceda4d934baef9d9d0dc1264a9",
+    "croissant.json": "6e225bb37e2687e44f6b18fcccb2d0b8184be00f"
   },
-  "card_sha256": "3f6e6d926a01786c6f46f4cbec5d25647506896d8a1a700b82cc4d6aa71ba149",
+  "card_sha256": "c5c1b25fab307110316a626225aae25d62ad0418b88cb175856e31101fdc1321",
   "record_sha256": "bcb9cf21c60063cbe9c3fdc01b81e530cf9d1f3c30d1cca5e76da7f0b736b727",
   "tag": "v1.0",
   "history_holds": "v2.0's files: its 45 universe columns, the 5 withheld lists' columns among them, and the 12 feature columns a public version withholds; the version's tag keeps that history reachable, so delete the tag, squash the history, and tag again before any visibility change",

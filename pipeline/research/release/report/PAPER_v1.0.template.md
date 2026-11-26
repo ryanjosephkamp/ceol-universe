@@ -18,7 +18,7 @@ Ryan Kamp
 
 ## Abstract
 
-The CEOL Universe is a public inventory of {{rows_universe}} candidate English strings. Each row records
+The CEOL Universe is an inventory of {{rows_universe}} candidate English strings. Each row records
 which of {{published_set_count}} published word lists list the string, which lists cannot hold strings of
 its spelling class, whether 2 corpora contain it, and how it entered the pool. No row says that a string is
 a word. Of the {{rows_single}} single-token rows, {{rows_listed}} ({{rows_listed_pct}}) are listed by at
@@ -37,7 +37,7 @@ repeat.
 The CEOL Universe takes the other approach. It keeps the candidate strings its sources gave that its
 admission rules accept, under 1 executable spelling grammar, and records each source's answer beside the string, dated by the source's
 pinned version. A reader who wants a word list states a definition (for example, "listed by 2 or more
-independent families, single tokens only, no string the EOL's synthetic engine made") and obtains a
+families, single tokens only, no string the EOL's synthetic engine made") and obtains a
 list, a count, and the code that reproduces both. The project's site turns that into an interface: a
 reader picks criteria, sees the count over all rows at once, and copies the code.
 
@@ -93,8 +93,8 @@ alone; the audit also consulted it.
 
 The {{published_set_count}} published lists come from {{family_count}} source families: WordNet;
 Wiktionary's English pages; hunspell, whose {{hunspell_dictionaries}} English dictionaries (American, British, Canadian,
-and Australian) derive from 1 upstream and count as 1 family; ENABLE; and SCOWL. A family lists a row when any
-of its lists does, and cannot hold it when none of its lists can. Independence is counted by family, so a
+and Australian) count as 1 family; ENABLE; and SCOWL. A family lists a row when any
+of its lists does, and cannot hold it when none of its lists can. Listing is counted by family, so a
 row that SCOWL and 2 hunspell dictionaries list counts as listed by 2 families.
 
 Counting families this way follows the analysis plan's definition of the public panel. It is generous to
@@ -190,9 +190,8 @@ built" page shows the same steps with their counts.
    ({{model_basis_entries}} entries).
 8. **The release.** The restricted rows are dropped and the public projection applied (§4), leaving
    {{rows_universe}} rows. The build asserted, on each of its {{files_asserted}} written files, that none
-   of the {{restricted_words_checked}} restricted rows' strings is present, that every `id` is distinct,
-   that each filter config is its predicate's filter, that no withheld column, label, or held-back row is
-   present, and that `provenance_class` and `model_or_engine` re-derive from the file's own fields.
+   of the {{restricted_words_checked}} restricted rows' strings is present and that no withheld column or
+   held-back row is present; the card's §9 lists the checks it made on only some of the files.
 
 The release record, `pipeline/research/release/release_{{version}}.json`, holds every file's rows,
 columns, bytes, and sha256, and the counts of every assertion.
@@ -391,14 +390,14 @@ Weighted by tokens:
 
 ### The varieties, the core, and the tails
 
-**American and British spellings.** {{us_not_gb}} rows are in the American hunspell dictionary and not the
-British, {{gb_not_us}} in the British and not the American, and {{us_and_gb}} in both. The 4 hunspell
-dictionaries all list {{hun_all4}} rows; of the rows at least 1 of them lists, {{hun_some_pct_of_listed}}
+**American and British spellings.** Among rows both dictionaries can hold, {{us_not_gb}} rows are in the
+American hunspell dictionary and not the British, {{gb_not_us}} in the British and not the American, and {{us_and_gb}} in both. The 4 hunspell
+dictionaries all list {{hun_all4}} rows; of the rows all 4 can hold and at least 1 of them lists, {{hun_some_pct_of_listed}}
 are listed by some and not all.
 
 **The consensus core.** {{core_rows}} rows ({{core_pct}}) are listed by 2 or more families. The EOL's valid
 list contributes {{core_layer_eol_valid}} of them and its invalid list {{core_layer_eol_invalid}},
-strings the EOL ruled out that 2 or more independent families list.
+strings the EOL ruled out that 2 or more families list.
 
 **The tails.** {{freq3_unlisted}} rows with a Zipf value of 3 or more are listed by no family. In the other
 direction, {{listed_no_corpus}} listed rows ({{listed_no_corpus_pct}} of the listed rows) are in neither
@@ -480,7 +479,7 @@ measures every source again and builds a new pin and version.
 ## 12. Availability and reproducibility
 
 The dataset will be `{{dataset}}` on the Hugging Face hub, at the tag of its version, with a Croissant file
-carrying its responsible-AI fields; it is private until the release. The code and every committed record are at {{code_repository}}. The
+(it declares the Responsible AI namespace but carries none of its properties); it is private until the release. The code and every committed record are at {{code_repository}}. The
 release rebuilds from its pinned layers with `python3 -m research.release.build_release --version
 {{version}}`, the descriptive analysis with `python3 -m research.analysis.descriptive --version
 {{version}}`, and this report with `python3 -m research.release.report.paper --render`. The analysis is
@@ -529,7 +528,7 @@ The `universe` config carries {{columns_universe}} columns and the `features` co
 - **Candidate:** a string that passes the spelling grammar; every row is one.
 - **Listed:** a list, at its pinned version, includes the string.
 - **Cannot hold (blind):** a list structurally excludes strings of the row's class.
-- **Family:** the lists that derive from 1 upstream; hunspell's 4 dictionaries are 1 family.
+- **Family:** a group of lists counted as 1 source; hunspell's 4 dictionaries are 1 family.
 - **Evidence tier:** a single-token row's count of listing families, with "corpus only" and "no evidence"
   for rows no family lists.
 - **Intake channel:** the route by which a string entered the pool; never an attestation.

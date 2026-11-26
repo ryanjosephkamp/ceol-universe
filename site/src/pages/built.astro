@@ -168,8 +168,9 @@ const maxDelta = Math.max(...steps.map((s) => Math.abs(s.delta ?? 0)));
 
     <p class="built-note">
       The release build then asserted, on each of its <CardCount name="files_asserted" /> files, that none of the{' '}
-      <CardCount name="restricted_words_checked" /> restricted rows is present, that every id is distinct, that each config
-      is its rule's filter, and that no withheld column, label, or held-back row is present. The bars above share 1 scale,
+      <CardCount name="restricted_words_checked" /> restricted rows is present and that no withheld column or held-back row
+      is present; it checked that every id is distinct on the universe and its features, that each filter config is its
+      rule's filter, and that the universe and its filters contain no withheld labels. The bars above share 1 scale,
       the largest change, so the changes compare with each other; every total is about {formatCount(Math.round(universe / 1e6))}
       million.
     </p>

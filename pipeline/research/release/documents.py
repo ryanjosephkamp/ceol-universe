@@ -345,7 +345,7 @@ def citation(record: dict) -> str:
         "  - family-names: Kamp",
         "    given-names: Ryan",
         "abstract: >-",
-        "  A public inventory of candidate English strings, each with its",
+        "  An inventory of candidate English strings, each with its",
         "  provenance: which pinned sources list it, how it entered the pool,",
         "  and its corpus features. Every row is a candidate, never a verdict.",
         "keywords:",
@@ -450,7 +450,7 @@ def croissant(record: dict) -> dict:
         "name": "ceol-universe",
         "alternateName": TITLE,
         "description": (
-            "A public inventory of candidate English strings, each with its "
+            "An inventory of candidate English strings, each with its "
             "provenance. Every row is a candidate, never a verdict. The card "
             "(README.md) states its limitations first."),
         "version": version,
