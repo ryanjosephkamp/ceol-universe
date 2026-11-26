@@ -1,0 +1,825 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage[font=small,skip=6pt]{caption}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=*}
+
+\newcommand{\ceoldef}[2]{\expandafter\def\csname ceol:#1\endcsname{#2}}
+\newcommand{\cv}[1]{\ifcsname ceol:#1\endcsname\csname ceol:#1\endcsname\else
+  \textbf{\textcolor{red}{??\detokenize{#1}??}}\PackageWarning{ceol}{Undefined value \detokenize{#1}}\fi}
+\input{generated/numbers.tex}
+
+\DeclareUrlCommand\col{\urlstyle{tt}}
+\renewcommand{\UrlBreaks}{\do\_\do\.\do\-\do\/\do\:\do\@}
+\newcommand{\resource}[1]{\par\medskip\noindent\textbf{#1}\par}
+\newcommand{\resfield}[2]{\noindent\hangindent=1.5em\hangafter=1\emph{#1:} #2\par}
+
+\title{The CEOL Universe: an inventory of candidate English strings and the evidence for each}
+\author{Ryan Kamp}
+\date{November 26, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Studies that need to know whether a string already exists have screened it against
+references of their own choosing and used the result to exclude items. The CEOL Universe is an
+inventory of \cv{rows_all} candidate English strings that records the answer of each source instead
+of a verdict. For each single-token row, it records which of \cv{published_set_count} published word
+lists list the string, which of them cannot hold strings of its spelling class, and whether two
+corpora contain it; for every row, it records how the string entered the pool. No row says that a
+string is a word. Of the \cv{rows_single} single-token rows, \cv{rows_listed} (\cv{rows_listed_pct})
+are listed by at least one list, and \cv{tier_corpus_rows} (\cv{tier_corpus_pct}) are listed by
+none and held by a corpus. For \cv{gb_sole_pct_all} of all rows, the Google Books 1-grams are the only
+published containment. Of the listed single-token rows, \cv{one_family_pct_listed} are listed by
+exactly one panel family, and \cv{alone_wiktionary_pct} by Wiktionary alone. A reader with the data
+derives a word list from the inventory under a definition they state, with code that reproduces it.
+\end{abstract}
+
+\section{Introduction}
+
+Word lists disagree. A spell-checker's dictionary, a word-game list, a lexical database, and a
+corpus's vocabulary each draw the line around English in a different place, and none is wrong by
+its own rule. Studies that need to know whether a string ``exists'' have built their own checks:
+the three benchmarks of invented terms in Section~\ref{sec:related} each used a different screening
+procedure and used the result to exclude items.
+
+The CEOL Universe takes the other approach. It keeps the candidate strings its sources gave that its
+admission rules accept, under one executable spelling grammar, and it records each source's answer
+beside the string, dated by the source's pinned version. A reader who wants a word list states a
+definition (for example, ``listed by two or more panel families, single tokens only, and no string
+the English OpenList's synthetic engine made'') and, with the data, obtains a list, a count, and the
+code that reproduces both.
+
+This paper describes version~\cv{version}. Its contributions are:
+\begin{itemize}
+\item \textbf{The inventory:} \cv{rows_all} rows, each a candidate string with an identifier that
+  depends on the string alone, so the same string has the same identifier in every version that
+  holds it.
+\item \textbf{The evidence semantics:} every single-token row has a status in every published list:
+  1 (listed; for SCOWL, a positive size tier instead), 0 (not listed), or $-1$ (the list cannot hold
+  strings of this class, so it was not looked up). On a multiword row, the evidence columns are null (not
+  measured). Directed containment and coverage by frequency are computed over the rows a list can
+  hold.
+\item \textbf{A comparison of the published lists over the same strings} (Section~\ref{sec:compared}).
+  From those statuses, the paper states how far the lists contain one another, what each family
+  holds alone, and how listing depends on frequency.
+\item \textbf{A record of how each row came in} (Sections~\ref{sec:construction}
+  and~\ref{sec:contents}), kept apart from the evidence for it.
+\end{itemize}
+
+\paragraph{What the universe is not.} It is not a dictionary: it has no definitions, senses, or
+pronunciations. It does not decide whether a string is a word, and it never calls a candidate
+valid. It is not a sample of English text, and its counts are counts of strings, not of uses.
+
+\section{Related work}
+\label{sec:related}
+
+Appendix~\ref{app:resources} lists, for \cv{resources_count} English word lists, lexical databases, and
+frequency resources, what each is, its stated size and license, and what it records per entry, as
+read on October 26, 2026 unless an entry or its reference gives another date; some have changed since.
+
+\paragraph{Records across resources.} Most word lists record only their own membership. A related
+multi-resource record is UBY~\cite{gurevych2012uby}, which integrates nine lexical-semantic
+resources, English WordNet and English Wiktionary among them, in ten lexicons, and counts lemmas,
+within a language and selected parts of speech, by how many lexicons hold them. The cited paper describes no pinned file versions, no value for a
+resource that cannot hold a string or did not measure it, no word lists, and no spelling grammar. Among the word lists in
+Appendix~\ref{app:resources}, the nearest to a per-source record are ESDB, whose tags sometimes name
+the source list a word came from~\cite{atkinson2026a}, and Wordnik's paid game dataset, which labels
+words by source~\cite{wordnik2026}. The 12dicts lists are an earlier agreement design: several of its
+classic lists keep the words that a stated number of its 12 source dictionaries hold, with
+list-specific rules and exceptions~\cite{beale2026}.
+Michel and colleagues measured dictionary coverage by frequency: sampling bands of the Google Books
+lexicon, they found that the Oxford English Dictionary and Merriam-Webster's Unabridged covered
+high-frequency words well and low-frequency words much less~\cite{michel2011}.
+
+\paragraph{Documentation standards.} Datasheets for Datasets~\cite{gebru2021}, Data
+Statements~\cite{bender2018,bender2021,mcmillanmajor2024}, Data Cards~\cite{pushkarna2022}, the
+Hugging Face dataset card template~\cite{huggingface2026}, Croissant and its Responsible AI
+extension~\cite{akhtar2024,mlcommons2026,mlcommons2024,akhtar2024a}, and the FAIR
+principles~\cite{wilkinson2016} each set out what a dataset's documentation should cover, and
+they differ in what they ask. Lexicographic resources have their own standards: TEI
+Lex-0~\cite{teilex2026}, the ELEXIS Seal of Compliance~\cite{tasovac2021}, the European Language
+Grid's metadata~\cite{labropoulou2020}, and the LRE Map~\cite{calzolari2012}. The Research Data
+Alliance's recommendations for evolving data ask for versioned, timestamped data and a checksum per
+query result~\cite{rauber2015}. In the versions cited, none of these dataset standards has an
+explicit provision for a canary or for stating a dataset's exposure to contamination. BetterBench, a framework for assessing benchmarks, does: it
+asks benchmark developers to include a globally unique identifier or canary string in their public
+evaluation code and data files, or to encrypt the data and publish the key, and it notes that developers cannot enforce a
+canary's use~\cite{reuel2024betterbench}.
+
+\paragraph{Contamination and canaries.} Sainz and colleagues separate guideline, raw-text, and
+annotation contamination~\cite{sainz2023}, and surveys organize the detection methods by
+technique~\cite{deng2024,xu2024}. BIG-bench puts a GUID canary in every task definition file so that its
+data can be filtered out of web-scraped corpora and a model can be tested afterward for training on
+it~\cite{srivastava2023}; GPQA and BrowseComp embed canaries that contain the BIG-bench
+string~\cite{rein2024,wei2025}. As a filter, a canary helps only trainers who know of it and filter
+on it, and it does nothing against a developer who means to use the data~\cite{chen2025}; third-party copies of
+benchmarks have been found with the canary removed~\cite{han2025}. A memorization canary, as in the
+Secret Sharer study, is a different object: random sequences inserted into training data to measure
+their exposure~\cite{carlini2019}. Several benchmarks make contamination questions answerable by
+date. LiveCodeBench tags each problem with its release date, so a model can be scored on problems
+released after its training cutoff, and uses the model's release date where the cutoff is
+unknown~\cite{jain2025}. Deng and colleagues caution that a time cutoff works only if data before and
+after it differ~\cite{deng2024}.
+
+\paragraph{Existence checks.} Benchmarks of invented terms check existence while they are built or
+analyzed, and they drop what the check finds. PhantomBench keeps a concept only if it has zero exact
+matches in the Dolma v1.7 corpus~\cite{jung2026}. HypoTermQA removed, at its search stage, every
+generated term for which a quoted web search returned a nonzero result count~\cite{uluoglakci2024}. A vocabulary-test benchmark
+excluded two Spanish nonwords from its analysis after finding them in dictionaries~\cite{martinez2024}.
+KoAGE builds a dated, layered exclusion lexicon from a dictionary, Korean Wiktionary, and dated corpus
+and neologism layers, and uses it as a filter for collecting Korean neologisms~\cite{kim2026koage}.
+The universe records, per string, which published lists hold it and which were not measured, as a
+stored record rather than a filter.
+
+\section{Design}
+\label{sec:design}
+
+\subsection{The candidate and the grammar}
+
+A row of the universe is a \emph{candidate}: a string that passes the spelling grammar, with the
+record of where it came from. The grammar (\col{pipeline/ceol/grammar.py}) is executable. It puts a
+source entry in Unicode normal form C, replaces the typographic apostrophe with the ASCII apostrophe
+and the no-break space with a space, lowers its case, and puts it in normal form C again; it then
+rejects the entry if any character outside its charset remains.
+It admits the result when every character is in a closed charset of \cv{chars_total}: the
+\cv{grammar_base} letters a to z, \cv{grammar_accented} accented letters, \cv{grammar_ligatures}
+ligatures, the hyphen, the apostrophe, and the space. It also sets rules of form: spaces are single
+and interior; hyphens are interior, never doubled, and every hyphen-separated segment carries a
+letter; an apostrophe is interior or leading, never final or doubled; every token carries a letter;
+and every space-separated token meets the single-token rules. A space separates tokens, so a multiword term is one candidate.
+
+The grammar marks each candidate with its spelling classes: \col{accented} (an accent other than
+the diaeresis), \col{apostrophe-form}, \col{contraction} (an apostrophe form the grammar's rule takes
+for a contraction), \col{diaeresis}, \col{hyphenated}, \col{ligature}, \col{s-final} (a token ending in
+an apostrophe and s), and \col{spaced}. A candidate can
+carry several; one with none is \emph{plain}.
+
+\subsection{The evidence semantics}
+
+For each published list, a single-token row holds 1 where the list lists the string, 0 where it does
+not, and $-1$ where the list is structurally blind to the row's class: a list built without hyphens
+cannot hold a hyphenated string. For SCOWL, the value is the size of the smallest SCOWL list that
+holds the string, 0 where none does, and $-1$ where the class does not apply.
+
+The evidence columns are null on every multiword row. Two published lists hold multiword terms,
+WordNet and Wiktionary, and a multiword row's listing by them is recorded in \col{panel_sets} and
+\col{sources}, not in the evidence columns. Null means ``not measured by that source'', never false.
+Every comparison in Section~\ref{sec:compared} is over single-token rows and states its population.
+
+\subsection{The corpora}
+
+Two corpora record containment on single-token rows: the Google Books English 1-grams of the 2020
+release (\col{gb_type}) and the English list of wordfreq~3.1.1 (\col{wordfreq_scored}). A feature
+layer records how often a string occurs in Google Books. The CEOL's re-stream of Google Books records
+containment after admission and admits no string. wordfreq does admit strings:
+the census read wordfreq's English list as one of its sources, and the audit consulted it
+(Section~\ref{sec:construction}). \cv{wf_census_rows} rows carry the intake channel
+\col{census:wordfreq} and \cv{wf_audit_rows} the channel \col{audit:wordfreq}, and wordfreq is the
+only source named in the \col{sources} column of \cv{wf_sole_rows} rows.
+
+\subsection{Panel families and evidence tiers}
+
+The \cv{published_set_count} published lists are grouped in \cv{family_count} \emph{panel families}:
+WordNet; Wiktionary's English pages; hunspell, whose \cv{hunspell_dictionaries} English dictionaries
+(American, British, Canadian, and Australian) count as one family; ENABLE; and SCOWL. A family lists a
+row when any of its lists does, and it cannot hold a row when none of its lists can.
+
+The panel families are not independent sources. The American, Canadian, and Australian hunspell
+dictionaries are made from SCOWL, as their READMEs state~\cite{libreofficecontributors2026}.
+SCOWL's notice names WordNet as an input to its inflection data and names ENABLE's lists among its
+own~\cite{atkinson2020}, and ENABLE describes itself as reflecting changes to the Official Scrabble
+Players Dictionary~\cite{cooper2026}. Counting SCOWL and hunspell as one family leaves
+\cv{strict_core} single-token rows (\cv{strict_core_pct}) listed by two or more families,
+\cv{strict_core_less} fewer than the count below; counting ENABLE with them as well leaves
+\cv{strict2_core}. Every figure that counts families uses the
+\cv{family_count}-family grouping unless it says otherwise.
+
+Each single-token row falls in one of \cv{tier_count} \emph{evidence tiers}
+(Table~\ref{tab:tiers}): listed by two or more families; by one; by none, with a corpus holding it
+(\emph{corpus only}); or by none and no corpus (\emph{no evidence}). A family that cannot hold a row
+does not list it, so the tiers count listings only. A corpus holds a row when it is a
+Google Books type or wordfreq scores it: of the corpus-only rows, \cv{co_both} have both signals,
+\cv{co_gb_only} Google Books alone, and \cv{co_wf_only} wordfreq alone. The tiers are reported
+separately, not averaged, because the corpus-only tier holds \cv{tier_corpus_pct} of the single-token
+rows.
+
+\begin{table}[t]
+\centering
+\caption{The evidence tiers of the \cv{rows_single} single-token rows.}
+\label{tab:tiers}
+\input{generated/tab_tiers.tex}
+\end{table}
+
+\subsection{The identifier and the canary}
+
+A row's \col{id} is the first 16 hexadecimal digits of the sha256 of the string's UTF-8 bytes, a
+64-bit prefix; every \col{id} in the release is distinct. A name-based UUID is the same for the same
+name within a fixed namespace~\cite{rfc9562}; the \col{id} depends on the exact normalized string
+alone, so a reader can join
+versions by \col{id} or by \col{word}, the data dictionary's join key. The \col{sample} configuration, the rows whose \col{id} begins with
+\cv{sample_prefix}, holds the same strings in every version that keeps them.
+
+The release carries a marker for a later test: the dataset card carries a canary string, and the
+release record and every Parquet file's metadata carry its GUID. A test of whether a model recalls the
+marker can show exposure to some copy of the documentation or files that carried it; it cannot tell
+which copy or version, and the release record dates the version separately.
+
+\section{Sources, licenses, and the public projection}
+\label{sec:projection}
+
+The build measured \cv{panel_set_count} panel sets. Each source's terms were read at the source, and
+the author ruled on each reading. The project withholds the membership of \cv{withheld_list_count}
+lists from the public version, for these reasons: NASPA Word List 2023 and Collins Scrabble Words 2021,
+which are proprietary; the legacy SOWPODS list, for which no license was found; and Webster's Second
+International word lists (web2 and its list of hyphenated terms and phrases, web2a), taken from
+the 1934 dictionary, two of whose 1934 copyright registrations were renewed in
+1961~\cite{libraryof1961}. The project withholds them; the license review, not this paper, decides
+what their terms allow. Their columns and labels are absent. The withholding has these measured
+effects:
+
+\begin{itemize}
+\item \textbf{Restricted rows.} \cv{rows_restricted} of the pin's \cv{rows_pin} candidates are listed
+  only by the two proprietary lists. The private pin holds them; every version built from it leaves
+  them out.
+\item \textbf{Held-back rows.} Of the \cv{rows_shippable} shippable rows, \cv{held_back_rows} are held
+  back in the private record (Table~\ref{tab:heldback}). \cv{hb_tier2} have no published evidence
+  once the withheld lists and channels are taken away, and no corpus holds any of them. The other
+  \cv{hb_ws} are rows of the census or the audit whose every source label names a withheld list.
+  Every one of them has published evidence: \cv{hb_ws_gb} are Google Books types, and
+  \cv{hb_ws_wordnet} are listed by WordNet, which is not one of the census's admission sources (\cv{hb_ws_wordnet_gb} are
+  both). They are held back because their empty \col{sources} would show that a withheld list holds
+  them.
+\item \textbf{Recomputed fields.} \col{panel_sets} and \col{panel_count} count the
+  \cv{published_set_count} published lists alone, so a row with \col{panel_count} 0 may still be listed
+  by a withheld list. \col{provenance_class} is recomputed over the retained channels, the published
+  lists, and both corpus signals.
+\item \textbf{Withheld feature columns.} \cv{withheld_feature_count} of the feature layer's columns are
+  withheld. \cv{withheld_reference_feature_count} were computed against a reference that holds
+  Webster's Second, so a value could reveal whether that list holds a string's neighbor, stem, or
+  segment. The other \cv{withheld_model_feature_count} come from a character model fitted on a pool
+  of strings that at least two-thirds of their applicable panel sets list, the withheld lists among
+  them. A test run on version 2.1 fitted the same model on the published lists alone and took the
+  difference of the two scores. Among single-token rows that \cv{leak_applicable} of the panel sets can
+  hold and \cv{leak_strata_min} to \cv{leak_strata_max} published lists list, the difference ranks
+  membership in that pool, whose training partition was used for the fit, above chance: per-character
+  AUCs from \cv{leak_auc_min} to \cv{leak_auc_max} over version 2.1's shipped single-token rows in
+  those strata, and from \cv{leak_auc_ho_min} to \cv{leak_auc_ho_max} when the positives are
+  restricted to the pool's test partition, with ties counted half. Pool membership depends on
+  withheld listings, so both columns are withheld.
+\end{itemize}
+
+\begin{table}[t]
+\centering
+\caption{Why a shippable row is held back.}
+\label{tab:heldback}
+\input{generated/tab_held_back.tex}
+\end{table}
+
+The build's checks constrain direct disclosure on the shipped rows. No file carries a withheld column
+or a held-back row, no file with label columns carries a withheld label, and a guard refuses the
+release if one withheld list lists \cv{reach_threshold} or more of the shipped rows of any published
+channel label, or of any layer's shipped rows whose sources come out empty. The checks do not prove
+that no published field can be combined to infer a withheld listing.
+
+The universe is licensed CC~BY-SA~4.0, the share-alike floor of its Wiktionary-derived fields, and its
+\col{NOTICES.md} carries the notices and credits the project identified for its sources; the license
+review checks them.
+
+\section{Construction}
+\label{sec:construction}
+
+Each step has a committed record, and each count is taken at the revision of the English OpenList
+the step names.
+
+\begin{enumerate}
+\item \textbf{The English OpenList's universe.} The English OpenList (EOL) is a word list with its own
+  grammar and governance. At its revision \cv{archival_eol_revision}, its valid and invalid lists held
+  \cv{arch_eol_universe} strings between them.
+\item \textbf{The census.} The pinned sources, read again under the grammar, gave
+  \cv{census_candidates} candidates in the exception classes that the EOL's letters-only rule could
+  not hold: hyphens, accents, a diaeresis, apostrophes, and ligatures.
+\item \textbf{The merge.} The two sets merged gave \cv{arch_merge_total} rows, one per string. The
+  merge's inherited rows, split by their EOL flag, reproduce the EOL's valid and invalid lists at that
+  revision byte for byte.
+\item \textbf{The audit.} The audited sources' coverage of the merge was reconciled against the EOL's
+  research frame of \cv{audit_frame_size} letters-only strings. Of \cv{audit_misses} strings a source
+  listed and the merge lacked, \cv{c4_additions} were added (\cv{audit_in_frame_added} within the
+  frame, and \cv{audit_beyond_frame_added} SCOWL forms the EOL's ingest had not read), and
+  \cv{audit_wordfreq_left_out} that only wordfreq listed, outside the frame, were left out.
+\item \textbf{The re-pin.} At the EOL's later revision \cv{eol_revision}, its lists hold
+  \cv{eol_universe_rows} strings: the \cv{repin_left} inherited strings in neither list at that
+  revision left the pin. The result is the single-token pin, \cv{v1_rows} candidates.
+\item \textbf{The spaced admission.} \cv{pin_spaced} multiword candidates from WordNet and Wiktionary
+  were admitted under the grammar's space rule. The pin has \cv{rows_pin} rows, and its single-token
+  projection matches the single-token pin's canonical row serialization.
+\item \textbf{The layers.} No row is added. Each single-token row is measured against the panel lists
+  (the evidence matrix) and given its corpus features (the feature layer); each multiword row carries
+  its WordNet and Wiktionary listing; and every row is given its record of how it came in (the
+  intake-provenance layer).
+\item \textbf{The model-and-engine column:} \col{engine_generated} where the intake kind is
+  generated, and \col{none} elsewhere. The EOL's valid dictionary at the pin
+  (\cv{model_basis_entries} entries) names a model on none of its entries.
+\item \textbf{The release.} The restricted rows are dropped and the public projection applied
+  (Section~\ref{sec:projection}), leaving \cv{rows_all} rows in \cv{config_count} configurations
+  (Table~\ref{tab:configs}). On every file, the build checked that none of the
+  \cv{restricted_words_checked} restricted strings and no withheld column or held-back row is present,
+  and, on the files with label columns, no withheld label. On the \col{universe} and \col{features}
+  files, it checked that every \col{id} is distinct and that none of \cv{controls_checked} private
+  synthetic controls is present. On \col{universe}, it checked that \col{provenance_class} re-derives
+  from the file's own fields and that \col{model_or_engine} agrees with its projected rule, which reads
+  \col{intake_kind}, \col{eol}, and the private model-basis layer.
+  It checked that each of the \cv{filter_count} filter configurations is exactly its predicate's filter
+  of \col{universe}.
+\end{enumerate}
+
+The release record, \col{pipeline/research/release/release_v1.0.json}, holds every file's rows,
+columns, bytes, and sha256, the recorded results of the build's checks, and the reach guard's
+threshold; the reach counts themselves are in a private receipt. It names the build's commit,
+\cv{code_commit}, and records that tracked files had changed in the working tree when the build ran,
+so that commit alone does not identify the code that built the files.
+
+\begin{table}[t]
+\centering
+\caption{The \cv{config_count} configurations of version~\cv{version}.}
+\label{tab:configs}
+\small
+\begin{tabular}{lrl}
+\toprule
+Configuration & Rows & What it holds \\
+\midrule
+\col{universe} & \cv{rows_universe} & every shipped row \\
+\col{features} & \cv{rows_features} & the feature layer of the single-token rows \\
+\col{panel-listed} & \cv{rows_panel_listed} & rows a published list lists \\
+\col{eol-valid} & \cv{rows_eol_valid} & rows of the EOL's valid list at the pin \\
+\col{spaced} & \cv{rows_spaced} & multiword rows \\
+\col{exceptions} & \cv{rows_exceptions} & rows with any of the census's exception flags \\
+\col{sample} & \cv{rows_sample} & rows whose \col{id} begins with \cv{sample_prefix} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Contents}
+\label{sec:contents}
+
+\subsection{Form}
+
+\paragraph{Length.} The median single-token row has \cv{len_corpus_p50} characters in the corpus-only
+tier, \cv{len_two_plus_p50} in the tier listed by two or more families, \cv{len_one_p50} in the tier
+listed by one, and \cv{len_none_p50} in the tier with no evidence (Table~\ref{tab:lengths}).
+Multiword rows have a median of \cv{len_multiword_p50} characters.
+
+\begin{table}[t]
+\centering
+\caption{Lengths in characters, by evidence tier.}
+\label{tab:lengths}
+\small
+\input{generated/tab_lengths.tex}
+\end{table}
+
+\paragraph{Characters.} All \cv{chars_total} characters of the charset occur. Of the accented letters
+and ligatures, the least used occurs in \cv{char_rows_nonbase_min} rows and the most used in
+\cv{char_rows_nonbase_max}. The apostrophe occurs in \cv{char_rows_apostrophe} rows, the hyphen in
+\cv{char_rows_hyphen}, and the space in the \cv{char_rows_space} multiword rows.
+
+\paragraph{Classes.} \cv{flag_plain} rows (\cv{flag_plain_pct}) are plain. The other \cv{flag_any}
+carry at least one class, in \cv{class_combos_nonplain} combinations (Table~\ref{tab:flags}).
+
+\begin{table}[t]
+\centering
+\caption{Rows by class flag. A row can carry several flags.}
+\label{tab:flags}
+\input{generated/tab_flags.tex}
+\end{table}
+
+\paragraph{Apostrophes.} Of the \cv{apos_rows} rows with an apostrophe, \cv{flag_s_final} have a token
+ending in an apostrophe and s (in \cv{s_final_token_only} of them, only tokens before the last),
+\cv{flag_contraction} carry the contraction flag, \cv{apos_both_flags} carry both flags, and
+\cv{apos_neither} carry neither.
+
+\paragraph{Multiword terms.} WordNet and Wiktionary both list \cv{mw_both} of the multiword rows,
+WordNet alone \cv{mw_wordnet_only}, and Wiktionary alone \cv{mw_wiktionary_only}. Every multiword row
+is listed by at least one of them, because they are its only sources.
+
+\paragraph{Variants.} \cv{var_groups} groups of two or more rows (\cv{var_rows} rows) are equal once
+hyphens, spaces, apostrophes, and combining accent marks are removed. The largest group has \cv{variant_largest}
+members. Table~\ref{tab:variants} shows the \cv{variant_patterns_shown} most common of
+\cv{variant_patterns} patterns of which kinds of mark are present in some members and absent in
+others; the pattern does not compare a mark's count or position. Of the \cv{pairs_total} groups of
+two, the two members share a published list in \cv{pairs_share}, are both listed but by no common
+list in \cv{pairs_both_no_common}, have one member listed in \cv{pairs_one}, and have neither listed
+in \cv{pairs_none}.
+
+\begin{table}[t]
+\centering
+\caption{Variant groups by which kinds of mark are present in some members and absent in others;
+the \cv{variant_patterns_shown} most common of \cv{variant_patterns} patterns.}
+\label{tab:variants}
+\input{generated/tab_variants.tex}
+\end{table}
+
+\subsection{Lexical category}
+
+The universe records no part of speech, lemma, or inflection. WordNet lists \cv{list_wordnet_listed}
+single-token rows and \cv{mw_wordnet} multiword rows, and those rows could take a part of speech from
+WordNet's synsets.
+
+\subsection{Frequency}
+
+wordfreq scores few rows: \cv{zipf_with_two_plus_pct} of the tier listed by two or more families,
+\cv{zipf_with_one_pct} of the tier listed by one, and \cv{zipf_with_corpus_pct} of the corpus-only
+tier. Google Books holds more: \cv{gb_with_two_plus_pct}, \cv{gb_with_one_pct}, and
+\cv{gb_with_corpus_pct} of the same tiers. Over the rows that have a value, the median Zipf value is
+\cv{zipf_p50_two_plus} in the first tier, \cv{zipf_p50_one} in the second, and
+\cv{zipf_p50_corpus} in the corpus-only tier, and the median $\log_{10}$ count of Google Books matches
+is \cv{gb_p50_two_plus}, \cv{gb_p50_one}, and \cv{gb_p50_corpus}.
+
+By the number of families that list a row, the median $\log_{10}$ Google Books count, among rows
+with a Google Books value, rises from \cv{u5_gb_p50_k0} for rows no family lists to \cv{u5_gb_p50_k5}
+for rows all \cv{family_count} families list, a group of \cv{u5_rows_k5} rows (Table~\ref{tab:u5}). The span of years over which a string occurs in
+Google Books has a median, over the Google Books types, of \cv{span_p50_two_plus} years in the first
+tier, \cv{span_p50_one} in the second, and \cv{span_p50_corpus} in the corpus-only tier. It is a span in
+a corpus of scanned books, not a date of first use, and the corpus counts occurrences without
+weighting them by readership~\cite{pechenick2015}.
+
+\begin{table}[t]
+\centering
+\caption{Single-token rows by the number of families that list them. The row counts cover every
+row; each median covers the rows that have that value.}
+\label{tab:u5}
+\small
+\input{generated/tab_u5.tex}
+\end{table}
+
+\subsection{Provenance}
+
+Every row records its \emph{intake layer} (the step of Section~\ref{sec:construction} that brought it
+in), its \emph{intake kind} (obtained from a source, derived from pinned sources, or generated), and
+its \emph{intake channels}. A channel records how a string entered the pool and is never an
+attestation. For a string inherited from the EOL, the channel is the intake its EOL entry publishes
+or, where none is published, a fallback: the EOL list it came in with or the EOL's candidate pool,
+which does not name a particular upstream source; for the CEOL's own layers, it
+names the source in the census, audit, spaced, or ledger namespace. A row can carry several channels, so the
+channel counts overlap (Table~\ref{tab:channels}).
+
+The EOL's invalid list contributes \cv{p1_eol_invalid} rows, its valid list \cv{p1_eol_valid}, the
+census \cv{p1_c1_exceptions}, the audit \cv{p1_c4_additions}, and the spaced admission
+\cv{p1_spaced_c015}. The census's other \cv{census_not_shipped} candidates and the audit's other
+\cv{audit_not_shipped} additions are restricted or held back (Section~\ref{sec:projection}). The largest channel, \col{eol:candidate-pool}, is a channel of
+\cv{p4_top_rows} rows, of which a published family lists \cv{p4_top_listed_pct}.
+
+\begin{table}[t]
+\centering
+\caption{The \cv{channels_shown} largest of \cv{p4_channels} intake channels. A row can carry several. The
+corpora do not measure multiword rows.}
+\label{tab:channels}
+\small
+\input{generated/tab_channels.tex}
+\end{table}
+
+\paragraph{The synthetic engine.} \cv{generated_rows} rows (\cv{generated_pct}) were made by the EOL's
+synthetic engine. Its code does not survive, and its own per-row record of the method is empty, but
+its author describes the methods: affixes applied without a part-of-speech filter to the list as it
+then stood; chemical names varied by substituent, and short chains of root, infix, and suffix, made
+by substitution over a hand-written list; medical and scientific prefixes; and Greek plurals. Each
+row carries the method that a heuristic infers from its form where it can (\cv{p2_none} rows are
+unresolved; Appendix~\ref{app:tables}). The methods are the author's account and were not checked
+against the engine itself. A published family lists
+\cv{p2_listed} of these rows (\cv{p2_listed_pct}).
+
+\paragraph{Provenance classes.} Over the published fields, \cv{prov_channel_and_containment} rows have
+both a recorded channel and containment in a list or a corpus, \cv{prov_channel_only} a channel only,
+\cv{prov_containment_only} containment only, and \cv{prov_neither} neither.
+
+\section{The sources compared}
+\label{sec:compared}
+
+This section covers the single-token rows.
+
+\paragraph{Methods.} The main pair measure is directed containment: of the strings list A lists that
+list B could hold, the share that B lists. It is computed over the rows both lists can hold. Agreement
+is counted as $k$ of $m$: the families that list a row out of the families that could. The analysis
+is descriptive: it reports exact counts of the release's rows and runs no statistical tests. It
+makes no estimate of how many English strings no list holds. The descriptive analysis
+(\col{pipeline/research/analysis/descriptive.py}) defines the populations of its counts.
+
+\subsection{Sizes and blind classes}
+
+Table~\ref{tab:lists} gives each list's size as a share of all single-token rows, not of the rows it
+could hold. Wiktionary lists the most single-token rows, \cv{list_wiktionary_listed}, and is blind to
+no class. WordNet lists the fewest, \cv{list_wordnet_listed}. ENABLE cannot hold \cv{list_enable_blind}
+rows, every row with an exception class, and each hunspell dictionary but the British cannot hold
+\cv{list_hunspell_us_blind}.
+
+\begin{table}[t]
+\centering
+\caption{The published lists over the \cv{rows_single} single-token rows.}
+\label{tab:lists}
+\small
+\input{generated/tab_lists.tex}
+\end{table}
+
+\subsection{Containment}
+
+Table~\ref{tab:containment} gives, for each pair, the share of A's rows that B can hold which B lists;
+each share below is among the rows the receiving list can hold. The asymmetry shows nesting. Of ENABLE's rows that SCOWL can hold, SCOWL lists \cv{enable_in_scowl},
+and of SCOWL's rows that ENABLE can hold, ENABLE lists \cv{cont_scowl_in_enable}: ENABLE is nearly a
+subset of SCOWL. Of the American hunspell dictionary's rows, the Canadian lists
+\cv{cont_hunspell_us_in_hunspell_ca}. Of WordNet's rows, SCOWL lists \cv{cont_wordnet_in_scowl} and
+Wiktionary \cv{cont_wordnet_in_wiktionary}, while of Wiktionary's rows, WordNet lists
+\cv{cont_wiktionary_in_wordnet} and SCOWL \cv{cont_wiktionary_in_scowl}: Wiktionary holds much that
+the others do not.
+
+\begin{table}[t]
+\centering
+\caption{Directed containment (\%): of the rows list A lists that list B can hold, the share B lists.
+Shares are rounded to whole percent, except where that would print 0 or 100 for a share that is
+neither.}
+\label{tab:containment}
+\small
+\input{generated/tab_containment.tex}
+\end{table}
+
+\subsection{Combinations and what each family holds alone}
+
+Over the \cv{s3_rows} rows every family can hold, the rows fall in \cv{combos_total} combinations of
+families. \cv{m5_k0} (\cv{m5_k0_pct}) are listed by no family. Table~\ref{tab:s3} shows the
+\cv{combos_shown} largest combinations. Over all single-token rows, Table~\ref{tab:alone} gives the
+rows that only one family lists: Wiktionary alone lists \cv{alone_wiktionary_pct} of the
+\cv{listed_single} listed single-token rows, and ENABLE alone lists \cv{alone_enable}. These counts
+include rows that another family cannot hold; over the rows all \cv{family_count} families can hold,
+Wiktionary alone lists \cv{wikt_alone_m5} of the \cv{m5_listed} listed rows
+(\cv{wikt_alone_m5_pct}).
+
+\begin{table}[t]
+\centering
+\caption{The \cv{combos_shown} largest of \cv{combos_total} combinations, over the rows every family can
+hold.}
+\label{tab:s3}
+\small
+\input{generated/tab_s3.tex}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Rows only one family lists, over all single-token rows.}
+\label{tab:alone}
+\small
+\input{generated/tab_alone.tex}
+\end{table}
+
+\subsection{Agreement}
+
+Among the rows all \cv{family_count} families can hold, \cv{m5_listed} are listed by at least one. Of
+those, \cv{m5_k1_pct_of_listed} are listed by exactly one family and \cv{m5_k5_pct_of_listed} by all
+\cv{family_count} (Table~\ref{tab:kofm}).
+
+\begin{table}[t]
+\centering
+\caption{Single-token rows by the number of families that can hold them ($m$) and the number that
+list them ($k$).}
+\label{tab:kofm}
+\small
+\input{generated/tab_k_of_m.tex}
+\end{table}
+
+\subsection{Coverage by frequency}
+
+Table~\ref{tab:coverage} gives, for each band of wordfreq's Zipf value, the share of the rows a list
+could hold that it lists. Rows that wordfreq does not score form their own band, which holds most
+rows. By this measure, coverage rises from band to band across the scored bands for every list, in
+line with what Michel and colleagues found for two dictionaries over bands of the Google Books
+lexicon~\cite{michel2011}. In the band of Zipf 5 and over, the American hunspell dictionary lists
+\cv{cov_hunspell_us_b5plus} and WordNet \cv{cov_wordnet_b5plus}. Weighted by wordfreq's frequency
+estimate (each row's weight over the weights of the band's rows the list can hold), WordNet's share in
+that band falls to \cv{covw_wordnet_b5plus} (Appendix~\ref{app:tables}). One possible reason, not
+measured here, is that WordNet holds only nouns, verbs, adjectives, and adverbs, while frequent strings
+include function words.
+
+\begin{table}[t]
+\centering
+\caption{Coverage by Zipf band (\%), by strings: of the rows in a band that a list can hold, the share
+it lists. Rounded as in Table~\ref{tab:containment}.}
+\label{tab:coverage}
+\small
+\input{generated/tab_coverage.tex}
+\end{table}
+
+\subsection{Varieties, the core, and the tails}
+
+\paragraph{The American and British dictionaries.} Over the single-token rows both dictionaries can
+hold,
+\cv{us_not_gb} rows are in the American hunspell dictionary and not the British, \cv{gb_not_us} in the
+British and not the American, and \cv{us_and_gb} in both. Another \cv{gb_listed_us_blind} rows are
+in the British dictionary and of a class the American cannot hold. Of the
+\cv{hun_all4_hold_listed} rows that all \cv{hunspell_dictionaries} dictionaries can hold and at least
+one lists, \cv{hun_all4_hold_some_pct} are listed by some and not all; over every row at least one of
+them lists, the share is \cv{hun_any_some_pct}.
+
+\paragraph{The consensus core.} \cv{core_rows} rows (\cv{core_pct}) are listed by two or more
+families. The EOL's valid list contributes \cv{core_layer_eol_valid} of them and its invalid list
+\cv{core_layer_eol_invalid}: strings on the EOL's invalid list that two or more panel families
+list.
+
+\paragraph{The tails.} \cv{freq3_unlisted} rows with a Zipf value of 3 or more are listed by no
+family. In the other direction, \cv{listed_no_corpus} listed rows (\cv{listed_no_corpus_pct} of the
+listed single-token rows) are in neither corpus.
+
+\subsection{What each list adds}
+
+As lists are added in every order, the union of their listed rows grows from a mean of
+\cv{acc_mean_1} rows for one list (rounded) to \cv{acc_mean_8} for all \cv{published_set_count}; at the
+intermediate steps, the order matters, as the range shows (Appendix~\ref{app:tables}).
+
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{itemize}
+\item \textbf{Most rows rest on a single corpus.} \cv{inh_unlisted_gb} single-token rows
+  (\cv{inh_unlisted_gb_pct_single} of the single-token rows; \cv{inh_unlisted_gb_pct_all} of all rows)
+  were inherited from the EOL, are listed by none of the \cv{published_set_count} published lists, and
+  are Google Books types. For \cv{inh_unlisted_gb_only} of them, wordfreq does not score the string, so
+  Google Books is their only published containment, and it is a corpus built from scanned text, which
+  carries recognition errors. In all, \cv{limit_gb_all} rows are Google Books types.
+\item \textbf{\cv{limit_no_panel_no_corpus} single-token rows are listed by no published list and are
+  in neither corpus.} What supports them is their intake channel, which records how the string entered
+  the pool and attests nothing.
+\item \textbf{\cv{generated_rows} rows (\cv{generated_pct}) were made by the EOL's synthetic engine}
+  (Section~\ref{sec:contents}). \col{model_or_engine} marks them \col{engine_generated}.
+\item \textbf{Some rows of the EOL's valid list were decided with a language model,} by the EOL's
+  verification pipeline or by a model's verdict alone. No row says which.
+\item \textbf{The withholding changes what the panel columns count} (Section~\ref{sec:projection}).
+\item \textbf{Four Google Books features sum over raw forms.} The Google Books
+  aggregate sums, over the raw forms that normalize to one string (case variants among them), the
+  match counts, the volume counts, and the number of years each form occurs in, and it caps only that
+  last sum at the span. A year two forms share counts twice before the cap, so \col{gb_span_fill} can
+  exceed the share of distinct years in the span, and \col{gb_volumes_per_year} divides the summed
+  volume count by the capped year count. \col{gb_log10_volume} and \col{gb_tokens_per_volume} use the
+  summed volume count. The data dictionary states this; a
+  later version can count distinct years.
+\item \textbf{\col{wordfreq_scored} is false, not null, on the \cv{hyph_wf_false} hyphenated
+  single-token rows:} the CEOL's feature code does not score hyphenated strings, so
+  \col{wordfreq_zipf} is NaN on them.
+\item \textbf{The variety and properness columns are proxies.} \col{variety_gb_not_us} and
+  \col{variety_us_not_gb} compare two hunspell dictionaries, and \col{wn_instance},
+  \col{wn_capitalized}, and \col{wk_proper_noun} record what WordNet and Wiktionary say about a
+  multiword row; none is a variety label or a proper-name filter.
+\item \textbf{The \col{sources} column has two meanings:} a per-source list on the CEOL's own rows,
+  and the dataset-level tag \col{eol_universe@c550751e} on inherited rows, whose per-source listing is
+  in the evidence columns.
+\item \textbf{The Croissant file} declares the Responsible AI namespace but carries none of its
+  properties, and it has no publication date.
+\item \textbf{\col{eol} is a fact at one revision of the EOL,} \cv{eol_revision}; the EOL changes as
+  it takes words in.
+\end{itemize}
+
+\paragraph{What the universe does not record:} part of speech; lemma and inflection relations;
+definitions and senses; pronunciation, syllables, etymology, and a first attestation year; variety and
+register labels; a frequency drawn from many kinds of text for most rows; and validity, by design.
+
+\section{Uses and out-of-scope uses}
+\label{sec:uses}
+
+Among the resources in Section~\ref{sec:related} and Appendix~\ref{app:resources}, none stores a
+per-string listing for each of several pinned word lists, with ``cannot hold'' marked apart from
+``not listed'' on single-token rows. KoAGE's evidence packets for its verification stage carry the temporal exclusion status of a candidate and its parts~\cite{kim2026koage}. The
+universe supports these uses, with their caveats:
+
+\begin{enumerate}
+\item \textbf{A ``listed by 0 of $N$ lists'' screen for invented stimuli,} never a ``not a word''
+  verdict. For a single-token row, $N$ is the number of published lists that can hold it, at most
+  \cv{published_set_count} in this version.
+\item \textbf{Auditing pseudoword generators:} finding generated strings that a list holds, or that
+  are variants of a listed string.
+\item \textbf{Per-list membership and eligibility,} with ``not measured'' kept apart from ``not
+  listed''.
+\item \textbf{A reproducible frame for choosing items} in rating and norming studies: a stated filter
+  over a pinned version, with its code.
+\item \textbf{Frequency matching in the very low range,} with missing values explicit.
+\item \textbf{A dated exclusion list} for benchmarks of novel words, run again at each version.
+\end{enumerate}
+
+\paragraph{Checking a made-up string.} Put it through the grammar and look it up in the
+\col{universe} configuration. A string with no row has no per-list result in this version. For a
+single-token row, count the lists that can hold it as well as those that list it, remembering that
+$-1$ means the list cannot hold it; treat a listing as a listing, not as use; and treat absence from
+every list as absence from the lists, not from text. A multiword row is checked against two lists
+only, through \col{panel_sets}.
+
+\paragraph{Out of scope:} calling a string a word or not a word; using the universe as a dictionary;
+proper names; and any claim about what a model was trained on.
+
+\section{Maintenance and versions}
+
+A released version never changes; a correction comes as a new version with a change log. A row
+leaves a public version only under the rules of the project's upkeep policy, and a version may be
+withdrawn, never edited. A request to take down a source or a row is acknowledged within 7 days and,
+once verified, acted on within 14 days of its verification, and each version's change log records
+every withholding, as counts. A checkpoint that measures every source again and builds a new pin and
+version is designed and partly built. A later pin of the hunspell dictionaries may take in the
+en-wl/wordlist 2026.02.25 release of them, whose notes say it used language models to help filter
+over 1,500 new words from a corpus~\cite{atkinson2026release}.
+
+\section{Responsible use and disclosures}
+
+\begin{itemize}
+\item \textbf{Language models.} No language model decided any row the CEOL added. The EOL decided
+  some rows of its valid list with a language model, Google Gemini 3 Flash Preview by its author's
+  account, and the EOL's own report says the earlier phases of its pipeline used Gemini 2.0 Flash and
+  Gemini 2.5 Flash. No row records which rows those are, and the EOL's dictionary at the pinned
+  revision names a model on none of its entries. \col{model_or_engine} marks the rows the EOL's synthetic engine made, so a list can
+  keep them or leave them out.
+\item \textbf{Offensive content.} The universe holds strings its sources hold, and some are
+  offensive. This version does not measure their share, because the measure needs an offensive-term
+  lexicon whose license allows the use, and the project has not chosen one. This paper prints no
+  string of the universe.
+\item \textbf{Contamination.} The release's date and file hashes identify it, and its canary
+  supports a later test of whether a model recalls the marker. Version 1.0 and the internal version
+  2.1 share the marker, and the marker can spread without the rows, so such a test cannot say when or
+  how a model met it.
+\end{itemize}
+
+\section{Availability and reproducibility}
+\label{sec:availability}
+
+Version~\cv{version} is built for public release and is private until a license review
+confirms the terms under which its sources may be published. An open subset, the rows listed by
+WordNet, Wiktionary, the American, Canadian, and Australian hunspell dictionaries, or SCOWL at sizes
+10 to 70, is public as \col{ryanjosephkamp/ceol-universe-open}~\cite{ceolopen2026}. A DOI is planned
+for the full release. The code and every committed record are in the project's
+repository~\cite{ceolrepo2026}.
+
+The descriptive analysis reruns from the release files, which are private until the full release. From the repository's \col{pipeline}
+directory, with the files in place,
+\begin{quote}\small\ttfamily python3 -m research.analysis.descriptive --version v1.0 --check\end{quote}
+reads the release's \col{universe} and \col{features} files, checks each against its recorded sha256,
+reads the committed EOL comparison record, renders \col{analysis.json}, and compares the rendering
+with the committed file; without \col{--check}, it writes the file. A rebuild of the release
+itself (\col{research.release.build_release}) needs private inputs: the five pinned layers, the
+restricted-row list, the intake ledger, and the synthetic controls. This paper did not rebuild the
+layers or the release. Beyond the release files, the held-back split of
+Section~\ref{sec:projection} also reads the private held-back receipt and two internal layers.
+
+\renewcommand{\bibfont}{\small\raggedright}
+\bibliographystyle{unsrtnat}
+\bibliography{generated/refs_page,refs_added}
+
+\appendix
+
+\section{Further tables}
+\label{app:tables}
+
+\begin{table}[htbp]
+\centering
+\caption{Coverage by Zipf band (\%), weighted by wordfreq's frequency estimate.}
+\small
+\input{generated/tab_coverage_weighted.tex}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{The union of listed single-token rows as lists are added in every order.}
+\small
+\input{generated/tab_accumulation.tex}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{The EOL's synthetic engine: rows by the method inferred from their form.}
+\small
+\input{generated/tab_engines.tex}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Rows by intake layer and kind, and by evidence tier.}
+\small
+\resizebox{\linewidth}{!}{\input{generated/tab_flows.tex}}
+\end{table}
+
+\section{Comparable resources}
+\label{app:resources}
+
+Sizes and licenses are as stated in the cited sources, read on October 26, 2026, unless an entry or its
+reference gives another date; some pages have changed since (kaikki.org, for one, now names a later extraction of the
+same dump). A \emph{game-derived} mark records what a list's documentation, or its maintainer's documentation of the
+same source lists, says about taking its selection, in whole or in part, from a proprietary game word list;
+it is not a finding about any entry.
+
+\input{generated/resources.tex}
+
+\end{document}

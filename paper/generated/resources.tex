@@ -1,0 +1,188 @@
+
+\subsection*{Lexicons, Wiktionary, and its extractions}
+
+\resource{Princeton WordNet 3.0}
+\resfield{What it is}{A lexical database of English that groups nouns, verbs, adjectives, and adverbs into synonym sets (synsets) linked by conceptual-semantic and lexical relations. Princeton states that it is no longer developed and names Open English WordNet and the Global WordNet Association as community-led resources that build on it~\cite{princetonuniversity2026}.}
+\resfield{Size, as stated}{155,287 unique strings counted within each part of speech (147,278 distinct overall), 117,659 synsets, and 206,941 word-sense pairs~\cite{princetonuniversity2026a}.}
+\resfield{License, as stated}{The WordNet 3.0 license: use, copying, modification, and distribution for any purpose without fee, provided the copyright notice and statements appear on all copies; Princeton's name may not be used in publicity~\cite{princetonuniversity2026b}.}
+\resfield{What it records per entry}{For each lemma and part of speech, its synsets, pointer (relation) types, and a count of tagged senses; for each synset, its words, lexicographer file, relations, and a gloss~\cite{princetonuniversity2026c}.}
+\resfield{What it does not record}{Parts of speech other than the 4 above~\cite{princetonuniversity2026a}; the database format has no pronunciation or etymology field~\cite{princetonuniversity2026c}.}
+
+\resource{Open English WordNet, 2025 edition}
+\resfield{What it is}{A fork of Princeton WordNet developed under an open-source methodology, released in annual editions since 2019; from the 2025 release, proper nouns are in a separate resource, Open English Namenet~\cite{openenglish2026}.}
+\resfield{Size, as stated}{2025 edition: 135,969 words and 107,519 synsets; 2025 Plus edition, which adds curated proper nouns: 161,875 words and 120,564 synsets~\cite{openenglish2026}.}
+\resfield{License, as stated}{CC BY 4.0 for the team's work, with the Princeton WordNet license applying to the underlying data; attribution to both is required~\cite{openenglish2026}.}
+\resfield{What it records per entry}{Lexical entries (lemma and part of speech) and senses, grouped into synsets that carry a part of speech, an Interlingual Index link, relations, and examples~\cite{openenglish2026}; definitions~\cite{openenglish2026a}; pronunciation for nearly 35,000 entries and Wikidata links for over 6,000, as of the 2021 release~\cite{openenglish2026a}.}
+\resfield{What it does not record}{Proper nouns in the 2025 edition, which moved them to Open English Namenet~\cite{openenglish2026}.}
+
+\resource{English Wiktionary}
+\resfield{What it is}{A collaboratively edited dictionary whose pages hold one section per language; an entry is a single language section~\cite{wiktionarycontributors2026}. The text is an unstructured wiki maintained by volunteers~\cite{ylonen2022}.}
+\resfield{Size, as stated}{English: 1,396,346 entries, 719,082 of them lemma entries, generated from the October 1, 2026 dump~\cite{wiktionarycontributors2026}.}
+\resfield{License, as stated}{CC BY-SA 4.0 and the GNU Free Documentation License, under the Wikimedia Terms of Use in effect since June 7, 2023~\cite{wikimediafoundation2023}.}
+\resfield{What it records per entry}{Wikitext per language section; the next row lists what an extractor recovers from it~\cite{ylonen2022}.}
+\resfield{What it does not record}{A fixed schema: it is an unstructured wiki~\cite{ylonen2022}.}
+
+\resource{Wiktextract and kaikki.org}
+\resfield{What it is}{An extractor that expands Wiktionary's templates and Lua modules to produce structured JSON~\cite{ylonen2022}; kaikki.org publishes its output~\cite{kaikkiorg2026}.}
+\resfield{Size, as stated}{English: 1,396,111 distinct words, extracted October 21, 2026 from the English Wiktionary dump dated October 1, 2026, as the page stated on October 26, 2026~\cite{kaikkiorg2026}.}
+\resfield{License, as stated}{The same licenses as Wiktionary, CC BY-SA and the GFDL, with no version stated~\cite{kaikkiorg2026}.}
+\resfield{What it records per entry}{Lemmas, inflected forms, translations, etymology, usage examples, pronunciations (with sound-file URLs), lexical and semantic relations, and morphological, syntactic, semantic, topical, and dialectal annotations~\cite{ylonen2022}.}
+\resfield{What it does not record}{A fixed release: the data is re-extracted regularly, usually at least once a week~\cite{kaikkiorg2026}.}
+
+\resource{DBnary}
+\resfield{What it is}{Lexical data extracted from 27 Wiktionary language editions and published as linked open data in the OntoLex model, one version per Wikimedia dump~\cite{serasset2026,serasset2026a}.}
+\resfield{Size, as stated}{Not confirmed: the site was unreachable on October 26, 2026, and its home page states no counts~\cite{serasset2026}.}
+\resfield{License, as stated}{Stated 2 ways: CC BY-SA 3.0 on its site~\cite{serasset2026}; CC BY 4.0 in its Zenodo record for version 20260601~\cite{serasset2026a}.}
+\resfield{What it records per entry}{Pages, entries, senses, translations, and lexical relations, with a set of disambiguated translations as an added layer~\cite{serasset2026}.}
+\resfield{What it does not record}{Not stated in the pages read.}
+
+\resource{MorphyNet}
+\resfield{What it is}{A multilingual database of inflectional and derivational morphology drawn from Wiktionary editions~\cite{morphynetproject2026}.}
+\resfield{Size, as stated}{English: 396,772 words with 649,594 inflected forms; 67,412 words with 225,131 derived forms~\cite{morphynetproject2026}.}
+\resfield{License, as stated}{CC BY-SA 3.0~\cite{morphynetproject2026}.}
+\resfield{What it records per entry}{Inflection rows (lemma, form, features, morpheme segmentation); derivation rows (source and target word, their parts of speech, the affix, and its type)~\cite{morphynetproject2026}.}
+\resfield{What it does not record}{Senses or pronunciation: its row formats have no such fields~\cite{morphynetproject2026}.}
+
+\resource{SPECIALIST Lexicon (National Library of Medicine)}
+\resfield{What it is}{A syntactic lexicon of biomedical and general English, designed for the UMLS SPECIALIST Natural Language Processing System and released annually since 1994~\cite{nationallibrary2026}.}
+\resfield{Size, as stated}{2027 release: 534,363 lexical items and 1,007,936 forms, 51.55\% of the forms multiword~\cite{nationallibrary2026a}.}
+\resfield{License, as stated}{NLM's terms, not a Creative Commons license: no charge; redistributions keep the conditions; a publication must name the release number and date and describe any modifications; no proprietary rights may be claimed~\cite{nationallibrary2026b}.}
+\resfield{What it records per entry}{Lexical records from which its tools retrieve syntactic category, inflectional and spelling variants, abbreviations, acronyms, and derivational variants; separate files of derivation pairs, synonyms, and antonyms~\cite{nationallibrary2026}.}
+\resfield{What it does not record}{Not stated in the pages read.}
+
+\resource{CMU Pronouncing Dictionary (CMUdict) 0.7b}
+\resfield{What it is}{A machine-readable pronunciation dictionary for North American English, maintained by Carnegie Mellon University's Speech Group~\cite{carnegiemellon2026,carnegiemellon2026a}.}
+\resfield{Size, as stated}{"Over 134,000 words and their pronunciations"~\cite{carnegiemellon2026}.}
+\resfield{License, as stated}{A license file, Copyright 1993–2015 Carnegie Mellon University, that permits redistribution and use with or without modification if the copyright notice and disclaimer are kept~\cite{carnegiemellon2026a}; the README calls research and commercial use completely unrestricted and asks users to acknowledge its origin~\cite{carnegiemellon2026a}.}
+\resfield{What it records per entry}{A pronunciation in the ARPAbet set of 39 phonemes, with a lexical stress marker on each vowel~\cite{carnegiemellon2026}.}
+\resfield{What it does not record}{Anything but the word and its pronunciation: its entries map words to pronunciations~\cite{carnegiemellon2026}.}
+
+\subsection*{Word lists}
+
+\resource{SCOWL (SCOWLv1), release 2020.12.07. Partly game-derived at sizes 80 and above (see what it does not record).}
+\resfield{What it is}{Spell Checking Oriented Word Lists: word lists split by size and spelling category, intended for use in spell checkers~\cite{atkinson2024}. As of February 17, 2026, the original format is no longer maintained~\cite{atkinson2026}.}
+\resfield{Size, as stated}{The SCOWLv1 README (commit of July 22, 2024) counts 658,213 entries through size 95 in the American and English categories, names included~\cite{atkinson2024}.}
+\resfield{License, as stated}{Copyright 2000–2018 Kevin Atkinson: permission to use, copy, modify, distribute, and sell, provided the notice appears in all copies; the notices of its components also apply, among them UKACD's, which requires that its notice be displayed and its text included verbatim on redistribution~\cite{atkinson2020}.}
+\resfield{What it records per entry}{Membership by spelling category (American, British, Canadian, Australian, and variant levels), sub-category (abbreviations, contractions, proper names, upper case, words), and size (10 to 95)~\cite{atkinson2024}.}
+\resfield{What it does not record}{Hyphenated and open (spaced) compounds, which the original version excluded~\cite{atkinson2026a}. Note: size 80 includes all the lists of the ENABLE supplement package except one~\cite{atkinson2020}, and SCOWL's successor documents that package's lists of additional and stale OSPD words~\cite{atkinson2026b}.}
+
+\resource{English Speller Database (ESDB, formerly SCOWLv2). Partly game-derived at sizes 80 and 85 (see what it does not record).}
+\resfield{What it is}{SCOWL's successor: a SQLite database and text file on how common a word is, dialect spelling differences, variants, and basic part of speech and inflection~\cite{atkinson2026a}. It is a work in progress, and the database itself will not have an official release until it stabilizes~\cite{atkinson2026c}.}
+\resfield{Size, as stated}{No entry count stated; the minimum size is 35, and size 95 is not included~\cite{atkinson2026a}.}
+\resfield{License, as stated}{Copyright 2000–2026 Kevin Atkinson, the same notice-retention grant, which the README calls "MIT-like"; further notices apply to Australian output, to generated lists larger than size 80 (UKACD), and possibly WordNet~\cite{atkinson2026a,atkinson2026d}.}
+\resfield{What it records per entry}{Size, region, spelling and variant level, a lemma with its part of speech, inflected forms, definition notes, usage notes (among them offensive and vulgar), and sometimes a tag naming the source list~\cite{atkinson2026a}. Unlike SCOWLv1, it includes hyphenated and open compounds~\cite{atkinson2026a}.}
+\resfield{What it does not record}{Note: its sources document lists additional OSPD words, added at size 80, and stale OSPD words, at size 85, both from the ENABLE2K supplement files~\cite{atkinson2026b}.}
+
+\resource{LibreOffice hunspell dictionaries en\_US, en\_CA, en\_AU, en\_GB}
+\resfield{What it is}{Spell-checker dictionaries. The en\_US, en\_CA, and en\_AU README (version 2020.12.07) says these dictionaries are made by a SCOWL script and that the normal ones correspond to SCOWL size 60; en\_GB began from a subset of Kevin Atkinson's list and has been extensively updated by others~\cite{libreofficecontributors2026}.}
+\resfield{Size, as stated}{No entry count stated in the READMEs~\cite{libreofficecontributors2026}.}
+\resfield{License, as stated}{en\_US, en\_CA, en\_AU: they come directly from SCOWL and are under SCOWL's copyright, with an affix file under Geoff Kuenning's BSD license; en\_GB: "covered by his original LGPL licence", with the affix file also under the LGPL~\cite{libreofficecontributors2026}.}
+\resfield{What it records per entry}{Words and affix rules that generate inflected forms, 1 spelling variety per dictionary; en\_GB adds hyphenated compounds, place names, possessives, plurals, and a morphological extension based on Atkinson's part-of-speech and inflection data~\cite{libreofficecontributors2026}.}
+\resfield{What it does not record}{Most alternative spellings: the size-60 dictionaries generally include 1 variant per word~\cite{libreofficecontributors2026}.}
+
+\resource{ENABLE (ENABLE2K). A word-game list; it states it is not the tournament list.}
+\resfield{What it is}{The Enhanced North American Benchmark Lexicon, a word list for word games researched and compiled by Alan Beale. Its README says the master list is not the proprietary TWL98, and that it reflects the OSPD changes in effect from January 1, 1998~\cite{cooper2026}.}
+\resfield{Size, as stated}{173,528 words in the Y2K update; the first edition had 100,701~\cite{cooper2026}.}
+\resfield{License, as stated}{The master list is "formally released into the Public Domain"; credit to the originators is requested~\cite{cooper2026}.}
+\resfield{What it records per entry}{Membership in a plain ASCII word list~\cite{cooper2026}.}
+\resfield{What it does not record}{Anything beyond the string~\cite{cooper2026}.}
+
+\resource{12dicts 6.0.2 (June 2016). Partly game-derived (some inflections in 2of12inf).}
+\resfield{What it is}{Alan Beale's word lists of common words; the classic lists record agreement among 12 source dictionaries of American English, 8 for learners of English and 4 desk dictionaries~\cite{beale2026}.}
+\resfield{Size, as stated}{Classic lists from about 22,000 to about 82,000 words~\cite{beale2026}.}
+\resfield{License, as stated}{Released to the public domain, with acknowledgment requested; 2of12inf and the 2+2+3 lists depend on AGID, which keeps them out of the public domain~\cite{beale2026}.}
+\resfield{What it records per entry}{Membership in lists defined by how many source dictionaries hold a word; 2of12inf adds inflections, marking the plurals of uncountable nouns~\cite{beale2026}.}
+\resfield{What it does not record}{Note: the README says some 2of12inf inflections came from Scrabble-related sources, and that no later list with inflections includes those plurals~\cite{beale2026}.}
+
+\resource{Moby Words II (Grady Ward). Game-derived: the 2 crossword files.}
+\resfield{What it is}{Word lists by Grady Ward, released on Project Gutenberg on May 1, 2002~\cite{ward2002}.}
+\resfield{Size, as stated}{Separate lists, among them 354,984 single words, 256,772 compound words, 74,550 common dictionary words, 21,986 names, 10,196 places, and 113,809 crossword-game words~\cite{ward2002}.}
+\resfield{License, as stated}{"Public Domain material by grant from the author, January, 2001"~\cite{ward2002}.}
+\resfield{What it records per entry}{Membership in each list~\cite{ward2002}.}
+\resfield{What it does not record}{Accents, which were stripped. The crossword file is described as compatible with the first edition of the OSPD, and a delta file makes it compatible with the second~\cite{ward2002}.}
+
+\resource{Moby Part-of-Speech II (Grady Ward)}
+\resfield{What it is}{A part-of-speech list, the second edition, with about 15,000 new entries~\cite{ward2026}.}
+\resfield{Size, as stated}{No count stated in its documentation~\cite{ward2026}.}
+\resfield{License, as stated}{The same 2001 public-domain grant~\cite{ward2026}.}
+\resfield{What it records per entry}{A word or phrase with 1 or more of 15 part-of-speech codes, the principal use first~\cite{ward2026}.}
+\resfield{What it does not record}{Many -ed, -ing, -ly, and -ic forms, which are not listed explicitly~\cite{ward2026}.}
+
+\resource{YAWL (Yet Another Word List) 0.3.2.03. Game-derived.}
+\resfield{What it is}{A word-game list by M. Leo Cooper, a superset of ENABLE, OSW, and lists by Alan Beale; rehosted on GitHub by Aaron Bull Schaefer~\cite{cooper2026a}.}
+\resfield{Size, as stated}{264,097 words~\cite{cooper2026a}.}
+\resfield{License, as stated}{The list "is in the Public Domain"~\cite{cooper2026a}.}
+\resfield{What it records per entry}{Membership~\cite{cooper2026a}.}
+\resfield{What it does not record}{Anything beyond the string~\cite{cooper2026a}.}
+
+\resource{Letterpress word list. Game-derived.}
+\resfield{What it is}{The word list behind the Letterpress game, loosely based on other word lists; its rule is that a word allowed in another popular word game such as Scrabble should be allowed, and it names YAWL, ENABLE2K, and CSW12 as useful lists~\cite{lorenbrichterwordsmaintainers2026}.}
+\resfield{Size, as stated}{Not stated~\cite{lorenbrichterwordsmaintainers2026}.}
+\resfield{License, as stated}{CC0 1.0 Universal~\cite{lorenbrichterwordsmaintainers2026}.}
+\resfield{What it records per entry}{Membership in 1 sorted file per language; US, UK, and Australian spellings combined~\cite{lorenbrichterwordsmaintainers2026}.}
+\resfield{What it does not record}{Proper nouns and acronyms, excluded by rule with a few kept for historical reasons; which spelling variety an entry belongs to~\cite{lorenbrichterwordsmaintainers2026}.}
+
+\resource{Wordnik wordlist. A word-game list; the source of its selection is not stated.}
+\resfield{What it is}{A list of English words commonly used in word games, for game developers~\cite{wordnik2026a}. Wordnik's paid game dataset, which the README offers to those who need more data, states that it takes its playable words from ENABLE and the Tournament Word List~\cite{wordnik2026}.}
+\resfield{Size, as stated}{Not stated~\cite{wordnik2026a}.}
+\resfield{License, as stated}{MIT License, Copyright 2020 Wordnik~\cite{wordnik2026a}.}
+\resfield{What it records per entry}{Membership~\cite{wordnik2026a}.}
+\resfield{What it does not record}{Definitions, parts of speech, frequency, and offensive-term labels, which the README offers in a licensed dataset~\cite{wordnik2026a}.}
+
+\resource{dwyl/english-words}
+\resfield{What it is}{A text file of English words extracted from a word list once published by Infochimps~\cite{dwyl2026}.}
+\resfield{Size, as stated}{"Over 466k" words in the README; 479k in the repository's description~\cite{dwyl2026}.}
+\resfield{License, as stated}{The Unlicense, beside a README that says the copyright still belongs to the original publisher~\cite{dwyl2026}.}
+\resfield{What it records per entry}{1 string per line; a second file keeps only letters-only strings~\cite{dwyl2026}.}
+\resfield{What it does not record}{Anything beyond the string~\cite{dwyl2026}.}
+
+\resource{Webster's Second word lists (web2, web2a)}
+\resfield{What it is}{Word lists in FreeBSD's \texttt{share/dict} directory, introduced as Webster's Second International; web2a holds hyphenated terms and noun and adverbial phrases. FreeBSD maintains web2 as a list of current American English spellings and has removed a few entries~\cite{woods2026}.}
+\resfield{Size, as stated}{web2: 234,936 words; no count for web2a~\cite{woods2026}.}
+\resfield{License, as stated}{No license stated; the README says the 1934 copyright "has lapsed, according to the supplier"~\cite{woods2026}. The Catalog of Copyright Entries records renewals of the dictionary's 1934 copyrights on December 18, 1961~\cite{libraryof1961}.}
+\resfield{What it records per entry}{Membership~\cite{woods2026}.}
+\resfield{What it does not record}{Anything beyond the string~\cite{woods2026}.}
+
+\subsection*{Frequency resources and norms}
+
+\resource{wordfreq 3.1.1 (Robyn Speer)}
+\resfield{What it is}{A Python library of word frequencies in over 40 languages, combining several sources; its data is a snapshot of usage through about 2021 and is unlikely to be updated again~\cite{speer2026,speer2026a}. 3.1.1, uploaded November 21, 2023, is the newest release on PyPI~\cite{pythonpackage2026}.}
+\resfield{Size, as stated}{No English word count stated; its table lists 7 sources for English~\cite{speer2026}.}
+\resfield{License, as stated}{Code under the Apache license; data files that may be redistributed under CC BY-SA 4.0~\cite{speer2026}. The current README adds that converting the data to CSV does not follow the license, because CSV has no place for attribution~\cite{speer2026}.}
+\resfield{What it records per entry}{A frequency per word, also on the Zipf scale (the base-10 logarithm of occurrences per billion words)~\cite{speer2026}.}
+\resfield{What it does not record}{Words below its cutoff: the lowest Zipf value in the large lists is 1.0, and a word not in the list returns a default value of 0, not a missing value~\cite{speer2026}.}
+
+\resource{Google Books Ngram, English, version 20200217}
+\resfield{What it is}{N-gram counts from the books Google has scanned; the downloadable sets were generated in February 2020 (version 3), July 2012 (version 2), and July 2009 (version 1)~\cite{googlebooks2026}.}
+\resfield{Size, as stated}{No English 1-gram type count stated~\cite{googlebooks2026}. The first corpus held 5,195,769 books, with 361 billion English words~\cite{michel2011}; the 2012 edition held 8,116,746 books, the English part close to half a trillion words~\cite{lin2012}.}
+\resfield{License, as stated}{"This compilation is licensed under a Creative Commons Attribution 3.0 Unported License"~\cite{googlebooks2026}; the Viewer's page says its graphs and data may be freely used for any purpose, with acknowledgment appreciated~\cite{googlebooks2026a}.}
+\resfield{What it records per entry}{Per n-gram and year, a match count and a volume count (the version 2 format)~\cite{googlebooks2026}.}
+\resfield{What it does not record}{N-grams that occur 40 times or fewer across the corpus, which versions 1 and 2 omit~\cite{googlebooks2026}; how often a book was read, since the corpus holds one copy of each book~\cite{pechenick2015}.}
+
+\resource{SUBTLEX-US}
+\resfield{What it is}{Word frequencies from American film and television subtitles~\cite{brysbaert2009}.}
+\resfield{Size, as stated}{74,286 words in the corpus, 60,384 of them with a frequency above 1~\cite{ghentuniversity2026}, from 51.0 million words in 8,388 films and episodes~\cite{brysbaert2009}.}
+\resfield{License, as stated}{The 2009 paper: freely available for research purposes~\cite{brysbaert2009}. The author's copy on OSF carries a license file dated May 7, 2024 stating CC BY-NC-SA 4.0~\cite{brysbaert2024}. The Ghent University download page states no license~\cite{ghentuniversity2026}.}
+\resfield{What it records per entry}{A frequency count, the number of films a word occurs in, a count of lowercase occurrences, and per-million values~\cite{ghentuniversity2026}.}
+\resfield{What it does not record}{Not stated in the pages read.}
+
+\resource{SUBTLEX-UK}
+\resfield{What it is}{British English word frequencies from BBC subtitles broadcast from January 2010 to December 2012~\cite{vanheuven2014}.}
+\resfield{Size, as stated}{332,987 word types in 201.7 million tokens; the main file holds 160,022 types (159,235 single words and 787 hyphenated)~\cite{vanheuven2014}.}
+\resfield{License, as stated}{The author's OSF copy carries a license file dated May 7, 2024 stating CC BY-NC-SA 4.0~\cite{brysbaert2024a}.}
+\resfield{What it records per entry}{Frequency, Zipf value, contextual diversity, the dominant part of speech and its lemma, and all parts of speech observed~\cite{vanheuven2014}.}
+\resfield{What it does not record}{Types seen in a single broadcast, and types with digits or other non-letter symbols, which the main file leaves out~\cite{vanheuven2014}.}
+
+\resource{English Lexicon Project}
+\resfield{What it is}{Behavioral and descriptive data for lexical decision and naming studies~\cite{balota2007}.}
+\resfield{Size, as stated}{40,481 words and 40,481 nonwords~\cite{balota2007}.}
+\resfield{License, as stated}{No terms on the home page (archived October 14, 2026); an About page archived in 2019 says word lists from the site are for non-commercial research only and may not be used to develop speech technology~\cite{englishlexicon2026}. The live site's certificate had expired when read on October 26, 2026.}
+\resfield{What it records per entry}{Lexical decision and naming responses (816 and 444 participants) and descriptive lexical statistics~\cite{balota2007}.}
+\resfield{What it does not record}{Not stated in the pages read.}
+
+\resource{Web 1T 5-gram Version 1 (LDC2006T13). Not open.}
+\resfield{What it is}{English word n-grams and their counts from about 1 trillion tokens of text from publicly accessible web pages, contributed by Google~\cite{brants2006}.}
+\resfield{Size, as stated}{13,588,391 unigrams; 1,024,908,267,229 tokens~\cite{brants2006}.}
+\resfield{License, as stated}{The Web 1T 5-gram Version 1 Agreement of the Linguistic Data Consortium; fees apply~\cite{brants2006}.}
+\resfield{What it records per entry}{N-grams of 1 to 5 words with observed frequency counts~\cite{brants2006}.}
+\resfield{What it does not record}{Not stated in the pages read.}
