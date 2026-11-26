@@ -476,8 +476,8 @@ Each step has a committed record; the counts are taken at the current pin.
 2. **The merge** (`reference/research/merge/merge.json`): the EOL universe
    and the census's candidates; filtering the merge by the `eol` flag
    regenerates the EOL's pinned lists byte for byte. At the EOL's revision
-   `c550751e` the merge holds 9,653,667 inherited strings
-   and 9,867,534 rows.
+   `c550751e` (`pipeline/research/universe/repin.json`) the merge
+   holds 9,653,667 inherited strings and 9,867,534 rows.
 3. **The audit** (`reference/research/audit/reconcile.json`): the audited
    sources' coverage of the merged universe, reconciled at the EOL's
    earlier revision `c1139698`: 133,875

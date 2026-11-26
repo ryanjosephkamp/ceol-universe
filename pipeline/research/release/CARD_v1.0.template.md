@@ -390,8 +390,8 @@ Each step has a committed record; the counts are taken at the current pin.
 2. **The merge** (`reference/research/merge/merge.json`): the EOL universe
    and the census's candidates; filtering the merge by the `eol` flag
    regenerates the EOL's pinned lists byte for byte. At the EOL's revision
-   `{{eol_revision}}` the merge holds {{eol_universe_rows}} inherited strings
-   and {{merge_rows}} rows.
+   `{{eol_revision}}` (`pipeline/research/universe/repin.json`) the merge
+   holds {{eol_universe_rows}} inherited strings and {{merge_rows}} rows.
 3. **The audit** (`reference/research/audit/reconcile.json`): the audited
    sources' coverage of the merged universe, reconciled at the EOL's
    earlier revision `{{archival_eol_revision}}`: {{c4_additions}}
