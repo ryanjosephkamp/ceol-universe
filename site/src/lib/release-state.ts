@@ -19,6 +19,10 @@ export const DATASET_PUBLIC = false;
 export const PENDING_NOTE =
   "The full dataset is not published yet. A license review comes first, and the dataset will be released once it is finished; no date is promised. Until then the site shows the dataset's statistics and a sample, and lists cannot be built or downloaded.";
 
+/** The open subset: the universe's rows that open word lists list, public on
+ * the hub while the full dataset waits on the license review. */
+export const OPEN_SUBSET_URL = 'https://huggingface.co/datasets/ryanjosephkamp/ceol-universe-open';
+
 /** The universe file of the version on the hub, at the version's tag. */
 export const HUB_LIST_SOURCE = `https://huggingface.co/datasets/${DATASET}/resolve/${VERSION}/data/universe.parquet`;
 

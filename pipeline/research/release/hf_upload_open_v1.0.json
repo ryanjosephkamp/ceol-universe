@@ -1,0 +1,39 @@
+{
+  "generated_by": "research/release/upload_open_subset.py",
+  "repo_id": "ryanjosephkamp/ceol-universe-open",
+  "account": "ryanjosephkamp",
+  "commit": "0bbf4b867b660bd3f0ca18f8289358096cc0e7cd",
+  "record_sha256": "33e5bc95e575e1e43930b864cfbd1a8609e42ef75e9f18f202f460945252620a",
+  "private_before": true,
+  "uploaded_at": "2026-11-26T16:36:41Z",
+  "owner_word": "please go ahead with all the public steps for the subset and the report correction. Thank you.",
+  "files": [
+    {
+      "path": "data/open-lists.parquet",
+      "sha256": "beb133fc59d017168f81317800a19bdc6049c86e83f2e331686a37fb9038b3f0",
+      "git_blob_id": "75d052455bb066d8b78270353dbf357540191083"
+    },
+    {
+      "path": "data/wordnet-wiktionary.parquet",
+      "sha256": "6d86c82d23875a28aad39b4097779bd630e82bb90a8c28747e83d1cb1ef4be51",
+      "git_blob_id": "05df5a30ab22051abdd089e83f91961d7b9cc16e"
+    },
+    {
+      "path": "data/sample.parquet",
+      "sha256": "b7d0ee9d705dc011974e83ec737dc2d841accb9623eb815f9778c5a7730cb4f5",
+      "git_blob_id": "41666543fe1a27df213f7def8745c8b2169a59f4"
+    },
+    {
+      "path": "README.md",
+      "sha256": "62194bbfc79d56b8f8ce6f9219944d0a6835e4099bc80c0271e604eaff0cd276",
+      "git_blob_id": "0792cdec46b3ca52ebe871570cee0b38e6aa9dd3"
+    },
+    {
+      "path": "NOTICES.md",
+      "sha256": "6272d18f290b6ee955caec00715aeafd14a11cb7aa863572c352db8ad7627a9d",
+      "git_blob_id": "3c08b63cfbc384951f551c7305ed1f26348a28e1"
+    }
+  ],
+  "verification": "verified",
+  "private_after": true
+}

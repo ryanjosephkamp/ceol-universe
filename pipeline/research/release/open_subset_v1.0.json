@@ -1,0 +1,373 @@
+{
+  "generated_by": "research/release/open_subset.py",
+  "dataset": "ryanjosephkamp/ceol-universe-open",
+  "subset_of": "ryanjosephkamp/ceol-universe v1.0",
+  "built_on": "2026-11-25",
+  "canary": "5d0f3e2a-7c1b-4f86-9a3e-2b8c6d41e957",
+  "license": "CC-BY-SA-4.0",
+  "version": {
+    "universe_rows": 10264273,
+    "universe_sha256": "f4355af70b01bd40ea340849bac07bd79a680695d31aced94a53cde39ef3de60",
+    "notices_sha256": "8b15dc2b5f8380bc15ee6f0e31a812ba4f9ea4194c40aaa8e5956e69cdefbb39",
+    "columns_read": [
+      "id",
+      "word",
+      "token_count",
+      "classes",
+      "wordnet",
+      "wiktionary_english",
+      "hunspell_en_US",
+      "hunspell_en_CA",
+      "hunspell_en_AU",
+      "scowl_tier",
+      "gb_type",
+      "wn_instance",
+      "wn_capitalized",
+      "wk_proper_noun",
+      "wk_flags"
+    ],
+    "columns_never_read": [
+      "eol",
+      "eol_universe",
+      "sources",
+      "intake_date",
+      "c4_addition",
+      "is_restricted",
+      "c015_addition",
+      "class_explicit",
+      "panel_sets",
+      "variety_gb_not_us",
+      "variety_us_not_gb",
+      "intake_layer",
+      "intake_kind",
+      "intake_channels",
+      "eol_phase1_tier",
+      "eol_record",
+      "eol_synthetic_category",
+      "eol_synthetic_engine_inferred",
+      "wordfreq_scored",
+      "wikt_title_any",
+      "provenance_class",
+      "hunspell_en_GB",
+      "enable1",
+      "wikt_title_screen",
+      "model_or_engine"
+    ],
+    "columns_read_for_a_count": [
+      "panel_count"
+    ],
+    "listed_not_open": 205176,
+    "open_single_scowl_over_70": 230486
+  },
+  "open_lists": [
+    "wordnet",
+    "wiktionary_english",
+    "hunspell_en_US",
+    "hunspell_en_CA",
+    "hunspell_en_AU",
+    "scowl"
+  ],
+  "scowl_max_size": 70,
+  "configs": [
+    {
+      "config": "open-lists",
+      "path": "data/open-lists.parquet",
+      "predicate": "list_count >= 1 over the version's rows: listed by WordNet, the English Wiktionary, hunspell en_US, en_CA, or en_AU, or SCOWL at a size of 10 to 70",
+      "lists": [
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "scowl"
+      ],
+      "rows": 1179657,
+      "columns": [
+        "id",
+        "word",
+        "token_count",
+        "classes",
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "scowl_size",
+        "gb_type",
+        "list_count",
+        "listed_by",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags"
+      ],
+      "row_group_rows": 1140000,
+      "bytes": 18894524,
+      "sha256": "beb133fc59d017168f81317800a19bdc6049c86e83f2e331686a37fb9038b3f0",
+      "counts": {
+        "rows": 1179657,
+        "single": 884792,
+        "multiword": 294865,
+        "single_by_list": {
+          "wordnet": 80441,
+          "wiktionary_english": 831973,
+          "hunspell_en_US": 121252,
+          "hunspell_en_CA": 120947,
+          "hunspell_en_AU": 121490,
+          "scowl": 143729
+        },
+        "single_only_list": {
+          "wordnet": 9230,
+          "wiktionary_english": 697984,
+          "hunspell_en_US": 285,
+          "hunspell_en_CA": 0,
+          "hunspell_en_AU": 134,
+          "scowl": 1421
+        },
+        "multiword_by_listing": {
+          "wiktionary_english": 231382,
+          "wordnet": 43972,
+          "wordnet;wiktionary_english": 19511
+        },
+        "single_by_list_count": {
+          "1": 709054,
+          "2": 40248,
+          "3": 27218,
+          "4": 31134,
+          "5": 38736,
+          "6": 38402
+        },
+        "single_gb_type": 657002,
+        "single_by_scowl_size": {
+          "10": 4492,
+          "20": 8397,
+          "35": 39430,
+          "40": 7077,
+          "50": 26203,
+          "55": 6936,
+          "60": 14934,
+          "70": 36260
+        },
+        "single_by_class": {
+          "accented": 1846,
+          "apostrophe-form": 36894,
+          "contraction": 1166,
+          "diaeresis": 807,
+          "hyphenated": 49692,
+          "ligature": 1926,
+          "plain": 794143,
+          "s-final": 34545
+        },
+        "multiword_true": {
+          "wn_instance": 7812,
+          "wn_capitalized": 24635,
+          "wk_proper_noun": 582
+        }
+      }
+    },
+    {
+      "config": "wordnet-wiktionary",
+      "path": "data/wordnet-wiktionary.parquet",
+      "predicate": "list_count >= 1 over the version's rows, counting WordNet and the English Wiktionary alone",
+      "lists": [
+        "wordnet",
+        "wiktionary_english"
+      ],
+      "rows": 1139896,
+      "columns": [
+        "id",
+        "word",
+        "token_count",
+        "classes",
+        "wordnet",
+        "wiktionary_english",
+        "list_count",
+        "listed_by",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags"
+      ],
+      "row_group_rows": 1139896,
+      "bytes": 16974568,
+      "sha256": "6d86c82d23875a28aad39b4097779bd630e82bb90a8c28747e83d1cb1ef4be51",
+      "counts": {
+        "rows": 1139896,
+        "single": 845031,
+        "multiword": 294865,
+        "single_by_list": {
+          "wordnet": 80441,
+          "wiktionary_english": 831973
+        },
+        "single_only_list": {
+          "wordnet": 13058,
+          "wiktionary_english": 764590
+        },
+        "multiword_by_listing": {
+          "wiktionary_english": 231382,
+          "wordnet": 43972,
+          "wordnet;wiktionary_english": 19511
+        },
+        "single_by_list_count": {
+          "1": 777648,
+          "2": 67383
+        },
+        "single_by_class": {
+          "accented": 1770,
+          "apostrophe-form": 2493,
+          "contraction": 1162,
+          "diaeresis": 804,
+          "hyphenated": 49692,
+          "ligature": 1926,
+          "plain": 788794,
+          "s-final": 167
+        },
+        "multiword_true": {
+          "wn_instance": 7812,
+          "wn_capitalized": 24635,
+          "wk_proper_noun": 582
+        }
+      }
+    },
+    {
+      "config": "sample",
+      "path": "data/sample.parquet",
+      "predicate": "the rows of open-lists whose id starts with '00'",
+      "lists": [
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "scowl"
+      ],
+      "rows": 4554,
+      "columns": [
+        "id",
+        "word",
+        "token_count",
+        "classes",
+        "wordnet",
+        "wiktionary_english",
+        "hunspell_en_US",
+        "hunspell_en_CA",
+        "hunspell_en_AU",
+        "scowl_size",
+        "gb_type",
+        "list_count",
+        "listed_by",
+        "wn_instance",
+        "wn_capitalized",
+        "wk_proper_noun",
+        "wk_flags"
+      ],
+      "row_group_rows": 4554,
+      "bytes": 102919,
+      "sha256": "b7d0ee9d705dc011974e83ec737dc2d841accb9623eb815f9778c5a7730cb4f5",
+      "counts": {
+        "rows": 4554,
+        "single": 3451,
+        "multiword": 1103,
+        "single_by_list": {
+          "wordnet": 306,
+          "wiktionary_english": 3262,
+          "hunspell_en_US": 491,
+          "hunspell_en_CA": 494,
+          "hunspell_en_AU": 497,
+          "scowl": 567
+        },
+        "single_only_list": {
+          "wordnet": 36,
+          "wiktionary_english": 2729,
+          "hunspell_en_US": 0,
+          "hunspell_en_CA": 0,
+          "hunspell_en_AU": 2,
+          "scowl": 5
+        },
+        "multiword_by_listing": {
+          "wiktionary_english": 875,
+          "wordnet": 165,
+          "wordnet;wiktionary_english": 63
+        },
+        "single_by_list_count": {
+          "1": 2772,
+          "2": 149,
+          "3": 80,
+          "4": 111,
+          "5": 171,
+          "6": 168
+        },
+        "single_gb_type": 2588,
+        "single_by_scowl_size": {
+          "10": 19,
+          "20": 38,
+          "35": 161,
+          "40": 24,
+          "50": 115,
+          "55": 18,
+          "60": 66,
+          "70": 126
+        },
+        "single_by_class": {
+          "accented": 8,
+          "apostrophe-form": 138,
+          "contraction": 7,
+          "diaeresis": 4,
+          "hyphenated": 180,
+          "ligature": 6,
+          "plain": 3115,
+          "s-final": 129
+        },
+        "multiword_true": {
+          "wn_instance": 33,
+          "wn_capitalized": 98,
+          "wk_proper_noun": 2
+        }
+      }
+    }
+  ],
+  "documents": {
+    "NOTICES.md": {
+      "bytes": 17511,
+      "sha256": "6272d18f290b6ee955caec00715aeafd14a11cb7aa863572c352db8ad7627a9d",
+      "sections": [
+        {
+          "section": "The English Wiktionary",
+          "lead_in_replaced": true,
+          "paragraphs_dropped": 1
+        },
+        {
+          "section": "WordNet 3.0 (Princeton University)",
+          "lead_in_replaced": true,
+          "paragraphs_dropped": 0
+        },
+        {
+          "section": "SCOWL 2020.12.07 (Kevin Atkinson), and the en_US, en_CA, and en_AU hunspell dictionaries",
+          "lead_in_replaced": true,
+          "paragraphs_dropped": 0
+        },
+        {
+          "section": "The Google Books Ngram corpus",
+          "lead_in_replaced": true,
+          "paragraphs_dropped": 0
+        }
+      ]
+    },
+    "README.md": {
+      "bytes": 14584,
+      "sha256": "62194bbfc79d56b8f8ce6f9219944d0a6835e4099bc80c0271e604eaff0cd276"
+    }
+  },
+  "outside": {
+    "by_list": {
+      "wordnet": 2291,
+      "wiktionary_english": 0,
+      "hunspell_en_US": 0,
+      "hunspell_en_CA": 0,
+      "hunspell_en_AU": 0,
+      "scowl": 0
+    },
+    "wordnet_not_rows": 2291,
+    "note": "strings each open list holds under the CEOL grammar that are not rows of the version"
+  }
+}
