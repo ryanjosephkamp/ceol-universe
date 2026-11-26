@@ -230,7 +230,8 @@ primary source, and the author ruled on the readings. 5 lists are withheld from 
 version, because their membership may not be published: NASPA Word List 2023 and Collins Scrabble Words
 2021, which are proprietary; the legacy SOWPODS list, for which no license was found; and Webster's Second
 International and its supplement of hyphenated terms, whose 1961 copyright renewal holds. Their columns
-and labels are absent. Their rows still ship wherever published evidence supports them.
+and labels are absent. Their rows still ship wherever published evidence supports them, except the
+census and audit rows held back below.
 
 The withholding has measured effects, which the card states and this report repeats:
 
@@ -238,8 +239,8 @@ The withholding has measured effects, which the card states and this report repe
   proprietary lists and are in no version.
 - **Held-back rows.** Of the 10,294,289 shippable rows, 30,016 are held back in the
   private record: rows that nothing published supports once the withheld lists and channels are taken
-  away, and rows of the census and the audit whose every source label names a withheld list, though a
-  corpus may hold them.
+  away, and rows of the census and the audit whose every source label names a withheld list, though
+  published evidence may support them.
 
 | Why the row is held back | Rows |
 |---|---:|
@@ -281,7 +282,8 @@ built" page shows the same steps with their counts.
    of the merged universe was reconciled: 133,875 strings a source listed and the merge lacked
    were added, and 7,099 that only wordfreq listed, outside the EOL's frame, were
    left out. Re-pinned to `c550751e`, the 332 inherited strings in neither of the EOL's
-   lists at that revision left the pin. The result is the single-token pin, 10,001,409 candidates.
+   lists at that revision left the pin; the counts of steps 1 and 3, taken at that revision, already
+   leave them out. The result is the single-token pin, 10,001,409 candidates.
 5. **The spaced admission.** 294,865 multiword candidates from WordNet and Wiktionary were admitted
    under the grammar's space rule. The pin, 10,296,274 rows, reproduces the single-token pin byte for
    byte as its single-token projection.
@@ -701,7 +703,7 @@ the union grows from a mean of 278,722 rows for 1 list to 1,089,968 for all
   version.** They are held back in the private record (§4): rows that
   nothing published supports once the withheld lists and channels are
   taken away, and rows of the census and the audit whose every source
-  label names a withheld list, though a corpus may hold them.
+  label names a withheld list, though published evidence may support them.
 - **A channel may be withheld for license reasons.** 0
   rows carry `eol:channel-withheld` in `intake_channels`: every channel
   recorded for them is withheld, because it names a withheld list or a

@@ -131,7 +131,8 @@ primary source, and the author ruled on the readings. {{withheld_list_count}} li
 version, because their membership may not be published: NASPA Word List 2023 and Collins Scrabble Words
 2021, which are proprietary; the legacy SOWPODS list, for which no license was found; and Webster's Second
 International and its supplement of hyphenated terms, whose 1961 copyright renewal holds. Their columns
-and labels are absent. Their rows still ship wherever published evidence supports them.
+and labels are absent. Their rows still ship wherever published evidence supports them, except the
+census and audit rows held back below.
 
 The withholding has measured effects, which the card states and this report repeats:
 
@@ -139,8 +140,8 @@ The withholding has measured effects, which the card states and this report repe
   proprietary lists and are in no version.
 - **Held-back rows.** Of the {{rows_shippable}} shippable rows, {{held_back_rows}} are held back in the
   private record: rows that nothing published supports once the withheld lists and channels are taken
-  away, and rows of the census and the audit whose every source label names a withheld list, though a
-  corpus may hold them.
+  away, and rows of the census and the audit whose every source label names a withheld list, though
+  published evidence may support them.
 
 {{table:held_back}}
 
@@ -178,7 +179,8 @@ built" page shows the same steps with their counts.
    of the merged universe was reconciled: {{c4_additions}} strings a source listed and the merge lacked
    were added, and {{audit_wordfreq_left_out}} that only wordfreq listed, outside the EOL's frame, were
    left out. Re-pinned to `{{eol_revision}}`, the {{repin_left}} inherited strings in neither of the EOL's
-   lists at that revision left the pin. The result is the single-token pin, {{v1_rows}} candidates.
+   lists at that revision left the pin; the counts of steps 1 and 3, taken at that revision, already
+   leave them out. The result is the single-token pin, {{v1_rows}} candidates.
 5. **The spaced admission.** {{pin_spaced}} multiword candidates from WordNet and Wiktionary were admitted
    under the grammar's space rule. The pin, {{rows_pin}} rows, reproduces the single-token pin byte for
    byte as its single-token projection.

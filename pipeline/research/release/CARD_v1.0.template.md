@@ -106,7 +106,7 @@ Read these before using the dataset.
   version.** They are held back in the private record (§6): rows that
   nothing published supports once the withheld lists and channels are
   taken away, and rows of the census and the audit whose every source
-  label names a withheld list, though a corpus may hold them.
+  label names a withheld list, though published evidence may support them.
 - **A channel may be withheld for license reasons.** {{channel_withheld_rows}}
   rows carry `{{channel_withheld_label}}` in `intake_channels`: every channel
   recorded for them is withheld, because it names a withheld list or a
@@ -257,7 +257,8 @@ terms, and `NOTICES.md` carries the notices.
   terms (`web2`, `web2a`), whose 1961 copyright renewal holds. Their
   columns ({{withheld_columns}}) are absent, and every label naming them is
   removed from `sources`, `intake_channels`, and `panel_sets`. Their rows
-  still ship wherever published evidence supports them. The Webster's
+  still ship wherever published evidence supports them, except the census
+  and audit rows held back below. The Webster's
   Second columns can return in a version built on or after
   January 1, 2030.
 - **Channel labels withheld for license reasons.** Some intake channels
@@ -291,7 +292,8 @@ terms, and `NOTICES.md` carries the notices.
   {{held_withheld_sources}} rows of the census and the audit's additions
   have every `sources` label naming a withheld list. Shipped, their empty
   `sources` would say that a withheld list holds them, so they are held back
-  the same way, though some keep corpus containment.
+  the same way, though some keep corpus containment and some are listed
+  by WordNet, which the census did not read.
 
 The rows held back, {{held_back_rows}} in all, by reason. They are counted
 and never listed.
