@@ -256,9 +256,7 @@ terms, and `NOTICES.md` carries the notices.
   and Webster's Second International and its supplement of hyphenated
   terms (`web2`, `web2a`), whose 1961 copyright renewal holds. Their
   columns ({{withheld_columns}}) are absent, and every label naming them is
-  removed from `sources`, `intake_channels`, and `panel_sets`. Their rows
-  still ship wherever published evidence supports them, except the census
-  and audit rows held back below. The Webster's
+  removed from `sources`, `intake_channels`, and `panel_sets`. The Webster's
   Second columns can return in a version built on or after
   January 1, 2030.
 - **Channel labels withheld for license reasons.** Some intake channels
@@ -293,7 +291,7 @@ terms, and `NOTICES.md` carries the notices.
   have every `sources` label naming a withheld list. Shipped, their empty
   `sources` would say that a withheld list holds them, so they are held back
   the same way, though some keep corpus containment and some are listed
-  by WordNet, which the census did not read.
+  by WordNet, which is not one of the census's admission sources.
 
 The rows held back, {{held_back_rows}} in all, by reason. They are counted
 and never listed.
@@ -402,7 +400,8 @@ Each step has a committed record; the counts are taken at the current pin.
 4. **The single-token pin** (`reference/research/universe/universe.json`),
    re-pinned to the EOL's revision `{{eol_revision}}`
    (`pipeline/research/universe/repin.json`): an inherited string in
-   neither of the EOL's lists at that revision leaves the pin, `eol` is
+   neither of the EOL's lists at that revision leaves the pin (the counts
+   of step 2, taken at that revision, already leave them out), `eol` is
    read again, and every other row is unchanged; {{v1_rows}} candidates.
 5. **The spaced admission** (`pipeline/research/universe_v2/universe_v2.json`):
    {{pin_spaced}} multiword candidates from WordNet and Wiktionary. The pin,

@@ -2,7 +2,7 @@
 
 Version 1.0's `features` config leaves out 12 of the feature layer's columns. This page says what the 12 columns are, why each is withheld, how the test behind the 2 orthotactic columns works, what its results mean, and what a later version needs before the columns return.
 
-The rule they answer to is the project's: no public field may reveal a withheld list's membership. The 5 withheld lists are NWL2023, CSW21, SOWPODS, and Webster's Second in its 2 forms, `web2` and `web2a`. Their rows still ship. What a public version leaves out is anything that says which rows they list.
+The rule they answer to is the project's: no public field may reveal a withheld list's membership. The 5 withheld lists are NWL2023, CSW21, SOWPODS, and Webster's Second in its 2 forms, `web2` and `web2a`. A public version leaves out their columns and labels, and holds back some rows, under the rules in section 6 of the dataset card.
 
 ## 1. The feature layer
 

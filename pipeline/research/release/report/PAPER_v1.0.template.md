@@ -131,8 +131,7 @@ primary source, and the author ruled on the readings. {{withheld_list_count}} li
 version, because their membership may not be published: NASPA Word List 2023 and Collins Scrabble Words
 2021, which are proprietary; the legacy SOWPODS list, for which no license was found; and Webster's Second
 International and its supplement of hyphenated terms, whose 1961 copyright renewal holds. Their columns
-and labels are absent. Their rows still ship wherever published evidence supports them, except the
-census and audit rows held back below.
+and labels are absent.
 
 The withholding has measured effects, which the card states and this report repeats:
 
