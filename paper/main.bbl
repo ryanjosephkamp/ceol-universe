@@ -1,0 +1,721 @@
+\begin{thebibliography}{89}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Gurevych et~al.(2012)Gurevych, Eckle-Kohler, Hartmann, Matuschek,
+  Meyer, and Wirth]{gurevych2012uby}
+Iryna Gurevych, Judith Eckle-Kohler, Silvana Hartmann, Michael Matuschek,
+  Christian~M. Meyer, and Christian Wirth.
+\newblock {UBY} -- a large-scale unified lexical-semantic resource based on
+  {LMF}.
+\newblock In \emph{Proceedings of the 13th Conference of the European Chapter
+  of the Association for Computational Linguistics}, pages 580--590, Avignon,
+  France, 2012.
+\newblock URL \url{https://aclanthology.org/E12-1059/}.
+
+\bibitem[Atkinson(n.d{\natexlab{a}})]{atkinson2026a}
+K.~Atkinson.
+\newblock {English Speller Database (ESDB): README.md}.
+\newblock GitHub repository en-wl/wordlist, branch v2, n.d{\natexlab{a}}.
+\newblock URL \url{https://github.com/en-wl/wordlist/blob/v2/README.md}.
+\newblock Read October 26, 2026.
+
+\bibitem[{Wordnik}(n.d{\natexlab{a}})]{wordnik2026}
+{Wordnik}.
+\newblock {Wordnik For Game Developers}.
+\newblock developer.wordnik.com, n.d{\natexlab{a}}.
+\newblock URL \url{https://developer.wordnik.com/gameset}.
+\newblock Read October 26, 2026.
+
+\bibitem[Beale(2016)]{beale2026}
+A.~Beale.
+\newblock {Version 6 of the 12dicts word lists (readme, release 6.0.2); 12Dicts
+  Package}.
+\newblock wordlist.aspell.net.
+  \url{https://wordlist.aspell.net/12dicts-readme/} and
+  \url{https://wordlist.aspell.net/12dicts/}, 2016.
+\newblock Read October 26, 2026.
+
+\bibitem[Michel et~al.(2011)Michel, Shen, Aiden, Veres, Gray, Team, Pickett,
+  Hoiberg, Clancy, Norvig, Orwant, Pinker, Nowak, and Aiden]{michel2011}
+J.-B. Michel, Y.~K. Shen, A.~P. Aiden, A.~Veres, M.~K. Gray, The Google~Books
+  Team, J.~P. Pickett, D.~Hoiberg, D.~Clancy, P.~Norvig, J.~Orwant, S.~Pinker,
+  M.~A. Nowak, and E.~L. Aiden.
+\newblock {Quantitative analysis of culture using millions of digitized books}.
+\newblock Science, vol. 331, no. 6014, pp. 176–182, 2011.
+\newblock URL \url{https://doi.org/10.1126/science.1199644}.
+
+\bibitem[Gebru et~al.(2021)Gebru, Morgenstern, Vecchione, Vaughan, Wallach,
+  III, and Crawford]{gebru2021}
+T.~Gebru, J.~Morgenstern, B.~Vecchione, J.~Wortman Vaughan, H.~Wallach,
+  H.~Daumé III, and K.~Crawford.
+\newblock {Datasheets for Datasets}.
+\newblock Communications of the ACM, vol. 64, no. 12, pp. 86–92, 2021.
+\newblock URL \url{https://doi.org/10.1145/3458723}.
+
+\bibitem[Bender and Friedman(2018)]{bender2018}
+E.~M. Bender and B.~Friedman.
+\newblock {Data Statements for Natural Language Processing: Toward Mitigating
+  System Bias and Enabling Better Science}.
+\newblock Transactions of the Association for Computational Linguistics, vol.
+  6, pp. 587–604, 2018.
+\newblock URL \url{https://doi.org/10.1162/tacl_a_00041}.
+
+\bibitem[Bender et~al.(2021)Bender, Friedman, and McMillan-Major]{bender2021}
+E.~M. Bender, B.~Friedman, and A.~McMillan-Major.
+\newblock {A Guide for Writing Data Statements for Natural Language
+  Processing}.
+\newblock (schema version 2), University of Washington Tech Policy Lab, 2021.
+\newblock URL
+  \url{https://techpolicylab.uw.edu/wp-content/uploads/2021/11/Data_Statements_Guide_V2.pdf}.
+
+\bibitem[McMillan-Major and Bender(2024)]{mcmillanmajor2024}
+A.~McMillan-Major and E.~M. Bender.
+\newblock {Data Statements for Natural Language Processing: README.md and
+  template-v3.md (schema version 3, 2024)}.
+\newblock GitHub repository TechPolicyLab/Data-Statements, 2024.
+\newblock URL \url{https://github.com/TechPolicyLab/Data-Statements}.
+\newblock Read October 26, 2026.
+
+\bibitem[Pushkarna et~al.(2022)Pushkarna, Zaldivar, and
+  Kjartansson]{pushkarna2022}
+M.~Pushkarna, A.~Zaldivar, and O.~Kjartansson.
+\newblock {Data Cards: Purposeful and Transparent Dataset Documentation for
+  Responsible AI}.
+\newblock in Proceedings of the 2022 ACM Conference on Fairness,
+  Accountability, and Transparency (FAccT 2022), pp. 1776–1826, 2022.
+\newblock URL \url{https://doi.org/10.1145/3531146.3533231}.
+
+\bibitem[{Hugging Face}(n.d)]{huggingface2026}
+{Hugging Face}.
+\newblock {datasetcard\_template.md}.
+\newblock GitHub repository huggingface/huggingface\_hub, branch main, n.d.
+\newblock URL
+  \url{https://github.com/huggingface/huggingface_hub/blob/main/src/huggingface_hub/templates/datasetcard_template.md}.
+\newblock Read October 26, 2026.
+
+\bibitem[Akhtar et~al.(2024{\natexlab{a}})Akhtar, Benjelloun, Conforti,
+  Foschini, et~al.]{akhtar2024}
+M.~Akhtar, O.~Benjelloun, C.~Conforti, L.~Foschini, et~al.
+\newblock {Croissant: A Metadata Format for ML-Ready Datasets}.
+\newblock in Advances in Neural Information Processing Systems 37 (NeurIPS
+  2024), Datasets and Benchmarks Track, pp. 82133–82148, 2024{\natexlab{a}}.
+\newblock URL \url{https://doi.org/10.52202/079017-2610}.
+
+\bibitem[{MLCommons}(2026)]{mlcommons2026}
+{MLCommons}.
+\newblock {Croissant Format Specification, Version 1.1 (published January 29,
+  2026)}.
+\newblock Edited by O. Benjelloun and E. Simperl, GitHub repository
+  mlcommons/croissant, 2026.
+\newblock URL
+  \url{https://github.com/mlcommons/croissant/blob/main/docs/croissant-spec-1.1.md}.
+\newblock Read October 26, 2026.
+
+\bibitem[{MLCommons}(2024)]{mlcommons2024}
+{MLCommons}.
+\newblock {Croissant Format Specification, Version 1.0 (published March 1,
+  2024)}.
+\newblock GitHub repository mlcommons/croissant, 2024.
+\newblock URL
+  \url{https://github.com/mlcommons/croissant/blob/main/docs/croissant-spec.md}.
+\newblock Read October 26, 2026.
+
+\bibitem[Akhtar et~al.(2024{\natexlab{b}})Akhtar, Jain, Giner-Miguelez,
+  Benjelloun, Simperl, Aroyo, Shinde, and Kuchnik]{akhtar2024a}
+M.~Akhtar, N.~Jain, J.~Giner-Miguelez, O.~Benjelloun, E.~Simperl, L.~Aroyo,
+  R.~Shinde, and M.~Kuchnik.
+\newblock {Croissant RAI Specification, Version 1.0 (published March 6, 2024)}.
+\newblock MLCommons, GitHub repository mlcommons/croissant, 2024{\natexlab{b}}.
+\newblock URL
+  \url{https://github.com/mlcommons/croissant/blob/main/docs/croissant-rai-spec.md}.
+\newblock Read October 26, 2026.
+
+\bibitem[Wilkinson et~al.(2016)Wilkinson, Dumontier, Aalbersberg,
+  et~al.]{wilkinson2016}
+M.~D. Wilkinson, M.~Dumontier, I.~J. Aalbersberg, et~al.
+\newblock {The FAIR Guiding Principles for scientific data management and
+  stewardship}.
+\newblock Scientific Data, vol. 3, 160018, 2016.
+\newblock URL \url{https://doi.org/10.1038/sdata.2016.18}.
+
+\bibitem[{TEI Lex-0 contributors}(2026)]{teilex2026}
+{TEI Lex-0 contributors}.
+\newblock {TEI Lex-0: A baseline encoding for lexicographic data, version 0.9.5
+  (February 8, 2026)}.
+\newblock lex-0.org, chapter 1, "Header". \url{https://lex-0.org/} and
+  \url{https://lex-0.org/header.html}, 2026.
+\newblock Read October 26, 2026.
+
+\bibitem[Tasovac et~al.(2021)Tasovac, Romary, Tóth-Czifra, and
+  Marinski]{tasovac2021}
+T.~Tasovac, L.~Romary, E.~Tóth-Czifra, and I.~Marinski.
+\newblock {D6.4 Lexicographic Data Seal of Compliance}.
+\newblock ELEXIS project deliverable, July 30, 2021.
+\newblock URL \url{https://hal.science/hal-03344267}.
+
+\bibitem[Labropoulou et~al.(2020)Labropoulou, Gkirtzou, Gavriilidou,
+  Deligiannis, et~al.]{labropoulou2020}
+P.~Labropoulou, K.~Gkirtzou, M.~Gavriilidou, M.~Deligiannis, et~al.
+\newblock {Making Metadata Fit for Next Generation Language Technology
+  Platforms: The Metadata Schema of the European Language Grid}.
+\newblock in Proceedings of the 12th Conference on Language Resources and
+  Evaluation (LREC 2020), pp. 3428–3437, 2020.
+\newblock URL \url{https://aclanthology.org/2020.lrec-1.420/}.
+
+\bibitem[Calzolari et~al.(2012)Calzolari, Gratta, Francopoulo, Mariani, Rubino,
+  Russo, and Soria]{calzolari2012}
+N.~Calzolari, R.~Del Gratta, G.~Francopoulo, J.~Mariani, F.~Rubino, I.~Russo,
+  and C.~Soria.
+\newblock {The LRE Map. Harmonising Community Descriptions of Resources}.
+\newblock in Proceedings of the Eighth International Conference on Language
+  Resources and Evaluation (LREC 2012), 2012.
+\newblock URL \url{https://aclanthology.org/L12-1450/}.
+
+\bibitem[Rauber et~al.(2015)Rauber, Asmi, van Uytvanck, and Proell]{rauber2015}
+A.~Rauber, A.~Asmi, D.~van Uytvanck, and S.~Proell.
+\newblock {Data Citation of Evolving Data: Recommendations of the Working Group
+  on Data Citation (WGDC)}.
+\newblock Research Data Alliance, October 20, 2015.
+\newblock URL \url{https://doi.org/10.15497/RDA00016}.
+
+\bibitem[Reuel et~al.(2024)Reuel, Hardy, Smith, Lamparth, Hardy, and
+  Kochenderfer]{reuel2024betterbench}
+Anka Reuel, Amelia Hardy, Chandler Smith, Max Lamparth, Malcolm Hardy, and
+  Mykel~J. Kochenderfer.
+\newblock {BetterBench}: Assessing {AI} benchmarks, uncovering issues, and
+  establishing best practices.
+\newblock In \emph{Advances in Neural Information Processing Systems 37
+  (NeurIPS 2024), Datasets and Benchmarks Track}, pages 21763--21813, 2024.
+\newblock \doi{10.52202/079017-0685}.
+\newblock URL \url{https://doi.org/10.52202/079017-0685}.
+
+\bibitem[Sainz et~al.(2023)Sainz, Campos, García-Ferrero, Etxaniz, de~Lacalle,
+  and Agirre]{sainz2023}
+O.~Sainz, J.~A. Campos, I.~García-Ferrero, J.~Etxaniz, O.~Lopez de~Lacalle,
+  and E.~Agirre.
+\newblock {NLP Evaluation in trouble: On the Need to Measure LLM Data
+  Contamination for each Benchmark}.
+\newblock in Findings of the Association for Computational Linguistics: EMNLP
+  2023, pp. 10776–10787, 2023.
+\newblock URL \url{https://doi.org/10.18653/v1/2023.findings-emnlp.722}.
+
+\bibitem[Deng et~al.(2024)Deng, Zhao, Heng, Li, Cao, Tang, and Cohan]{deng2024}
+C.~Deng, Y.~Zhao, Y.~Heng, Y.~Li, J.~Cao, X.~Tang, and A.~Cohan.
+\newblock {Unveiling the Spectrum of Data Contamination in Language Model: A
+  Survey from Detection to Remediation}.
+\newblock in Findings of the Association for Computational Linguistics: ACL
+  2024, pp. 16078–16092, 2024.
+\newblock URL \url{https://doi.org/10.18653/v1/2024.findings-acl.951}.
+
+\bibitem[Xu et~al.(2024)Xu, Guan, Greene, and Kechadi]{xu2024}
+C.~Xu, S.~Guan, D.~Greene, and M-T. Kechadi.
+\newblock {Benchmark Data Contamination of Large Language Models: A Survey}.
+\newblock arXiv:2406.04244v1, 2024.
+\newblock URL \url{https://arxiv.org/abs/2406.04244}.
+
+\bibitem[Srivastava et~al.(2023)Srivastava, Rastogi, Rao,
+  et~al.]{srivastava2023}
+A.~Srivastava, A.~Rastogi, A.~Rao, et~al.
+\newblock {Beyond the Imitation Game: Quantifying and extrapolating the
+  capabilities of language models}.
+\newblock Transactions on Machine Learning Research, 2023; arXiv:2206.04615v3,
+  2023.
+\newblock URL \url{https://arxiv.org/abs/2206.04615}.
+
+\bibitem[Rein et~al.(2024)Rein, Hou, Stickland, Petty, Pang, Dirani, Michael,
+  and Bowman]{rein2024}
+D.~Rein, B.~L. Hou, A.~C. Stickland, J.~Petty, R.~Y. Pang, J.~Dirani,
+  J.~Michael, and S.~R. Bowman.
+\newblock {GPQA: A Graduate-Level Google-Proof Q\&A Benchmark}.
+\newblock in Proceedings of the First Conference on Language Modeling (COLM
+  2024), 2024.
+\newblock URL \url{https://arxiv.org/abs/2311.12022}.
+
+\bibitem[Wei et~al.(2025)Wei, Sun, Papay, McKinney, Han, Fulford, Chung,
+  et~al.]{wei2025}
+J.~Wei, Z.~Sun, S.~Papay, S.~McKinney, J.~Han, I.~Fulford, H.~W. Chung, et~al.
+\newblock {BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents}.
+\newblock arXiv:2504.12516v1, 2025.
+\newblock URL \url{https://arxiv.org/abs/2504.12516}.
+
+\bibitem[Chen et~al.(2025)Chen, Chen, Li, Jiang, Wan, He, Ran, Gu, Li, Xie, and
+  Ray]{chen2025}
+S.~Chen, Y.~Chen, Z.~Li, Y.~Jiang, Z.~Wan, Y.~He, D.~Ran, T.~Gu, H.~Li, T.~Xie,
+  and B.~Ray.
+\newblock {Benchmarking Large Language Models Under Data Contamination: A
+  Survey from Static to Dynamic Evaluation}.
+\newblock in Proceedings of the 2025 Conference on Empirical Methods in Natural
+  Language Processing, pp. 10080–10098, 2025.
+\newblock URL \url{https://doi.org/10.18653/v1/2025.emnlp-main.511}.
+
+\bibitem[Han et~al.(2025)Han, Mankikar, Michael, and Wang]{han2025}
+Z.~Han, M.~Mankikar, J.~Michael, and Z.~Wang.
+\newblock {Search-Time Data Contamination}.
+\newblock poster at the NeurIPS 2025 Workshop on Evaluating the Evolving LLM
+  Lifecycle, 2025.
+\newblock URL \url{https://arxiv.org/abs/2508.13180}.
+
+\bibitem[Carlini et~al.(2019)Carlini, Liu, Erlingsson, Kos, and
+  Song]{carlini2019}
+N.~Carlini, C.~Liu, Ú. Erlingsson, J.~Kos, and D.~Song.
+\newblock {The Secret Sharer: Evaluating and Testing Unintended Memorization in
+  Neural Networks}.
+\newblock in Proceedings of the 28th USENIX Security Symposium, pp. 267–284,
+  2019.
+\newblock URL \url{https://arxiv.org/abs/1802.08232}.
+
+\bibitem[Jain et~al.(2025)Jain, Han, Gu, Li, Yan, Zhang, Wang, Solar-Lezama,
+  Sen, and Stoica]{jain2025}
+N.~Jain, K.~Han, A.~Gu, W.-D. Li, F.~Yan, T.~Zhang, S.~Wang, A.~Solar-Lezama,
+  K.~Sen, and I.~Stoica.
+\newblock {LiveCodeBench: Holistic and Contamination Free Evaluation of Large
+  Language Models for Code}.
+\newblock in Proceedings of the Thirteenth International Conference on Learning
+  Representations (ICLR 2025), 2025.
+\newblock URL \url{https://arxiv.org/abs/2403.07974}.
+
+\bibitem[Jung and Gonen(2026)]{jung2026}
+H.~Jung and H.~Gonen.
+\newblock {PhantomBench: Benchmarking the Non-existential Threat of Language
+  Models}.
+\newblock arXiv:2606.11105v1, 2026.
+\newblock URL \url{https://arxiv.org/abs/2606.11105}.
+
+\bibitem[Uluoglakci and Temizel(2024)]{uluoglakci2024}
+C.~Uluoglakci and T.~Taskaya Temizel.
+\newblock {HypoTermQA: Hypothetical Terms Dataset for Benchmarking
+  Hallucination Tendency of LLMs}.
+\newblock in Proceedings of the 18th Conference of the European Chapter of the
+  Association for Computational Linguistics: Student Research Workshop, pp.
+  95–136, 2024.
+\newblock URL \url{https://doi.org/10.18653/v1/2024.eacl-srw.9}.
+
+\bibitem[Martínez et~al.(2024)Martínez, Conde, Merino-Gómez,
+  Bermúdez-Margaretto, Hernández, Reviriego, and Brysbaert]{martinez2024}
+G.~Martínez, J.~Conde, E.~Merino-Gómez, B.~Bermúdez-Margaretto, J.~A.
+  Hernández, P.~Reviriego, and M.~Brysbaert.
+\newblock {Establishing Vocabulary Tests as a Benchmark for Evaluating Large
+  Language Models}.
+\newblock PLOS ONE, vol. 19, no. 12, e0308259, 2024.
+\newblock URL \url{https://doi.org/10.1371/journal.pone.0308259}.
+
+\bibitem[Kim et~al.(2026)Kim, Jeon, and Lee]{kim2026koage}
+SungHo Kim, Eojin Jeon, and SangKeun Lee.
+\newblock {KoAGE}: Do large language models know, learn, and coin {Korean}
+  neologisms?
+\newblock arXiv:2610.19399v1, 2026.
+\newblock URL \url{https://arxiv.org/abs/2610.19399}.
+
+\bibitem[{LibreOffice contributors}(n.d)]{libreofficecontributors2026}
+{LibreOffice contributors}.
+\newblock {README\_en\_US.txt, README\_en\_CA.txt, README\_en\_AU.txt, and
+  README\_en\_GB.txt}.
+\newblock GitHub repository LibreOffice/dictionaries, folder en, branch master,
+  n.d.
+\newblock URL \url{https://github.com/LibreOffice/dictionaries/tree/master/en}.
+\newblock Read October 26, 2026.
+
+\bibitem[Atkinson et~al.(2020)]{atkinson2020}
+K.~Atkinson et~al.
+\newblock {Copyright}.
+\newblock SCOWL release 2020.12.07, GitHub repository en-wl/wordlist, tag
+  rel-2020.12.07, 2020.
+\newblock URL
+  \url{https://raw.githubusercontent.com/en-wl/wordlist/rel-2020.12.07/scowl/Copyright}.
+\newblock Read October 26, 2026.
+
+\bibitem[Cooper and Beale(n.d)]{cooper2026}
+M.~Cooper and A.~Beale.
+\newblock {ENABLE (README-enable2k.txt)}.
+\newblock mirrored in GitHub repository BartMassey/wordlists, commit 2845b64,
+  n.d.
+\newblock URL
+  \url{https://raw.githubusercontent.com/BartMassey/wordlists/2845b642405f6e63db0af966a8260e99366d5b3e/README-enable2k.txt}.
+\newblock Read October 26, 2026.
+
+\bibitem[Davis et~al.(2024)Davis, Peabody, and Leach]{rfc9562}
+K.~Davis, B.~Peabody, and P.~Leach.
+\newblock Universally unique {IDentifiers} ({UUIDs}).
+\newblock RFC 9562, Internet Engineering Task Force, 2024.
+\newblock URL \url{https://doi.org/10.17487/RFC9562}.
+
+\bibitem[{Library of Congress, Copyright Office}(1961)]{libraryof1961}
+{Library of Congress, Copyright Office}.
+\newblock {U.S. Copyright Renewals, 1961 July - December}.
+\newblock Project Gutenberg eBook 11824, a transcription of the Catalog of
+  Copyright Entries, lines 26239–26256, 1961.
+\newblock URL \url{https://www.gutenberg.org/ebooks/11824}.
+\newblock Read October 26, 2026.
+
+\bibitem[Pechenick et~al.(2015)Pechenick, Danforth, and Dodds]{pechenick2015}
+E.~A. Pechenick, C.~M. Danforth, and P.~S. Dodds.
+\newblock {Characterizing the Google Books Corpus: Strong Limits to Inferences
+  of Socio-Cultural and Linguistic Evolution}.
+\newblock PLoS ONE, vol. 10, no. 10, e0137041, 2015.
+\newblock URL \url{https://doi.org/10.1371/journal.pone.0137041}.
+
+\bibitem[Atkinson(2026)]{atkinson2026release}
+K.~Atkinson.
+\newblock Release 2026.02.25.
+\newblock GitHub repository en-wl/wordlist, release notes. Read November 25,
+  2026, 2026.
+\newblock URL
+  \url{https://github.com/en-wl/wordlist/releases/tag/rel-2026.02.25}.
+
+\bibitem[Kamp(2026{\natexlab{a}})]{ceolopen2026}
+Ryan Kamp.
+\newblock The {CEOL} universe, open subset, version 1.0.
+\newblock Hugging Face dataset ryanjosephkamp/ceol-universe-open,
+  2026{\natexlab{a}}.
+
+\bibitem[Kamp(2026{\natexlab{b}})]{ceolrepo2026}
+Ryan Kamp.
+\newblock ceol-universe: code and records of the {CEOL} universe.
+\newblock GitHub repository ryanjosephkamp/ceol-universe, 2026{\natexlab{b}}.
+\newblock URL \url{https://github.com/ryanjosephkamp/ceol-universe}.
+
+\bibitem[{Princeton University}(n.d{\natexlab{a}})]{princetonuniversity2026}
+{Princeton University}.
+\newblock {WordNet: A Lexical Database for English}.
+\newblock home page, n.d{\natexlab{a}}.
+\newblock URL \url{https://wordnet.princeton.edu/}.
+\newblock Read October 26, 2026, through the Internet Archive capture of
+  October 6, 2026 (the live site refused the request).
+
+\bibitem[{Princeton University}(n.d{\natexlab{b}})]{princetonuniversity2026a}
+{Princeton University}.
+\newblock {wnstats(7WN): WordNet 3.0 database statistics}.
+\newblock WordNet documentation, n.d{\natexlab{b}}.
+\newblock URL \url{https://wordnet.princeton.edu/documentation/wnstats7wn}.
+\newblock Read October 26, 2026, through the Internet Archive capture of
+  October 3, 2026.
+
+\bibitem[{Princeton University}(n.d{\natexlab{c}})]{princetonuniversity2026b}
+{Princeton University}.
+\newblock {License and Commercial Use of WordNet}.
+\newblock WordNet documentation, n.d{\natexlab{c}}.
+\newblock URL \url{https://wordnet.princeton.edu/license-and-commercial-use}.
+\newblock Read October 26, 2026, through the Internet Archive capture of
+  October 4, 2026.
+
+\bibitem[{Princeton University}(n.d{\natexlab{d}})]{princetonuniversity2026c}
+{Princeton University}.
+\newblock {wndb(5WN): WordNet database files}.
+\newblock WordNet documentation, n.d{\natexlab{d}}.
+\newblock URL \url{https://wordnet.princeton.edu/documentation/wndb5wn}.
+\newblock Read October 26, 2026, through the Internet Archive capture of May
+  10, 2026.
+
+\bibitem[{Open English WordNet team}(n.d{\natexlab{a}})]{openenglish2026}
+{Open English WordNet team}.
+\newblock {english-wordnet: README.md, LICENSE.md, and FORMAT.md}.
+\newblock GitHub repository globalwordnet/english-wordnet, branch main,
+  n.d{\natexlab{a}}.
+\newblock URL \url{https://github.com/globalwordnet/english-wordnet}.
+\newblock Read October 26, 2026.
+
+\bibitem[{Open English WordNet team}(n.d{\natexlab{b}})]{openenglish2026a}
+{Open English WordNet team}.
+\newblock {Downloads}.
+\newblock en-word.net, n.d{\natexlab{b}}.
+\newblock URL \url{https://en-word.net/downloads}.
+\newblock Read October 26, 2026.
+
+\bibitem[{Wiktionary contributors}(2026)]{wiktionarycontributors2026}
+{Wiktionary contributors}.
+\newblock {Wiktionary:Statistics/generated}.
+\newblock English Wiktionary, revision 93594431, generated from the October 1,
+  2026 dump, 2026.
+\newblock URL
+  \url{https://en.wiktionary.org/w/index.php?title=Wiktionary:Statistics/generated&oldid=93594431}.
+\newblock Read October 26, 2026.
+
+\bibitem[Ylonen(2022)]{ylonen2022}
+T.~Ylonen.
+\newblock {Wiktextract: Wiktionary as Machine-Readable Structured Data}.
+\newblock in Proceedings of the 13th Conference on Language Resources and
+  Evaluation (LREC 2022), Marseille, pp. 1317–1325, 2022.
+\newblock URL \url{https://aclanthology.org/2022.lrec-1.140/}.
+
+\bibitem[{Wikimedia Foundation}(2023)]{wikimediafoundation2023}
+{Wikimedia Foundation}.
+\newblock {Terms of Use}.
+\newblock effective June 7, 2023, section 7, "Licensing of Content", 2023.
+\newblock URL \url{https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use}.
+\newblock Read October 26, 2026.
+
+\bibitem[{kaikki.org}(n.d)]{kaikkiorg2026}
+{kaikki.org}.
+\newblock {English machine-readable dictionary; Raw data downloads; dictionary
+  index}.
+\newblock kaikki.org. \url{https://kaikki.org/dictionary/English/index.html},
+  \url{https://kaikki.org/dictionary/rawdata.html}, and
+  \url{https://kaikki.org/dictionary/index.html}, n.d.
+\newblock Read October 26, 2026.
+
+\bibitem[Sérasset(n.d)]{serasset2026}
+G.~Sérasset.
+\newblock {Dbnary – Wiktionary as Linguistic Linked Open Data}.
+\newblock home page, n.d.
+\newblock URL \url{http://kaiko.getalp.org/about-dbnary/}.
+\newblock Read October 26, 2026, through the Internet Archive capture of
+  October 11, 2026 (the live site did not respond).
+
+\bibitem[Sérasset(2026)]{serasset2026a}
+G.~Sérasset.
+\newblock {DBnary - Wiktionary Lexical Data in RDF/Ontolex - All languages,
+  version 20260601}.
+\newblock Zenodo. \url{https://doi.org/10.5281/zenodo.21496349} (concept record
+  \url{https://doi.org/10.5281/zenodo.10040982}), 2026.
+\newblock Read October 26, 2026.
+
+\bibitem[{MorphyNet project}(n.d)]{morphynetproject2026}
+{MorphyNet project}.
+\newblock {MorphyNet: README.md}.
+\newblock GitHub repository kbatsuren/MorphyNet, n.d.
+\newblock URL \url{https://github.com/kbatsuren/MorphyNet}.
+\newblock Read October 26, 2026.
+
+\bibitem[{National Library of Medicine, Lexical Systems
+  Group}(n.d{\natexlab{a}})]{nationallibrary2026}
+{National Library of Medicine, Lexical Systems Group}.
+\newblock {The SPECIALIST Lexicon}.
+\newblock lhncbc.nlm.nih.gov, n.d{\natexlab{a}}.
+\newblock URL
+  \url{https://lhncbc.nlm.nih.gov/LSG/Projects/lexicon/current/web/index.html}.
+\newblock Read October 26, 2026.
+
+\bibitem[{National Library of Medicine, Lexical Systems
+  Group}(n.d{\natexlab{b}})]{nationallibrary2026a}
+{National Library of Medicine, Lexical Systems Group}.
+\newblock {SPECIALIST Lexicon: Word Count Stats}.
+\newblock lhncbc.nlm.nih.gov, n.d{\natexlab{b}}.
+\newblock URL
+  \url{https://lhncbc.nlm.nih.gov/LSG/Projects/lexicon/current/docs/designDoc/UDF/wordStats/index.html}.
+\newblock Read October 26, 2026.
+
+\bibitem[{National Library of Medicine, Lexical Systems
+  Group}(n.d{\natexlab{c}})]{nationallibrary2026b}
+{National Library of Medicine, Lexical Systems Group}.
+\newblock {Terms and Conditions for Use of the SPECIALIST NLP Tools}.
+\newblock lhncbc.nlm.nih.gov, n.d{\natexlab{c}}.
+\newblock URL
+  \url{https://lhncbc.nlm.nih.gov/LSG/Projects/lexicon/current/web/termsAndConditions.html}.
+\newblock Read October 26, 2026.
+
+\bibitem[{Carnegie Mellon University Speech Group}(n.d)]{carnegiemellon2026}
+{Carnegie Mellon University Speech Group}.
+\newblock {The CMU Pronouncing Dictionary}.
+\newblock speech.cs.cmu.edu, n.d.
+\newblock URL \url{http://www.speech.cs.cmu.edu/cgi-bin/cmudict}.
+\newblock Read October 26, 2026.
+
+\bibitem[{Carnegie Mellon University}(n.d)]{carnegiemellon2026a}
+{Carnegie Mellon University}.
+\newblock {cmudict: README and LICENSE}.
+\newblock GitHub repository cmusphinx/cmudict, n.d.
+\newblock URL \url{https://github.com/cmusphinx/cmudict}.
+\newblock Read October 26, 2026.
+
+\bibitem[Atkinson(2024)]{atkinson2024}
+K.~Atkinson.
+\newblock {SCOWLv1 Readme}.
+\newblock wordlist.aspell.net, commit b22230c of July 22, 2024.
+\newblock URL \url{https://wordlist.aspell.net/scowl_v1-readme/}.
+\newblock Read October 26, 2026.
+
+\bibitem[Atkinson(n.d{\natexlab{b}})]{atkinson2026}
+K.~Atkinson.
+\newblock {News – ESDB}.
+\newblock wordlist.aspell.net, n.d{\natexlab{b}}.
+\newblock URL \url{https://wordlist.aspell.net/news/}.
+\newblock Read October 26, 2026.
+
+\bibitem[Atkinson(n.d{\natexlab{c}})]{atkinson2026b}
+K.~Atkinson.
+\newblock {Word Sources and Tags (docs/sources.md)}.
+\newblock GitHub repository en-wl/wordlist, branch v2, n.d{\natexlab{c}}.
+\newblock URL \url{https://github.com/en-wl/wordlist/blob/v2/docs/sources.md}.
+\newblock Read October 26, 2026.
+
+\bibitem[Atkinson(n.d{\natexlab{d}})]{atkinson2026c}
+K.~Atkinson.
+\newblock {English Speller Database (ESDB)}.
+\newblock home page, n.d{\natexlab{d}}.
+\newblock URL \url{https://wordlist.aspell.net/}.
+\newblock Read October 26, 2026.
+
+\bibitem[Atkinson(n.d{\natexlab{e}})]{atkinson2026d}
+K.~Atkinson.
+\newblock {Copyright}.
+\newblock GitHub repository en-wl/wordlist, branch v2, n.d{\natexlab{e}}.
+\newblock URL \url{https://github.com/en-wl/wordlist/blob/v2/Copyright}.
+\newblock Read October 26, 2026.
+
+\bibitem[Ward(2002{\natexlab{a}})]{ward2002}
+G.~Ward.
+\newblock {Moby Word Lists (Moby Words II documentation notes)}.
+\newblock Project Gutenberg eBook 3201, released May 1, 2002{\natexlab{a}}.
+\newblock URL \url{https://www.gutenberg.org/ebooks/3201}.
+\newblock Read October 26, 2026.
+
+\bibitem[Ward(2002{\natexlab{b}})]{ward2026}
+G.~Ward.
+\newblock {Moby Part of Speech List (Moby Part-of-Speech II documentation
+  notes)}.
+\newblock Project Gutenberg eBook 3203, 2002{\natexlab{b}}.
+\newblock URL \url{https://www.gutenberg.org/ebooks/3203}.
+\newblock Read October 26, 2026.
+
+\bibitem[Cooper(n.d)]{cooper2026a}
+M.~L. Cooper.
+\newblock {Yet Another Word List (YAWL): README.md}.
+\newblock rehosted by A. B. Schaefer, GitHub repository elasticdog/yawl, n.d.
+\newblock URL \url{https://github.com/elasticdog/yawl}.
+\newblock Read October 26, 2026.
+
+\bibitem[{lorenbrichter/Words
+  maintainers}(n.d)]{lorenbrichterwordsmaintainers2026}
+{lorenbrichter/Words maintainers}.
+\newblock {Words: README.md and LICENSE}.
+\newblock GitHub repository lorenbrichter/Words, n.d.
+\newblock URL \url{https://github.com/lorenbrichter/Words}.
+\newblock Read October 26, 2026.
+
+\bibitem[{Wordnik}(n.d{\natexlab{b}})]{wordnik2026a}
+{Wordnik}.
+\newblock {wordlist: README.md and LICENSE}.
+\newblock GitHub repository wordnik/wordlist, n.d{\natexlab{b}}.
+\newblock URL \url{https://github.com/wordnik/wordlist}.
+\newblock Read October 26, 2026.
+
+\bibitem[{dwyl}(n.d)]{dwyl2026}
+{dwyl}.
+\newblock {english-words: README.md, LICENSE.md, and repository description}.
+\newblock GitHub repository dwyl/english-words, n.d.
+\newblock URL \url{https://github.com/dwyl/english-words}.
+\newblock Read October 26, 2026.
+
+\bibitem[Woods and the FreeBSD~Project(n.d)]{woods2026}
+J.~A. Woods and the FreeBSD~Project.
+\newblock {README (share/dict)}.
+\newblock FreeBSD source tree, n.d.
+\newblock URL \url{https://cgit.freebsd.org/src/plain/share/dict/README}.
+\newblock Read October 26, 2026.
+
+\bibitem[Speer(n.d{\natexlab{a}})]{speer2026}
+R.~Speer.
+\newblock {wordfreq: README.md}.
+\newblock GitHub repository rspeer/wordfreq, branch master, n.d{\natexlab{a}}.
+\newblock URL \url{https://github.com/rspeer/wordfreq}.
+\newblock Read October 26, 2026.
+
+\bibitem[Speer(n.d{\natexlab{b}})]{speer2026a}
+R.~Speer.
+\newblock {Why wordfreq will not be updated (SUNSET.md)}.
+\newblock GitHub repository rspeer/wordfreq, branch master, n.d{\natexlab{b}}.
+\newblock URL \url{https://github.com/rspeer/wordfreq/blob/master/SUNSET.md}.
+\newblock Read October 26, 2026.
+
+\bibitem[{Python Package Index}(n.d)]{pythonpackage2026}
+{Python Package Index}.
+\newblock {wordfreq}.
+\newblock project metadata, n.d.
+\newblock URL \url{https://pypi.org/project/wordfreq/}.
+\newblock Read October 26, 2026.
+
+\bibitem[{Google Books Ngram Viewer team}(n.d{\natexlab{a}})]{googlebooks2026}
+{Google Books Ngram Viewer team}.
+\newblock {Google Books Ngram Exports}.
+\newblock storage.googleapis.com, n.d{\natexlab{a}}.
+\newblock URL
+  \url{https://storage.googleapis.com/books/ngrams/books/datasetsv3.html}.
+\newblock Read October 26, 2026.
+
+\bibitem[Lin et~al.(2012)Lin, Michel, Aiden, Orwant, Brockman, and
+  Petrov]{lin2012}
+Y.~Lin, J.-B. Michel, E.~L. Aiden, J.~Orwant, W.~Brockman, and S.~Petrov.
+\newblock {Syntactic Annotations for the Google Books Ngram Corpus}.
+\newblock in Proceedings of the 50th Annual Meeting of the Association for
+  Computational Linguistics, System Demonstrations, pp. 169–174, 2012.
+\newblock URL \url{https://aclanthology.org/P12-3029/}.
+
+\bibitem[{Google Books Ngram Viewer team}(n.d{\natexlab{b}})]{googlebooks2026a}
+{Google Books Ngram Viewer team}.
+\newblock {Google Books Ngram Viewer: About}.
+\newblock books.google.com, n.d{\natexlab{b}}.
+\newblock URL \url{https://books.google.com/ngrams/info}.
+\newblock Read October 26, 2026.
+
+\bibitem[Brysbaert and New(2009)]{brysbaert2009}
+M.~Brysbaert and B.~New.
+\newblock {Moving beyond Kučera and Francis: A critical evaluation of current
+  word frequency norms and the introduction of a new and improved word
+  frequency measure for American English}.
+\newblock Behavior Research Methods, vol. 41, no. 4, pp. 977–990, 2009.
+\newblock URL \url{https://doi.org/10.3758/BRM.41.4.977}.
+\newblock Accepted manuscript read.
+
+\bibitem[{Ghent University, Department of Experimental
+  Psychology}(n.d)]{ghentuniversity2026}
+{Ghent University, Department of Experimental Psychology}.
+\newblock {SUBTLEXus}.
+\newblock ugent.be, n.d.
+\newblock URL
+  \url{https://www.ugent.be/pp/experimentele-psychologie/en/research/documents/subtlexus}.
+\newblock Read October 26, 2026.
+
+\bibitem[Brysbaert(2024{\natexlab{a}})]{brysbaert2024}
+M.~Brysbaert.
+\newblock {SUBTLEX\_US word frequency database (with license.txt of May 7,
+  2024)}.
+\newblock OSF project djpqz, 2024{\natexlab{a}}.
+\newblock URL \url{https://osf.io/djpqz/}.
+\newblock Read October 26, 2026.
+
+\bibitem[van Heuven et~al.(2014)van Heuven, Mandera, Keuleers, and
+  Brysbaert]{vanheuven2014}
+W.~J.~B. van Heuven, P.~Mandera, E.~Keuleers, and M.~Brysbaert.
+\newblock {SUBTLEX-UK: A new and improved word frequency database for British
+  English}.
+\newblock Quarterly Journal of Experimental Psychology, vol. 67, no. 6, pp.
+  1176–1190, 2014.
+\newblock URL \url{https://doi.org/10.1080/17470218.2013.850521}.
+\newblock Author manuscript read.
+
+\bibitem[Brysbaert(2024{\natexlab{b}})]{brysbaert2024a}
+M.~Brysbaert.
+\newblock {SUBTLEX-UK word frequencies (with license.txt of May 7, 2024)}.
+\newblock OSF project zq49t, 2024{\natexlab{b}}.
+\newblock URL \url{https://osf.io/zq49t/}.
+\newblock Read October 26, 2026.
+
+\bibitem[Balota et~al.(2007)Balota, Yap, Cortese, Hutchison, Kessler, Loftis,
+  Neely, Nelson, Simpson, and Treiman]{balota2007}
+D.~A. Balota, M.~J. Yap, M.~J. Cortese, K.~A. Hutchison, B.~Kessler, B.~Loftis,
+  J.~H. Neely, D.~L. Nelson, G.~B. Simpson, and R.~Treiman.
+\newblock {The English Lexicon Project}.
+\newblock Behavior Research Methods, vol. 39, no. 3, pp. 445–459, 2007.
+\newblock URL \url{https://doi.org/10.3758/BF03193014}.
+
+\bibitem[{English Lexicon Project, Washington University in St.
+  Louis}(n.d)]{englishlexicon2026}
+{English Lexicon Project, Washington University in St. Louis}.
+\newblock {Home page; About The English Lexicon Project}.
+\newblock elexicon.wustl.edu, n.d.
+\newblock URL \url{https://elexicon.wustl.edu/}.
+\newblock Read October 26, 2026, through the Internet Archive captures of
+  October 14, 2026 (home page) and August 25, 2019 (About page).
+
+\bibitem[Brants and Franz(2006)]{brants2006}
+T.~Brants and A.~Franz.
+\newblock {Web 1T 5-gram Version 1 (LDC2006T13)}.
+\newblock Linguistic Data Consortium catalog, 2006.
+\newblock URL \url{https://catalog.ldc.upenn.edu/LDC2006T13}.
+\newblock Read October 26, 2026.
+
+\end{thebibliography}

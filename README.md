@@ -2,7 +2,7 @@
 
 Word lists disagree about what counts as an English word. The CEOL Universe (the Common English OpenList Universe) is an inventory of 10,264,273 candidate English strings. For each one, it records which of 8 published word lists include it, whether 2 corpora contain it, and how it entered the dataset. No row claims that a string is a word: you state a definition, and the inventory gives you the list that meets it, with the code that reproduces it.
 
-**The full dataset is not published yet.** A license review comes first, and the dataset will be released when it is finished; no date is promised. Until then, this repository and [the site](https://common-english-openlist.pages.dev/) show the code, the documents, the dataset's statistics, and a sample, and lists can't be built or downloaded. Version 1.0 is built. Its home will be [`ryanjosephkamp/ceol-universe`](https://huggingface.co/datasets/ryanjosephkamp/ceol-universe) on Hugging Face; that link, and the links to it in the documents, will work once it is released. The data itself is not in this repository.
+**The full dataset is not published yet.** A license review comes first, and the dataset will be released when it is finished; no date is promised. Until then, this repository and [the site](https://common-english-openlist.pages.dev/) show the code, the documents, the dataset's statistics, and a sample, and lists can't be built or downloaded. Version 1.0 is built. Its home will be [`ryanjosephkamp/ceol-universe`](https://huggingface.co/datasets/ryanjosephkamp/ceol-universe) on Hugging Face; that link, and the links to it in the documents, will work once it is released. The data itself is not in this repository. An open subset of version 1.0, the rows listed by WordNet, Wiktionary, the American, Canadian, and Australian hunspell dictionaries, or SCOWL at sizes 10 to 70, is public as [`ryanjosephkamp/ceol-universe-open`](https://huggingface.co/datasets/ryanjosephkamp/ceol-universe-open).
 
 This repository holds the code that builds the dataset, the site, the study kit, and the documents.
 
@@ -14,6 +14,7 @@ This repository holds the code that builds the dataset, the site, the study kit,
 | know what the dataset holds, how it was built, and what it leaves out | [the dataset card](pipeline/research/release/CARD_v1.0.md) |
 | see every column | [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) |
 | read the technical report | [pipeline/research/release/report/PAPER_v1.0.md](pipeline/research/release/report/PAPER_v1.0.md) |
+| read the paper | [paper/ceol-universe-paper.pdf](paper/ceol-universe-paper.pdf), with its LaTeX source in [paper/](paper/) |
 | draw a reproducible sample and run a labeling study | [kit/README.md](kit/README.md) |
 | see how the universe is kept over time | [docs/UPKEEP.md](docs/UPKEEP.md) |
 | see each source's terms and what the dataset withholds | [the dataset card](pipeline/research/release/CARD_v1.0.md), sections 6 and 7 |
@@ -61,7 +62,7 @@ The English OpenList, the word list this grew out of, is its own project, with i
 ## Licenses
 
 - The code is under the MIT license (`LICENSE`).
-- The dataset, the site's text, and the documents are currently under CC BY-SA 4.0 (`LICENSE-CC-BY-SA-4.0.txt`); the technical report is under CC BY 4.0.
+- The dataset, the site's text, and the documents are currently under CC BY-SA 4.0 (`LICENSE-CC-BY-SA-4.0.txt`); the technical report and the paper are under CC BY 4.0.
 - The dataset draws on third-party sources under their own terms. The evidence for them is in `docs/licenses/`, and a NOTICES file ships with the dataset.
 
 ## Contact
