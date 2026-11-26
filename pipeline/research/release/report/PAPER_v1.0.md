@@ -293,9 +293,8 @@ built" page shows the same steps with their counts.
    (344,830 entries).
 8. **The release.** The restricted rows are dropped and the public projection applied (§4), leaving
    10,264,273 rows. The build asserted, on each of its 7 written files, that none
-   of the 1,985 restricted rows' strings is present, that every `id` is distinct,
-   that each filter config is its predicate's filter, that no withheld column, label, or held-back row is
-   present, and that `provenance_class` and `model_or_engine` re-derive from the file's own fields.
+   of the 1,985 restricted rows' strings is present and that no withheld column or
+   held-back row is present; the card's §9 lists the checks it made on only some of the files.
 
 The release record, `pipeline/research/release/release_v1.0.json`, holds every file's rows,
 columns, bytes, and sha256, and the counts of every assertion.
@@ -629,8 +628,8 @@ Weighted by tokens:
 
 ### The varieties, the core, and the tails
 
-**American and British spellings.** 14,308 rows are in the American hunspell dictionary and not the
-British, 146,322 in the British and not the American, and 106,944 in both. The 4 hunspell
+**American and British spellings.** Among rows both dictionaries can hold, 14,308 rows are in the
+American hunspell dictionary and not the British, 146,322 in the British and not the American, and 106,944 in both. The 4 hunspell
 dictionaries all list 106,399 rows; of the rows all 4 can hold and at least 1 of them lists, 60.3%
 are listed by some and not all.
 

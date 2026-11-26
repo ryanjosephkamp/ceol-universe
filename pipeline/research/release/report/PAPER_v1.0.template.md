@@ -190,9 +190,8 @@ built" page shows the same steps with their counts.
    ({{model_basis_entries}} entries).
 8. **The release.** The restricted rows are dropped and the public projection applied (§4), leaving
    {{rows_universe}} rows. The build asserted, on each of its {{files_asserted}} written files, that none
-   of the {{restricted_words_checked}} restricted rows' strings is present, that every `id` is distinct,
-   that each filter config is its predicate's filter, that no withheld column, label, or held-back row is
-   present, and that `provenance_class` and `model_or_engine` re-derive from the file's own fields.
+   of the {{restricted_words_checked}} restricted rows' strings is present and that no withheld column or
+   held-back row is present; the card's §9 lists the checks it made on only some of the files.
 
 The release record, `pipeline/research/release/release_{{version}}.json`, holds every file's rows,
 columns, bytes, and sha256, and the counts of every assertion.
@@ -391,8 +390,8 @@ Weighted by tokens:
 
 ### The varieties, the core, and the tails
 
-**American and British spellings.** {{us_not_gb}} rows are in the American hunspell dictionary and not the
-British, {{gb_not_us}} in the British and not the American, and {{us_and_gb}} in both. The 4 hunspell
+**American and British spellings.** Among rows both dictionaries can hold, {{us_not_gb}} rows are in the
+American hunspell dictionary and not the British, {{gb_not_us}} in the British and not the American, and {{us_and_gb}} in both. The 4 hunspell
 dictionaries all list {{hun_all4}} rows; of the rows all 4 can hold and at least 1 of them lists, {{hun_some_pct_of_listed}}
 are listed by some and not all.
 
