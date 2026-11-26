@@ -502,10 +502,13 @@ Each step has a committed record; the counts are taken at the current pin.
 9. **This release:** the public projection and the build.
    The build asserted, on each of its 7 written files,
    that none of the 1,985 restricted rows' strings is
-   present, that every id is distinct, that each filter config is its
-   predicate's filter, that no withheld column or label is present, that
-   no held-back row is present, and that `provenance_class` and
-   `model_or_engine` re-derive from the file's own fields.
+   present, that no withheld column is present, and that no held-back row
+   is present; on `universe` and the 5 filters, that no
+   withheld label is present; on `universe` and `features`, that every id is
+   distinct; on each filter, that it is its predicate's filter; and on
+   `universe`, that `provenance_class` re-derives from the file's own fields
+   and that `model_or_engine` agrees with its rule, which reads
+   `intake_kind`, `eol`, and the private model-basis layer.
 
 ## 10. What the universe does not record
 

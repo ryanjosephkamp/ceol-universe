@@ -18,7 +18,7 @@ Ryan Kamp
 
 ## Abstract
 
-The CEOL Universe is a public inventory of 10,264,273 candidate English strings. Each row records
+The CEOL Universe is an inventory of 10,264,273 candidate English strings. Each row records
 which of 8 published word lists list the string, which lists cannot hold strings of
 its spelling class, whether 2 corpora contain it, and how it entered the pool. No row says that a string is
 a word. Of the 9,969,408 single-token rows, 1,089,968 (10.9%) are listed by at
@@ -37,7 +37,7 @@ repeat.
 The CEOL Universe takes the other approach. It keeps the candidate strings its sources gave that its
 admission rules accept, under 1 executable spelling grammar, and records each source's answer beside the string, dated by the source's
 pinned version. A reader who wants a word list states a definition (for example, "listed by 2 or more
-independent families, single tokens only, no string the EOL's synthetic engine made") and obtains a
+families, single tokens only, no string the EOL's synthetic engine made") and obtains a
 list, a count, and the code that reproduces both. The project's site turns that into an interface: a
 reader picks criteria, sees the count over all rows at once, and copies the code.
 
@@ -187,8 +187,8 @@ alone; the audit also consulted it.
 
 The 8 published lists come from 5 source families: WordNet;
 Wiktionary's English pages; hunspell, whose 4 English dictionaries (American, British, Canadian,
-and Australian) derive from 1 upstream and count as 1 family; ENABLE; and SCOWL. A family lists a row when any
-of its lists does, and cannot hold it when none of its lists can. Independence is counted by family, so a
+and Australian) count as 1 family; ENABLE; and SCOWL. A family lists a row when any
+of its lists does, and cannot hold it when none of its lists can. Listing is counted by family, so a
 row that SCOWL and 2 hunspell dictionaries list counts as listed by 2 families.
 
 Counting families this way follows the analysis plan's definition of the public panel. It is generous to
@@ -631,12 +631,12 @@ Weighted by tokens:
 
 **American and British spellings.** 14,308 rows are in the American hunspell dictionary and not the
 British, 146,322 in the British and not the American, and 106,944 in both. The 4 hunspell
-dictionaries all list 106,399 rows; of the rows at least 1 of them lists, 60.3%
+dictionaries all list 106,399 rows; of the rows all 4 can hold and at least 1 of them lists, 60.3%
 are listed by some and not all.
 
 **The consensus core.** 417,864 rows (4.2%) are listed by 2 or more families. The EOL's valid
 list contributes 202,423 of them and its invalid list 95,245,
-strings the EOL ruled out that 2 or more independent families list.
+strings the EOL ruled out that 2 or more families list.
 
 **The tails.** 378 rows with a Zipf value of 3 or more are listed by no family. In the other
 direction, 347,609 listed rows (31.9% of the listed rows) are in neither
@@ -784,7 +784,7 @@ measures every source again and builds a new pin and version.
 ## 12. Availability and reproducibility
 
 The dataset will be `ryanjosephkamp/ceol-universe` on the Hugging Face hub, at the tag of its version, with a Croissant file
-carrying its responsible-AI fields; it is private until the release. The code and every committed record are at https://github.com/ryanjosephkamp/ceol-universe. The
+(it declares the Responsible AI namespace but carries none of its properties); it is private until the release. The code and every committed record are at https://github.com/ryanjosephkamp/ceol-universe. The
 release rebuilds from its pinned layers with `python3 -m research.release.build_release --version
 v1.0`, the descriptive analysis with `python3 -m research.analysis.descriptive --version
 v1.0`, and this report with `python3 -m research.release.report.paper --render`. The analysis is
@@ -892,7 +892,7 @@ The `universe` config carries 41 columns and the `features` config 11.
 - **Candidate:** a string that passes the spelling grammar; every row is one.
 - **Listed:** a list, at its pinned version, includes the string.
 - **Cannot hold (blind):** a list structurally excludes strings of the row's class.
-- **Family:** the lists that derive from 1 upstream; hunspell's 4 dictionaries are 1 family.
+- **Family:** a group of lists counted as 1 source; hunspell's 4 dictionaries are 1 family.
 - **Evidence tier:** a single-token row's count of listing families, with "corpus only" and "no evidence"
   for rows no family lists.
 - **Intake channel:** the route by which a string entered the pool; never an attestation.
@@ -911,7 +911,7 @@ The `universe` config carries 41 columns and the `features` config 11.
 6. Princeton University, "wndb(5WN): WordNet database files," WordNet documentation. https://wordnet.princeton.edu/documentation/wndb5wn. Read October 26, 2026, through the Internet Archive capture of May 10, 2026.
 7. Open English WordNet team, "english-wordnet: README.md, LICENSE.md, and FORMAT.md," GitHub repository globalwordnet/english-wordnet, branch main. https://github.com/globalwordnet/english-wordnet. Read October 26, 2026.
 8. Open English WordNet team, "Downloads," en-word.net. https://en-word.net/downloads. Read October 26, 2026.
-9. Wiktionary contributors, "Wiktionary:Statistics," English Wiktionary, revision 92513152, table generated from the October 1, 2026 dump. https://en.wiktionary.org/wiki/Wiktionary:Statistics. Read October 26, 2026.
+9. Wiktionary contributors, "Wiktionary:Statistics/generated," English Wiktionary, revision 93594431, generated from the October 1, 2026 dump. https://en.wiktionary.org/w/index.php?title=Wiktionary:Statistics/generated&oldid=93594431. Read October 26, 2026.
 10. T. Ylonen, "Wiktextract: Wiktionary as Machine-Readable Structured Data," in Proceedings of the 13th Conference on Language Resources and Evaluation (LREC 2022), Marseille, pp. 1317–1325, 2022. https://aclanthology.org/2022.lrec-1.140/.
 11. Wikimedia Foundation, "Terms of Use," effective June 7, 2023, section 7, "Licensing of Content". https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use. Read October 26, 2026.
 12. kaikki.org, "English machine-readable dictionary; Raw data downloads; dictionary index," kaikki.org. https://kaikki.org/dictionary/English/index.html, https://kaikki.org/dictionary/rawdata.html, and https://kaikki.org/dictionary/index.html. Read October 26, 2026.
@@ -945,7 +945,7 @@ The `universe` config carries 41 columns and the `features` config 11.
 40. R. Speer, "Why wordfreq will not be updated (SUNSET.md)," GitHub repository rspeer/wordfreq, branch master. https://github.com/rspeer/wordfreq/blob/master/SUNSET.md. Read October 26, 2026.
 41. Python Package Index, "wordfreq," project metadata. https://pypi.org/project/wordfreq/. Read October 26, 2026.
 42. Google Books Ngram Viewer team, "Google Books Ngram Exports," storage.googleapis.com. https://storage.googleapis.com/books/ngrams/books/datasetsv3.html. Read October 26, 2026.
-43. J.-B. Michel, Y. K. Shen, A. P. Aiden, A. Veres, M. K. Gray, W. Brockman, The Google Books Team, J. P. Pickett, D. Hoiberg, D. Clancy, P. Norvig, J. Orwant, S. Pinker, M. A. Nowak, and E. L. Aiden, "Quantitative analysis of culture using millions of digitized books," Science, vol. 331, no. 6014, pp. 176–182, 2011. https://doi.org/10.1126/science.1199644.
+43. J.-B. Michel, Y. K. Shen, A. P. Aiden, A. Veres, M. K. Gray, The Google Books Team, J. P. Pickett, D. Hoiberg, D. Clancy, P. Norvig, J. Orwant, S. Pinker, M. A. Nowak, and E. L. Aiden, "Quantitative analysis of culture using millions of digitized books," Science, vol. 331, no. 6014, pp. 176–182, 2011. https://doi.org/10.1126/science.1199644.
 44. Y. Lin, J.-B. Michel, E. L. Aiden, J. Orwant, W. Brockman, and S. Petrov, "Syntactic Annotations for the Google Books Ngram Corpus," in Proceedings of the 50th Annual Meeting of the Association for Computational Linguistics, System Demonstrations, pp. 169–174, 2012. https://aclanthology.org/P12-3029/.
 45. Google Books Ngram Viewer team, "Google Books Ngram Viewer: About," books.google.com. https://books.google.com/ngrams/info. Read October 26, 2026.
 46. E. A. Pechenick, C. M. Danforth, and P. S. Dodds, "Characterizing the Google Books Corpus: Strong Limits to Inferences of Socio-Cultural and Linguistic Evolution," PLoS ONE, vol. 10, no. 10, e0137041, 2015. https://doi.org/10.1371/journal.pone.0137041.
@@ -970,7 +970,7 @@ The `universe` config carries 41 columns and the `features` config 11.
 65. NeurIPS 2026, "Call For Evaluations & Datasets 2026," neurips.cc. https://neurips.cc/Conferences/2026/CallForEvaluationsDatasets. Read October 26, 2026.
 66. M. D. Wilkinson, M. Dumontier, I. J. Aalbersberg, and others, "The FAIR Guiding Principles for scientific data management and stewardship," Scientific Data, vol. 3, 160018, 2016. https://doi.org/10.1038/sdata.2016.18.
 67. TEI Lex-0 contributors, "TEI Lex-0: A baseline encoding for lexicographic data, version 0.9.5 (February 8, 2026)," lex-0.org, chapter 1, "Header". https://lex-0.org/ and https://lex-0.org/header.html. Read October 26, 2026.
-68. T. Tasovac, L. Romary, E. Tóth-Czifra, and I. Marinski, "D6.4 Lexicographic Data Seal of Compliance," ELEXIS project deliverable, July 30, 2021. https://elex.is/wp-content/uploads/2021/08/ELEXIS_D6_4_Lexicographic_Data_Seal_of_Compliance.pdf.
+68. T. Tasovac, L. Romary, E. Tóth-Czifra, and I. Marinski, "D6.4 Lexicographic Data Seal of Compliance," ELEXIS project deliverable, July 30, 2021. https://hal.science/hal-03344267.
 69. P. Labropoulou, K. Gkirtzou, M. Gavriilidou, M. Deligiannis, and others, "Making Metadata Fit for Next Generation Language Technology Platforms: The Metadata Schema of the European Language Grid," in Proceedings of the 12th Conference on Language Resources and Evaluation (LREC 2020), pp. 3428–3437, 2020. https://aclanthology.org/2020.lrec-1.420/.
 70. N. Calzolari, R. Del Gratta, G. Francopoulo, J. Mariani, F. Rubino, I. Russo, and C. Soria, "The LRE Map. Harmonising Community Descriptions of Resources," in Proceedings of the Eighth International Conference on Language Resources and Evaluation (LREC 2012), 2012. https://aclanthology.org/L12-1450/.
 71. J. Dodge, M. Sap, A. Marasović, W. Agnew, G. Ilharco, D. Groeneveld, M. Mitchell, and M. Gardner, "Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus," arXiv:2104.08758v2, 2021 (EMNLP 2021). https://arxiv.org/abs/2104.08758.
