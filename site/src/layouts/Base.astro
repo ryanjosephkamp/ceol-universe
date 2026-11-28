@@ -48,7 +48,8 @@ const pageTitle = section === 'Start' ? 'Common English OpenList' : `${title} ·
       <div class="preview">
         <p class="frame">
           {PENDING_NOTE} The dataset's <a href={OPEN_SUBSET_URL}>open subset</a>, the
-          rows that open word lists list, is on Hugging Face now.
+          rows that open word lists list, is on Hugging Face now, and you can
+          <a href="/compose/open/">compose and download lists from it</a>.
         </p>
       </div>
     )}
@@ -89,8 +90,9 @@ const pageTitle = section === 'Start' ? 'Common English OpenList' : `${title} ·
             <Mark size={20} /> The CEOL Universe, version {release.name}
           </p>
           <p>
-            Built {usDate(release.builtOn)}. Every figure on these pages is read from the version's figures files in
-            <code>{release.figuresPath.replace(/figures\.json$/, '')}</code> when the site is built.
+            Built {usDate(release.builtOn)}. Every reference figure on these pages is read from the version's figures files
+            in <code>{release.figuresPath.replace(/figures\.json$/, '')}</code> when the site is built. The composers
+            compute their counts in your browser, from the universe's cube and from the open subset's.
           </p>
           <p>Data under CC BY-SA 4.0; code under MIT.</p>
           <p>Sister project: <a href="https://english-openlist.pages.dev/" rel="noopener">the English OpenList</a>.</p>

@@ -1,0 +1,102 @@
+---
+import Base from '../../layouts/Base.astro';
+import Figure from '../../components/Figure.astro';
+import ComposeOpen from '../../islands/ComposeOpen.tsx';
+import { openCardSectionText } from '../../lib/docs';
+import { OPEN_COMMIT, OPEN_DATASET } from '../../lib/open-codegen';
+import { OPEN_SUBSET_URL } from '../../lib/release-state';
+import layout from '../../../../pipeline/research/release/layout_open_v1.0.json';
+
+// the subset's rows, as its layout record states them from the file
+const openRows = layout.rows.toLocaleString('en-US');
+---
+
+<Base
+  title="Compose from the open subset"
+  section="Compose a list"
+  description="Choose criteria over every row of the CEOL Universe's open subset, see the count at once, download the list, and get the code that reproduces it."
+>
+  <div class="frame compose-page">
+    <header class="page-head">
+      <p class="eyebrow"><a href="/compose/">Compose a list</a> · The open subset</p>
+      <h1>Compose from the open subset</h1>
+      <p class="lede">
+        Choose what a row must have, then download the list. The count, the charts, and the code follow at once, computed over
+        all {openRows} rows of the open subset, not a sample. They are the rows of version 1.0 that at least 1 open word list
+        lists; version 1.0 holds <Figure id="rows" /> in all.
+      </p>
+      <p class="page-note">
+        The open subset is <a href={OPEN_SUBSET_URL}><code>{OPEN_DATASET}</code></a> on Hugging Face, under CC BY-SA 4.0. Its 6
+        lists are WordNet 3.0, the English Wiktionary, the hunspell en_US, en_CA, and en_AU dictionaries, and SCOWL at sizes 10 to
+        70. The page reads its <code>open-lists</code> file at commit <code>{OPEN_COMMIT.slice(0, 7)}</code>, in your browser.
+        Each row is a candidate string; nothing here judges whether a string is a word.
+      </p>
+      <p class="page-note">
+        The full dataset, with its other lists, its corpora, and the record of how each string came in, waits on a license review.
+        <a href="/compose/">Compose a list</a> counts over all of it, but its lists can&rsquo;t be downloaded yet.
+      </p>
+      <ol class="steps" role="list" aria-label="How it works">
+        <li>Choose what a row must have.</li>
+        <li>Watch the count and the charts follow.</li>
+        <li>At the end of the page: download the list, its datasheet, or copy the code.</li>
+      </ol>
+    </header>
+    <ComposeOpen client:load cubeUrl="/data/cube-open-v1.0.json" noticesUrl="/data/NOTICES-open-v1.0.md" citation={openCardSectionText(10)} />
+  </div>
+</Base>
+
+<style>
+  .compose-page {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .page-head {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .page-head h1 {
+    font-size: var(--step-5);
+  }
+  .eyebrow {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .page-note {
+    max-width: var(--measure);
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+  .page-note code {
+    overflow-wrap: anywhere;
+  }
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: var(--space-1) 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+  .steps li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    flex: 1 1 14rem;
+    min-width: 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+    font-size: var(--step--1);
+    counter-increment: step;
+  }
+  .steps li::before {
+    content: counter(step);
+    flex: none;
+    font-family: var(--font-sans);
+    font-weight: 650;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+</style>

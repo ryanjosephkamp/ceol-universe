@@ -1,0 +1,102 @@
+{
+ "version": "v1.0",
+ "dataset": "ryanjosephkamp/ceol-universe-open",
+ "commit": "0bbf4b867b660bd3f0ca18f8289358096cc0e7cd",
+ "generated_by": "pipeline/research/release/open_compose.py",
+ "what": "where the strings and the criteria's columns lie in each row group of the open subset's open-lists file, for the site's list download; offsets and sizes in bytes",
+ "hub_path": "data/open-lists.parquet",
+ "url": "https://huggingface.co/datasets/ryanjosephkamp/ceol-universe-open/resolve/0bbf4b867b660bd3f0ca18f8289358096cc0e7cd/data/open-lists.parquet",
+ "bytes": 18894524,
+ "sha256": "beb133fc59d017168f81317800a19bdc6049c86e83f2e331686a37fb9038b3f0",
+ "metadata": {
+  "ceol.version": "open-v1.0",
+  "ceol.license": "CC-BY-SA-4.0",
+  "ceol.attribution": "The CEOL Universe, open subset, licensed CC BY-SA 4.0. Its fields derive from the English Wiktionary (its contributors; CC BY-SA), WordNet 3.0 (Princeton University), SCOWL (Kevin Atkinson and the contributors its notice names), the LibreOffice hunspell dictionaries en_US, en_CA, and en_AU, and the Google Books Ngram corpus (CC BY 3.0). NOTICES.md, beside this file, carries every notice and license the sources require.",
+  "ceol.notices": "NOTICES.md"
+ },
+ "rows": 1179657,
+ "row_groups": [
+  {
+   "rows": 1140000,
+   "columns": {
+    "word": [
+     10265339,
+     5699417
+    ],
+    "token_count": [
+     15964756,
+     117871
+    ],
+    "classes": [
+     16082627,
+     171632
+    ],
+    "scowl_size": [
+     17001166,
+     218016
+    ],
+    "gb_type": [
+     17219182,
+     156608
+    ],
+    "list_count": [
+     17375790,
+     178351
+    ],
+    "listed_by": [
+     17554141,
+     275350
+    ],
+    "wn_instance": [
+     17829491,
+     51110
+    ],
+    "wk_proper_noun": [
+     17933423,
+     69727
+    ]
+   }
+  },
+  {
+   "rows": 39657,
+   "columns": {
+    "word": [
+     18529039,
+     274028
+    ],
+    "token_count": [
+     18803067,
+     5434
+    ],
+    "classes": [
+     18808501,
+     7226
+    ],
+    "scowl_size": [
+     18844772,
+     7912
+    ],
+    "gb_type": [
+     18852684,
+     5880
+    ],
+    "list_count": [
+     18858564,
+     6634
+    ],
+    "listed_by": [
+     18865198,
+     10140
+    ],
+    "wn_instance": [
+     18875338,
+     2185
+    ],
+    "wk_proper_noun": [
+     18879757,
+     3113
+    ]
+   }
+  }
+ ]
+}

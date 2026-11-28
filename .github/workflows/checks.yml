@@ -39,3 +39,24 @@ jobs:
         run: make figures PY=python
       - name: Link check
         run: make links PY=python
+
+  site:
+    # the site's tests on pull requests only (site/README.md, "Rules every
+    # page keeps"). The tests that need data/ or uv are skipped and say so;
+    # the list download's mocked-HTTP test and the open cube's test run here.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+      # pnpm at the version package.json names
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Site tests
+        run: pnpm test

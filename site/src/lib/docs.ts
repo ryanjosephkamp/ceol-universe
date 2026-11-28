@@ -42,9 +42,22 @@ export function cardSection(n: number, level = 3): { title: string; html: string
 /** A card section's text as plain prose, its Markdown marks removed: for
  *  the datasheet's "How to cite it". */
 export function cardSectionText(n: number): string {
-  const key = [...card.keys()].find((k) => k.startsWith(`${n}. `));
-  if (!key) throw new Error(`${CARD_PATH} has no section ${n}`);
-  return card
+  return sectionText(card, CARD_PATH, n);
+}
+
+/** The open subset's card (its README on the hub), as the build wrote it. */
+export const OPEN_CARD_PATH = 'pipeline/research/release/CARD_open_v1.0.md';
+const openCard = sections(read(OPEN_CARD_PATH));
+
+/** A section of the open subset's card as plain prose, as cardSectionText. */
+export function openCardSectionText(n: number): string {
+  return sectionText(openCard, OPEN_CARD_PATH, n);
+}
+
+function sectionText(doc: Map<string, string>, path: string, n: number): string {
+  const key = [...doc.keys()].find((k) => k.startsWith(`${n}. `));
+  if (!key) throw new Error(`${path} has no section ${n}`);
+  return doc
     .get(key)!
     .trim()
     .replace(/[`*_]/g, '')

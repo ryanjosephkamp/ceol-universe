@@ -1,0 +1,100 @@
+{
+ "generated_by": "tools/build_open_test_file.py",
+ "version": "open-test",
+ "dataset": "test",
+ "hub_path": "data/open-lists.parquet",
+ "url": "https://hub.test/data/open-lists.parquet",
+ "bytes": 9949,
+ "sha256": "e74d360253ada9b7f4f20784908bd0ea18a81dfc22ff4f0ffbfd41d040a4ae45",
+ "metadata": {
+  "ceol.version": "open-test",
+  "ceol.license": "CC-BY-SA-4.0",
+  "ceol.attribution": "A made-up file for the site's tests.",
+  "ceol.notices": "NOTICES.md"
+ },
+ "rows": 90,
+ "row_groups": [
+  {
+   "rows": 60,
+   "columns": {
+    "word": [
+     1697,
+     343
+    ],
+    "token_count": [
+     2040,
+     103
+    ],
+    "classes": [
+     2143,
+     145
+    ],
+    "scowl_size": [
+     2288,
+     144
+    ],
+    "gb_type": [
+     2432,
+     63
+    ],
+    "list_count": [
+     2495,
+     131
+    ],
+    "listed_by": [
+     2626,
+     1402
+    ],
+    "wn_instance": [
+     4028,
+     60
+    ],
+    "wk_proper_noun": [
+     4088,
+     58
+    ]
+   }
+  },
+  {
+   "rows": 30,
+   "columns": {
+    "word": [
+     4996,
+     177
+    ],
+    "token_count": [
+     5173,
+     99
+    ],
+    "classes": [
+     5272,
+     137
+    ],
+    "scowl_size": [
+     5409,
+     119
+    ],
+    "gb_type": [
+     5528,
+     56
+    ],
+    "list_count": [
+     5584,
+     111
+    ],
+    "listed_by": [
+     5695,
+     713
+    ],
+    "wn_instance": [
+     6408,
+     54
+    ],
+    "wk_proper_noun": [
+     6462,
+     54
+    ]
+   }
+  }
+ ]
+}

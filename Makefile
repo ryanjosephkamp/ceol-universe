@@ -13,7 +13,8 @@
 #                      review preview (needs a Cloudflare sign-in)
 #   make site-production  the site built without the preview banner and noindex,
 #                      its pages scanned, then uploaded to the project's main
-#                      address (needs a Cloudflare sign-in; run at the release)
+#                      address (needs a Cloudflare sign-in; it needn't wait for
+#                      the full dataset's release, see site/README.md)
 
 PY ?= python3
 
@@ -53,7 +54,7 @@ site-preview: site
 	cd pipeline && $(PY) -m safeguards.scan ../site/dist
 	cd site && pnpm exec wrangler pages deploy dist --project-name common-english-openlist --branch review
 
-# the release build: no banner, no noindex; the production address is the project's main branch
+# the production build: no banner, no noindex; the production address is the project's main branch
 site-production:
 	cd site && pnpm install --frozen-lockfile && pnpm test && CEOL_PRODUCTION=1 pnpm build
 	$(PY) tools/report_pdf.py

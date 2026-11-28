@@ -1,0 +1,60 @@
+/* Compose from the open subset: the composer's look (compose.css), with each
+   control at least 44px tall for a thumb, and its menus at 16px so a phone
+   does not zoom into them. */
+
+.compose-open .presets button,
+.compose-open .ccheck,
+.compose-open .tri button,
+.compose-open .reset,
+.compose-open .copy,
+.compose-open .code-tabs button,
+.compose-open .chart-switch {
+  min-height: 2.75rem;
+}
+.compose-open .tri button {
+  min-width: 2.75rem;
+  padding: 0.25rem 0.65rem;
+  font-size: var(--step--1);
+}
+.compose-open .flag-n {
+  min-width: 4.5rem;
+}
+/* the 2 selectors outrank compose.css's .range select whatever the order */
+.compose-open .range select,
+.compose-open .scowl-pick select {
+  font-size: 1rem;
+  min-height: 2.75rem;
+}
+.compose-open .range select {
+  min-width: 5.5rem;
+}
+.compose-open .mobile-count a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+/* the 6 open lists: every row is listed by at least 1, so the steps run 1 to 6 */
+.compose-open .lists-step {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  max-width: 24rem;
+}
+
+.scowl-pick {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 30rem;
+}
+.scowl-pick select {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+}
+.scowl-pick .ccheck-n {
+  font-size: var(--step--1);
+}
