@@ -17,7 +17,7 @@ export const DATASET_PUBLIC = false;
 
 /** Shown at the top of every page while the dataset is not public. */
 export const PENDING_NOTE =
-  "The full dataset is not published yet. A license review comes first, and the dataset will be released once it is finished; no date is promised. Until then the site shows the dataset's statistics and a sample, and lists cannot be built or downloaded.";
+  "The full dataset is not published yet. A license review comes first, and the dataset will be released once it is finished; no date is promised. Until then the site shows the full dataset's statistics and a sample, and its lists cannot be downloaded.";
 
 /** The open subset: the universe's rows that open word lists list, public on
  * the hub while the full dataset waits on the license review. */
